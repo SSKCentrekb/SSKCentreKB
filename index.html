@@ -34,32 +34,29 @@ nav {
 .nav-links a { color:white; text-decoration:none; font-size:12px; font-weight:600; cursor:pointer; }
 
 /* ── HERO ── */
-.hero { min-height:70vh; background: var(--navy); display:flex; align-items:center; padding:100px 5% 60px; color:white; }
+.hero { min-height:60vh; background: var(--navy); display:flex; align-items:center; padding:100px 5% 60px; color:white; }
 .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size:clamp(2.5rem, 6vw, 4rem); line-height:1; margin-bottom:20px; }
 
 /* ── SECTIONS ── */
-section { padding:60px 5%; }
+section { padding:60px 5%; scroll-margin-top: 70px; }
 .section-inner { max-width:1100px; margin:0 auto; }
-.section-title { font-family: 'Barlow Condensed', sans-serif; font-size:2.5rem; color:var(--navy); margin-bottom:5px; }
+.section-title { font-family: 'Barlow Condensed', sans-serif; font-size:2.8rem; color:var(--navy); margin-bottom:5px; }
 .red-line { width:50px; height:4px; background:var(--red); margin-bottom:30px; }
 
-/* ── CARDS & GRIDS ── */
-.grid-3 { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; }
-.card { background:white; padding:25px; border-top:4px solid var(--navy); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-.card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; margin-bottom: 10px; color: var(--navy); }
-.card-tag { font-size: 10px; font-weight: 800; background: #eee; padding: 2px 8px; border-radius: 3px; display: inline-block; margin-bottom: 10px; color: var(--blue); }
-.btn-small { font-size: 11px; font-weight: 700; text-decoration: none; color: var(--red); border: 1px solid var(--red); padding: 5px 10px; display: inline-block; margin-top: 15px; }
+/* ── TENTANG KAMI (BOOKLET) ── */
+.about-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:30px; }
+.about-card { background:white; padding:30px; border-left:5px solid var(--red); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
 
-/* ── BOOKING SECTION ── */
-.booking-box { background: var(--blue); color: white; padding: 40px; text-align: center; border-radius: 8px; }
-.btn-booking { background: var(--red); color: white; padding: 15px 35px; text-decoration: none; font-weight: 700; border-radius: 4px; display: inline-block; margin-top: 20px; font-size: 1.2rem; }
+/* ── LEVEL USAHAWAN (TABS) ── */
+.tabs-header { display:flex; gap:10px; margin-bottom:20px; overflow-x: auto; padding-bottom:10px; border-bottom:1px solid var(--border); }
+.tab-btn { padding:12px 25px; background:white; border:1px solid var(--border); font-weight:700; cursor:pointer; white-space:nowrap; }
+.tab-btn.active { background:var(--navy); color:white; border-color:var(--navy); }
+.tab-content { display:none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; }
+.tab-content.active { display:grid; }
+.info-card { background:white; padding:25px; border-top:4px solid var(--red); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
 
-/* ── TABS ── */
-.tabs-nav { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid var(--border); padding-bottom: 10px; overflow-x: auto; }
-.tab-link { background: none; border: none; font-weight: 700; color: var(--muted); cursor: pointer; padding: 10px 20px; white-space: nowrap; }
-.tab-link.active { color: var(--red); border-bottom: 3px solid var(--red); }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
+/* ── KURSUS SECTON ── */
+.kursus-box { background:var(--blue); color:white; padding:40px; border-radius:8px; }
 
 /* ── FOOTER ── */
 footer { background:var(--navy); color:white; padding:40px 5%; text-align:center; }
@@ -75,85 +72,133 @@ footer { background:var(--navy); color:white; padding:40px 5%; text-align:center
     <span class="sub">Kota Belud, Sabah</span>
   </div>
   <ul class="nav-links">
+    <li><a href="#about">Tentang</a></li>
     <li><a href="#booking">Tempahan</a></li>
-    <li><a href="#usahawan">Peluang Dana</a></li>
+    <li><a href="#usahawan">Dana Usahawan</a></li>
     <li><a href="#kursus">Kursus</a></li>
-    <li><a href="https://wa.me/601121406450" style="color:var(--sky)">Hubungi</a></li>
   </ul>
 </nav>
 
 <section class="hero">
   <div class="hero-content">
-    <h1>SMART SPACE<br><span style="color:var(--sky)">KOTA BELUD</span></h1>
-    <p>Pusat rujukan fasiliti dan peluang keusahawanan komuniti.</p>
+    <h1>SMART SPACE<br><span style="color:var(--sky)">COMMUNITY HUB</span></h1>
+    <p>Connecting Communities, Creative Media, and Smart Solutions.</p>
   </div>
 </section>
 
-<section id="booking">
+<section id="about">
   <div class="section-inner">
-    <div class="booking-box">
-      <h2 style="font-family:'Barlow Condensed'; font-size: 2.5rem;">TEMPAHAN RUANG & FASILITI</h2>
-      <p>Klik butang di bawah untuk tempahan Dewan, Bilik Mesyuarat, atau Studio secara digital.</p>
-      <a href="https://forms.gle/1cN61QBAXEB3iX6s9" target="_blank" class="btn-booking">BORANG TEMPAHAN ONLINE</a>
+    <h2 class="section-title">Tentang Kami</h2>
+    <div class="red-line"></div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Latar Belakang</h3>
+        <p>Inisiatif yang diasaskan oleh <strong>YB Datuk Seri Panglima Salleh Said Keruak</strong> untuk menyediakan ruang inspirasi bagi masyarakat Kota Belud.</p>
+        <p style="margin-top:10px;">Kini dikelola oleh <strong>Smart Bah Technology Sdn Bhd</strong> untuk memastikan impak yang lebih besar kepada komuniti.</p>
+      </div>
+      <div class="about-card" style="border-left-color: var(--blue);">
+        <h3>Visi & Misi</h3>
+        <p>"Smart Solutions, Creative Media, & Connecting Communities"</p>
+        <p style="margin-top:10px; font-weight:700;">"Smart ka? Smart bah!"</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="usahawan" style="background:#fff;">
+<section id="booking" style="background:#eee;">
+  <div class="section-inner" style="text-align:center;">
+    <h2 class="section-title">Tempahan Fasiliti</h2>
+    <div class="red-line" style="margin-left:auto; margin-right:auto;"></div>
+    <p style="margin-bottom:20px;">Dewan SSKC | Setemu Cafe | Bilik Mesyuarat | Studio | Bilik Media | Kiosk</p>
+    <a href="https://forms.gle/1cN61QBAXEB3iX6s9" target="_blank" style="background:var(--red); color:white; padding:15px 35px; text-decoration:none; font-weight:800; border-radius:4px; display:inline-block;">BORANG TEMPAHAN DIGITAL</a>
+  </div>
+</section>
+
+<section id="usahawan">
   <div class="section-inner">
-    <h2 class="section-title">Peluang Keusahawanan (Dana & Geran)</h2>
+    <h2 class="section-title">Peluang Keusahawanan 2026</h2>
     <div class="red-line"></div>
-    <p style="margin-bottom: 30px; color: var(--muted);">Maklumat bantuan modal dan peralatan daripada pelbagai agensi (2025-2026):</p>
+    <p style="margin-bottom:20px;">Pilih tahap perniagaan anda untuk maklumat dana & geran:</p>
     
-    <div class="grid-3">
-      <div class="card">
-        <span class="card-tag">BANTUAN MESIN</span>
+    <div class="tabs-header">
+      <button class="tab-btn active" onclick="openLvl(event, 'lvl1')">Level 1: Startup</button>
+      <button class="tab-btn" onclick="openLvl(event, 'lvl2')">Level 2: Growing (Mesin)</button>
+      <button class="tab-btn" onclick="openLvl(event, 'lvl3')">Level 3: Scaling</button>
+    </div>
+
+    <div id="lvl1" class="tab-content active">
+      <div class="info-card">
+        <strong>Modal Pusingan</strong>
+        <h3>AIM (Amanah Ikhtiar)</h3>
+        <p>Pinjaman mikro pantas untuk usahawan kecil memulakan atau menambah stok perniagaan.</p>
+      </div>
+      <div class="info-card">
+        <strong>Pendaftaran</strong>
         <h3>DIDR Sabah</h3>
-        <p>Bantuan peralatan dan mesin industri untuk usahawan PKS Sabah bagi meningkatkan kapasiti pengeluaran.</p>
-        <a href="https://didr.sabah.gov.my/" target="_blank" class="btn-small">SEMAK SYARAT</a>
+        <p>Bantuan pendaftaran logo, barcode, dan label produk untuk usahawan desa Sabah.</p>
       </div>
-      <div class="card">
-        <span class="card-tag">MODAL BUMIPUTERA</span>
-        <h3>MARA (Skim PUTRA)</h3>
-        <p>Pembiayaan mikro sehingga RM10,000 untuk pembelian peralatan bisnes atau modal kerja.</p>
-        <a href="https://www.mara.gov.my/" target="_blank" class="btn-small">INFO MARA</a>
+    </div>
+
+    <div id="lvl2" class="tab-content">
+      <div class="info-card">
+        <strong>Bantuan Mesin</strong>
+        <h3>DIDR (Mesin Industri)</h3>
+        <p>Geran untuk mesin pembungkusan, mesin proses makanan, dan peralatan industri PKS.</p>
       </div>
-      <div class="card">
-        <span class="card-tag">GERAN DIGITAL</span>
-        <h3>MDEC / PMKS Madani</h3>
-        <p>Geran padanan sehingga RM5,000 untuk transformasi digital (Sistem POS, Website, Digital Marketing).</p>
-        <a href="#" class="btn-small">AKAN DATANG</a>
+      <div class="info-card">
+        <strong>Peralatan MARA</strong>
+        <h3>Skim PUTRA</h3>
+        <p>Pembiayaan sehingga RM10,000 khusus untuk pembelian peralatan perniagaan.</p>
+      </div>
+    </div>
+
+    <div id="lvl3" class="tab-content">
+      <div class="info-card">
+        <strong>Dana Besar</strong>
+        <h3>SME Corp (BAP 3.0)</h3>
+        <p>Geran padanan untuk naik taraf kapasiti pengeluaran kilang dan premis perniagaan.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="kursus" style="background:var(--offwhite);">
+<section id="kursus" style="background:#fff;">
   <div class="section-inner">
-    <h2 class="section-title">Latihan & Kursus</h2>
+    <h2 class="section-title">Program Latihan & Kursus</h2>
     <div class="red-line"></div>
-    
-    <div class="card" style="max-width: 600px; border-top-color: var(--red);">
-      <h3>Kursus Keusahawanan 2026</h3>
-      <p>Buat masa ini, jadual kursus rasmi untuk tahun 2026 masih dalam proses kemas kini.</p>
-      <p style="margin-top: 10px; font-weight: 700; color: var(--navy);">Sila ikuti media sosial kami untuk pengumuman tarikh bengkel terdekat.</p>
-      <div style="margin-top: 20px; display: flex; gap: 10px;">
-        <a href="https://www.facebook.com/sskcentrekb" target="_blank" style="text-decoration:none; background:#1877F2; color:white; padding:10px 15px; font-size:12px; font-weight:700;">FACEBOOK</a>
-        <a href="https://www.tiktok.com/@sskcentrekb" target="_blank" style="text-decoration:none; background:#000; color:white; padding:10px 15px; font-size:12px; font-weight:700;">TIKTOK</a>
-      </div>
+    <div class="kursus-box">
+      <h3>Pusat Latihan Komuniti</h3>
+      <p>Kami menganjurkan pelbagai kursus termasuk:</p>
+      <ul style="margin: 15px 0 15px 20px;">
+        <li>Kursus Asas Keusahawanan (INSKEN)</li>
+        <li>Bengkel Pemasaran Digital (TikTok & FB Ads)</li>
+        <li>Latihan Teknikal & Pembuatan</li>
+      </ul>
+      <p><strong>Status:</strong> Jadual 2026 sedang dikemaskini. Ikuti kami di media sosial untuk tarikh pendaftaran.</p>
+      <br>
+      <a href="https://www.facebook.com/sskcentrekb" target="_blank" style="color:white; margin-right:15px; font-weight:700;">FB: sskcentrekb</a>
+      <a href="https://www.tiktok.com/@sskcentrekb" target="_blank" style="color:white; font-weight:700;">TikTok: @sskcentrekb</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="section-inner">
-    <p><strong>SSK CENTRE KOTA BELUD</strong></p>
-    <p style="font-size:13px; opacity:0.7;">KM1, Jalan Kota Belud-Ranau Bypass</p>
-    <br>
-    <p style="font-size:12px;">Dikelola oleh Smart Bah Technology Sdn Bhd</p>
-    <p style="font-size:12px;">"Smart ka? Smart bah!"</p>
-  </div>
+  <p><strong>SSK CENTRE KOTA BELUD</strong></p>
+  <p style="font-size:12px; opacity:0.7;">KM1, Jalan Kota Belud-Ranau Bypass</p>
+  <p style="font-size:12px; opacity:0.7;">Dikelola oleh Smart Bah Technology Sdn Bhd</p>
 </footer>
+
+<script>
+function openLvl(evt, lvlName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tab-content");
+  for (i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = "none"; }
+  tablinks = document.getElementsByClassName("tab-btn");
+  for (i = 0; i < tablinks.length; i++) { tablinks[i].className = tablinks[i].className.replace(" active", ""); }
+  document.getElementById(lvlName).style.display = "grid";
+  evt.currentTarget.className += " active";
+}
+</script>
 
 </body>
 </html>
