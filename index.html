@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SSK Centre | Smart Space Komuniti</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#2b6cb0;
+  --primary-light:#63b3ed;
+  --accent:#e53e3e;
+  --dark:#1a365d;
+  --bg:#f7fafc;
+  --text:#1a202c;
+  --muted:#718096;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(26,54,93,0.95);
+  backdrop-filter:blur(10px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 5%;
+  z-index:100;
+}
+
+.nav-logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.nav-logo img{
+  width:42px;
+}
+
+.nav-links{
+  display:flex;
+  gap:24px;
+  list-style:none;
+}
+
+.nav-links a{
+  color:rgba(255,255,255,0.7);
+  text-decoration:none;
+  font-size:14px;
+}
+
+.nav-links a:hover{
+  color:white;
+}
+
+.nav-cta{
+  background:var(--accent);
+  padding:8px 16px;
+  border-radius:6px;
+  color:white !important;
+  font-weight:600;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:100px 5%;
+  background:linear-gradient(135deg,var(--dark),var(--primary));
+  color:white;
+}
+
+.hero h1{
+  font-size:3rem;
+  margin-bottom:10px;
+}
+
+.hero h1 span{
+  color:var(--accent);
+}
+
+.hero p{
+  max-width:500px;
+  color:rgba(255,255,255,0.7);
+  margin-bottom:30px;
+}
+
+.btn{
+  padding:12px 24px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+  display:inline-block;
+  margin-right:10px;
+}
+
+.btn-primary{
+  background:var(--accent);
+  color:white;
+}
+
+.btn-outline{
+  border:1px solid rgba(255,255,255,0.4);
+  color:white;
+}
+
+/* SECTION */
+section{
+  padding:80px 5%;
+  scroll-margin-top:80px;
+}
+
+.section-title{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.section-desc{
+  color:var(--muted);
+  margin-bottom:30px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+/* CARD */
+.card{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  border:1px solid #e2e8f0;
+  transition:0.2s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+}
+
+.card h4{
+  margin-bottom:8px;
+}
+
+.card p{
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* CONTACT */
+.contact{
+  background:var(--dark);
+  color:white;
+}
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  margin-bottom:10px;
+  border:none;
+  border-radius:6px;
+}
+
+/* FOOTER */
+footer{
+  padding:20px;
+  text-align:center;
+  background:#0f172a;
+  color:#aaa;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .nav-links{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:2rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="logo.png" alt="SSK Logo">
+    <strong style="color:white">SSK Centre</strong>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#about">Tentang</a></li>
+    <li><a href="#fasiliti">Fasiliti</a></li>
+    <li><a href="#resources">Peluang</a></li>
+    <li><a href="#contact" class="nav-cta">Hubungi</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Ruang untuk <span>Bisnes</span>, Komuniti & Peluang</h1>
+    <p>Pusat komuniti moden di Kota Belud yang menyediakan fasiliti, program usahawan dan peluang pembiayaan.</p>
+
+    <a href="#resources" class="btn btn-primary">Terokai Peluang</a>
+    <a href="#fasiliti" class="btn btn-outline">Lihat Fasiliti</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title">Tentang SSK Centre</h2>
+  <p class="section-desc">
+    SSK Centre adalah platform komuniti dan keusahawanan untuk memperkasa usahawan melalui ruang, ilmu dan peluang.
+  </p>
+</section>
+
+<!-- FASILITI -->
+<section id="fasiliti">
+  <h2 class="section-title">Fasiliti</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h4>Dewan Serbaguna</h4>
+      <p>Kapasiti sehingga 200 orang</p>
+    </div>
+
+    <div class="card">
+      <h4>Bilik Mesyuarat</h4>
+      <p>Sesuai untuk meeting & training</p>
+    </div>
+
+    <div class="card">
+      <h4>Studio Content</h4>
+      <p>Untuk fotografi & video produk</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources">
+  <h2 class="section-title">Peluang Usahawan</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h4>Kursus INSKEN</h4>
+      <p>Latihan keusahawanan dan pemasaran</p>
+    </div>
+
+    <div class="card">
+      <h4>Geran BSN</h4>
+      <p>Sehingga RM10,000 untuk usahawan mikro</p>
+    </div>
+
+    <div class="card">
+      <h4>Pembiayaan TEKUN</h4>
+      <p>Tanpa cagaran untuk bisnes baru</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <h2 class="section-title">Hubungi Kami</h2>
+
+  <input placeholder="Nama">
+  <input placeholder="No Telefon">
+  <textarea placeholder="Mesej"></textarea>
+
+  <button class="btn btn-primary">Hantar</button>
+</section>
+
+<footer>
+  © 2026 SSK Centre
+</footer>
+
+</body>
+</html>
