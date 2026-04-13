@@ -104,7 +104,9 @@ section { padding:80px 5%; scroll-margin-top: 68px; }
 
 /* ── CONTACT CARD ── */
 .contact-card { background: var(--navy); color: white; padding: 60px; text-align: center; margin-top: 40px; }
-.email-link { color: var(--sky); font-weight: 700; text-decoration: none; font-size: 1.3rem; }
+.contact-links { display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin: 25px 0; }
+.email-link { color: var(--sky); font-weight: 700; text-decoration: none; font-size: 1.3rem; display: block; margin-top: 10px; }
+.phone-link { color: var(--white); font-weight: 700; text-decoration: none; font-size: 1.3rem; display: block; }
 
 @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
 @media(max-width:768px) { .nav-links { display:none; } }
@@ -287,12 +289,18 @@ section { padding:80px 5%; scroll-margin-top: 68px; }
 
 <section id="contact-section" class="contact-card">
   <h2>Hubungi Pasukan SSK</h2>
-  <p>Ada soalan mengenai geran atau ingin menyewa ruang? Klik butang borang di bawah atau hantar emel terus kepada kami.</p>
-  <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
-    <a href="https://forms.gle/1cN61QBAXEB3iX6s9" target="_blank" class="btn-primary">Buka Google Form</a>
-    <a href="mailto:sskcentrekb@gmail.com" class="btn-primary" style="background:var(--blue)">Hantar Emel</a>
+  <p>Ada soalan mengenai geran, latihan, atau ingin menyewa ruang? Sila pilih cara kegemaran anda untuk menghubungi kami di bawah:</p>
+  
+  <div class="contact-links">
+    <a href="https://forms.gle/1cN61QBAXEB3iX6s9" target="_blank" class="btn-primary">Isi Google Form</a>
+    <a href="https://wa.me/601121406450" target="_blank" class="btn-primary" style="background:#25D366">WhatsApp Sekarang</a>
+    <a href="mailto:sskcentrekb@gmail.com" class="btn-primary" style="background:var(--blue-lt)">Hantar Emel</a>
   </div>
-  <div style="margin-top:30px;">
+
+  <div style="margin-top:30px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
+    <strong>Talian Terus:</strong><br>
+    <a href="tel:01121406450" class="phone-link">011-2140 6450</a>
+    <br>
     <strong>Emel Rasmi:</strong><br>
     <a href="mailto:sskcentrekb@gmail.com" class="email-link">sskcentrekb@gmail.com</a>
   </div>
