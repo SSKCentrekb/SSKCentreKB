@@ -29,7 +29,7 @@ body { font-family: 'Barlow', sans-serif; background: var(--offwhite); color: va
 
 /* ── NAV ── */
 nav {
-  position:fixed; top:0; left:0; right:0; z-index:1000; height:68px;
+  position:fixed; top:0; left:0; right:0; z-index:200; height:68px;
   background: var(--navy); display:flex; align-items:center; justify-content:space-between;
   padding:0 5%; border-bottom:3px solid var(--red);
 }
@@ -44,7 +44,7 @@ nav {
 .nav-cta { background:var(--red) !important; color:white !important; padding:8px 15px; border-radius:4px; }
 
 /* ── HERO ── */
-.hero { min-height:80vh; background:var(--navy); position:relative; display:flex; align-items:center; padding:100px 5% 60px; overflow:hidden; }
+.hero { min-height:100vh; background:var(--navy); position:relative; display:flex; align-items:center; padding:100px 5% 60px; overflow:hidden; }
 .hero-stripes { position:absolute; right:0; top:0; bottom:0; width:45%; opacity:0.15; }
 .stripe { position:absolute; right:-60px; height:12px; border-radius:6px; transform:rotate(-8deg); }
 .stripe-1 { background:var(--sky); width:70%; top:15%; }
@@ -66,18 +66,16 @@ nav {
 section { padding:80px 5%; scroll-margin-top: 68px; }
 .section-inner { max-width:1200px; margin:0 auto; }
 .section-title { font-family: 'Barlow Condensed', sans-serif; font-size:2.8rem; color:var(--navy); margin-bottom:10px; }
+.section-desc { color:var(--muted); margin-bottom:40px; max-width:600px; }
 .red-line { width:50px; height:3px; background:var(--red); margin-bottom:30px; }
 
-/* ── ABOUT GRID (UPDATED) ── */
-.about-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:30px; }
-.about-card { background:white; padding:30px; border-left:5px solid var(--red); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-
 /* ── FASILITI ── */
-.fac-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:2px; border:1px solid var(--border); }
-.fac-card { background:white; padding:25px; position:relative; text-align: center; }
+.fac-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:2px; border:1px solid var(--border); }
+.fac-card { background:white; padding:25px; position:relative; }
 .fac-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--navy); }
 .fac-label { font-size:10px; font-weight:700; color:var(--blue); text-transform:uppercase; }
-.fac-name { font-family:'Barlow Condensed', sans-serif; font-size:1.3rem; margin:10px 0; }
+.fac-name { font-family:'Barlow Condensed', sans-serif; font-size:1.5rem; margin:10px 0; }
+.fac-price { font-weight:700; color:var(--red); border-top:1px solid var(--border); padding-top:15px; display:block; }
 .book-btn { width:100%; margin-top:15px; padding:10px; background:var(--navy); color:white; border:none; font-weight:700; text-transform:uppercase; cursor:pointer; }
 
 /* ── TABS & CARDS ── */
@@ -87,22 +85,31 @@ section { padding:80px 5%; scroll-margin-top: 68px; }
 .tab-pane { display:none; }
 .tab-pane.active { display:block; }
 .cards-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(310px, 1fr)); gap:20px; }
-.info-card { background:white; padding:25px; border:1px solid var(--border); border-top:4px solid var(--navy); }
+.info-card { background:white; padding:25px; border:1px solid var(--border); border-top:4px solid var(--navy); transition: 0.2s; }
+.info-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 .card-tag { display:inline-block; padding:3px 10px; font-size:10px; font-weight:700; background:rgba(26,42,108,0.1); color:var(--navy); margin-bottom:10px; }
 .card-title { font-family:'Barlow Condensed', sans-serif; font-size:1.3rem; margin-bottom:10px; color:var(--navy); }
 .card-desc { font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:15px; }
+.card-amount { font-family:'Barlow Condensed', sans-serif; font-size:1.5rem; color:var(--red); font-weight:800; display:block; margin-bottom:15px; }
 .card-link { font-size:12px; font-weight:700; color:var(--blue); text-decoration:none; text-transform:uppercase; border-bottom:1px solid var(--blue); }
 
-/* ── SOCIAL ── */
-.social-grid { display:grid; grid-template-columns: 1fr 1fr; gap:20px; }
-.social-card { padding:30px; text-align:center; color:white; text-decoration:none; border-radius:8px; font-weight:800; font-size:1.2rem; }
+/* ── VENDOR & NEWS ── */
+.vendor-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:15px; }
+.vendor-card { background:white; padding:20px; text-align:center; border:1px solid var(--border); border-top:3px solid var(--blue); }
+.vendor-icon { width:45px; height:45px; background:var(--navy); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 15px; font-weight:800; }
+.news-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px; }
+.news-card { background:white; border:1px solid var(--border); overflow:hidden; }
+.news-thumb { height:150px; background:var(--navy); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.2); font-weight:800; }
+.news-body { padding:20px; }
 
-/* ── CONTACT ── */
-.contact-card { background: var(--navy); color: white; padding: 60px; text-align: center; }
+/* ── CONTACT CARD ── */
+.contact-card { background: var(--navy); color: white; padding: 60px; text-align: center; margin-top: 40px; }
 .contact-links { display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin: 25px 0; }
+.email-link { color: var(--sky); font-weight: 700; text-decoration: none; font-size: 1.3rem; display: block; margin-top: 10px; }
+.phone-link { color: var(--white); font-weight: 700; text-decoration: none; font-size: 1.3rem; display: block; }
 
 @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
-@media(max-width:768px) { .nav-links { display:none; } .social-grid { grid-template-columns: 1fr; } }
+@media(max-width:768px) { .nav-links { display:none; } }
 </style>
 </head>
 <body>
@@ -116,10 +123,10 @@ section { padding:80px 5%; scroll-margin-top: 68px; }
     </div>
   </div>
   <ul class="nav-links">
-    <li><a onclick="scrollToSection('about')">Mengenai</a></li>
+    <li><a onclick="scrollToSection('about')">Tentang</a></li>
     <li><a onclick="scrollToSection('fasiliti')">Fasiliti</a></li>
-    <li><a onclick="scrollToSection('resources')">Usahawan</a></li>
-    <li><a onclick="scrollToSection('social')">Media</a></li>
+    <li><a onclick="scrollToSection('resources')">Peluang</a></li>
+    <li><a onclick="scrollToSection('vendors')">Vendor</a></li>
     <li><a href="https://forms.gle/1cN61QBAXEB3iX6s9" target="_blank" class="nav-cta">Tempah Sekarang</a></li>
   </ul>
 </nav>
@@ -129,51 +136,54 @@ section { padding:80px 5%; scroll-margin-top: 68px; }
     <div class="stripe stripe-1"></div><div class="stripe stripe-2"></div>
   </div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Smart Space Komuniti Kota Belud</div>
-    <h1>HUB MODEN<br><span class="accent">BELIA & USAHAWAN</span></h1>
-    <p class="hero-tagline">Menyediakan ruang pintar untuk komuniti berkumpul, berkarya, dan membina masa depan bersama melalui solusi digital dan media kreatif.</p>
-    <a href="https://forms.gle/1cN61QBAXEB3iX6s9" target="_blank" class="btn-primary">Mula Tempahan Digital</a>
+    <div class="hero-eyebrow">Hub Komuniti & Usahawan Kota Belud</div>
+    <h1>RUANG UNTUK<br><span class="accent">BISNES,</span> KOMUNITI & PELUANG</h1>
+    <p class="hero-tagline">SSK Centre menyediakan fasiliti bertaraf, program usahawan, serta direktori kursus, geran dan pembiayaan terkini 2026.</p>
+    <div class="hero-actions">
+      <a href="https://forms.gle/1cN61QBAXEB3iX6s9" target="_blank" class="btn-primary">Mula Tempahan Digital</a>
+    </div>
   </div>
 </section>
 
 <div class="quickbar">
   <div class="quickbar-inner">
-    <div class="qb-item" onclick="scrollToSection('about')">Fungsi</div>
     <div class="qb-item" onclick="scrollToSection('fasiliti')">Fasiliti</div>
     <div class="qb-item" onclick="switchTab('kursus')">Kursus</div>
-    <div class="qb-item" onclick="switchTab('geran')">Dana</div>
-    <div class="qb-item" onclick="scrollToSection('social')">Media Sosial</div>
+    <div class="qb-item" onclick="switchTab('geran')">Geran</div>
+    <div class="qb-item" onclick="switchTab('pembiayaan')">Pembiayaan</div>
+    <div class="qb-item" onclick="scrollToSection('vendors')">Direktori</div>
+    <div class="qb-item" onclick="scrollToSection('contact-section')">Hubungi</div>
   </div>
 </div>
 
-<section id="about">
-  <div class="section-inner">
-    <h2 class="section-title">Apa Yang Ada Di Sini?</h2>
-    <div class="red-line"></div>
-    <div class="about-grid">
-      <div class="about-card">
-        <h3>Pusat Komuniti & Biz-Hub</h3>
-        <p>SSK Centre berfungsi sebagai hub rujukan untuk mendapatkan maklumat mengenai <strong>kursus keusahawanan, dana bantuan (geran), dan latihan digital</strong>.</p>
-        <p style="margin-top:10px;">Kami menyediakan ruang yang moden dan selesa untuk semua lapisan masyarakat meningkatkan kemahiran diri dan perniagaan.</p>
-      </div>
-      <div class="about-card" style="border-left-color: var(--blue);">
-        <h3>Fokus Kami</h3>
-        <p>Kami memfokuskan kepada <strong>Smart Solutions, Creative Media, & Connecting Communities</strong> bagi memastikan belia dan usahawan tempatan terus berdaya saing.</p>
-        <p style="margin-top:10px; font-weight:800; color:var(--navy);">"Smart ka? Smart bah!"</p>
-      </div>
-    </div>
-  </div>
+<section id="about" class="section-inner">
+  <h2 class="section-title">Mengenai SSK Centre</h2>
+  <div class="red-line"></div>
+  <p>Smart Space Komuniti (SSK Centre) adalah pusat komuniti dan keusahawanan di Kota Belud. Kami menghubungkan komuniti dengan kursus, geran, dan jaringan perniagaan yang relevan.</p>
 </section>
 
 <section id="fasiliti" style="background:var(--offwhite)">
   <div class="section-inner">
-    <h2 class="section-title">Ruang Kami (Our Spaces)</h2>
-    <div class="red-line"></div>
+    <h2 class="section-title">Fasiliti & Ruang</h2>
     <div class="fac-grid">
-      <div class="fac-card"><div class="fac-label">Utama</div><div class="fac-name">Dewan SSKC</div><button class="book-btn" onclick="window.open('https://forms.gle/1cN61QBAXEB3iX6s9', '_blank')">Tempah</button></di
-      <div class="fac-card"><div class="fac-label">Biz-Hub</div><div class="fac-name">Bilik Mesyuarat</div><button class="book-btn" onclick="window.open('https://forms.gle/1cN61QBAXEB3iX6s9', '_blank')">Tempah</button></div>
-      <div class="fac-card"><div class="fac-label">Kreatif</div><div class="fac-name">Studio</div><button class="book-btn" onclick="window.open('https://forms.gle/1cN61QBAXEB3iX6s9', '_blank')">Tempah</button></div>
-      <div class="fac-card"><div class="fac-label">Media</div><div class="fac-name">Bilik Media</div><button class="book-btn" onclick="window.open('https://forms.gle/1cN61QBAXEB3iX6s9', '_blank')">Tempah</button></div>
+      <div class="fac-card">
+        <div class="fac-label">Dewan</div>
+        <div class="fac-name">Dewan Serbaguna</div>
+        <div class="fac-price">Dari RM450 / Sesi</div>
+        <button class="book-btn" onclick="window.open('https://forms.gle/1cN61QBAXEB3iX6s9', '_blank')">Tempah</button>
+      </div>
+      <div class="fac-card">
+        <div class="fac-label">Mesyuarat</div>
+        <div class="fac-name">Bilik Biz-Hub</div>
+        <div class="fac-price">Dari RM70 / Jam</div>
+        <button class="book-btn" onclick="window.open('https://forms.gle/1cN61QBAXEB3iX6s9', '_blank')">Tempah</button>
+      </div>
+      <div class="fac-card">
+        <div class="fac-label">Studio</div>
+        <div class="fac-name">Studio Content</div>
+        <div class="fac-price">Dari RM150 / Sesi</div>
+        <button class="book-btn" onclick="window.open('https://forms.gle/1cN61QBAXEB3iX6s9', '_blank')">Tempah</button>
+      </div>
     </div>
   </div>
 </section>
@@ -183,7 +193,7 @@ section { padding:80px 5%; scroll-margin-top: 68px; }
     <h2 class="section-title">Peluang Usahawan 2026</h2>
     <div class="tabs">
       <button class="tab-btn active" id="tbtn-kursus" onclick="switchTab('kursus')">Kursus & Latihan</button>
-      <button class="tab-btn" id="tbtn-geran" onclick="switchTab('geran')">Geran & Mesin</button>
+      <button class="tab-btn" id="tbtn-geran" onclick="switchTab('geran')">Geran</button>
       <button class="tab-btn" id="tbtn-pembiayaan" onclick="switchTab('pembiayaan')">Pembiayaan</button>
     </div>
 
@@ -191,15 +201,15 @@ section { padding:80px 5%; scroll-margin-top: 68px; }
       <div class="cards-grid">
         <div class="info-card">
           <span class="card-tag">INSKEN</span>
-          <div class="card-title">Kursus Asas Keusahawanan</div>
-          <p class="card-desc">Bimbingan asas perniagaan dan pengurusan kewangan untuk usahawan baru.</p>
-          <a href="https://insken.gov.my" target="_blank" class="card-link">Daftar</a>
+          <div class="card-title">Kursus Asas Keusahawanan (KAK)</div>
+          <p class="card-desc">Program 2 hari untuk usahawan baru. Merangkumi pemasaran dan kewangan.</p>
+          <a href="https://insken.gov.my" target="_blank" class="card-link">Daftar Sekarang</a>
         </div>
         <div class="info-card">
-          <span class="card-tag">LATIHAN</span>
-          <div class="card-title">Bengkel Digital Marketing</div>
-          <p class="card-desc">Latihan pemasaran media sosial dan penggunaan aplikasi perniagaan.</p>
-          <a href="#social" class="card-link">Info Lanjut</a>
+          <span class="card-tag">MARA</span>
+          <div class="card-title">Latihan Digital & ICT</div>
+          <p class="card-desc">Kursus ICT disubsidi penuh untuk usahawan luar bandar.</p>
+          <a href="https://myusahawan.mara.gov.my" target="_blank" class="card-link">Lihat Jadual</a>
         </div>
       </div>
     </div>
@@ -207,16 +217,18 @@ section { padding:80px 5%; scroll-margin-top: 68px; }
     <div id="pane-geran" class="tab-pane">
       <div class="cards-grid">
         <div class="info-card" style="border-top-color:var(--red)">
-          <span class="card-tag">DIDR SABAH</span>
-          <div class="card-title">Bantuan Mesin Industri</div>
-          <p class="card-desc">Geran peralatan dan mesin untuk meningkatkan kualiti produk PKS tempatan.</p>
-          <a href="#" class="card-link">Semak Syarat</a>
+          <span class="card-tag">BSN</span>
+          <div class="card-title">Geran Usahawan Mikro</div>
+          <span class="card-amount">Sehingga RM10,000</span>
+          <p class="card-desc">Bantuan pembelian peralatan perniagaan bagi Bajet 2026.</p>
+          <a href="https://bsn.com.my" target="_blank" class="card-link">Mohon Geran</a>
         </div>
         <div class="info-card" style="border-top-color:var(--red)">
-          <span class="card-tag">MDEC</span>
-          <div class="card-title">Geran Digital PMKS</div>
-          <p class="card-desc">Dana padanan sehingga RM5,000 untuk pendigitalan perniagaan.</p>
-          <a href="#" class="card-link">Info Geran</a>
+          <span class="card-tag">KPKM</span>
+          <div class="card-title">Agropreneur Muda</div>
+          <span class="card-amount">Sehingga RM30,000</span>
+          <p class="card-desc">Geran dalam bentuk barangan untuk usahawan tani 18-43 tahun.</p>
+          <a href="https://egam.kpkm.gov.my" target="_blank" class="card-link">Mohon Sekarang</a>
         </div>
       </div>
     </div>
@@ -224,38 +236,78 @@ section { padding:80px 5%; scroll-margin-top: 68px; }
     <div id="pane-pembiayaan" class="tab-pane">
       <div class="cards-grid">
         <div class="info-card" style="border-top-color:var(--blue-lt)">
-          <span class="card-tag">MARA</span>
-          <div class="card-title">Skim PUTRA</div>
-          <p class="card-desc">Pembiayaan mikro untuk modal pusingan dan peralatan usahawan Bumiputera.</p>
-          <a href="https://myusahawan.mara.gov.my" target="_blank" class="card-link">Info Lanjut</a>
+          <span class="card-tag">TEKUN</span>
+          <div class="card-title">Skim Pembiayaan Mikro</div>
+          <p class="card-desc">Pembiayaan tanpa cagaran dengan kadar pentadbiran rendah.</p>
+          <a href="https://tekun.gov.my" target="_blank" class="card-link">Info Lanjut</a>
+        </div>
+        <div class="info-card" style="border-top-color:var(--blue-lt)">
+          <span class="card-tag">TERAJU</span>
+          <div class="card-title">Dana BSSF (Sabah/Sarawak)</div>
+          <p class="card-desc">Pembiayaan khusus untuk memperkasa usahawan Bumiputera Sabah.</p>
+          <a href="https://teraju.gov.my" target="_blank" class="card-link">Info Lanjut</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="social">
+<section id="vendors" style="background:var(--offwhite)">
   <div class="section-inner">
-    <h2 class="section-title">Ikuti Kami</h2>
-    <div class="red-line"></div>
-    <div class="social-grid">
-      <a href="https://www.facebook.com/sskcentrekb" target="_blank" class="social-card" style="background:#1877F2;">FACEBOOK</a>
-      <a href="https://www.tiktok.com/@sskcentrekb?_r=1&_t=ZS-95V2bY5EFWi" target="_blank" class="social-card" style="background:#000000;">TIKTOK</a>
+    <h2 class="section-title">Direktori Vendor</h2>
+    <div class="vendor-grid">
+      <div class="vendor-card"><div class="vendor-icon">SB</div><strong>Sweet Bite Cafe</strong><br><small>F&B Kota Belud</small></div>
+      <div class="vendor-card"><div class="vendor-icon">AJ</div><strong>Kiosk Abang J</strong><br><small>Chicken Karaage</small></div>
+      <div class="vendor-card" style="border-top-color:var(--red); cursor:pointer;" onclick="window.open('https://forms.gle/1cN61QBAXEB3iX6s9', '_blank')">
+        <div class="vendor-icon" style="background:var(--red)">+</div><strong>Daftar Bisnes</strong><br><small>Klik untuk sertai</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="section-inner">
+    <h2 class="section-title">Berita Terkini</h2>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-thumb">NIGHT MARKET</div>
+        <div class="news-body">
+          <small style="color:var(--red)">PROGRAM</small>
+          <div class="card-title">Night Market SSK 2026</div>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-thumb">OUTREACH</div>
+        <div class="news-body">
+          <small style="color:var(--red)">PELUANG</small>
+          <div class="card-title">Program Outreach TERAJU Sabah</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="contact-section" class="contact-card">
   <h2>Hubungi Pasukan SSK</h2>
+  <p>Ada soalan mengenai geran, latihan, atau ingin menyewa ruang? Sila pilih cara kegemaran anda untuk menghubungi kami di bawah:</p>
+  
   <div class="contact-links">
-    <a href="https://forms.gle/1cN61QBAXEB3iX6s9" target="_blank" class="btn-primary">Isi Borang</a>
-    <a href="https://wa.me/601121406450" target="_blank" class="btn-primary" style="background:#25D366">WhatsApp</a>
+    <a href="https://forms.gle/1cN61QBAXEB3iX6s9" target="_blank" class="btn-primary">Isi Google Form</a>
+    <a href="https://wa.me/601121406450" target="_blank" class="btn-primary" style="background:#25D366">WhatsApp Sekarang</a>
+    <a href="mailto:sskcentrekb@gmail.com" class="btn-primary" style="background:var(--blue-lt)">Hantar Emel</a>
   </div>
-  <p style="margin-top:20px; font-size: 0.9rem; opacity: 0.8;">KM1, Jalan Kota Belud-Ranau Bypass | Tel: 088-973 126</p>
+
+  <div style="margin-top:30px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
+    <strong>Talian Terus:</strong><br>
+    <a href="tel:01121406450" class="phone-link">011-2140 6450</a>
+    <br>
+    <strong>Emel Rasmi:</strong><br>
+    <a href="mailto:sskcentrekb@gmail.com" class="email-link">sskcentrekb@gmail.com</a>
+  </div>
 </section>
 
 <footer style="background:var(--navy); color:white; padding:30px 5%; text-align:center;">
-  <small>Managed by Smart Bah Technology Sdn Bhd &bull; SSK Centre Kota Belud &copy; 2026</small>
+  <small>SSK Centre &bull; Smart Space Komuniti Kota Belud &copy; 2026</small>
 </footer>
 
 <script>
@@ -267,10 +319,8 @@ function scrollToSection(id) {
 function switchTab(name) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-  const btn = document.getElementById('tbtn-' + name);
-  const pane = document.getElementById('pane-' + name);
-  if(btn) btn.classList.add('active');
-  if(pane) pane.classList.add('active');
+  document.getElementById('tbtn-' + name).classList.add('active');
+  document.getElementById('pane-' + name).classList.add('active');
   scrollToSection('resources');
 }
 </script>
