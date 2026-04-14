@@ -7,130 +7,1067 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #1a2a6c; --blue: #1e6fbf; --red: #c0392b; --white: #ffffff;
-  --offwhite: #f4f6fb; --text: #1a2240; --muted: #5a6580; --border: #d0d8eb;
+  --navy:     #1a2a6c;
+  --navy-mid: #223580;
+  --blue:     #1e6fbf;
+  --blue-lt:  #4a9fd4;
+  --sky:      #7ec8e3;
+  --red:      #c0392b;
+  --red-lt:   #e74c3c;
+  --white:    #ffffff;
+  --offwhite: #f4f6fb;
+  --grey:     #e8ecf5;
+  --text:     #1a2240;
+  --muted:    #5a6580;
+  --border:   #d0d8eb;
 }
+
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Barlow', sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.6; }
-nav { position: fixed; top: 0; width: 100%; height: 68px; background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; z-index: 1000; border-bottom: 3px solid var(--red); }
-.nav-brand { color: white; font-family: 'Barlow Condensed'; font-weight: 700; font-size: 20px; }
-.nav-links { display: flex; gap: 20px; list-style: none; }
-.nav-links a { color: white; text-decoration: none; font-size: 13px; cursor: pointer; }
-section { padding: 100px 5% 60px; max-width: 1200px; margin: 0 auto; }
-.section-title { font-family: 'Barlow Condensed'; font-size: 2.5rem; color: var(--navy); margin-bottom: 20px; }
-.tabs { display: flex; gap: 10px; border-bottom: 2px solid var(--border); margin-bottom: 30px; }
-.tab-btn { padding: 10px 20px; cursor: pointer; border: none; background: none; font-weight: 700; color: var(--muted); }
-.tab-btn.active { color: var(--navy); border-bottom: 3px solid var(--red); }
-.tab-pane { display: none; }
-.tab-pane.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-.info-card { background: white; border: 1px solid var(--border); padding: 20px; border-top: 4px solid var(--navy); }
-.card-tag { font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--blue); }
-.card-title { font-family: 'Barlow Condensed'; font-size: 1.2rem; margin: 10px 0; color: var(--navy); }
-.card-amount { color: var(--red); font-weight: 800; font-size: 1.4rem; display: block; margin-bottom: 10px; }
-.btn-link { display: inline-block; padding: 8px 15px; background: var(--navy); color: white; text-decoration: none; border-radius: 4px; font-size: 12px; }
-.wa-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+html { scroll-behavior:smooth; }
+
+body {
+font-family: 'Barlow', sans-serif;
+background: var(--offwhite);
+color: var(--text);
+overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+position:fixed; top:0; left:0; right:0; z-index:200;
+height:68px;
+background: var(--navy);
+display:flex; align-items:center; justify-content:space-between;
+padding:0 5%;
+border-bottom:3px solid var(--red);
+}
+
+.nav-brand {
+display:flex; align-items:center; gap:14px;
+}
+
+.nav-logo-box {
+width:40px; height:40px;
+background: var(--white);
+border-radius:6px;
+display:flex; align-items:center; justify-content:center;
+overflow:hidden;
+}
+
+.nav-logo-box img {
+width:36px; height:auto;
+}
+
+.nav-logo-initials {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:20px; font-weight:800;
+color: var(--navy);
+letter-spacing:-1px;
+line-height:1;
+}
+
+.nav-brand-text .name {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:17px; font-weight:700; color: var(--white);
+letter-spacing:0.5px;
+}
+
+.nav-brand-text .sub {
+font-size:10px; color: var(--sky); font-weight:400;
+display:block; letter-spacing:0.3px;
+}
+
+.nav-links {
+display:flex; gap:32px; list-style:none;
+}
+
+.nav-links a {
+color:rgba(255,255,255,0.75);
+text-decoration:none;
+font-size:13px; font-weight:500;
+letter-spacing:0.3px;
+transition:color 0.2s;
+cursor:pointer;
+}
+
+.nav-links a:hover { color: var(--sky); }
+
+.nav-cta {
+background: var(--red) !important;
+color:white !important;
+padding:8px 20px;
+border-radius:4px;
+font-weight:600 !important;
+transition:background 0.2s !important;
+}
+
+.nav-cta:hover { background: var(--red-lt) !important; }
+
+.lang-toggle {
+display:flex; align-items:center; gap:6px;
+background:rgba(255,255,255,0.1);
+border:1px solid rgba(255,255,255,0.2);
+border-radius:4px; padding:5px 12px;
+cursor:pointer; font-size:12px; font-weight:600;
+}
+
+.lang-toggle span { color:rgba(255,255,255,0.6); }
+.lang-toggle .active { color: var(--sky); }
+
+/* ── HERO ── */
+.hero {
+min-height:100vh;
+background: var(--navy);
+position:relative;
+display:flex; align-items:center;
+padding:100px 5% 60px;
+overflow:hidden;
+}
+
+.hero-stripes {
+position:absolute; right:0; top:0; bottom:0;
+width:45%;
+overflow:hidden;
+}
+
+.stripe {
+position:absolute; right:-60px;
+height:12px; border-radius:6px;
+opacity:0.15;
+}
+
+.stripe-1 { background: var(--sky);   width:70%; top:15%; transform:rotate(-8deg); opacity:0.2; height:10px; }
+.stripe-2 { background: var(--blue);  width:85%; top:25%; transform:rotate(-8deg); opacity:0.18; height:14px; }
+.stripe-3 { background: var(--red);   width:60%; top:35%; transform:rotate(-8deg); opacity:0.25; height:10px; }
+.stripe-4 { background: var(--sky);   width:75%; top:45%; transform:rotate(-8deg); opacity:0.15; height:8px; }
+.stripe-5 { background: var(--blue);  width:90%; top:55%; transform:rotate(-8deg); opacity:0.2;  height:14px; }
+.stripe-6 { background: var(--sky);   width:65%; top:65%; transform:rotate(-8deg); opacity:0.12; height:10px; }
+.stripe-7 { background: var(--red);   width:80%; top:75%; transform:rotate(-8deg); opacity:0.2;  height:8px; }
+
+.hero-content {
+position:relative; z-index:2;
+max-width:640px;
+animation:fadeUp 0.7s ease both;
+}
+
+.hero-eyebrow {
+display:inline-block;
+font-size:11px; font-weight:700; letter-spacing:3px;
+color: var(--sky); text-transform:uppercase;
+margin-bottom:20px;
+padding-bottom:10px;
+border-bottom:2px solid var(--red);
+}
+
+.hero h1 {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:clamp(2.8rem, 6vw, 5rem);
+font-weight:800; color: var(--white);
+line-height:1.0; letter-spacing:-0.5px;
+margin-bottom:6px;
+}
+
+.hero h1 .accent { color: var(--sky); }
+.hero h1 .red-accent { color: var(--red-lt); }
+
+.hero-tagline {
+font-size:16px; color:rgba(255,255,255,0.55);
+margin-bottom:28px; line-height:1.6;
+max-width:460px;
+}
+
+.hero-actions { display:flex; gap:14px; flex-wrap:wrap; }
+
+.btn-primary {
+background: var(--red);
+color: var(--white);
+padding:14px 30px; border-radius:4px;
+font-weight:700; font-size:14px; letter-spacing:0.3px;
+text-decoration:none; border:none; cursor:pointer;
+transition:all 0.2s; display:inline-block;
+}
+
+.btn-primary:hover { background: var(--red-lt); transform:translateY(-2px); }
+
+.btn-outline {
+background:transparent; color: var(--white);
+padding:14px 30px; border-radius:4px;
+font-weight:600; font-size:14px;
+text-decoration:none;
+border:1.5px solid rgba(255,255,255,0.3);
+cursor:pointer; transition:all 0.2s; display:inline-block;
+}
+
+.btn-outline:hover { border-color: var(--sky); color: var(--sky); }
+
+.hero-stats {
+position:absolute; right:5%; bottom:12%;
+display:flex; flex-direction:column; gap:14px;
+z-index:2;
+}
+
+.stat-item {
+border-left:3px solid var(--red);
+padding:10px 18px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(8px);
+}
+
+.stat-num {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:2.2rem; font-weight:800; color: var(--white);
+line-height:1;
+}
+
+.stat-label {
+font-size:11px; color: var(--sky); letter-spacing:0.5px;
+margin-top:3px;
+}
+
+/* ── QUICK NAV BAR ── */
+.quickbar {
+background: var(--blue);
+padding:0 5%;
+}
+
+.quickbar-inner {
+display:flex; max-width:1200px; margin:0 auto;
+overflow-x:auto;
+}
+
+.qb-item {
+padding:18px 28px;
+color:rgba(255,255,255,0.8);
+font-size:11px; font-weight:600; letter-spacing:0.3px;
+cursor:pointer; white-space:nowrap;
+border-bottom:3px solid transparent;
+transition:all 0.2s;
+text-transform:uppercase;
+}
+
+.qb-item:hover {
+color: var(--white);
+border-bottom-color: var(--sky);
+background:rgba(255,255,255,0.06);
+}
+
+/* ── SECTIONS ── */
+section { padding:80px 5%; scroll-margin-top:68px; }
+
+.section-inner { max-width:1200px; margin:0 auto; }
+
+.section-eyebrow {
+font-size:11px; font-weight:700; letter-spacing:3px;
+color: var(--blue); text-transform:uppercase;
+margin-bottom:8px;
+}
+
+.section-title {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:clamp(1.8rem, 3.5vw, 2.8rem);
+font-weight:800; color: var(--navy);
+line-height:1.1; letter-spacing:-0.3px;
+margin-bottom:14px;
+}
+
+.section-desc {
+color: var(--muted); font-size:15px; line-height:1.7;
+max-width:540px; margin-bottom:44px;
+}
+
+/* ── ABOUT ── */
+.about { background: var(--white); }
+
+.about-grid {
+display:grid; grid-template-columns:1fr 1fr;
+gap:64px; align-items:start;
+}
+
+.about-text p {
+color: var(--muted); font-size:15px; line-height:1.8;
+margin-bottom:16px;
+}
+
+.about-text p strong { color: var(--navy); }
+
+.about-badge {
+display:inline-block;
+background: var(--navy);
+color: var(--white);
+font-size:12px; font-weight:700; letter-spacing:1px;
+padding:8px 18px; border-radius:2px;
+text-transform:uppercase; margin-top:8px;
+}
+
+/* ── FASILITI ── */
+.fasiliti { background: var(--offwhite); }
+
+.fac-grid {
+display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+gap:2px; border:2px solid var(--border);
+}
+
+.fac-card {
+background: var(--white);
+padding:28px 24px;
+border-right:1px solid var(--border);
+transition:all 0.2s;
+position:relative; overflow:hidden;
+}
+
+.fac-card::before {
+content:'';
+position:absolute; top:0; left:0; right:0; height:4px;
+background: var(--navy);
+transition:background 0.2s;
+}
+
+.fac-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(26,42,108,0.12); }
+.fac-card:hover::before { background: var(--red); }
+
+.fac-label {
+font-size:10px; font-weight:700; letter-spacing:2px;
+color: var(--blue); text-transform:uppercase;
+margin-bottom:10px;
+}
+
+.fac-name {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:1.4rem; font-weight:700; color: var(--navy);
+margin-bottom:8px;
+}
+
+.fac-cap { font-size:13px; color: var(--muted); margin-bottom:12px; }
+
+.fac-price {
+font-size:14px; font-weight:700; color: var(--red);
+border-top:1px solid var(--border); padding-top:12px;
+}
+
+.book-btn {
+display:block; width:100%; margin-top:14px;
+padding:10px; background: var(--navy); color:white;
+border:none; border-radius:3px;
+font-size:12px; font-weight:700; letter-spacing:1px;
+text-transform:uppercase; cursor:pointer;
+transition:background 0.2s;
+}
+
+.book-btn:hover { background: var(--blue); }
+
+/* ── RESOURCES ── */
+.resources { background: var(--white); }
+
+.tabs {
+display:flex; border-bottom:2px solid var(--border);
+margin-bottom:36px; overflow-x:auto;
+}
+
+.tab-btn {
+padding:14px 28px;
+font-size:12px; font-weight:700; letter-spacing:1.5px;
+text-transform:uppercase;
+color: var(--muted); cursor:pointer;
+border:none; background:none;
+border-bottom:3px solid transparent;
+margin-bottom:-2px; white-space:nowrap;
+transition:all 0.2s;
+}
+
+.tab-btn.active { color: var(--navy); border-bottom-color: var(--red); }
+.tab-btn:hover:not(.active) { color: var(--blue); }
+
+.tab-pane { display:none; }
+.tab-pane.active { display:block; }
+
+.filter-row {
+display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;
+}
+
+.filter-chip {
+padding:7px 16px; border-radius:2px;
+font-size:11px; font-weight:700; letter-spacing:0.5px;
+text-transform:uppercase; cursor:pointer;
+border:1.5px solid var(--border);
+background:transparent; color: var(--muted);
+transition:all 0.2s;
+}
+
+.filter-chip.active, .filter-chip:hover {
+background: var(--navy); color:white; border-color: var(--navy);
+}
+
+.cards-grid {
+display:grid; grid-template-columns:repeat(auto-fill, minmax(310px, 1fr));
+gap:20px;
+}
+
+.info-card {
+background: var(--offwhite);
+border:1px solid var(--border);
+border-top:3px solid var(--navy);
+padding:24px;
+transition:all 0.25s;
+}
+
+.info-card.accent-red { border-top-color: var(--red); }
+.info-card.accent-blue { border-top-color: var(--blue); }
+.info-card.accent-sky { border-top-color: var(--sky); }
+
+.info-card:hover {
+box-shadow:0 8px 32px rgba(26,42,108,0.1);
+transform:translateY(-3px);
+background: var(--white);
+}
+
+.card-tag {
+display:inline-block;
+padding:3px 10px; border-radius:2px;
+font-size:10px; font-weight:700; letter-spacing:1px;
+text-transform:uppercase; margin-bottom:12px;
+}
+
+.tag-navy { background:rgba(26,42,108,0.1); color: var(--navy); }
+.tag-red { background:rgba(192,57,43,0.1); color: var(--red); }
+.tag-blue { background:rgba(30,111,191,0.08); color: var(--blue); }
+
+.card-title {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:1.2rem; font-weight:700; color: var(--navy);
+margin-bottom:10px; line-height:1.2;
+}
+
+.card-desc {
+font-size:13px; color: var(--muted); line-height:1.65;
+margin-bottom:16px;
+}
+
+.card-meta {
+display:flex; gap:16px; flex-wrap:wrap;
+margin-bottom:16px; padding-bottom:16px;
+border-bottom:1px solid var(--border);
+}
+
+.meta-item {
+font-size:12px; color: var(--muted); font-weight:500;
+}
+
+.meta-item span { color: var(--navy); font-weight:700; }
+
+.card-amount {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:1.6rem; font-weight:800; color: var(--red);
+margin-bottom:16px; display:block;
+}
+
+.card-link {
+font-size:12px; font-weight:700; letter-spacing:0.5px;
+color: var(--blue); text-decoration:none;
+text-transform:uppercase;
+border-bottom:1.5px solid var(--blue);
+padding-bottom:1px;
+transition:color 0.2s;
+cursor:pointer;
+}
+
+.card-link:hover { color: var(--navy); border-bottom-color: var(--navy); }
+
+/* ── VENDOR ── */
+.vendors { background: var(--offwhite); }
+
+.vendor-grid {
+display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+gap:16px;
+}
+
+.vendor-card {
+background: var(--white);
+border:1px solid var(--border);
+border-top:3px solid var(--blue);
+padding:24px 20px; text-align:center;
+transition:all 0.2s;
+}
+
+.vendor-card:hover {
+border-top-color: var(--red);
+box-shadow:0 6px 24px rgba(26,42,108,0.08);
+transform:translateY(-3px);
+}
+
+.vendor-icon {
+width:52px; height:52px; border-radius:50%;
+background: var(--navy);
+display:flex; align-items:center; justify-content:center;
+margin:0 auto 14px;
+font-family: 'Barlow Condensed', sans-serif;
+font-size:18px; font-weight:800; color:white;
+}
+
+.vendor-name {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:1.1rem; font-weight:700; color: var(--navy);
+}
+
+.vendor-type { font-size:12px; color: var(--muted); margin-top:4px; }
+
+.vendor-badge {
+display:inline-block; margin-top:10px;
+padding:4px 12px;
+font-size:10px; font-weight:700; letter-spacing:1px;
+text-transform:uppercase;
+background:rgba(26,42,108,0.08); color: var(--navy);
+}
+
+/* ── NEWS ── */
+.news { background: var(--white); }
+
+.news-grid {
+display:grid; grid-template-columns:2fr 1fr 1fr; gap:20px;
+}
+
+.news-card {
+background: var(--offwhite);
+border:1px solid var(--border);
+overflow:hidden;
+transition:all 0.2s; cursor:pointer;
+}
+
+.news-card:hover {
+transform:translateY(-3px);
+box-shadow:0 8px 32px rgba(26,42,108,0.1);
+}
+
+.news-thumb {
+height:160px; background: var(--navy);
+display:flex; align-items:center; justify-content:center;
+}
+
+.news-card.featured .news-thumb { height:200px; }
+
+.news-thumb-text {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:1.2rem; font-weight:800; color:rgba(255,255,255,0.2);
+text-align:center; padding:20px; letter-spacing:2px; text-transform:uppercase;
+}
+
+.news-body { padding:20px; }
+.news-category {
+font-size:10px; font-weight:700; letter-spacing:2px;
+color: var(--red); text-transform:uppercase; margin-bottom:8px;
+}
+.news-date { font-size:11px; color: var(--muted); margin-bottom:8px; }
+.news-title {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:1.1rem; font-weight:700; color: var(--navy); line-height:1.3;
+}
+.news-card.featured .news-title { font-size:1.3rem; }
+
+/* ── CONTACT ── */
+.contact-section { background: var(--navy); padding: 80px 5%; }
+
+.contact-grid {
+display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;
+max-width: 1200px; margin: 0 auto;
+}
+
+.contact-eyebrow {
+font-size:11px; font-weight:700; letter-spacing:3px;
+color: var(--sky); text-transform:uppercase; margin-bottom:8px;
+}
+
+.contact-title {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:2.4rem; font-weight:800; color: var(--white);
+line-height:1.1; margin-bottom:28px;
+}
+
+.contact-title span { color: var(--sky); }
+
+.contact-info { display:flex; flex-direction:column; gap:18px; }
+
+.cinfo-row { display:flex; gap:14px; align-items:flex-start; }
+
+.cinfo-icon {
+width:38px; height:38px; flex-shrink:0;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.1);
+display:flex; align-items:center; justify-content:center;
+font-size:14px; color: white;
+}
+
+.cinfo-text { font-size:14px; color:rgba(255,255,255,0.65); line-height:1.5; }
+.cinfo-text strong { color: var(--white); font-size:12px; letter-spacing:0.5px; display:block; margin-bottom:2px; }
+
+.contact-form { display:flex; flex-direction:column; gap:12px; }
+
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+.form-input {
+padding:13px 16px;
+background:rgba(255,255,255,0.07);
+border:1px solid rgba(255,255,255,0.15);
+color:white; font-size:14px;
+font-family: 'Barlow', sans-serif;
+outline:none; transition:border-color 0.2s;
+border-radius:0;
+}
+
+.form-input:focus { border-color: var(--sky); }
+.form-input::placeholder { color:rgba(255,255,255,0.35); }
+textarea.form-input { resize:vertical; min-height:110px; }
+
+/* ── FOOTER ── */
+footer {
+background:#0d1640;
+padding:24px 5%;
+display:flex; align-items:center; justify-content:space-between;
+flex-wrap:wrap; gap:14px;
+border-top:3px solid var(--red);
+}
+
+.footer-brand {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:15px; font-weight:700; color:rgba(255,255,255,0.5);
+}
+
+.footer-links { display:flex; gap:24px; }
+.footer-links a {
+font-size:11px; font-weight:600; letter-spacing:1px;
+text-transform:uppercase; color:rgba(255,255,255,0.35);
+text-decoration:none; cursor:pointer;
+}
+.footer-links a:hover { color: var(--sky); }
+
+/* ── DIVIDER LINE ── */
+.red-line {
+width:48px; height:3px; background: var(--red);
+margin-bottom:28px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity:0; transform:translateY(24px); }
+to   { opacity:1; transform:translateY(0); }
+}
+
+.reveal {
+opacity:0; transform:translateY(20px);
+transition:opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity:1; transform:none; }
+
+/* ── WHATSAPP FLOAT ── */
+.wa-float {
+position:fixed; bottom:28px; right:28px; z-index:999;
+width:56px; height:56px; border-radius:50%;
+background:#25d366;
+display:flex; align-items:center; justify-content:center;
+box-shadow:0 4px 20px rgba(37,211,102,0.4);
+cursor:pointer; transition:all 0.2s;
+text-decoration:none;
+}
+.wa-float:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(37,211,102,0.5); }
+.wa-float svg { width:28px; height:28px; fill:white; }
+
+.wa-tooltip {
+position:fixed; bottom:36px; right:94px; z-index:998;
+background: var(--navy); color:white;
+font-size:12px; font-weight:600; letter-spacing:0.3px;
+padding:8px 14px; border-radius:4px;
+white-space:nowrap; opacity:0; pointer-events:none;
+transition:opacity 0.2s;
+}
+.wa-float:hover + .wa-tooltip { opacity:1; }
+
+/* ── BOOKING MODAL ── */
+.modal-overlay {
+position:fixed; inset:0; z-index:500;
+background:rgba(10,16,40,0.7);
+backdrop-filter:blur(4px);
+display:none; align-items:center; justify-content:center;
+padding:20px;
+}
+.modal-overlay.open { display:flex; }
+
+.modal-box {
+background: var(--white);
+width:100%; max-width:560px;
+border-top:4px solid var(--red);
+padding:36px 32px;
+position:relative;
+animation:fadeUp 0.3s ease both;
+}
+
+.modal-close {
+position:absolute; top:16px; right:20px;
+font-size:22px; cursor:pointer; color: var(--muted);
+background:none; border:none; font-family:inherit;
+line-height:1;
+}
+.modal-close:hover { color: var(--red); }
+
+.modal-title {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:1.6rem; font-weight:800; color: var(--navy);
+margin-bottom:4px;
+}
+
+.modal-sub {
+font-size:13px; color: var(--muted); margin-bottom:24px;
+line-height:1.5;
+}
+
+.modal-options {
+display:grid; grid-template-columns:1fr 1fr; gap:10px;
+margin-bottom:24px;
+}
+
+.modal-option {
+border:1.5px solid var(--border);
+padding:14px 16px; cursor:pointer;
+transition:all 0.2s; text-align:center;
+background: var(--offwhite);
+}
+
+.modal-option:hover, .modal-option.selected {
+border-color: var(--navy); background: var(--navy); color:white;
+}
+
+.modal-option-name {
+font-family: 'Barlow Condensed', sans-serif;
+font-size:1rem; font-weight:700;
+}
+
+.modal-option-cap { font-size:11px; opacity:0.7; margin-top:3px; }
+
+.modal-divider {
+border:none; border-top:1px solid var(--border);
+margin:20px 0;
+}
+
+.modal-actions { display:flex; flex-direction:column; gap:10px; }
+
+.modal-btn-form {
+display:block; width:100%; padding:14px;
+background: var(--navy); color:white;
+border:none; border-radius:3px;
+font-size:13px; font-weight:700; letter-spacing:1px;
+text-transform:uppercase; cursor:pointer;
+text-align:center; text-decoration:none;
+transition:background 0.2s;
+}
+.modal-btn-form:hover { background: var(--blue); }
+
+.modal-btn-wa {
+display:block; width:100%; padding:14px;
+background:#25d366; color:white;
+border:none; border-radius:3px;
+font-size:13px; font-weight:700; letter-spacing:1px;
+text-transform:uppercase; cursor:pointer;
+text-align:center; text-decoration:none;
+transition:background 0.2s;
+}
+.modal-btn-wa:hover { background:#1ebe5d; }
+
+.modal-note {
+font-size:11px; color: var(--muted); text-align:center;
+margin-top:12px; line-height:1.5;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px) {
+.about-grid, .contact-grid, .news-grid { grid-template-columns:1fr; }
+.hero-stats { display:none; }
+.form-row { grid-template-columns:1fr; }
+}
+
+@media(max-width:768px) {
+nav .nav-links { display:none; }
+.fac-grid { grid-template-columns:1fr 1fr; }
+}
 </style>
+
 </head>
 <body>
 
 <nav>
-  <div class="nav-brand">SSK CENTRE</div>
+  <div class="nav-brand">
+    <div class="nav-logo-box">
+      <div class="nav-logo-initials">SSK</div>
+    </div>
+    <div class="nav-brand-text">
+      <div class="name">SSK Centre</div>
+      <span class="sub">Smart Space Komuniti &bull; Kota Belud, Sabah</span>
+    </div>
+  </div>
+
   <ul class="nav-links">
-    <li><a onclick="scrollToSection('about')">Tentang</a></li>
-    <li><a onclick="scrollToSection('resources')">Peluang</a></li>
-    <li><a onclick="scrollToSection('contact')">Hubungi</a></li>
+    <li><a onclick="scrollToSection('about')">Tentang Kami</a></li>
+    <li><a onclick="scrollToSection('fasiliti')">Fasiliti</a></li>
+    <li><a onclick="scrollToSection('resources')">Peluang Bisnes</a></li>
+    <li><a onclick="scrollToSection('vendors')">Direktori</a></li>
+    <li><a onclick="scrollToSection('news')">Berita</a></li>
+    <li><a onclick="scrollToSection('contact-section')" class="nav-cta">Hubungi Kami</a></li>
   </ul>
+
+  <div class="lang-toggle" onclick="toggleLang()">
+    <span id="lbm" class="active">BM</span>
+    <span style="color:rgba(255,255,255,0.2)">/</span>
+    <span id="len">EN</span>
+  </div>
 </nav>
 
-<section id="about">
-  <h2 class="section-title">Tentang Kami</h2>
-  <p>Smart Space Komuniti (SSK Centre) di Kota Belud adalah pusat rujukan usahawan dan ruang aktiviti komuniti. Kami membantu menghubungkan anda dengan peluang-peluang kerajaan dan swasta.</p>
-</section>
-
-<section id="resources">
-  <h2 class="section-title">Peluang & Sumber</h2>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('kursus')">KURSUS</button>
-    <button class="tab-btn" onclick="switchTab('geran')">GERAN</button>
-    <button class="tab-btn" onclick="switchTab('pembiayaan')">PEMBIAYAAN</button>
+<section class="hero" id="home">
+  <div class="hero-stripes">
+    <div class="stripe stripe-1"></div>
+    <div class="stripe stripe-2"></div>
+    <div class="stripe stripe-3"></div>
+    <div class="stripe stripe-4"></div>
+    <div class="stripe stripe-5"></div>
+    <div class="stripe stripe-6"></div>
+    <div class="stripe stripe-7"></div>
   </div>
 
-  <div id="pane-kursus" class="tab-pane active">
-    <div class="info-card">
-      <span class="card-tag">INSKEN</span>
-      <div class="card-title">Kursus Asas Keusahawanan (KAK)</div>
-      <p>Latihan intensif untuk memulakan perniagaan dengan betul.</p>
-      <a href="https://www.insken.gov.my" class="btn-link">Lihat Kursus</a>
-    </div>
-    <div class="info-card">
-      <span class="card-tag">MARA</span>
-      <div class="card-title">Latihan Teknikal & Keusahawanan</div>
-      <p>Kursus kemahiran teknikal mengikut industri.</p>
-      <a href="https://www.mara.gov.my" class="btn-link">Maklumat Lanjut</a>
-    </div>
-    <div class="info-card">
-      <span class="card-tag">HRD CORP</span>
-      <div class="card-title">e-LATiH (Percuma)</div>
-      <p>Akses kepada ribuan kursus online secara percuma.</p>
-      <a href="https://elatih.hrdcorp.gov.my" class="btn-link">Mula Belajar</a>
+  <div class="hero-content">
+    <div class="hero-eyebrow" id="h-eyebrow">Kota Belud, Sabah &mdash; Hub Komuniti & Usahawan</div>
+    <h1 id="h-title">RUANG UNTUK<br><span class="accent">BISNES,</span><br>KOMUNITI &<br><span class="red-accent">PELUANG</span></h1>
+    <p class="hero-tagline" id="h-tag">SSK Centre menyediakan fasiliti bertaraf, program pembangunan usahawan, serta direktori kursus, geran dan pembiayaan terkini untuk anda.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" onclick="openTab('kursus')" id="h-btn1">Terokai Peluang</a>
+      <a class="btn-outline" onclick="scrollToSection('fasiliti')" id="h-btn2">Lihat Fasiliti</a>
     </div>
   </div>
 
-  <div id="pane-geran" class="tab-pane">
-    <div class="info-card">
-      <span class="card-tag">SME CORP</span>
-      <div class="card-title">Geran Padanan Digital PMKS</div>
-      <span class="card-amount">Sehingga RM5,000</span>
-      <p>Bantuan untuk digitalisasi perniagaan.</p>
-      <a href="https://www.smecorp.gov.my" class="btn-link">Mohon Geran</a>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">FASILITI TERSEDIA</div>
     </div>
-    <div class="info-card">
-      <span class="card-tag">MDEC</span>
-      <div class="card-title">SME Digital Jumpstart</div>
-      <span class="card-amount">RM10,000+</span>
-      <p>Untuk usahawan yang ingin kembangkan bisnes ke online.</p>
-      <a href="https://mdec.my" class="btn-link">Info Lanjut</a>
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">PELUANG GERAN 2026</div>
     </div>
-  </div>
-
-  <div id="pane-pembiayaan" class="tab-pane">
-    <div class="info-card">
-      <span class="card-tag">TEKUN NASIONAL</span>
-      <div class="card-title">Skim Pembiayaan Mikro</div>
-      <span class="card-amount">RM1,000 - RM100,000</span>
-      <p>Pembiayaan mudah untuk usahawan kecil.</p>
-      <a href="https://www.tekun.gov.my" class="btn-link">Info Skim</a>
-    </div>
-    <div class="info-card">
-      <span class="card-tag">AMANAH IKHTIAR</span>
-      <div class="card-title">Skim Pembiayaan Ikhtiar</div>
-      <p>Khusus untuk pemerkasaan ekonomi wanita.</p>
-      <a href="https://www.aim.gov.my" class="btn-link">Laman Rasmi</a>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">FOKUS KOMUNITI</div>
     </div>
   </div>
 </section>
 
-<section id="contact">
-  <h2 class="section-title">Hubungi Kami</h2>
-  <p>Lokasi: Pekan Kota Belud, Sabah</p>
-  <p>Emel: info@sskcentre.com</p>
+<div class="quickbar">
+  <div class="quickbar-inner">
+    <div class="qb-item" onclick="openModal()">Tempah Fasiliti</div>
+    <div class="qb-item" onclick="openTab('kursus')">Kursus &amp; Latihan</div>
+    <div class="qb-item" onclick="openTab('geran')">Geran</div>
+    <div class="qb-item" onclick="openTab('pembiayaan')">Pembiayaan</div>
+    <div class="qb-item" onclick="scrollToSection('vendors')">Direktori Usahawan</div>
+    <div class="qb-item" onclick="scrollToSection('news')">Berita &amp; Update</div>
+    <div class="qb-item" onclick="scrollToSection('contact-section')">Hubungi SSK</div>
+  </div>
+</div>
+
+<section id="about" class="about">
+  <div class="section-inner about-grid reveal">
+    <div class="about-text">
+      <div class="section-eyebrow">Tentang Kami / About Us</div>
+      <h2 class="section-title" id="ab-title">SSK Centre —<br>Lebih dari Sekadar Ruang</h2>
+      <div class="red-line"></div>
+      <p id="ab-p1">Smart Space Komuniti (SSK Centre) adalah pusat komuniti dan keusahawanan yang terletak di Kota Belud, Sabah. Kami menyediakan ruang berkualiti untuk program, mesyuarat, pameran dan aktiviti komuniti.</p>
+      <p id="ab-p2" style="margin-top:14px;">Kami berfungsi sebagai <strong>rujukan utama peluang pembangunan usahawan</strong> di daerah ini — menghubungkan komuniti dengan kursus, geran, pembiayaan dan jaringan perniagaan yang relevan.</p>
+      <div class="about-badge" id="ab-badge">Perkasa Komuniti Melalui Ruang, Ilmu &amp; Peluang</div>
+    </div>
+    <div>
+      <div class="section-eyebrow" style="margin-bottom:20px" id="fac-eyebrow">Fasiliti / Facilities</div>
+      <div id="fasiliti">
+        <div class="fac-grid">
+          <div class="fac-card">
+            <div class="fac-label">Dewan</div>
+            <div class="fac-name">Dewan Serbaguna</div>
+            <div class="fac-cap">Kapasiti sehingga 100 orang</div>
+            <button class="book-btn" onclick="openModal()">Buat Tempahan</button>
+          </div>
+          <div class="fac-card">
+            <div class="fac-label">Mesyuarat</div>
+            <div class="fac-name">Bilik Mesyuarat</div>
+            <div class="fac-cap">Kapasiti sehingga 20 orang</div>
+            <button class="book-btn" onclick="openModal()">Buat Tempahan</button>
+          </div>
+          <div class="fac-card">
+            <div class="fac-label">Studio</div>
+            <div class="fac-name">Studio Content</div>
+            <div class="fac-cap">Foto &amp; video produk</div>
+            <button class="book-btn" onclick="openModal()">Buat Tempahan</button>
+          </div>
+          <div class="fac-card">
+            <div class="fac-label">Fleksibel</div>
+            <div class="fac-name">Ruang Fleksibel</div>
+            <div class="fac-cap">Seminar &amp; workshop</div>
+            <div class="fac-price">Hubungi kami</div>
+            <button class="book-btn" onclick="openModal()">Buat Tempahan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<a href="https://wa.me/601121406450" class="wa-float">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="30" alt="WA">
+<section id="resources" class="resources">
+  <div class="section-inner">
+    <div class="section-eyebrow">Peluang Usahawan 2026</div>
+    <h2 class="section-title" id="res-title">Kursus, Geran &amp; Pembiayaan</h2>
+    <div class="red-line"></div>
+    <p class="section-desc" id="res-desc">Disenaraikan khas untuk usahawan di Kota Belud dan kawasan sekitar. Dikemas kini secara berkala.</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" id="tbtn-kursus" onclick="switchTab('kursus')">Kursus &amp; Latihan</button>
+      <button class="tab-btn" id="tbtn-geran" onclick="switchTab('geran')">Geran</button>
+      <button class="tab-btn" id="tbtn-pembiayaan" onclick="switchTab('pembiayaan')">Pembiayaan</button>
+    </div>
+
+    <div class="tab-pane active" id="pane-kursus">
+      <div class="filter-row">
+        <button class="filter-chip active" onclick="filterCards(this,'all')">Semua</button>
+        <button class="filter-chip" onclick="filterCards(this,'percuma')">Percuma / Subsidi</button>
+        <button class="filter-chip" onclick="filterCards(this,'digital')">Digital &amp; AI</button>
+        <button class="filter-chip" onclick="filterCards(this,'keusahawanan')">Keusahawanan</button>
+      </div>
+      <div class="cards-grid">
+        <div class="info-card accent-blue" data-tags="keusahawanan percuma">
+          <span class="card-tag tag-blue">INSKEN</span>
+          <div class="card-title">Kursus Asas Keusahawanan (KAK) — Kota Kinabalu</div>
+          <div class="card-desc">Program 2 hari untuk usahawan baru dan refresher course. Merangkumi pemasaran, kewangan, operasi dan pengurusan bisnes. Termasuk penginapan dan makan minum.</div>
+          <div class="card-meta">
+            <div class="meta-item">Yuran <span>RM50</span></div>
+            <div class="meta-item">Lokasi <span>Kota Kinabalu</span></div>
+          </div>
+          <a class="card-link" href="https://insken.gov.my/pendaftaran" target="_blank">Daftar di insken.gov.my</a>
+        </div>
+        <div class="info-card accent-blue" data-tags="keusahawanan">
+          <span class="card-tag tag-blue">INSKEN Masterclass</span>
+          <div class="card-title">Storytelling Ecotourism: Jual Identiti, Bukan Fasiliti</div>
+          <div class="card-desc">Kursus pemasaran berasaskan naratif untuk usahawan pelancongan dan komuniti alam semula jadi.</div>
+          <a class="card-link" href="https://insken.gov.my/pendaftaran" target="_blank">Lihat jadual</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vendors" class="vendors">
+  <div class="section-inner reveal">
+    <div class="section-eyebrow">Direktori Usahawan</div>
+    <h2 class="section-title">Usahawan &amp; Vendor SSK Centre</h2>
+    <div class="red-line"></div>
+    <div class="vendor-grid">
+      <div class="vendor-card">
+        <div class="vendor-icon">AJ</div>
+        <div class="vendor-name">Kiosk Abang J</div>
+        <div class="vendor-type">Chicken Karaage &amp; Popcorn</div>
+        <div class="vendor-badge">Vendor SSK</div>
+      </div>
+      <div class="vendor-card">
+        <div class="vendor-icon">SK</div>
+        <div class="vendor-name">Sri Kenanga Studio</div>
+        <div class="vendor-type">Fotografi Produk</div>
+        <div class="vendor-badge">Rakan SSK</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="news" class="news">
+  <div class="section-inner reveal">
+    <div class="section-eyebrow">Berita &amp; Kemas Kini</div>
+    <h2 class="section-title">Terkini dari SSK Centre</h2>
+    <div class="red-line"></div>
+    <div class="news-grid">
+      <div class="news-card featured">
+        <div class="news-thumb"><div class="news-thumb-text">Night Market SSK</div></div>
+        <div class="news-body">
+          <div class="news-category">Program</div>
+          <div class="news-date">April 2026</div>
+          <div class="news-title">Night Market SSK Centre — Sistem Deposit Diperkenalkan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact-section" class="contact-section">
+  <div class="section-inner contact-grid">
+    <div>
+      <div class="contact-eyebrow">Hubungi Kami / Contact Us</div>
+      <h2 class="contact-title">Bincang dengan<br><span>Pasukan SSK Centre</span></h2>
+      <div class="contact-info">
+        <div class="cinfo-row">
+          <div class="cinfo-icon">&#9679;</div>
+          <div class="cinfo-text"><strong>Alamat</strong>SSK Centre, Kota Belud, Sabah</div>
+        </div>
+        <div class="cinfo-row">
+          <div class="cinfo-icon">&#9679;</div>
+          <div class="cinfo-text"><strong>WhatsApp</strong>011-2140 6450</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <input class="form-input" type="text" placeholder="Nama Penuh">
+      <input class="form-input" type="text" placeholder="No. Telefon">
+      <textarea class="form-input" placeholder="Mesej anda..."></textarea>
+      <button class="btn-primary" onclick="alert('Pertanyaan dihantar!')">Hantar Pertanyaan</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">SSK Centre &mdash; Kota Belud, Sabah &copy; 2026</div>
+  <div class="footer-links">
+    <a onclick="scrollToSection('home')">Utama</a>
+    <a onclick="scrollToSection('contact-section')">Hubungi</a>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/601121406450" target="_blank">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<script>
-function switchTab(tabName) {
-  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('pane-' + tabName).classList.add('active');
-  event.target.classList.add('active');
-}
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-title">Tempahan Fasiliti</div>
+    <div class="modal-actions">
+      <a class="modal-btn-wa" href="https://wa.me/601121406450" target="_blank">Hubungi via WhatsApp</a>
+    </div>
+  </div>
+</div>
 
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+<script>
+function openModal(){ document.getElementById('bookingModal').classList.add('open'); }
+function closeModal(){ document.getElementById('bookingModal').classList.remove('open'); }
+function scrollToSection(id){ const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+function switchTab(name){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tbtn-'+name).classList.add('active');
+  document.getElementById('pane-'+name).classList.add('active');
 }
+function openTab(name){ scrollToSection('resources'); setTimeout(()=>switchTab(name),500); }
+function filterCards(btn,tag){
+  const pane=btn.closest('.tab-pane');
+  pane.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  pane.querySelectorAll('.info-card').forEach(card=>{
+    if(tag==='all'){card.style.display=''; return;}
+    card.style.display=(card.dataset.tags||'').includes(tag)?'':'none';
+  });
+}
+function toggleLang(){
+  const btn = document.getElementById('lbm');
+  alert("Language toggle triggered. Current version: BM focus.");
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 
 </body>
