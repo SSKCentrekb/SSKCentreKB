@@ -1,1073 +1,429 @@
 <!DOCTYPE html>
+
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSK Centre | Smart Space Komuniti — Kota Belud</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<title>SSK Centre | Smart Space Komuniti - Kota Belud, Sabah</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy:     #1a2a6c;
-  --navy-mid: #223580;
-  --blue:     #1e6fbf;
-  --blue-lt:  #4a9fd4;
-  --sky:      #7ec8e3;
-  --red:      #c0392b;
-  --red-lt:   #e74c3c;
-  --white:    #ffffff;
-  --offwhite: #f4f6fb;
-  --grey:     #e8ecf5;
-  --text:     #1a2240;
-  --muted:    #5a6580;
-  --border:   #d0d8eb;
-}
-
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-
-body {
-font-family: 'Barlow', sans-serif;
-background: var(--offwhite);
-color: var(--text);
-overflow-x: hidden;
-}
-
-/* ── NAV ── */
-nav {
-position:fixed; top:0; left:0; right:0; z-index:200;
-height:68px;
-background: var(--navy);
-display:flex; align-items:center; justify-content:space-between;
-padding:0 5%;
-border-bottom:3px solid var(--red);
-}
-
-.nav-brand {
-display:flex; align-items:center; gap:14px;
-}
-
-.nav-logo-box {
-width:40px; height:40px;
-background: var(--white);
-border-radius:6px;
-display:flex; align-items:center; justify-content:center;
-overflow:hidden;
-}
-
-.nav-logo-box img {
-width:36px; height:auto;
-}
-
-.nav-logo-initials {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:20px; font-weight:800;
-color: var(--navy);
-letter-spacing:-1px;
-line-height:1;
-}
-
-.nav-brand-text .name {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:17px; font-weight:700; color: var(--white);
-letter-spacing:0.5px;
-}
-
-.nav-brand-text .sub {
-font-size:10px; color: var(--sky); font-weight:400;
-display:block; letter-spacing:0.3px;
-}
-
-.nav-links {
-display:flex; gap:32px; list-style:none;
-}
-
-.nav-links a {
-color:rgba(255,255,255,0.75);
-text-decoration:none;
-font-size:13px; font-weight:500;
-letter-spacing:0.3px;
-transition:color 0.2s;
-cursor:pointer;
-}
-
-.nav-links a:hover { color: var(--sky); }
-
-.nav-cta {
-background: var(--red) !important;
-color:white !important;
-padding:8px 20px;
-border-radius:4px;
-font-weight:600 !important;
-transition:background 0.2s !important;
-}
-
-.nav-cta:hover { background: var(--red-lt) !important; }
-
-.lang-toggle {
-display:flex; align-items:center; gap:6px;
-background:rgba(255,255,255,0.1);
-border:1px solid rgba(255,255,255,0.2);
-border-radius:4px; padding:5px 12px;
-cursor:pointer; font-size:12px; font-weight:600;
-}
-
-.lang-toggle span { color:rgba(255,255,255,0.6); }
-.lang-toggle .active { color: var(--sky); }
-
-/* ── HERO ── */
-.hero {
-min-height:100vh;
-background: var(--navy);
-position:relative;
-display:flex; align-items:center;
-padding:100px 5% 60px;
-overflow:hidden;
-}
-
-.hero-stripes {
-position:absolute; right:0; top:0; bottom:0;
-width:45%;
-overflow:hidden;
-}
-
-.stripe {
-position:absolute; right:-60px;
-height:12px; border-radius:6px;
-opacity:0.15;
-}
-
-.stripe-1 { background: var(--sky);   width:70%; top:15%; transform:rotate(-8deg); opacity:0.2; height:10px; }
-.stripe-2 { background: var(--blue);  width:85%; top:25%; transform:rotate(-8deg); opacity:0.18; height:14px; }
-.stripe-3 { background: var(--red);   width:60%; top:35%; transform:rotate(-8deg); opacity:0.25; height:10px; }
-.stripe-4 { background: var(--sky);   width:75%; top:45%; transform:rotate(-8deg); opacity:0.15; height:8px; }
-.stripe-5 { background: var(--blue);  width:90%; top:55%; transform:rotate(-8deg); opacity:0.2;  height:14px; }
-.stripe-6 { background: var(--sky);   width:65%; top:65%; transform:rotate(-8deg); opacity:0.12; height:10px; }
-.stripe-7 { background: var(--red);   width:80%; top:75%; transform:rotate(-8deg); opacity:0.2;  height:8px; }
-
-.hero-content {
-position:relative; z-index:2;
-max-width:640px;
-animation:fadeUp 0.7s ease both;
-}
-
-.hero-eyebrow {
-display:inline-block;
-font-size:11px; font-weight:700; letter-spacing:3px;
-color: var(--sky); text-transform:uppercase;
-margin-bottom:20px;
-padding-bottom:10px;
-border-bottom:2px solid var(--red);
-}
-
-.hero h1 {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:clamp(2.8rem, 6vw, 5rem);
-font-weight:800; color: var(--white);
-line-height:1.0; letter-spacing:-0.5px;
-margin-bottom:6px;
-}
-
-.hero h1 .accent { color: var(--sky); }
-.hero h1 .red-accent { color: var(--red-lt); }
-
-.hero-tagline {
-font-size:16px; color:rgba(255,255,255,0.55);
-margin-bottom:28px; line-height:1.6;
-max-width:460px;
-}
-
-.hero-actions { display:flex; gap:14px; flex-wrap:wrap; }
-
-.btn-primary {
-background: var(--red);
-color: var(--white);
-padding:14px 30px; border-radius:4px;
-font-weight:700; font-size:14px; letter-spacing:0.3px;
-text-decoration:none; border:none; cursor:pointer;
-transition:all 0.2s; display:inline-block;
-}
-
-.btn-primary:hover { background: var(--red-lt); transform:translateY(-2px); }
-
-.btn-outline {
-background:transparent; color: var(--white);
-padding:14px 30px; border-radius:4px;
-font-weight:600; font-size:14px;
-text-decoration:none;
-border:1.5px solid rgba(255,255,255,0.3);
-cursor:pointer; transition:all 0.2s; display:inline-block;
-}
-
-.btn-outline:hover { border-color: var(--sky); color: var(--sky); }
-
-.hero-stats {
-position:absolute; right:5%; bottom:12%;
-display:flex; flex-direction:column; gap:14px;
-z-index:2;
-}
-
-.stat-item {
-border-left:3px solid var(--red);
-padding:10px 18px;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(8px);
-}
-
-.stat-num {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:2.2rem; font-weight:800; color: var(--white);
-line-height:1;
-}
-
-.stat-label {
-font-size:11px; color: var(--sky); letter-spacing:0.5px;
-margin-top:3px;
-}
-
-/* ── QUICK NAV BAR ── */
-.quickbar {
-background: var(--blue);
-padding:0 5%;
-}
-
-.quickbar-inner {
-display:flex; max-width:1200px; margin:0 auto;
-overflow-x:auto;
-}
-
-.qb-item {
-padding:18px 28px;
-color:rgba(255,255,255,0.8);
-font-size:11px; font-weight:600; letter-spacing:0.3px;
-cursor:pointer; white-space:nowrap;
-border-bottom:3px solid transparent;
-transition:all 0.2s;
-text-transform:uppercase;
-}
-
-.qb-item:hover {
-color: var(--white);
-border-bottom-color: var(--sky);
-background:rgba(255,255,255,0.06);
-}
-
-/* ── SECTIONS ── */
-section { padding:80px 5%; scroll-margin-top:68px; }
-
-.section-inner { max-width:1200px; margin:0 auto; }
-
-.section-eyebrow {
-font-size:11px; font-weight:700; letter-spacing:3px;
-color: var(--blue); text-transform:uppercase;
-margin-bottom:8px;
-}
-
-.section-title {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:clamp(1.8rem, 3.5vw, 2.8rem);
-font-weight:800; color: var(--navy);
-line-height:1.1; letter-spacing:-0.3px;
-margin-bottom:14px;
-}
-
-.section-desc {
-color: var(--muted); font-size:15px; line-height:1.7;
-max-width:540px; margin-bottom:44px;
-}
-
-/* ── ABOUT ── */
-.about { background: var(--white); }
-
-.about-grid {
-display:grid; grid-template-columns:1fr 1fr;
-gap:64px; align-items:start;
-}
-
-.about-text p {
-color: var(--muted); font-size:15px; line-height:1.8;
-margin-bottom:16px;
-}
-
-.about-text p strong { color: var(--navy); }
-
-.about-badge {
-display:inline-block;
-background: var(--navy);
-color: var(--white);
-font-size:12px; font-weight:700; letter-spacing:1px;
-padding:8px 18px; border-radius:2px;
-text-transform:uppercase; margin-top:8px;
-}
-
-/* ── FASILITI ── */
-.fasiliti { background: var(--offwhite); }
-
-.fac-grid {
-display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-gap:2px; border:2px solid var(--border);
-}
-
-.fac-card {
-background: var(--white);
-padding:28px 24px;
-border-right:1px solid var(--border);
-transition:all 0.2s;
-position:relative; overflow:hidden;
-}
-
-.fac-card::before {
-content:'';
-position:absolute; top:0; left:0; right:0; height:4px;
-background: var(--navy);
-transition:background 0.2s;
-}
-
-.fac-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(26,42,108,0.12); }
-.fac-card:hover::before { background: var(--red); }
-
-.fac-label {
-font-size:10px; font-weight:700; letter-spacing:2px;
-color: var(--blue); text-transform:uppercase;
-margin-bottom:10px;
-}
-
-.fac-name {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:1.4rem; font-weight:700; color: var(--navy);
-margin-bottom:8px;
-}
-
-.fac-cap { font-size:13px; color: var(--muted); margin-bottom:12px; }
-
-.fac-price {
-font-size:14px; font-weight:700; color: var(--red);
-border-top:1px solid var(--border); padding-top:12px;
-}
-
-.book-btn {
-display:block; width:100%; margin-top:14px;
-padding:10px; background: var(--navy); color:white;
-border:none; border-radius:3px;
-font-size:12px; font-weight:700; letter-spacing:1px;
-text-transform:uppercase; cursor:pointer;
-transition:background 0.2s;
-}
-
-.book-btn:hover { background: var(--blue); }
-
-/* ── RESOURCES ── */
-.resources { background: var(--white); }
-
-.tabs {
-display:flex; border-bottom:2px solid var(--border);
-margin-bottom:36px; overflow-x:auto;
-}
-
-.tab-btn {
-padding:14px 28px;
-font-size:12px; font-weight:700; letter-spacing:1.5px;
-text-transform:uppercase;
-color: var(--muted); cursor:pointer;
-border:none; background:none;
-border-bottom:3px solid transparent;
-margin-bottom:-2px; white-space:nowrap;
-transition:all 0.2s;
-}
-
-.tab-btn.active { color: var(--navy); border-bottom-color: var(--red); }
-.tab-btn:hover:not(.active) { color: var(--blue); }
-
-.tab-pane { display:none; }
-.tab-pane.active { display:block; }
-
-.filter-row {
-display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;
-}
-
-.filter-chip {
-padding:7px 16px; border-radius:2px;
-font-size:11px; font-weight:700; letter-spacing:0.5px;
-text-transform:uppercase; cursor:pointer;
-border:1.5px solid var(--border);
-background:transparent; color: var(--muted);
-transition:all 0.2s;
-}
-
-.filter-chip.active, .filter-chip:hover {
-background: var(--navy); color:white; border-color: var(--navy);
-}
-
-.cards-grid {
-display:grid; grid-template-columns:repeat(auto-fill, minmax(310px, 1fr));
-gap:20px;
-}
-
-.info-card {
-background: var(--offwhite);
-border:1px solid var(--border);
-border-top:3px solid var(--navy);
-padding:24px;
-transition:all 0.25s;
-}
-
-.info-card.accent-red { border-top-color: var(--red); }
-.info-card.accent-blue { border-top-color: var(--blue); }
-.info-card.accent-sky { border-top-color: var(--sky); }
-
-.info-card:hover {
-box-shadow:0 8px 32px rgba(26,42,108,0.1);
-transform:translateY(-3px);
-background: var(--white);
-}
-
-.card-tag {
-display:inline-block;
-padding:3px 10px; border-radius:2px;
-font-size:10px; font-weight:700; letter-spacing:1px;
-text-transform:uppercase; margin-bottom:12px;
-}
-
-.tag-navy { background:rgba(26,42,108,0.1); color: var(--navy); }
-.tag-red { background:rgba(192,57,43,0.1); color: var(--red); }
-.tag-blue { background:rgba(30,111,191,0.08); color: var(--blue); }
-
-.card-title {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:1.2rem; font-weight:700; color: var(--navy);
-margin-bottom:10px; line-height:1.2;
-}
-
-.card-desc {
-font-size:13px; color: var(--muted); line-height:1.65;
-margin-bottom:16px;
-}
-
-.card-meta {
-display:flex; gap:16px; flex-wrap:wrap;
-margin-bottom:16px; padding-bottom:16px;
-border-bottom:1px solid var(--border);
-}
-
-.meta-item {
-font-size:12px; color: var(--muted); font-weight:500;
-}
-
-.meta-item span { color: var(--navy); font-weight:700; }
-
-.card-amount {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:1.6rem; font-weight:800; color: var(--red);
-margin-bottom:16px; display:block;
-}
-
-.card-link {
-font-size:12px; font-weight:700; letter-spacing:0.5px;
-color: var(--blue); text-decoration:none;
-text-transform:uppercase;
-border-bottom:1.5px solid var(--blue);
-padding-bottom:1px;
-transition:color 0.2s;
-cursor:pointer;
-}
-
-.card-link:hover { color: var(--navy); border-bottom-color: var(--navy); }
-
-/* ── VENDOR ── */
-.vendors { background: var(--offwhite); }
-
-.vendor-grid {
-display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
-gap:16px;
-}
-
-.vendor-card {
-background: var(--white);
-border:1px solid var(--border);
-border-top:3px solid var(--blue);
-padding:24px 20px; text-align:center;
-transition:all 0.2s;
-}
-
-.vendor-card:hover {
-border-top-color: var(--red);
-box-shadow:0 6px 24px rgba(26,42,108,0.08);
-transform:translateY(-3px);
-}
-
-.vendor-icon {
-width:52px; height:52px; border-radius:50%;
-background: var(--navy);
-display:flex; align-items:center; justify-content:center;
-margin:0 auto 14px;
-font-family: 'Barlow Condensed', sans-serif;
-font-size:18px; font-weight:800; color:white;
-}
-
-.vendor-name {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:1.1rem; font-weight:700; color: var(--navy);
-}
-
-.vendor-type { font-size:12px; color: var(--muted); margin-top:4px; }
-
-.vendor-badge {
-display:inline-block; margin-top:10px;
-padding:4px 12px;
-font-size:10px; font-weight:700; letter-spacing:1px;
-text-transform:uppercase;
-background:rgba(26,42,108,0.08); color: var(--navy);
-}
-
-/* ── NEWS ── */
-.news { background: var(--white); }
-
-.news-grid {
-display:grid; grid-template-columns:2fr 1fr 1fr; gap:20px;
-}
-
-.news-card {
-background: var(--offwhite);
-border:1px solid var(--border);
-overflow:hidden;
-transition:all 0.2s; cursor:pointer;
-}
-
-.news-card:hover {
-transform:translateY(-3px);
-box-shadow:0 8px 32px rgba(26,42,108,0.1);
-}
-
-.news-thumb {
-height:160px; background: var(--navy);
-display:flex; align-items:center; justify-content:center;
-}
-
-.news-card.featured .news-thumb { height:200px; }
-
-.news-thumb-text {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:1.2rem; font-weight:800; color:rgba(255,255,255,0.2);
-text-align:center; padding:20px; letter-spacing:2px; text-transform:uppercase;
-}
-
-.news-body { padding:20px; }
-.news-category {
-font-size:10px; font-weight:700; letter-spacing:2px;
-color: var(--red); text-transform:uppercase; margin-bottom:8px;
-}
-.news-date { font-size:11px; color: var(--muted); margin-bottom:8px; }
-.news-title {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:1.1rem; font-weight:700; color: var(--navy); line-height:1.3;
-}
-.news-card.featured .news-title { font-size:1.3rem; }
-
-/* ── CONTACT ── */
-.contact-section { background: var(--navy); padding: 80px 5%; }
-
-.contact-grid {
-display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;
-max-width: 1200px; margin: 0 auto;
-}
-
-.contact-eyebrow {
-font-size:11px; font-weight:700; letter-spacing:3px;
-color: var(--sky); text-transform:uppercase; margin-bottom:8px;
-}
-
-.contact-title {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:2.4rem; font-weight:800; color: var(--white);
-line-height:1.1; margin-bottom:28px;
-}
-
-.contact-title span { color: var(--sky); }
-
-.contact-info { display:flex; flex-direction:column; gap:18px; }
-
-.cinfo-row { display:flex; gap:14px; align-items:flex-start; }
-
-.cinfo-icon {
-width:38px; height:38px; flex-shrink:0;
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.1);
-display:flex; align-items:center; justify-content:center;
-font-size:14px; color: white;
-}
-
-.cinfo-text { font-size:14px; color:rgba(255,255,255,0.65); line-height:1.5; }
-.cinfo-text strong { color: var(--white); font-size:12px; letter-spacing:0.5px; display:block; margin-bottom:2px; }
-
-.contact-form { display:flex; flex-direction:column; gap:12px; }
-
-.form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-
-.form-input {
-padding:13px 16px;
-background:rgba(255,255,255,0.07);
-border:1px solid rgba(255,255,255,0.15);
-color:white; font-size:14px;
-font-family: 'Barlow', sans-serif;
-outline:none; transition:border-color 0.2s;
-border-radius:0;
-}
-
-.form-input:focus { border-color: var(--sky); }
-.form-input::placeholder { color:rgba(255,255,255,0.35); }
-textarea.form-input { resize:vertical; min-height:110px; }
-
-/* ── FOOTER ── */
-footer {
-background:#0d1640;
-padding:24px 5%;
-display:flex; align-items:center; justify-content:space-between;
-flex-wrap:wrap; gap:14px;
-border-top:3px solid var(--red);
-}
-
-.footer-brand {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:15px; font-weight:700; color:rgba(255,255,255,0.5);
-}
-
-.footer-links { display:flex; gap:24px; }
-.footer-links a {
-font-size:11px; font-weight:600; letter-spacing:1px;
-text-transform:uppercase; color:rgba(255,255,255,0.35);
-text-decoration:none; cursor:pointer;
-}
-.footer-links a:hover { color: var(--sky); }
-
-/* ── DIVIDER LINE ── */
-.red-line {
-width:48px; height:3px; background: var(--red);
-margin-bottom:28px;
-}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp {
-from { opacity:0; transform:translateY(24px); }
-to   { opacity:1; transform:translateY(0); }
-}
-
-.reveal {
-opacity:0; transform:translateY(20px);
-transition:opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.visible { opacity:1; transform:none; }
-
-/* ── WHATSAPP FLOAT ── */
-.wa-float {
-position:fixed; bottom:28px; right:28px; z-index:999;
-width:56px; height:56px; border-radius:50%;
-background:#25d366;
-display:flex; align-items:center; justify-content:center;
-box-shadow:0 4px 20px rgba(37,211,102,0.4);
-cursor:pointer; transition:all 0.2s;
-text-decoration:none;
-}
-.wa-float:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(37,211,102,0.5); }
-.wa-float svg { width:28px; height:28px; fill:white; }
-
-.wa-tooltip {
-position:fixed; bottom:36px; right:94px; z-index:998;
-background: var(--navy); color:white;
-font-size:12px; font-weight:600; letter-spacing:0.3px;
-padding:8px 14px; border-radius:4px;
-white-space:nowrap; opacity:0; pointer-events:none;
-transition:opacity 0.2s;
-}
-.wa-float:hover + .wa-tooltip { opacity:1; }
-
-/* ── BOOKING MODAL ── */
-.modal-overlay {
-position:fixed; inset:0; z-index:500;
-background:rgba(10,16,40,0.7);
-backdrop-filter:blur(4px);
-display:none; align-items:center; justify-content:center;
-padding:20px;
-}
-.modal-overlay.open { display:flex; }
-
-.modal-box {
-background: var(--white);
-width:100%; max-width:560px;
-border-top:4px solid var(--red);
-padding:36px 32px;
-position:relative;
-animation:fadeUp 0.3s ease both;
-}
-
-.modal-close {
-position:absolute; top:16px; right:20px;
-font-size:22px; cursor:pointer; color: var(--muted);
-background:none; border:none; font-family:inherit;
-line-height:1;
-}
-.modal-close:hover { color: var(--red); }
-
-.modal-title {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:1.6rem; font-weight:800; color: var(--navy);
-margin-bottom:4px;
-}
-
-.modal-sub {
-font-size:13px; color: var(--muted); margin-bottom:24px;
-line-height:1.5;
-}
-
-.modal-options {
-display:grid; grid-template-columns:1fr 1fr; gap:10px;
-margin-bottom:24px;
-}
-
-.modal-option {
-border:1.5px solid var(--border);
-padding:14px 16px; cursor:pointer;
-transition:all 0.2s; text-align:center;
-background: var(--offwhite);
-}
-
-.modal-option:hover, .modal-option.selected {
-border-color: var(--navy); background: var(--navy); color:white;
-}
-
-.modal-option-name {
-font-family: 'Barlow Condensed', sans-serif;
-font-size:1rem; font-weight:700;
-}
-
-.modal-option-cap { font-size:11px; opacity:0.7; margin-top:3px; }
-
-.modal-divider {
-border:none; border-top:1px solid var(--border);
-margin:20px 0;
-}
-
-.modal-actions { display:flex; flex-direction:column; gap:10px; }
-
-.modal-btn-form {
-display:block; width:100%; padding:14px;
-background: var(--navy); color:white;
-border:none; border-radius:3px;
-font-size:13px; font-weight:700; letter-spacing:1px;
-text-transform:uppercase; cursor:pointer;
-text-align:center; text-decoration:none;
-transition:background 0.2s;
-}
-.modal-btn-form:hover { background: var(--blue); }
-
-.modal-btn-wa {
-display:block; width:100%; padding:14px;
-background:#25d366; color:white;
-border:none; border-radius:3px;
-font-size:13px; font-weight:700; letter-spacing:1px;
-text-transform:uppercase; cursor:pointer;
-text-align:center; text-decoration:none;
-transition:background 0.2s;
-}
-.modal-btn-wa:hover { background:#1ebe5d; }
-
-.modal-note {
-font-size:11px; color: var(--muted); text-align:center;
-margin-top:12px; line-height:1.5;
-}
-
-/* ── RESPONSIVE ── */
-@media(max-width:900px) {
-.about-grid, .contact-grid, .news-grid { grid-template-columns:1fr; }
-.hero-stats { display:none; }
-.form-row { grid-template-columns:1fr; }
-}
-
-@media(max-width:768px) {
-nav .nav-links { display:none; }
-.fac-grid { grid-template-columns:1fr 1fr; }
-}
+:root{--navy:#1a2a6c;--blue:#1e6fbf;--sky:#7ec8e3;--red:#c0392b;--red2:#e74c3c;--white:#ffffff;--off:#f4f6fb;--text:#1a2240;--muted:#5a6580;--border:#d0d8eb;--card:#ffffff;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Barlow',sans-serif;background:var(--off);color:var(--text);overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--navy);height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:3px solid var(--red);}
+.nbrand{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer;}
+.ninitials{width:38px;height:38px;background:var(--white);border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;color:var(--navy);letter-spacing:-1px;}
+.nname{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--white);}
+.nsub{font-size:10px;color:var(--sky);display:block;font-weight:400;}
+.nlinks{display:flex;align-items:center;gap:26px;list-style:none;}
+.nlinks a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;transition:color 0.2s;cursor:pointer;}
+.nlinks a:hover{color:var(--sky);}
+.ncta{background:var(--red);color:white;padding:8px 18px;border-radius:3px;font-weight:700;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;}
+.ncta:hover{background:var(--red2);color:white;}
+.langbtn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);padding:5px 12px;border-radius:3px;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all 0.2s;font-family:'Barlow',sans-serif;}
+.langbtn:hover{background:rgba(255,255,255,0.18);color:var(--sky);}
+.hero{min-height:100vh;background:var(--navy);position:relative;display:flex;align-items:center;padding:100px 5% 70px;overflow:hidden;}
+.hdeco{position:absolute;top:0;right:0;bottom:0;width:42%;pointer-events:none;}
+.hbar{position:absolute;right:-40px;height:10px;border-radius:5px;}
+.hbar:nth-child(1){background:var(--sky);width:68%;top:12%;opacity:0.18;transform:rotate(-7deg);}
+.hbar:nth-child(2){background:var(--blue);width:82%;top:23%;opacity:0.2;height:13px;transform:rotate(-7deg);}
+.hbar:nth-child(3){background:var(--red);width:58%;top:33%;opacity:0.28;transform:rotate(-7deg);}
+.hbar:nth-child(4){background:var(--sky);width:74%;top:43%;opacity:0.14;height:8px;transform:rotate(-7deg);}
+.hbar:nth-child(5){background:var(--blue);width:88%;top:53%;opacity:0.18;height:13px;transform:rotate(-7deg);}
+.hbar:nth-child(6){background:var(--sky);width:64%;top:63%;opacity:0.12;transform:rotate(-7deg);}
+.hbar:nth-child(7){background:var(--red);width:78%;top:73%;opacity:0.2;height:8px;transform:rotate(-7deg);}
+.hcontent{position:relative;z-index:2;max-width:620px;}
+.hlabel{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--sky);padding-bottom:10px;border-bottom:2px solid var(--red);margin-bottom:22px;}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6.5vw,5.2rem);font-weight:800;color:var(--white);line-height:0.95;letter-spacing:-0.5px;margin-bottom:22px;}
+.csky{color:var(--sky);}
+.cred{color:#ef5350;}
+.hdesc{font-size:15px;color:rgba(255,255,255,0.62);line-height:1.75;max-width:460px;margin-bottom:34px;}
+.hbtns{display:flex;gap:12px;flex-wrap:wrap;}
+.btnred{background:var(--red);color:var(--white);padding:13px 28px;border-radius:3px;font-weight:700;font-size:13px;letter-spacing:0.5px;text-decoration:none;border:none;cursor:pointer;transition:background 0.2s;display:inline-block;font-family:'Barlow',sans-serif;}
+.btnred:hover{background:var(--red2);}
+.btnghost{background:transparent;color:var(--white);padding:13px 28px;border-radius:3px;font-weight:600;font-size:13px;text-decoration:none;border:1.5px solid rgba(255,255,255,0.28);cursor:pointer;transition:all 0.2s;display:inline-block;}
+.btnghost:hover{border-color:var(--sky);color:var(--sky);}
+.hstats{position:absolute;right:5%;bottom:13%;z-index:2;display:flex;flex-direction:column;gap:12px;}
+.hstat{border-left:3px solid var(--red);padding:10px 18px;background:rgba(255,255,255,0.05);}
+.hsnum{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:800;color:var(--white);line-height:1;}
+.hslbl{font-size:10px;color:var(--sky);letter-spacing:1px;text-transform:uppercase;margin-top:3px;}
+.qbar{background:var(--blue);}
+.qbar-inner{display:flex;max-width:1200px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+.qbar-inner::-webkit-scrollbar{display:none;}
+.qb{padding:16px 24px;color:rgba(255,255,255,0.78);font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:all 0.2s;}
+.qb:hover{color:var(--white);border-bottom-color:var(--sky);background:rgba(255,255,255,0.07);}
+section{padding:80px 5%;}
+.secin{max-width:1200px;margin:0 auto;}
+.seceye{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.sectitle{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:800;color:var(--navy);line-height:1.05;margin-bottom:12px;}
+.secdesc{font-size:15px;color:var(--muted);line-height:1.75;max-width:520px;margin-bottom:40px;}
+.rbar{width:44px;height:3px;background:var(--red);margin-bottom:26px;}
+.about-sec{background:var(--white);}
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.atext p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:14px;}
+.atext p strong{color:var(--navy);}
+.abadge{display:inline-block;background:var(--navy);color:var(--white);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:9px 18px;margin-top:10px;}
+.faceye{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:18px;}
+.facgrid{display:grid;grid-template-columns:1fr 1fr;gap:2px;border:1.5px solid var(--border);}
+.faccard{background:var(--white);padding:22px 20px;border-right:1px solid var(--border);position:relative;overflow:hidden;transition:all 0.2s;}
+.faccard::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--navy);transition:background 0.2s;}
+.faccard:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(26,42,108,0.11);}
+.faccard:hover::after{background:var(--red);}
+.faclbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+.facname{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.faccap{font-size:12px;color:var(--muted);margin-bottom:14px;}
+.facbook{display:block;width:100%;padding:9px;background:var(--navy);color:var(--white);border:none;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;font-family:'Barlow',sans-serif;}
+.facbook:hover{background:var(--blue);}
+.res-sec{background:var(--off);}
+.tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:34px;overflow-x:auto;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{padding:13px 26px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all 0.2s;font-family:'Barlow',sans-serif;}
+.tab.on{color:var(--navy);border-bottom-color:var(--red);}
+.tab:hover:not(.on){color:var(--blue);}
+.pane{display:none;}
+.pane.on{display:block;}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px;}
+.chip{padding:7px 15px;border:1.5px solid var(--border);background:var(--white);color:var(--muted);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;border-radius:2px;font-family:'Barlow',sans-serif;}
+.chip.on,.chip:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
+.ccard{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--navy);padding:22px;transition:all 0.22s;}
+.ccard.r{border-top-color:var(--red);}
+.ccard.b{border-top-color:var(--blue);}
+.ccard.s{border-top-color:var(--sky);}
+.ccard:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(26,42,108,0.1);}
+.ctag{display:inline-block;padding:3px 9px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:11px;border-radius:2px;}
+.tn{background:rgba(26,42,108,0.09);color:var(--navy);}
+.tr{background:rgba(192,57,43,0.09);color:var(--red);}
+.tb{background:rgba(30,111,191,0.09);color:var(--blue);}
+.ts{background:rgba(126,200,227,0.15);color:#1a6e8e;}
+.ctitle{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:9px;line-height:1.2;}
+.cdesc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;}
+.cmeta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.cm{font-size:12px;color:var(--muted);}
+.cm b{color:var(--navy);}
+.camount{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800;color:var(--red);margin-bottom:14px;display:block;}
+.clink{font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--blue);text-decoration:none;border-bottom:1.5px solid var(--blue);padding-bottom:1px;transition:color 0.2s;cursor:pointer;}
+.clink:hover{color:var(--navy);border-bottom-color:var(--navy);}
+.vend-sec{background:var(--white);}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;}
+.vcard{background:var(--off);border:1px solid var(--border);border-top:3px solid var(--blue);padding:22px 18px;text-align:center;transition:all 0.2s;}
+.vcard:hover{border-top-color:var(--red);box-shadow:0 6px 22px rgba(26,42,108,0.09);transform:translateY(-3px);}
+.vicon{width:50px;height:50px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--white);}
+.vname{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:var(--navy);}
+.vtype{font-size:12px;color:var(--muted);margin-top:4px;}
+.vbadge{display:inline-block;margin-top:10px;padding:3px 11px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:rgba(26,42,108,0.08);color:var(--navy);}
+.news-sec{background:var(--off);}
+.ngrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px;}
+.ncard{background:var(--white);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:all 0.2s;}
+.ncard:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(26,42,108,0.1);}
+.nthumb{height:150px;display:flex;align-items:center;justify-content:center;}
+.ncard.feat .nthumb{height:190px;}
+.nthumbtxt{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;color:rgba(255,255,255,0.18);text-transform:uppercase;letter-spacing:2px;padding:16px;text-align:center;}
+.nbody{padding:18px;}
+.ncat{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.ndate{font-size:11px;color:var(--muted);margin-bottom:7px;}
+.ntitle{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);line-height:1.3;}
+.ncard.feat .ntitle{font-size:1.2rem;}
+.con-sec{background:var(--navy);}
+.con-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.coneye{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--sky);margin-bottom:8px;}
+.contitle{font-family:'Barlow Condensed',sans-serif;font-size:2.3rem;font-weight:800;color:var(--white);line-height:1.05;margin-bottom:28px;}
+.contitle span{color:var(--sky);}
+.cinfolist{display:flex;flex-direction:column;gap:16px;}
+.cinforow{display:flex;gap:13px;align-items:flex-start;}
+.cinfodot{width:36px;height:36px;flex-shrink:0;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;}
+.cinfodot svg{width:14px;height:14px;fill:var(--sky);}
+.cinfotxt{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.5;}
+.cinfotxt strong{color:var(--white);font-size:11px;letter-spacing:0.5px;display:block;margin-bottom:2px;text-transform:uppercase;}
+.cinfotxt a{color:var(--sky);font-weight:700;text-decoration:none;}
+.socrow{display:flex;gap:10px;margin-top:22px;}
+.socbtn{display:flex;align-items:center;gap:8px;padding:9px 16px;border:1.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.75);font-size:12px;font-weight:700;text-decoration:none;transition:all 0.2s;letter-spacing:0.3px;}
+.socbtn:hover{border-color:var(--sky);color:var(--sky);}
+.socbtn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
+.cform{display:flex;flex-direction:column;gap:11px;}
+.crow2{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.cinput{padding:12px 15px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:var(--white);font-size:14px;font-family:'Barlow',sans-serif;outline:none;transition:border-color 0.2s;}
+.cinput:focus{border-color:var(--sky);}
+.cinput::placeholder{color:rgba(255,255,255,0.32);}
+textarea.cinput{resize:vertical;min-height:108px;}
+.csend{width:100%;padding:14px;background:var(--red);color:var(--white);border:none;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;font-family:'Barlow',sans-serif;}
+.csend:hover{background:var(--red2);}
+footer{background:#0c1235;border-top:3px solid var(--red);padding:24px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.fbrand{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.4);}
+.flinks{display:flex;gap:22px;}
+.flinks a{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;cursor:pointer;transition:color 0.2s;}
+.flinks a:hover{color:var(--sky);}
+.fsoc{display:flex;gap:12px;}
+.fsoc a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:11px;font-weight:700;letter-spacing:0.5px;transition:color 0.2s;}
+.fsoc a:hover{color:var(--sky);}
+.wafloat{position:fixed;bottom:26px;right:26px;z-index:999;width:54px;height:54px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,0.4);cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.wafloat:hover{transform:scale(1.1);box-shadow:0 6px 26px rgba(37,211,102,0.5);}
+.wafloat svg{width:27px;height:27px;fill:white;}
+.watip{position:fixed;bottom:34px;right:90px;z-index:998;background:var(--navy);color:white;font-size:11px;font-weight:700;padding:7px 13px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.2s;letter-spacing:0.3px;}
+.wafloat:hover+.watip{opacity:1;}
+.modalbg{position:fixed;inset:0;z-index:500;background:rgba(10,16,40,0.72);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px;}
+.modalbg.on{display:flex;}
+.modal{background:var(--white);width:100%;max-width:540px;border-top:4px solid var(--red);padding:34px 30px;position:relative;}
+.modalx{position:absolute;top:14px;right:18px;font-size:22px;cursor:pointer;color:var(--muted);background:none;border:none;font-family:inherit;line-height:1;}
+.modalx:hover{color:var(--red);}
+.modaltitle{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:4px;}
+.modalsub{font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.5;}
+.modalopts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:22px;}
+.mopt{border:1.5px solid var(--border);padding:13px 14px;cursor:pointer;transition:all 0.2s;text-align:center;background:var(--off);}
+.mopt:hover,.mopt.on{border-color:var(--navy);background:var(--navy);color:white;}
+.moptn{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;}
+.moptc{font-size:11px;opacity:0.65;margin-top:2px;}
+.modaldiv{border:none;border-top:1px solid var(--border);margin:18px 0;}
+.mbtnform{display:block;width:100%;padding:13px;background:var(--navy);color:white;border:none;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.2s;margin-bottom:9px;font-family:'Barlow',sans-serif;}
+.mbtnform:hover{background:var(--blue);}
+.mbtnwa{display:block;width:100%;padding:13px;background:#25d366;color:white;border:none;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.2s;font-family:'Barlow',sans-serif;}
+.mbtnwa:hover{background:#1ebe5d;}
+.modalnote{font-size:11px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.5;}
+.rv{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.rv.vis{opacity:1;transform:none;}
+@media(max-width:960px){.agrid,.con-grid,.ngrid{grid-template-columns:1fr;}.hstats{display:none;}.crow2{grid-template-columns:1fr;}}
+@media(max-width:768px){nav .nlinks{display:none;}.facgrid{grid-template-columns:1fr 1fr;}.hero h1{font-size:2.6rem;}}
 </style>
-
 </head>
 <body>
 
 <nav>
-  <div class="nav-brand">
-    <div class="nav-logo-box">
-      <div class="nav-logo-initials">SSK</div>
-    </div>
-    <div class="nav-brand-text">
-      <div class="name">SSK Centre</div>
-      <span class="sub">Smart Space Komuniti &bull; Kota Belud, Sabah</span>
-    </div>
+  <div class="nbrand" onclick="goTo('home')">
+    <div class="ninitials">SSK</div>
+    <div><div class="nname">SSK Centre</div><span class="nsub">Smart Space Komuniti &bull; Kota Belud, Sabah</span></div>
   </div>
-
-  <ul class="nav-links">
-    <li><a onclick="scrollToSection('about')">Tentang Kami</a></li>
-    <li><a onclick="scrollToSection('fasiliti')">Fasiliti</a></li>
-    <li><a onclick="scrollToSection('resources')">Peluang Bisnes</a></li>
-    <li><a onclick="scrollToSection('vendors')">Direktori</a></li>
-    <li><a onclick="scrollToSection('news')">Berita</a></li>
-    <li><a onclick="scrollToSection('contact-section')" class="nav-cta">Hubungi Kami</a></li>
+  <ul class="nlinks">
+    <li><a onclick="goTo('about')">Tentang Kami</a></li>
+    <li><a onclick="goTo('fasiliti')">Fasiliti</a></li>
+    <li><a onclick="goTo('resources')">Peluang</a></li>
+    <li><a onclick="goTo('vendors')">Direktori</a></li>
+    <li><a onclick="goTo('berita')">Berita</a></li>
+    <li><a onclick="goTo('contact')" class="ncta">Hubungi</a></li>
   </ul>
-
-  <div class="lang-toggle" onclick="toggleLang()">
-    <span id="lbm" class="active">BM</span>
-    <span style="color:rgba(255,255,255,0.2)">/</span>
-    <span id="len">EN</span>
-  </div>
+  <button class="langbtn" onclick="toggleLang()" id="langbtn">EN</button>
 </nav>
 
-<section class="hero" id="home">
-  <div class="hero-stripes">
-    <div class="stripe stripe-1"></div>
-    <div class="stripe stripe-2"></div>
-    <div class="stripe stripe-3"></div>
-    <div class="stripe stripe-4"></div>
-    <div class="stripe stripe-5"></div>
-    <div class="stripe stripe-6"></div>
-    <div class="stripe stripe-7"></div>
-  </div>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow" id="h-eyebrow">Kota Belud, Sabah &mdash; Hub Komuniti & Usahawan</div>
-    <h1 id="h-title">RUANG UNTUK<br><span class="accent">BISNES,</span><br>KOMUNITI &<br><span class="red-accent">PELUANG</span></h1>
-    <p class="hero-tagline" id="h-tag">SSK Centre menyediakan fasiliti bertaraf, program pembangunan usahawan, serta direktori kursus, geran dan pembiayaan terkini untuk anda.</p>
-    <div class="hero-actions">
-      <a class="btn-primary" onclick="openTab('kursus')" id="h-btn1">Terokai Peluang</a>
-      <a class="btn-outline" onclick="scrollToSection('fasiliti')" id="h-btn2">Lihat Fasiliti</a>
+<div id="home">
+<section class="hero">
+  <div class="hdeco"><div class="hbar"></div><div class="hbar"></div><div class="hbar"></div><div class="hbar"></div><div class="hbar"></div><div class="hbar"></div><div class="hbar"></div></div>
+  <div class="hcontent">
+    <div class="hlabel" id="hl">Kota Belud, Sabah &mdash; Hub Komuniti &amp; Usahawan</div>
+    <h1 id="hh">RUANG UNTUK<br><span class="csky">BISNES,</span><br>KOMUNITI &amp;<br><span class="cred">PELUANG</span></h1>
+    <p class="hdesc" id="hd">SSK Centre menyediakan fasiliti bertaraf, program pembangunan usahawan, serta direktori kursus, geran dan pembiayaan terkini untuk komuniti Kota Belud.</p>
+    <div class="hbtns">
+      <button class="btnred" onclick="openTab('kursus')" id="hb1">Terokai Peluang</button>
+      <button class="btnghost" onclick="goTo('fasiliti')" id="hb2">Lihat Fasiliti</button>
     </div>
   </div>
+  <div class="hstats">
+    <div class="hstat"><div class="hsnum">4</div><div class="hslbl">Fasiliti Tersedia</div></div>
+    <div class="hstat"><div class="hsnum">12+</div><div class="hslbl">Peluang Geran 2026</div></div>
+    <div class="hstat"><div class="hsnum">100%</div><div class="hslbl">Fokus Komuniti</div></div>
+  </div>
+</section>
+</div>
 
-  <div class="hero-stats">
-    <div class="stat-item">
-      <div class="stat-num">3</div>
-      <div class="stat-label">FASILITI TERSEDIA</div>
+<div class="qbar"><div class="qbar-inner">
+  <div class="qb" onclick="openModal()">Tempah Fasiliti</div>
+  <div class="qb" onclick="openTab('kursus')">Kursus &amp; Latihan</div>
+  <div class="qb" onclick="openTab('geran')">Geran</div>
+  <div class="qb" onclick="openTab('pembiayaan')">Pembiayaan</div>
+  <div class="qb" onclick="goTo('vendors')">Direktori Usahawan</div>
+  <div class="qb" onclick="goTo('berita')">Berita &amp; Update</div>
+  <div class="qb" onclick="goTo('contact')">Hubungi SSK</div>
+</div></div>
+
+<section class="about-sec" id="about">
+  <div class="secin agrid rv">
+    <div class="atext">
+      <div class="seceye" id="ab-eye">Tentang Kami</div>
+      <h2 class="sectitle" id="ab-title">SSK Centre &mdash;<br>Lebih dari Sekadar Ruang</h2>
+      <div class="rbar"></div>
+      <p id="ab-p1">Smart Space Komuniti (SSK Centre) adalah pusat komuniti dan keusahawanan di Kota Belud, Sabah. Kami menyediakan ruang berkualiti untuk program, mesyuarat, pameran dan aktiviti komuniti.</p>
+      <p id="ab-p2" style="margin-top:12px;">Kami berperanan sebagai <strong>rujukan utama peluang pembangunan usahawan</strong> di daerah ini &mdash; menghubungkan komuniti dengan kursus, geran, pembiayaan dan jaringan perniagaan.</p>
+      <div class="abadge" id="ab-badge">Perkasa Komuniti Melalui Ruang, Ilmu &amp; Peluang</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-num">10+</div>
-      <div class="stat-label">PELUANG GERAN 2026</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">FOKUS KOMUNITI</div>
+    <div id="fasiliti">
+      <div class="faceye">Fasiliti Tersedia</div>
+      <div class="facgrid">
+        <div class="faccard"><div class="faclbl">Dewan</div><div class="facname">Dewan Serbaguna</div><div class="faccap">Kapasiti sehingga 100 orang</div><button class="facbook" onclick="openModal()">Buat Tempahan</button></div>
+        <div class="faccard"><div class="faclbl">Mesyuarat</div><div class="facname">Bilik Mesyuarat</div><div class="faccap">Meeting &amp; training</div><button class="facbook" onclick="openModal()">Buat Tempahan</button></div>
+        <div class="faccard"><div class="faclbl">Studio</div><div class="facname">Studio Content</div><div class="faccap">Foto &amp; video produk</div><button class="facbook" onclick="openModal()">Buat Tempahan</button></div>
+        <div class="faccard"><div class="faclbl">Fleksibel</div><div class="facname">Ruang Fleksibel</div><div class="faccap">Seminar &amp; workshop</div><button class="facbook" onclick="openModal()">Buat Tempahan</button></div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="quickbar">
-  <div class="quickbar-inner">
-    <div class="qb-item" onclick="openModal()">Tempah Fasiliti</div>
-    <div class="qb-item" onclick="openTab('kursus')">Kursus &amp; Latihan</div>
-    <div class="qb-item" onclick="openTab('geran')">Geran</div>
-    <div class="qb-item" onclick="openTab('pembiayaan')">Pembiayaan</div>
-    <div class="qb-item" onclick="scrollToSection('vendors')">Direktori Usahawan</div>
-    <div class="qb-item" onclick="scrollToSection('news')">Berita &amp; Update</div>
-    <div class="qb-item" onclick="scrollToSection('contact-section')">Hubungi SSK</div>
+<section class="res-sec" id="resources">
+  <div class="secin">
+    <div class="seceye">Peluang Usahawan 2026</div>
+    <h2 class="sectitle" id="res-t">Kursus, Geran &amp; Pembiayaan</h2>
+    <div class="rbar"></div>
+    <p class="secdesc" id="res-d">Disenaraikan khas untuk usahawan di Kota Belud dan kawasan sekitar. Dikemas kini secara berkala.</p>
+    <div class="tabs">
+      <button class="tab on" id="tbtn-kursus" onclick="switchTab('kursus')">Kursus &amp; Latihan</button>
+      <button class="tab" id="tbtn-geran" onclick="switchTab('geran')">Geran</button>
+      <button class="tab" id="tbtn-pembiayaan" onclick="switchTab('pembiayaan')">Pembiayaan</button>
+    </div>
+
+```
+<div class="pane on" id="pane-kursus">
+  <div class="chips">
+    <button class="chip on" onclick="fc(this,'all')">Semua</button>
+    <button class="chip" onclick="fc(this,'percuma')">Percuma / Subsidi</button>
+    <button class="chip" onclick="fc(this,'digital')">Digital &amp; AI</button>
+    <button class="chip" onclick="fc(this,'usahawan')">Keusahawanan</button>
+    <button class="chip" onclick="fc(this,'fasilitator')">Fasilitator</button>
+  </div>
+  <div class="cgrid">
+    <div class="ccard b" data-t="usahawan percuma"><span class="ctag tb">INSKEN</span><div class="ctitle">Kursus Asas Keusahawanan (KAK)</div><div class="cdesc">Program 2 hari untuk usahawan baru dan refresher course. Merangkumi pemasaran, kewangan, operasi dan pengurusan bisnes. Termasuk penginapan dan makan minum. Diadakan di pelbagai lokasi termasuk Kota Kinabalu.</div><div class="cmeta"><span class="cm">Yuran <b>RM50</b></span><span class="cm">Lokasi <b>Kota Kinabalu</b></span></div><a class="clink" href="https://insken.gov.my/pendaftaran" target="_blank">Daftar di insken.gov.my</a></div>
+    <div class="ccard b" data-t="usahawan"><span class="ctag tb">INSKEN Masterclass</span><div class="ctitle">Storytelling Ecotourism: Jual Identiti, Bukan Fasiliti</div><div class="cdesc">Kursus pemasaran berasaskan naratif untuk usahawan pelancongan, homestay dan komuniti alam semula jadi. Teknik storytelling untuk tarik pelanggan tanpa bergantung pada fasiliti semata.</div><div class="cmeta"><span class="cm">Lokasi <b>Kota Kinabalu</b></span><span class="cm">Tahun <b>2026</b></span></div><a class="clink" href="https://insken.gov.my/pendaftaran" target="_blank">Lihat jadual</a></div>
+    <div class="ccard s" data-t="digital"><span class="ctag ts">INSKEN Masterclass</span><div class="ctitle">Strategi AI &amp; Model Perniagaan Industri Kreatif</div><div class="cdesc">Membangunkan content iklan dan model perniagaan menggunakan AI. Sesuai untuk usahawan kreatif, content creator dan F&amp;B. Praktikal dan hands-on termasuk simulasi sebenar.</div><div class="cmeta"><span class="cm">Lokasi <b>Kota Kinabalu</b></span><span class="cm">Fokus <b>AI</b></span></div><a class="clink" href="https://insken.gov.my" target="_blank">Info lanjut</a></div>
+    <div class="ccard b" data-t="usahawan digital"><span class="ctag tb">INSKEN Masterclass</span><div class="ctitle">Kawal Kos, Kekalkan Untung: Strategi Harga F&amp;B</div><div class="cdesc">Masterclass kewangan khas untuk usahawan F&amp;B. Belajar cara tetapkan harga yang betul, kawal kos bahan dan operasi, serta pastikan margin keuntungan kekal sihat sepanjang tahun.</div><div class="cmeta"><span class="cm">Sektor <b>F&amp;B</b></span><span class="cm">Fokus <b>Kewangan</b></span></div><a class="clink" href="https://insken.gov.my" target="_blank">Info lanjut</a></div>
+    <div class="ccard b" data-t="fasilitator"><span class="ctag tb">INSKEN</span><div class="ctitle">Kursus Fasilitator Keusahawanan (KFK)</div><div class="cdesc">Program 3 hari intensif untuk pegawai pembangunan usahawan dan fasilitator komuniti. Merangkumi teknik fasilitasi terkini, penggunaan AI, coaching dan mentoring usahawan secara holistik.</div><div class="cmeta"><span class="cm">Yuran <b>RM850</b></span><span class="cm">Lokasi <b>Kota Kinabalu</b></span></div><a class="clink" href="https://insken.gov.my" target="_blank">Info lanjut</a></div>
+    <div class="ccard" data-t="usahawan percuma"><span class="ctag tn">MARA</span><div class="ctitle">Latihan Keusahawanan MARA 2026</div><div class="cdesc">Kursus merangkumi pengurusan perniagaan, kewangan, operasi, pemasaran dan ICT. Difasilitasi oleh pakar industri dan syarikat korporat. Terbuka untuk usahawan Bumiputera di seluruh negara.</div><div class="cmeta"><span class="cm">Yuran <b>Disubsidi</b></span><span class="cm">Lokasi <b>Pelbagai</b></span></div><a class="clink" href="https://myusahawan.mara.gov.my" target="_blank">Portal MARA</a></div>
+    <div class="ccard" data-t="usahawan percuma"><span class="ctag tn">HRD Corp</span><div class="ctitle">Kursus Bersubsidi HRD Corp untuk PKS</div><div class="cdesc">Menaja kursus bagi pekerja dan pemilik PKS untuk meningkatkan produktiviti dan kecekapan. Merangkumi kemahiran digital, pengurusan, pemasaran dan pembangunan produk. Dituntut melalui majikan berdaftar.</div><div class="cmeta"><span class="cm">Yuran <b>Ditanggung HRD Corp</b></span></div><a class="clink" href="https://hrdcorp.gov.my" target="_blank">Portal HRD Corp</a></div>
+    <div class="ccard r" data-t="digital usahawan percuma"><span class="ctag tr">Yayasan Peneraju</span><div class="ctitle">Program AI Marketing &mdash; Level Up Academy</div><div class="cdesc">Program bertajaan Yayasan Peneraju untuk pemasaran digital dan AI. SSK Centre dalam perbincangan sebagai venue rasmi dan PULSE sebagai saluran pengambilan peserta dari Kota Belud.</div><div class="cmeta"><span class="cm">Yuran <b>Bertajaan</b></span><span class="cm">Lokasi <b>Kota Belud (TBC)</b></span></div><a class="clink" onclick="goTo('contact')">Hubungi SSK untuk info</a></div>
+    <div class="ccard s" data-t="usahawan percuma"><span class="ctag ts">PROTEGE</span><div class="ctitle">Program PROTEGE &mdash; Latihan Graduan Keusahawanan</div><div class="cdesc">Program pembangunan graduan dalam bidang keusahawanan dan perniagaan. Pendedahan kepada dunia sebenar perniagaan melalui penempatan dan bimbingan industri bersama syarikat terpilih.</div><div class="cmeta"><span class="cm">Sasaran <b>Graduan</b></span><span class="cm">Yuran <b>Percuma</b></span></div><a class="clink" href="https://protege.com.my" target="_blank">Portal PROTEGE</a></div>
   </div>
 </div>
 
-<section id="about" class="about">
-  <div class="section-inner about-grid reveal">
-    <div class="about-text">
-      <div class="section-eyebrow">Tentang Kami / About Us</div>
-      <h2 class="section-title" id="ab-title">SSK Centre —<br>Lebih dari Sekadar Ruang</h2>
-      <div class="red-line"></div>
-      <p id="ab-p1">Smart Space Komuniti (SSK Centre) adalah pusat komuniti dan keusahawanan yang terletak di Kota Belud, Sabah. Kami menyediakan ruang berkualiti untuk program, mesyuarat, pameran dan aktiviti komuniti.</p>
-      <p id="ab-p2" style="margin-top:14px;">Kami berfungsi sebagai <strong>rujukan utama peluang pembangunan usahawan</strong> di daerah ini — menghubungkan komuniti dengan kursus, geran, pembiayaan dan jaringan perniagaan yang relevan.</p>
-      <div class="about-badge" id="ab-badge">Perkasa Komuniti Melalui Ruang, Ilmu &amp; Peluang</div>
+<div class="pane" id="pane-geran">
+  <div class="chips">
+    <button class="chip on" onclick="fc(this,'all')">Semua</button>
+    <button class="chip" onclick="fc(this,'belia')">Belia</button>
+    <button class="chip" onclick="fc(this,'pertanian')">Pertanian</button>
+    <button class="chip" onclick="fc(this,'mikro')">Usahawan Mikro</button>
+    <button class="chip" onclick="fc(this,'luar-bandar')">Luar Bandar</button>
+    <button class="chip" onclick="fc(this,'digital')">Digital</button>
+  </div>
+  <div class="cgrid">
+    <div class="ccard r" data-t="mikro belia"><span class="ctag tr">BSN &mdash; Bajet 2026</span><div class="ctitle">Geran Usahawan Mikro BSN</div><div class="cdesc">Geran untuk pembelian peralatan perniagaan usahawan mikro. Hanya 1,000 slot sahaja seluruh Malaysia. Mohon awal sebelum kehabisan. Daripada RM50 juta peruntukan Bajet 2026.</div><span class="camount">Sehingga RM10,000</span><div class="cmeta"><span class="cm">Agensi <b>BSN</b></span><span class="cm">Tahun <b>2026</b></span></div><a class="clink" href="https://www.bsn.com.my" target="_blank">Portal BSN</a></div>
+    <div class="ccard b" data-t="pertanian belia"><span class="ctag tb">KPKM</span><div class="ctitle">Geran Agropreneur Muda (GAM) Start-Up</div><div class="cdesc">Untuk usahawan muda dalam bidang tanaman, ternakan dan perikanan. Diberikan dalam bentuk barangan/peralatan. Pemohon wajib ikuti latihan teknikal diiktiraf. Pendapatan bersih mesti bawah RM5,000 sebulan.</div><span class="camount">Sehingga RM30,000</span><div class="cmeta"><span class="cm">Umur <b>18&ndash;43 tahun</b></span><span class="cm">Sektor <b>Pertanian</b></span></div><a class="clink" href="https://egam.kpkm.gov.my" target="_blank">Mohon di egam.kpkm.gov.my</a></div>
+    <div class="ccard b" data-t="pertanian"><span class="ctag tb">KPKM</span><div class="ctitle">Geran Agropreneur Muda (GAM) Scale-Up</div><div class="cdesc">Untuk penerima GAM sedia ada yang ingin kembangkan projek huluan pertanian. Perlu rekod pelaksanaan projek yang baik. Pendapatan bersih mesti lebih RM5,000 sebulan.</div><span class="camount">Nilai scale-up</span><div class="cmeta"><span class="cm">Umur <b>21&ndash;45 tahun</b></span><span class="cm">Jenis <b>Scale-Up</b></span></div><a class="clink" href="https://egam.kpkm.gov.my" target="_blank">Info lanjut</a></div>
+    <div class="ccard" data-t="luar-bandar mikro"><span class="ctag tn">KMDW &mdash; SPKLB</span><div class="ctitle">Program Re-Start Usahawan Luar Bandar</div><div class="cdesc">Geran penuh untuk usahawan luar bandar yang perniagaan sudah beroperasi sekurang-kurangnya setahun. Berdaftar dengan SSM atau Ordinan Perniagaan Sabah. Perlu lesen berniaga dari PBT.</div><span class="camount">RM3,000 &ndash; RM5,000</span><div class="cmeta"><span class="cm">Kawasan <b>Luar Bandar Sabah</b></span></div><a class="clink" href="https://www.rurallink.gov.my" target="_blank">Info lanjut</a></div>
+    <div class="ccard s" data-t="belia mikro"><span class="ctag ts">SME Corp</span><div class="ctitle">Program Tunas Usahawan Belia Bumiputera (TUBE)</div><div class="cdesc">Geran permulaan perniagaan melalui tiga fasa latihan intensif dan bimbingan berterusan. Perlu komit sepenuh masa 1 tahun. Pemohon paling ramai adalah dari Sabah!</div><span class="camount">RM15,000</span><div class="cmeta"><span class="cm">Sasaran <b>Belia Bumiputera</b></span><span class="cm">Agensi <b>SME Corp</b></span></div><a class="clink" href="https://tube.smecorp.gov.my" target="_blank">Portal TUBE</a></div>
+    <div class="ccard r" data-t="mikro luar-bandar"><span class="ctag tr">Bajet 2026 &mdash; Sabah</span><div class="ctitle">Dana Peniaga Kecil Tamu Desa Sabah</div><div class="cdesc">RM20 juta diperuntukkan khusus untuk peniaga kecil Tamu Desa di Sabah dalam Bajet 2026. Sangat relevan untuk usahawan Kota Belud yang terlibat dengan tamu dan pasar tempatan.</div><span class="camount">Bahagian RM20 juta</span><div class="cmeta"><span class="cm">Kawasan <b>Khusus Sabah</b></span><span class="cm">Tahun <b>2026</b></span></div><a class="clink" onclick="goTo('contact')">Hubungi SSK untuk update</a></div>
+    <div class="ccard b" data-t="digital mikro"><span class="ctag tb">MDEC</span><div class="ctitle">Geran Pecutan Digital Malaysia</div><div class="cdesc">RM53 juta untuk mempercepat penggunaan AI, blockchain dan komputer kuantum dalam perniagaan. Sesuai untuk bisnes yang ingin upgrade sistem digital dan operasi berasaskan teknologi.</div><span class="camount">Bahagian RM53 juta</span><div class="cmeta"><span class="cm">Fokus <b>AI &amp; Blockchain</b></span><span class="cm">Agensi <b>MDEC</b></span></div><a class="clink" href="https://mdec.my" target="_blank">Portal MDEC</a></div>
+    <div class="ccard" data-t="mikro"><span class="ctag tn">MATRADE</span><div class="ctitle">Geran Pembangunan Pasaran MATRADE</div><div class="cdesc">RM60 juta untuk membantu PKS menembusi pasaran antarabangsa termasuk Afrika, Amerika Latin dan Asia Tengah. Sesuai untuk usahawan yang ada produk tempatan berpotensi eksport.</div><span class="camount">Bahagian RM60 juta</span><div class="cmeta"><span class="cm">Agensi <b>MATRADE</b></span><span class="cm">Fokus <b>Eksport</b></span></div><a class="clink" href="https://www.matrade.gov.my" target="_blank">Portal MATRADE</a></div>
+    <div class="ccard s" data-t="pertanian mikro"><span class="ctag ts">Agro Bank</span><div class="ctitle">Program Agropreneur NextGen KPKM</div><div class="cdesc">Geran permulaan dan geran pengembangan untuk projek pertanian moden. Disokong pembiayaan RM1.1 bilion Agro Bank. Termasuk pengecualian cukai 100% untuk projek pengeluaran makanan baharu.</div><div class="cmeta"><span class="cm">Sektor <b>Pertanian</b></span><span class="cm">Agensi <b>Agro Bank &amp; KPKM</b></span></div><a class="clink" href="https://www.agrobank.com.my" target="_blank">Portal Agro Bank</a></div>
+  </div>
+</div>
+
+<div class="pane" id="pane-pembiayaan">
+  <div class="cgrid">
+    <div class="ccard r"><span class="ctag tr">TERAJU &mdash; Khas Sabah</span><div class="ctitle">Dana Pemerkasaan Bumiputera Sabah &amp; Sarawak (BSSF)</div><div class="cdesc">Pembiayaan fleksibel dengan terma kompetitif khas untuk syarikat Bumiputera Sabah. Disokong mekanisme jaminan institusi kewangan. Termasuk program Ascend, Enhance dan Accelerate. Disasarkan sokong 100+ syarikat pemula.</div><div class="cmeta"><span class="cm">Agensi <b>TERAJU</b></span><span class="cm">Kawasan <b>Sabah &amp; Sarawak</b></span></div><a class="clink" href="https://www.teraju.gov.my" target="_blank">Portal TERAJU</a></div>
+    <div class="ccard"><span class="ctag tn">TEKUN Nasional</span><div class="ctitle">Pembiayaan Mikro TEKUN</div><div class="cdesc">Tiada cagaran diperlukan. Kadar pentadbiran 4%. Tempoh bayaran balik 1&ndash;7 tahun. Sesuai untuk usahawan baru tanpa rekod kredit. Pembiayaan kali ke-2 dipermudahkan tanpa perlu selesaikan pembiayaan pertama.</div><div class="cmeta"><span class="cm">Cagaran <b>Tiada</b></span><span class="cm">Kadar <b>4%</b></span><span class="cm">Tempoh <b>1&ndash;7 tahun</b></span></div><a class="clink" href="https://www.tekun.gov.my" target="_blank">Portal TEKUN</a></div>
+    <div class="ccard b"><span class="ctag tb">BSN</span><div class="ctitle">Pembiayaan Usahawan Muda BSN</div><div class="cdesc">Khas untuk usahawan berusia bawah 30 tahun. Daripada RM150 juta peruntukan Bajet 2026. Kadar faedah rendah dan terma mesra belia. Boleh digunakan untuk modal permulaan atau modal pusingan.</div><div class="cmeta"><span class="cm">Umur <b>Bawah 30 tahun</b></span><span class="cm">Agensi <b>BSN</b></span></div><a class="clink" href="https://www.bsn.com.my" target="_blank">Portal BSN</a></div>
+    <div class="ccard b"><span class="ctag tb">MARA</span><div class="ctitle">Pembiayaan Perniagaan MARA</div><div class="cdesc">Pelbagai skim untuk Bumiputera: modal tetap, modal pusingan, naik taraf premis, peralatan dan mesin. Ada skim khusus untuk profesional, pengilang, kontraktor dan usahawan halal. 40% geran jika rekod bayaran balik baik.</div><div class="cmeta"><span class="cm">Sasaran <b>Bumiputera</b></span><span class="cm">Agensi <b>MARA</b></span></div><a class="clink" href="https://www.mara.gov.my" target="_blank">Portal MARA</a></div>
+    <div class="ccard"><span class="ctag tn">AIM</span><div class="ctitle">Pembiayaan Amanah Ikhtiar Malaysia</div><div class="cdesc">Tanpa cagaran untuk golongan asnaf dan B40. Lebih fleksibel berbanding bank konvensional. Kelulusan dalam 1&ndash;2 minggu. Boleh mohon tanpa rekod kredit. Hubungi Pusat Zakat negeri untuk permohonan.</div><div class="cmeta"><span class="cm">Cagaran <b>Tiada</b></span><span class="cm">Sasaran <b>B40 &amp; Asnaf</b></span><span class="cm">Kelulusan <b>1&ndash;2 minggu</b></span></div><a class="clink" href="https://www.aim.gov.my" target="_blank">Portal AIM</a></div>
+    <div class="ccard b"><span class="ctag tb">Agro Bank</span><div class="ctitle">Pembiayaan Pertanian Agro Bank</div><div class="cdesc">RM1.1 bilion pembiayaan untuk usahawan pertanian. Termasuk Program Agropreneur NextGen dengan geran permulaan dan pengembangan. Pengecualian cukai 100% untuk projek pengeluaran makanan baharu.</div><div class="cmeta"><span class="cm">Sektor <b>Pertanian</b></span><span class="cm">Agensi <b>Agro Bank</b></span></div><a class="clink" href="https://www.agrobank.com.my" target="_blank">Portal Agro Bank</a></div>
+    <div class="ccard s"><span class="ctag ts">SME Bank</span><div class="ctitle">Pembiayaan SME Bank</div><div class="cdesc">Pusat sehenti kewangan dan pembangunan perniagaan untuk usahawan kecil. Proses pinjaman dipercepatkan. Khidmat nasihat perniagaan disertakan. Sesuai untuk PKS yang ingin naik taraf operasi atau kembangkan skala.</div><div class="cmeta"><span class="cm">Sasaran <b>PKS</b></span><span class="cm">Agensi <b>SME Bank</b></span></div><a class="clink" href="https://www.smebank.com.my" target="_blank">Portal SME Bank</a></div>
+    <div class="ccard"><span class="ctag tn">PUNB</span><div class="ctitle">Pembiayaan PUNB</div><div class="cdesc">Pembiayaan untuk usahawan Bumiputera dalam perniagaan francais, runcit moden dan perkhidmatan. Termasuk bimbingan perniagaan dan pembangunan usahawan secara holistik sepanjang tempoh pembiayaan.</div><div class="cmeta"><span class="cm">Sasaran <b>Bumiputera</b></span><span class="cm">Agensi <b>PUNB</b></span></div><a class="clink" href="https://www.punb.com.my" target="_blank">Portal PUNB</a></div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<section class="vend-sec" id="vendors">
+  <div class="secin rv">
+    <div class="seceye">Direktori Usahawan</div>
+    <h2 class="sectitle">Usahawan &amp; Vendor SSK Centre</h2>
+    <div class="rbar"></div>
+    <p class="secdesc" style="margin-bottom:34px;">Kenali usahawan dan vendor yang aktif di SSK Centre. Ingin tersenarai? Hubungi kami.</p>
+    <div class="vgrid">
+      <div class="vcard"><div class="vicon">AJ</div><div class="vname">Kiosk Abang J</div><div class="vtype">Chicken Karaage &amp; Popcorn</div><div class="vbadge">Vendor SSK</div></div>
+      <div class="vcard"><div class="vicon">SK</div><div class="vname">Sri Kenanga Studio</div><div class="vtype">Fotografi Produk &amp; Event</div><div class="vbadge">Rakan SSK</div></div>
+      <div class="vcard" style="border-top-color:var(--red)"><div class="vicon" style="background:var(--red)">+</div><div class="vname">Daftar Bisnes Anda</div><div class="vtype">Tersenarai dalam direktori ini</div><div class="vbadge" style="background:rgba(192,57,43,0.09);color:var(--red)">Hubungi Kami</div></div>
     </div>
+  </div>
+</section>
+
+<section class="news-sec" id="berita">
+  <div class="secin rv">
+    <div class="seceye">Berita &amp; Kemas Kini</div>
+    <h2 class="sectitle">Terkini dari SSK Centre</h2>
+    <div class="rbar"></div>
+    <p class="secdesc" style="margin-bottom:30px;">Program, event dan peluang terbaru untuk komuniti Kota Belud.</p>
+    <div class="ngrid">
+      <div class="ncard feat"><div class="nthumb" style="background:var(--navy)"><div class="nthumbtxt">Night Market SSK</div></div><div class="nbody"><div class="ncat">Program</div><div class="ndate">April 2026</div><div class="ntitle">Night Market SSK Centre &mdash; Sistem Deposit &amp; Kategori Vendor Eksklusif Diperkenalkan</div></div></div>
+      <div class="ncard"><div class="nthumb" style="background:var(--blue)"><div class="nthumbtxt">Studio</div></div><div class="nbody"><div class="ncat">Kolaborasi</div><div class="ndate">Mac 2026</div><div class="ntitle">SSK x Sri Kenanga: Studio Photography Partnership Dilancarkan</div></div></div>
+      <div class="ncard"><div class="nthumb" style="background:var(--red)"><div class="nthumbtxt">TERAJU BSSF</div></div><div class="nbody"><div class="ncat">Peluang</div><div class="ndate">Feb 2026</div><div class="ntitle">TERAJU Aspirasi Outreach Sabah 2026 &mdash; Dana BSSF Dibuka</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="con-sec" id="contact">
+  <div class="secin con-grid">
     <div>
-      <div class="section-eyebrow" style="margin-bottom:20px" id="fac-eyebrow">Fasiliti / Facilities</div>
-      <div id="fasiliti">
-        <div class="fac-grid">
-          <div class="fac-card">
-            <div class="fac-label">Dewan</div>
-            <div class="fac-name">Dewan Serbaguna</div>
-            <div class="fac-cap">Kapasiti sehingga 100 orang</div>
-            <button class="book-btn" onclick="openModal()">Buat Tempahan</button>
-          </div>
-          <div class="fac-card">
-            <div class="fac-label">Mesyuarat</div>
-            <div class="fac-name">Bilik Mesyuarat</div>
-            <div class="fac-cap">Kapasiti sehingga 20 orang</div>
-            <button class="book-btn" onclick="openModal()">Buat Tempahan</button>
-          </div>
-          <div class="fac-card">
-            <div class="fac-label">Studio</div>
-            <div class="fac-name">Studio Content</div>
-            <div class="fac-cap">Foto &amp; video produk</div>
-            <button class="book-btn" onclick="openModal()">Buat Tempahan</button>
-          </div>
-          <div class="fac-card">
-            <div class="fac-label">Fleksibel</div>
-            <div class="fac-name">Ruang Fleksibel</div>
-            <div class="fac-cap">Seminar &amp; workshop</div>
-            <div class="fac-price">Hubungi kami</div>
-            <button class="book-btn" onclick="openModal()">Buat Tempahan</button>
-          </div>
-        </div>
+      <div class="coneye">Hubungi Kami</div>
+      <h2 class="contitle">Bincang dengan<br><span>Pasukan SSK Centre</span></h2>
+      <div class="cinfolist">
+        <div class="cinforow"><div class="cinfodot"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="cinfotxt"><strong>Alamat</strong>SSK Centre, Kota Belud, Sabah, Malaysia</div></div>
+        <div class="cinforow"><div class="cinfodot"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div><div class="cinfotxt"><strong>WhatsApp Admin</strong><a href="https://wa.me/601121406450" target="_blank">011-2140 6450</a></div></div>
+        <div class="cinforow"><div class="cinfodot"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div><div class="cinfotxt"><strong>Waktu Operasi</strong>Isnin &ndash; Jumaat: 8:30 pagi &ndash; 5:00 petang</div></div>
+        <div class="cinforow"><div class="cinfodot"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="cinfotxt"><strong>Pertanyaan</strong>Tempahan fasiliti, program komuniti, pendaftaran vendor, maklumat geran &amp; kursus</div></div>
+      </div>
+      <div class="socrow">
+        <a class="socbtn" href="https://www.facebook.com/sskcentrekb" target="_blank"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a>
+        <a class="socbtn" href="https://www.tiktok.com/@sskcentrekb" target="_blank"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>TikTok</a>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="resources" class="resources">
-  <div class="section-inner">
-    <div class="section-eyebrow">Peluang Usahawan 2026</div>
-    <h2 class="section-title" id="res-title">Kursus, Geran &amp; Pembiayaan</h2>
-    <div class="red-line"></div>
-    <p class="section-desc" id="res-desc">Disenaraikan khas untuk usahawan di Kota Belud dan kawasan sekitar. Dikemas kini secara berkala.</p>
-
-    <div class="tabs">
-      <button class="tab-btn active" id="tbtn-kursus" onclick="switchTab('kursus')">Kursus &amp; Latihan</button>
-      <button class="tab-btn" id="tbtn-geran" onclick="switchTab('geran')">Geran</button>
-      <button class="tab-btn" id="tbtn-pembiayaan" onclick="switchTab('pembiayaan')">Pembiayaan</button>
-    </div>
-
-    <div class="tab-pane active" id="pane-kursus">
-      <div class="filter-row">
-        <button class="filter-chip active" onclick="filterCards(this,'all')">Semua</button>
-        <button class="filter-chip" onclick="filterCards(this,'percuma')">Percuma / Subsidi</button>
-        <button class="filter-chip" onclick="filterCards(this,'digital')">Digital &amp; AI</button>
-        <button class="filter-chip" onclick="filterCards(this,'keusahawanan')">Keusahawanan</button>
-      </div>
-      <div class="cards-grid">
-        <div class="info-card accent-blue" data-tags="keusahawanan percuma">
-          <span class="card-tag tag-blue">INSKEN</span>
-          <div class="card-title">Kursus Asas Keusahawanan (KAK) — Kota Kinabalu</div>
-          <div class="card-desc">Program 2 hari untuk usahawan baru dan refresher course. Merangkumi pemasaran, kewangan, operasi dan pengurusan bisnes. Termasuk penginapan dan makan minum.</div>
-          <div class="card-meta">
-            <div class="meta-item">Yuran <span>RM50</span></div>
-            <div class="meta-item">Lokasi <span>Kota Kinabalu</span></div>
-          </div>
-          <a class="card-link" href="https://insken.gov.my/pendaftaran" target="_blank">Daftar di insken.gov.my</a>
-        </div>
-        <div class="info-card accent-blue" data-tags="keusahawanan">
-          <span class="card-tag tag-blue">INSKEN Masterclass</span>
-          <div class="card-title">Storytelling Ecotourism: Jual Identiti, Bukan Fasiliti</div>
-          <div class="card-desc">Kursus pemasaran berasaskan naratif untuk usahawan pelancongan dan komuniti alam semula jadi.</div>
-          <a class="card-link" href="https://insken.gov.my/pendaftaran" target="_blank">Lihat jadual</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="vendors" class="vendors">
-  <div class="section-inner reveal">
-    <div class="section-eyebrow">Direktori Usahawan</div>
-    <h2 class="section-title">Usahawan &amp; Vendor SSK Centre</h2>
-    <div class="red-line"></div>
-    <div class="vendor-grid">
-      <div class="vendor-card">
-        <div class="vendor-icon">AJ</div>
-        <div class="vendor-name">Kiosk Abang J</div>
-        <div class="vendor-type">Chicken Karaage &amp; Popcorn</div>
-        <div class="vendor-badge">Vendor SSK</div>
-      </div>
-      <div class="vendor-card">
-        <div class="vendor-icon">SK</div>
-        <div class="vendor-name">Sri Kenanga Studio</div>
-        <div class="vendor-type">Fotografi Produk</div>
-        <div class="vendor-badge">Rakan SSK</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="news" class="news">
-  <div class="section-inner reveal">
-    <div class="section-eyebrow">Berita &amp; Kemas Kini</div>
-    <h2 class="section-title">Terkini dari SSK Centre</h2>
-    <div class="red-line"></div>
-    <div class="news-grid">
-      <div class="news-card featured">
-        <div class="news-thumb"><div class="news-thumb-text">Night Market SSK</div></div>
-        <div class="news-body">
-          <div class="news-category">Program</div>
-          <div class="news-date">April 2026</div>
-          <div class="news-title">Night Market SSK Centre — Sistem Deposit Diperkenalkan</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact-section" class="contact-section">
-  <div class="section-inner contact-grid">
-    <div>
-      <div class="contact-eyebrow">Hubungi Kami / Contact Us</div>
-      <h2 class="contact-title">Bincang dengan<br><span>Pasukan SSK Centre</span></h2>
-      <div class="contact-info">
-        <div class="cinfo-row">
-          <div class="cinfo-icon">&#9679;</div>
-          <div class="cinfo-text"><strong>Alamat</strong>SSK Centre, Kota Belud, Sabah</div>
-        </div>
-        <div class="cinfo-row">
-          <div class="cinfo-icon">&#9679;</div>
-          <div class="cinfo-text"><strong>WhatsApp</strong>011-2140 6450</div>
-        </div>
-      </div>
-    </div>
-    <div class="contact-form">
-      <input class="form-input" type="text" placeholder="Nama Penuh">
-      <input class="form-input" type="text" placeholder="No. Telefon">
-      <textarea class="form-input" placeholder="Mesej anda..."></textarea>
-      <button class="btn-primary" onclick="alert('Pertanyaan dihantar!')">Hantar Pertanyaan</button>
+    <div class="cform">
+      <div class="crow2"><input class="cinput" type="text" placeholder="Nama Penuh"><input class="cinput" type="text" placeholder="No. Telefon / WhatsApp"></div>
+      <input class="cinput" type="text" placeholder="Subjek: Fasiliti / Geran / Kursus / Vendor">
+      <textarea class="cinput" placeholder="Mesej anda..."></textarea>
+      <button class="csend" onclick="alert('Terima kasih. Pasukan SSK Centre akan menghubungi anda dalam masa 1-2 hari bekerja.')">Hantar Pertanyaan</button>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-brand">SSK Centre &mdash; Kota Belud, Sabah &copy; 2026</div>
-  <div class="footer-links">
-    <a onclick="scrollToSection('home')">Utama</a>
-    <a onclick="scrollToSection('contact-section')">Hubungi</a>
-  </div>
+  <div class="fbrand">SSK Centre &mdash; Smart Space Komuniti, Kota Belud, Sabah &copy; 2026</div>
+  <div class="flinks"><a onclick="goTo('home')">Utama</a><a onclick="goTo('fasiliti')">Fasiliti</a><a onclick="goTo('resources')">Peluang</a><a onclick="goTo('vendors')">Direktori</a><a onclick="goTo('contact')">Hubungi</a></div>
+  <div class="fsoc"><a href="https://www.facebook.com/sskcentrekb" target="_blank">Facebook</a><a href="https://www.tiktok.com/@sskcentrekb" target="_blank">TikTok</a></div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/601121406450" target="_blank">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+<a class="wafloat" href="https://wa.me/601121406450?text=Salam%2C%20saya%20ingin%20bertanya%20mengenai%20SSK%20Centre." target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
-<div class="modal-overlay" id="bookingModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">&times;</button>
-    <div class="modal-title">Tempahan Fasiliti</div>
-    <div class="modal-actions">
-      <a class="modal-btn-wa" href="https://wa.me/601121406450" target="_blank">Hubungi via WhatsApp</a>
+<div class="watip">Hubungi SSK Centre</div>
+
+<div class="modalbg" id="modalBg" onclick="bgClick(event)">
+  <div class="modal">
+    <button class="modalx" onclick="closeModal()">&times;</button>
+    <div class="modaltitle">Buat Tempahan Fasiliti</div>
+    <div class="modalsub">Pilih fasiliti yang dikehendaki, kemudian isi borang rasmi atau hubungi admin melalui WhatsApp.</div>
+    <div class="modalopts">
+      <div class="mopt" onclick="pickFac(this,'Dewan Serbaguna')"><div class="moptn">Dewan Serbaguna</div><div class="moptc">100 orang</div></div>
+      <div class="mopt" onclick="pickFac(this,'Bilik Mesyuarat')"><div class="moptn">Bilik Mesyuarat</div><div class="moptc">Meeting &amp; Training</div></div>
+      <div class="mopt" onclick="pickFac(this,'Studio Content')"><div class="moptn">Studio Content</div><div class="moptc">Foto &amp; Video</div></div>
+      <div class="mopt" onclick="pickFac(this,'Ruang Fleksibel')"><div class="moptn">Ruang Fleksibel</div><div class="moptc">Seminar &amp; Workshop</div></div>
     </div>
+    <hr class="modaldiv">
+    <a id="mbtn-form" class="mbtnform" href="https://forms.gle/1cN61QBAXEB3iX6s9" target="_blank">Isi Borang Tempahan Rasmi</a>
+    <a id="mbtn-wa" class="mbtnwa" href="https://wa.me/601121406450?text=Salam%2C+saya+ingin+membuat+tempahan+di+SSK+Centre." target="_blank">Hubungi Admin via WhatsApp</a>
+    <div class="modalnote">Pengesahan tempahan dalam masa 24 jam waktu bekerja &bull; Admin SSK Centre &mdash; 011-2140 6450</div>
   </div>
 </div>
 
 <script>
-function openModal(){ document.getElementById('bookingModal').classList.add('open'); }
-function closeModal(){ document.getElementById('bookingModal').classList.remove('open'); }
-function scrollToSection(id){ const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
-function switchTab(name){
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
-  document.getElementById('tbtn-'+name).classList.add('active');
-  document.getElementById('pane-'+name).classList.add('active');
-}
-function openTab(name){ scrollToSection('resources'); setTimeout(()=>switchTab(name),500); }
-function filterCards(btn,tag){
-  const pane=btn.closest('.tab-pane');
-  pane.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
-  btn.classList.add('active');
-  pane.querySelectorAll('.info-card').forEach(card=>{
-    if(tag==='all'){card.style.display=''; return;}
-    card.style.display=(card.dataset.tags||'').includes(tag)?'':'none';
-  });
-}
-function toggleLang(){
-  const btn = document.getElementById('lbm');
-  alert("Language toggle triggered. Current version: BM focus.");
-}
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function goTo(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+function switchTab(n){document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('on');});document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('on');});document.getElementById('tbtn-'+n).classList.add('on');document.getElementById('pane-'+n).classList.add('on');var p=document.getElementById('pane-'+n);var c=p.querySelectorAll('.chip');c.forEach(function(x){x.classList.remove('on');});if(c[0])c[0].classList.add('on');p.querySelectorAll('.ccard').forEach(function(x){x.style.display='';});}
+function openTab(n){goTo('resources');setTimeout(function(){switchTab(n);},500);}
+function fc(btn,tag){var p=btn.closest('.pane');p.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on');});btn.classList.add('on');p.querySelectorAll('.ccard').forEach(function(c){if(tag==='all'){c.style.display='';return;}c.style.display=(c.dataset.t||'').indexOf(tag)!==-1?'':'none';});}
+function openModal(){document.getElementById('modalBg').classList.add('on');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('modalBg').classList.remove('on');document.body.style.overflow='';}
+function bgClick(e){if(e.target===document.getElementById('modalBg'))closeModal();}
+function pickFac(el,name){document.querySelectorAll('.mopt').forEach(function(o){o.classList.remove('on');});el.classList.add('on');var msg=encodeURIComponent('Salam, saya ingin membuat tempahan '+name+' di SSK Centre. Boleh saya dapatkan maklumat lanjut?');document.getElementById('mbtn-wa').href='https://wa.me/601121406450?text='+msg;}
+var lang='bm';
+var T={bm:{hl:'Kota Belud, Sabah \u2014 Hub Komuniti & Usahawan',hh:'RUANG UNTUK<br><span class="csky">BISNES,</span><br>KOMUNITI &amp;<br><span class="cred">PELUANG</span>',hd:'SSK Centre menyediakan fasiliti bertaraf, program pembangunan usahawan, serta direktori kursus, geran dan pembiayaan terkini untuk komuniti Kota Belud.',hb1:'Terokai Peluang',hb2:'Lihat Fasiliti','ab-eye':'Tentang Kami','ab-title':'SSK Centre \u2014<br>Lebih dari Sekadar Ruang','ab-p1':'Smart Space Komuniti (SSK Centre) adalah pusat komuniti dan keusahawanan di Kota Belud, Sabah. Kami menyediakan ruang berkualiti untuk program, mesyuarat, pameran dan aktiviti komuniti.','ab-p2':'Kami berperanan sebagai <strong>rujukan utama peluang pembangunan usahawan</strong> di daerah ini \u2014 menghubungkan komuniti dengan kursus, geran, pembiayaan dan jaringan perniagaan.','ab-badge':'Perkasa Komuniti Melalui Ruang, Ilmu &amp; Peluang','res-t':'Kursus, Geran &amp; Pembiayaan','res-d':'Disenaraikan khas untuk usahawan di Kota Belud dan kawasan sekitar. Dikemas kini secara berkala.'},en:{hl:'Kota Belud, Sabah \u2014 Community & Entrepreneur Hub',hh:'SPACE FOR<br><span class="csky">BUSINESS,</span><br>COMMUNITY &amp;<br><span class="cred">OPPORTUNITY</span>',hd:'SSK Centre provides quality facilities, entrepreneur development programs, and a curated directory of courses, grants and financing for the Kota Belud community.',hb1:'Explore Opportunities',hb2:'View Facilities','ab-eye':'About Us','ab-title':'SSK Centre \u2014<br>More Than Just a Space','ab-p1':'Smart Space Komuniti (SSK Centre) is a community and entrepreneurship centre in Kota Belud, Sabah. We provide quality space for programs, meetings, exhibitions and community activities.','ab-p2':'We serve as the <strong>primary reference for entrepreneur development opportunities</strong> in this district \u2014 connecting the community with courses, grants, financing and business networks.','ab-badge':'Empowering Community Through Space, Knowledge &amp; Opportunity','res-t':'Courses, Grants &amp; Financing','res-d':'Curated specifically for entrepreneurs in Kota Belud and surrounding areas. Updated regularly.'}};
+function toggleLang(){lang=lang==='bm'?'en':'bm';document.getElementById('langbtn').textContent=lang==='bm'?'EN':'BM';var t=T[lang];for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id];}}
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.08});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
 </script>
 
 </body>
