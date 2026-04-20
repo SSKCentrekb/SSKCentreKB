@@ -191,7 +191,52 @@ footer{background:#0c1235;border-top:3px solid var(--red);padding:24px 5%;displa
     background: white;
     padding: 6px;
     border-radius: 6px;
-  
+  .mvgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:32px;}
+.mvcard{background:var(--off);border:1px solid var(--border);border-top:3px solid var(--blue);padding:22px 20px;}
+.mvcard.r{border-top-color:var(--red);}
+.mvicon{font-size:1.6rem;margin-bottom:10px;}
+.mvtitle{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.mvdesc{font-size:12px;color:var(--muted);line-height:1.6;}
+.mem-sec{background:var(--off);}
+.memgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+.memcard{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--navy);padding:28px 24px;position:relative;transition:all 0.2s;}
+.memcard.pop{border-top-color:var(--red);}
+.memcard.corp{border-top-color:var(--blue);}
+.memcard:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(26,42,108,0.11);}
+.memtier{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;}
+.memcard.pop .memtier{color:var(--red);}
+.memcard.corp .memtier{color:var(--blue);}
+.memname{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:14px;}
+.membens{list-style:none;margin-bottom:20px;}
+.membens li{font-size:13px;color:var(--muted);padding:7px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:8px;line-height:1.4;}
+.membens li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;margin-top:5px;}
+.memcard.pop .membens li::before{background:var(--red);}
+.memcard.corp .membens li::before{background:var(--blue);}
+.mempoptag{position:absolute;top:16px;right:16px;background:var(--red);color:white;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;}
+.membtn{display:block;width:100%;padding:11px;background:var(--navy);color:white;border:none;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.2s;font-family:'Barlow',sans-serif;}
+.memcard.pop .membtn{background:var(--red);}
+.memcard.pop .membtn:hover{background:var(--red2);}
+.membtn:hover{background:var(--blue);}
+.kon-sec{background:var(--navy);}
+.kongrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.kon-eye{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--sky);margin-bottom:8px;}
+.kon-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:800;color:var(--white);line-height:1.05;margin-bottom:16px;}
+.kon-title span{color:#ef5350;}
+.kon-desc{font-size:15px;color:rgba(255,255,255,0.62);line-height:1.75;margin-bottom:28px;}
+.kon-list{list-style:none;margin-bottom:28px;}
+.kon-list li{font-size:14px;color:rgba(255,255,255,0.72);padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;gap:10px;align-items:flex-start;}
+.kon-list li::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--sky);flex-shrink:0;margin-top:7px;}
+.kon-box{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);padding:28px;}
+.kon-box-title{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:16px;}
+.kon-feat{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+.kon-feat-item{display:flex;align-items:flex-start;gap:12px;}
+.kon-feat-icon{width:34px;height:34px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+.kon-feat-txt{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.5;}
+.kon-feat-txt strong{color:var(--white);display:block;font-size:12px;margin-bottom:2px;}
+.konbtn{display:block;width:100%;padding:13px;background:var(--red);color:white;border:none;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.2s;font-family:'Barlow',sans-serif;}
+.konbtn:hover{background:var(--red2);}
+@media(max-width:960px){.kongrid{grid-template-columns:1fr;}}
+
 </style>
 </head>
 <body>
