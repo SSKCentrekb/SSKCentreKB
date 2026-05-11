@@ -29,7 +29,7 @@ body{font-family:'Barlow',sans-serif;background:var(--off);color:var(--text);ove
 nav{position:sticky;top:0;z-index:300;background:var(--navy);height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:3px solid var(--red);}
 .nbrand{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer;}
 
-/* KOD GAYA LOGO BARU ANDA */
+/* KOD LOGO ANDA - KEKAL SEPERTI ASAL */
 .nlogo {
     width: 55px;
     height: 55px;
@@ -359,7 +359,7 @@ footer{background:#0c1235;border-top:3px solid var(--red);padding:24px 5%;displa
 .chat-footer{padding:10px 14px;border-top:1px solid var(--border);background:white;display:flex;gap:8px;}
 .chat-input{flex:1;border:1px solid var(--border);padding:9px 12px;border-radius:8px;font-size:13px;font-family:'Barlow',sans-serif;outline:none;}
 .chat-input:focus{border-color:var(--navy);}
-.chat-se{display:none;} /* Penyembunyi elemen teknikal jika perlu */
+.chat-se{display:none;}
 .chat-send-btn{background:var(--navy);color:white;border:none;padding:9px 15px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Barlow',sans-serif;transition:background 0.2s;}
 .chat-send-btn:hover{background:var(--blue);}
 
@@ -373,7 +373,7 @@ footer{background:#0c1235;border-top:3px solid var(--red);padding:24px 5%;displa
     .cd-wrap {grid-template-columns: 1fr;}
 }
 @media (max-width: 768px) {
-    .nlinks {display: none;} /* Boleh ditambah hamburger menu jika perlu */
+    .nlinks {display: none;}
     nav {padding: 0 16px;}
     .facgrid {grid-template-columns: 1fr;}
 }
@@ -1017,7 +1017,6 @@ function initCountdown() {
             document.getElementById(elements.mins).innerText = mins < 10 ? '0' + mins : mins;
         }, 1000);
     }
-    // Set 2026 dates
     startTimer("June 15, 2026 23:59:59", {days: 'g-hari', hours: 'g-jam', mins: 'g-min'});
     startTimer("May 22, 2026 09:00:00", {days: 'b-hari', hours: 'b-jam', mins: 'b-min'});
 }
@@ -1067,11 +1066,10 @@ function runCalculation() {
 
     let total = (priceBase * factor) + addonTotal;
 
-    // Diskaun Tempoh
     if (factor === 3) {
-        total = (priceBase * factor * 0.95) + addonTotal; // 5% Off
+        total = (priceBase * factor * 0.95) + addonTotal;
     } else if (factor === 5) {
-        total = (priceBase * factor * 0.90) + addonTotal; // 10% Off
+        total = (priceBase * factor * 0.90) + addonTotal;
     }
 
     document.getElementById("lblRuang").innerText = nameRuang;
@@ -1080,7 +1078,6 @@ function runCalculation() {
     document.getElementById("lblAddon").innerText = addonNames.length > 0 ? addonNames.join(", ") : "Tiada";
     document.getElementById("lblTotal").innerText = "RM " + total.toFixed(0);
 
-    // WhatsApp Message Generator
     let textWA = `Halo SSK Centre, saya ingin tempah slot sewaan:\n\n- Ruang: ${nameRuang}\n- Tempoh: ${nameTempoh}\n- Tambahan: ${addonNames.length > 0 ? addonNames.join(", ") : "Tiada"}\n\nAnggaran Kiraan: RM ${total.toFixed(0)}`;
     document.getElementById("btnWhatsappSewa").setAttribute("href", `https://wa.me/601151322894?text=${encodeURIComponent(textWA)}`);
 }
@@ -1197,13 +1194,9 @@ function renderResources(tab, chip) {
     grid.innerHTML = "";
 
     let filtered = resourcesData.filter(res => {
-        // Tab Filter
         let matchTab = (tab === 'semua') || (res.type === tab);
-        // Chip Filter
         let matchChip = (chip === 'semua') || (res.category === chip);
-        // Search Filter
         let matchSearch = res.label.toLowerCase().includes(searchVal) || res.desc.toLowerCase().includes(searchVal);
-        
         return matchTab && matchChip && matchSearch;
     });
 
@@ -1294,7 +1287,6 @@ function sendUserMessage() {
     appendChatMsg(txt, 'user');
     input.value = "";
 
-    // Gimmick delay jawapan bot
     setTimeout(() => {
         let response = queryBotKnowledge(txt.toLowerCase());
         appendChatMsg(response, 'bot');
