@@ -28,17 +28,7 @@ body{font-family:'Barlow',sans-serif;background:var(--off);color:var(--text);ove
 
 nav{position:sticky;top:0;z-index:300;background:var(--navy);height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:3px solid var(--red);}
 .nbrand{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer;}
-
-/* KOD LOGO ANDA - KEKAL SEPERTI ASAL */
-.nlogo {
-    width: 55px;
-    height: 55px;
-    object-fit: contain;
-    background: white;
-    padding: 6px;
-    border-radius: 6px;
-}
-
+.nlogo{width:55px;height:55px;object-fit:contain;background:white;padding:6px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--navy);font-size:18px;}
 .nname{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--white);}
 .nsub{font-size:10px;color:var(--sky);display:block;font-weight:400;}
 .nlinks{display:flex;align-items:center;gap:22px;list-style:none;}
@@ -359,974 +349,945 @@ footer{background:#0c1235;border-top:3px solid var(--red);padding:24px 5%;displa
 .chat-footer{padding:10px 14px;border-top:1px solid var(--border);background:white;display:flex;gap:8px;}
 .chat-input{flex:1;border:1px solid var(--border);padding:9px 12px;border-radius:8px;font-size:13px;font-family:'Barlow',sans-serif;outline:none;}
 .chat-input:focus{border-color:var(--navy);}
-.chat-se{display:none;}
-.chat-send-btn{background:var(--navy);color:white;border:none;padding:9px 15px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Barlow',sans-serif;transition:background 0.2s;}
-.chat-send-btn:hover{background:var(--blue);}
+.chat-send{background:var(--navy);color:white;border:none;padding:9px 14px;border-radius:8px;font-weight:700;cursor:pointer;font-size:12px;}
+.chat-send:hover{background:var(--blue);}
+.chat-typing{display:flex;gap:4px;padding:11px 14px;align-self:flex-start;background:white;border:1px solid var(--border);border-radius:14px;border-bottom-left-radius:4px;}
+.chat-typing span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:typing 1.4s infinite;}
+.chat-typing span:nth-child(2){animation-delay:0.2s;}
+.chat-typing span:nth-child(3){animation-delay:0.4s;}
+@keyframes typing{0%,60%,100%{opacity:0.3;}30%{opacity:1;}}
 
-/* RESPONSIVE DESIGN */
-@media (max-width: 992px) {
-    .agrid, .con-grid, .calc-box {grid-template-columns: 1fr;}
-    .ngrid {grid-template-columns: 1fr;}
-    .hdeco {display:none;}
-    .hero {min-height: auto; padding: 120px 5% 60px;}
-    .hstats {position: static; flex-direction: row; margin-top: 30px; flex-wrap: wrap;}
-    .cd-wrap {grid-template-columns: 1fr;}
-}
-@media (max-width: 768px) {
-    .nlinks {display: none;}
-    nav {padding: 0 16px;}
-    .facgrid {grid-template-columns: 1fr;}
-}
+/* MODAL */
+.modalbg{position:fixed;inset:0;z-index:500;background:rgba(10,16,40,0.75);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px;animation:modal-in 0.25s;}
+@keyframes modal-in{from{opacity:0;}}
+.modalbg.on{display:flex;}
+.modal{background:var(--white);width:100%;max-width:540px;border-top:4px solid var(--red);padding:34px 30px;position:relative;animation:modal-pop 0.3s;}
+@keyframes modal-pop{from{transform:translateY(20px);opacity:0;}}
+.modalx{position:absolute;top:14px;right:18px;font-size:22px;cursor:pointer;color:var(--muted);background:none;border:none;font-family:inherit;line-height:1;}
+.modalx:hover{color:var(--red);}
+.modaltitle{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:4px;}
+.modalsub{font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.5;}
+.modalopts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:22px;}
+.mopt{border:1.5px solid var(--border);padding:13px 14px;cursor:pointer;transition:all 0.2s;text-align:center;background:var(--off);}
+.mopt:hover,.mopt.on{border-color:var(--navy);background:var(--navy);color:white;}
+.moptn{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;}
+.moptc{font-size:11px;opacity:0.65;margin-top:2px;}
+.modaldiv{border:none;border-top:1px solid var(--border);margin:18px 0;}
+.mbtnform{display:block;width:100%;padding:13px;background:var(--navy);color:white;border:none;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.2s;margin-bottom:9px;font-family:'Barlow',sans-serif;}
+.mbtnform:hover{background:var(--blue);}
+.mbtnwa{display:block;width:100%;padding:13px;background:#25d366;color:white;border:none;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.2s;font-family:'Barlow',sans-serif;}
+.mbtnwa:hover{background:#1ebe5d;}
+.modalnote{font-size:11px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.5;}
+
+/* REVEAL ANIMATION */
+.rv{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.rv.vis{opacity:1;transform:none;}
+
+@media(max-width:960px){.agrid,.con-grid,.ngrid,.calc-box,.cd-wrap,.kongrid{grid-template-columns:1fr;}.hstats{display:none;}.crow2{grid-template-columns:1fr;}.calc-right{padding:28px;}}
+@media(max-width:768px){nav .nlinks{display:none;}.hero h1{font-size:2.6rem;}.chatbot-panel{right:10px;left:10px;width:auto;}}
 </style>
 </head>
 <body>
 
-<div class="scroll-progress" id="scrollProgress"></div>
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollBar"></div>
 
+<!-- NOTIFICATION BAR -->
 <div class="notif-bar" id="notifBar">
-    <div class="notif-content">
-        <span class="notif-pulse"></span>
-        <span><strong>PENGUMUMAN:</strong> Pendaftaran Bengkel Keusahawanan Digital Fasa 2 kini dibuka!</span>
-        <span class="notif-link" onclick="scrollToSection('resources')">Daftar Sekarang →</span>
-    </div>
-    <button class="notif-close" onclick="closeNotif()">&times;</button>
+  <div class="notif-content">
+    <span class="notif-pulse"></span>
+    <span><strong>EVENT BARU:</strong> Free Market (21 Mei) & Kaamatan Kreatif (25 Mei) — </span>
+    <a class="notif-link" onclick="goTo('berita')">Lihat butiran →</a>
+  </div>
+  <button class="notif-close" onclick="closeNotif()">×</button>
 </div>
 
 <nav>
-  <div class="nbrand" onclick="scrollToSection('hero')">
-    <img src="logo4.jpg" alt="SSK LOGO" class="nlogo">
-    <div>
-      <div class="nname">SSK Centre</div>
-      <span class="nsub">Smart Space Komuniti &bull; Kota Belud, Sabah</span>
-    </div>
+  <div class="nbrand" onclick="goTo('home')">
+    <div class="nlogo">SSK</div>
+    <div><div class="nname">SSK Centre</div><span class="nsub">Smart Space Komuniti &bull; Kota Belud, Sabah</span></div>
   </div>
   <ul class="nlinks">
-    <li><a onclick="scrollToSection('about')">Mengenai Kami</a></li>
-    <li><a onclick="scrollToSection('facilities')">Kemudahan</a></li>
-    <li><a onclick="scrollToSection('resources')">Dana & Program</a></li>
-    <li><a onclick="scrollToSection('membership')">Keahlian</a></li>
-    <li><a onclick="scrollToSection('contact')">Hubungi</a></li>
-    <li><button class="langbtn" onclick="toggleLang()">EN</button></li>
-    <li><a class="ncta" onclick="scrollToSection('facilities')">Tempah Slot</a></li>
+    <li><a onclick="goTo('about')">Tentang</a></li>
+    <li><a onclick="goTo('calculator')">Kalkulator</a></li>
+    <li><a onclick="goTo('membership')">Keahlian</a></li>
+    <li><a onclick="goTo('quiz')">Quiz Geran</a></li>
+    <li><a onclick="goTo('resources')">Peluang</a></li>
+    <li><a onclick="goTo('berita')">Berita</a></li>
+    <li><a onclick="goTo('contact')" class="ncta">Hubungi</a></li>
   </ul>
+  <button class="langbtn" onclick="toggleLang()" id="langbtn">EN</button>
 </nav>
 
-<div class="hero" id="hero">
-    <div class="hdeco">
-        <div class="hbar"></div><div class="hbar"></div><div class="hbar"></div>
-        <div class="hbar"></div><div class="hbar"></div><div class="hbar"></div>
-        <div class="hbar"></div>
+<!-- HERO -->
+<div id="home">
+<section class="hero">
+  <div class="hdeco"><div class="hbar"></div><div class="hbar"></div><div class="hbar"></div><div class="hbar"></div><div class="hbar"></div><div class="hbar"></div><div class="hbar"></div></div>
+  <div class="hcontent">
+    <div class="hlabel" id="hl">Kota Belud, Sabah &mdash; Hub Komuniti &amp; Usahawan</div>
+    <h1 id="hh">RUANG UNTUK<br><span class="csky">PERNIAGAAN,</span><br>KOMUNITI &amp;<br><span class="cred">PELUANG</span></h1>
+    <p class="hdesc" id="hd">SSK Centre menyediakan fasiliti bertaraf, program pembangunan usahawan, serta direktori kursus, geran dan pembiayaan terkini untuk komuniti Kota Belud.</p>
+    <div class="hbtns">
+      <button class="btnred" onclick="goTo('calculator')" id="hb1">Kira Harga Sewa</button>
+      <button class="btnghost" onclick="goTo('quiz')" id="hb2">Cari Geran Sesuai</button>
     </div>
-    <div class="hcontent">
-        <span class="hlabel">Pusat Digital Komuniti Anda</span>
-        <h1>MEMPERKASA <span class="csky">INOVASI</span> <span class="cred">TEMPATAN</span></h1>
-        <p class="hdesc">Hub sehenti di Kota Belud yang menyediakan fasiliti moden, pembiayaan mikro, program latihan digital, dan komuniti usahawan yang dinamik.</p>
-        <div class="hbtns">
-            <button class="btnred" onclick="scrollToSection('facilities')">Sewa Fasiliti</button>
-            <button class="btnghost" onclick="scrollToSection('about')">Terokai Hub</button>
-        </div>
-    </div>
-    <div class="hstats">
-        <div class="hstat">
-            <div class="hsnum">1,200+</div>
-            <div class="hslbl">Ahli Aktif</div>
-        </div>
-        <div class="hstat">
-            <div class="hsnum">15+</div>
-            <div class="hslbl">Fasiliti & Ruang</div>
-        </div>
-        <div class="hstat">
-            <div class="hsnum">RM 250k+</div>
-            <div class="hslbl">Dana Disalurkan</div>
-        </div>
-    </div>
+  </div>
+  <div class="hstats">
+    <div class="hstat"><div class="hsnum" data-target="4">0</div><div class="hslbl">Fasiliti Tersedia</div></div>
+    <div class="hstat"><div class="hsnum" data-target="25" data-suffix="+">0</div><div class="hslbl">Peluang Geran 2026</div></div>
+    <div class="hstat"><div class="hsnum" data-target="100" data-suffix="%">0</div><div class="hslbl">Fokus Komuniti</div></div>
+  </div>
+</section>
 </div>
 
+<!-- COUNTDOWN -->
 <section class="countdown-section">
-    <div class="cd-wrap">
-        <div class="cd-card" onclick="scrollToSection('resources')">
-            <div class="cd-info">
-                <div class="cd-label">Acara Terdekat</div>
-                <div class="cd-title">Pitching Day: Geran Digital 2026</div>
-                <div class="cd-date">Tarikh Tutup: 15 Jun 2026</div>
-            </div>
-            <div class="cd-timer" id="timerGeran">
-                <div class="cd-unit"><div class="cd-val" id="g-hari">00</div><div class="cd-u">HARI</div></div>
-                <div class="cd-unit"><div class="cd-val" id="g-jam">00</div><div class="cd-u">JAM</div></div>
-                <div class="cd-unit"><div class="cd-val" id="g-min">00</div><div class="cd-u">MIN</div></div>
-            </div>
-        </div>
-        <div class="cd-card" onclick="scrollToSection('resources')">
-            <div class="cd-info">
-                <div class="cd-label">Program Kemahiran</div>
-                <div class="cd-title">Bengkel Pemasaran AI TikTok</div>
-                <div class="cd-date">Sesi Bermula: 22 Mei 2026</div>
-            </div>
-            <div class="cd-timer" id="timerBengkel">
-                <div class="cd-unit"><div class="cd-val" id="b-hari">00</div><div class="cd-u">HARI</div></div>
-                <div class="cd-unit"><div class="cd-val" id="b-jam">00</div><div class="cd-u">JAM</div></div>
-                <div class="cd-unit"><div class="cd-val" id="b-min">00</div><div class="cd-u">MIN</div></div>
-            </div>
-        </div>
+  <div class="cd-wrap">
+    <div class="cd-card" onclick="goTo('berita')">
+      <div class="cd-info">
+        <div class="cd-label">⚡ Bulan Ini</div>
+        <div class="cd-title">Free Market SSK Centre</div>
+        <div class="cd-date">21 Mei 2026 • Sumbangan Pakaian + Vendor Makanan</div>
+      </div>
+      <div class="cd-timer" id="cd1">
+        <div class="cd-unit"><div class="cd-val">--</div><div class="cd-u">HARI</div></div>
+        <div class="cd-unit"><div class="cd-val">--</div><div class="cd-u">JAM</div></div>
+        <div class="cd-unit"><div class="cd-val">--</div><div class="cd-u">MIN</div></div>
+      </div>
     </div>
+    <div class="cd-card" onclick="goTo('berita')">
+      <div class="cd-info">
+        <div class="cd-label">🎨 Program Kraf</div>
+        <div class="cd-title">Kaamatan Kreatif</div>
+        <div class="cd-date">25 Mei 2026 • RM10/peserta • 30-50 kanak-kanak</div>
+      </div>
+      <div class="cd-timer" id="cd2">
+        <div class="cd-unit"><div class="cd-val">--</div><div class="cd-u">HARI</div></div>
+        <div class="cd-unit"><div class="cd-val">--</div><div class="cd-u">JAM</div></div>
+        <div class="cd-unit"><div class="cd-val">--</div><div class="cd-u">MIN</div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="qbar">
-    <div class="qbar-inner">
-        <div class="qb" onclick="scrollToSection('about')">Tentang SSK</div>
-        <div class="qb" onclick="scrollToSection('facilities')">Kalkulator Harga</div>
-        <div class="qb" onclick="scrollToSection('quiz')">Cari Keperluan Anda</div>
-        <div class="qb" onclick="scrollToSection('resources')">Senarai Geran & Kursus</div>
-        <div class="qb" onclick="scrollToSection('membership')">Pelan Ahli</div>
-        <div class="qb" onclick="scrollToSection('vendors')">Rakan Niaga</div>
-    </div>
-</div>
+<div class="qbar"><div class="qbar-inner">
+  <div class="qb" onclick="goTo('calculator')">Kira Harga Fasiliti</div>
+  <div class="qb" onclick="openModal()">Tempah Fasiliti</div>
+  <div class="qb" onclick="goTo('membership')">Keahlian</div>
+  <div class="qb" onclick="goTo('quiz')">Quiz Geran</div>
+  <div class="qb" onclick="openTab('kursus')">Kursus</div>
+  <div class="qb" onclick="openTab('geran')">Geran</div>
+  <div class="qb" onclick="goTo('faq')">FAQ</div>
+  <div class="qb" onclick="goTo('contact')">Hubungi</div>
+</div></div>
 
-<section id="about" class="about-sec">
-    <div class="secin agrid">
-        <div>
-            <span class="seceye">Mengenai Hub Kami</span>
-            <h2 class="sectitle">Ruang Kerja Pintar Untuk Komuniti Kota Belud</h2>
-            <div class="rbar"></div>
-            <div class="atext">
-                <p><strong>Smart Space Komuniti (SSK Centre)</strong> adalah sebuah inisiatif transformasi digital tempatan yang direka untuk merapatkan jurang teknologi, menyediakan infrastruktur perniagaan bertaraf tinggi, dan menawarkan ekosistem sokongan usahawan luar bandar.</p>
-                <p>Kami percaya bahawa inovasi tidak mempunyai had sempadan. Melalui penyediaan fasiliti yang mampu milik, bimbingan strategik, serta akses terus kepada rangkaian pembiayaan mikro dan geran digital, kami komited melahirkan komuniti celik digital yang berdaya saing di peringkat global.</p>
-                <span class="abadge">Visi: Pemangkin Ekonomi Digital Sabah</span>
-            </div>
-        </div>
-        <div style="background: var(--navy); padding: 40px; color: white; display: flex; flex-direction: column; justify-content: center; min-height: 350px;">
-            <h3 style="font-family:'Barlow Condensed'; font-size:2rem; margin-bottom:15px; color:var(--sky);">Mengapa Memilih SSK?</h3>
-            <ul style="list-style:none; display:flex; flex-direction:column; gap:14px;">
-                <li>🚀 <strong>Infrastruktur Berkelajuan Tinggi:</strong> Internet fiber optik 1Gbps percuma untuk ahli aktif.</li>
-                <li>🤝  <strong>Ekosistem Kolaboratif:</strong> Rangkaian padanan perniagaan bersama agensi kerajaan dan swasta.</li>
-                <li>🎓 <strong>Pembelajaran Berterusan:</strong> Akses percuma atau bersubsidi kepada kelas kemahiran masa hadapan.</li>
-            </ul>
-        </div>
+<!-- ABOUT -->
+<section class="about-sec" id="about">
+  <div class="secin agrid rv">
+    <div class="atext">
+      <div class="seceye" id="ab-eye">Tentang Kami</div>
+      <h2 class="sectitle" id="ab-title">SSK Centre &mdash;<br>Lebih dari Sekadar Ruang</h2>
+      <div class="rbar"></div>
+      <p id="ab-p1">SSK Centre (Pusat Sehenti Sokongan Komuniti) adalah hab komuniti moden di Kota Belud, Sabah &mdash; diuruskan oleh <strong>SmartBah Technology Sdn Bhd</strong>. Kami bukan sekadar tempat sewa ruang.</p>
+      <p id="ab-p2" style="margin-top:12px;">Kami adalah pusat sokongan yang menghubungkan komuniti, belia, usahawan dan organisasi dengan ruang, sumber dan peluang yang mereka perlukan.</p>
+      <div class="abadge" id="ab-badge">Satu Tempat. Pelbagai Sokongan. Komuniti Didahulukan.</div>
     </div>
+    <div id="fasiliti">
+      <div class="faceye">Fasiliti Tersedia</div>
+      <div class="facgrid">
+        <div class="faccard"><div class="faclbl">Dewan</div><div class="facname">Dewan Serbaguna</div><div class="faccap">Kapasiti sehingga 100 orang</div><button class="facbook" onclick="openModal()">Tempah</button></div>
+        <div class="faccard"><div class="faclbl">Mesyuarat</div><div class="facname">Bilik Mesyuarat</div><div class="faccap">Meeting &amp; training (20 pax)</div><button class="facbook" onclick="openModal()">Tempah</button></div>
+        <div class="faccard"><div class="faclbl">Studio</div><div class="facname">Studio Content</div><div class="faccap">Foto &amp; video produk</div><button class="facbook" onclick="openModal()">Tempah</button></div>
+        <div class="faccard"><div class="faclbl">Fleksibel</div><div class="facname">Ruang Fleksibel</div><div class="faccap">Seminar &amp; workshop</div><button class="facbook" onclick="openModal()">Tempah</button></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="facilities" class="calc-sec">
-    <div class="secin">
-        <span class="seceye">Fasiliti Pintar & Sewaan</span>
-        <h2 class="sectitle">Tempah Ruang Mengikut Keperluan Anda</h2>
-        <p class="secdesc">Pilih fasiliti pilihan, kira anggaran kos secara langsung, dan hantar tempahan terus melalui aplikasi WhatsApp.</p>
-        
-        <div class="calc-wrap">
-            <div class="calc-box">
-                <div class="calc-left">
-                    <h3 class="calc-title">Kalkulator Sewaan Pintar</h3>
-                    <p class="calc-sub">Sila klik pada pilihan di bawah untuk menjana sebut harga masa nyata.</p>
-                    
-                    <div class="calc-step">
-                        <div class="calc-step-label">
-                            <span class="calc-step-num">1</span> Pilih Ruang / Fasiliti
-                        </div>
-                        <div class="calc-opts" id="optRuang">
-                            <div class="calc-opt on" data-price="15" data-name="Hot Desk (Co-working)">
-                                <div class="calc-opt-n">Co-Working Desk</div>
-                                <div class="calc-opt-c">RM15 / hari</div>
-                            </div>
-                            <div class="calc-opt" data-price="120" data-name="Bilik Mesyuarat Eksekutif">
-                                <div class="calc-opt-n">Meeting Room</div>
-                                <div class="calc-opt-c">RM120 / hari</div>
-                            </div>
-                            <div class="calc-opt" data-price="250" data-name="Studio Kreatif & Studio Podcast">
-                                <div class="calc-opt-n">Media Studio</div>
-                                <div class="calc-opt-c">RM250 / hari</div>
-                            </div>
-                            <div class="calc-opt" data-price="400" data-name="Dewan Seminar & Latihan">
-                                <div class="calc-opt-n">Seminar Hall</div>
-                                <div class="calc-opt-c">RM400 / hari</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="calc-step">
-                        <div class="calc-step-label">
-                            <span class="calc-step-num">2</span> Tempoh Sewaan
-                        </div>
-                        <div class="calc-opts" id="optTempoh">
-                            <div class="calc-opt on" data-factor="1" data-name="1 Hari">
-                                <div class="calc-opt-n">1 Hari</div>
-                                <div class="calc-opt-c">Kadar Standard</div>
-                            </div>
-                            <div class="calc-opt" data-factor="3" data-name="3 Hari">
-                                <div class="calc-opt-n">3 Hari</div>
-                                <div class="calc-opt-c">Diskaun Pakej</div>
-                            </div>
-                            <div class="calc-opt" data-factor="5" data-name="5 Hari">
-                                <div class="calc-opt-n">5 Hari</div>
-                                <div class="calc-opt-c">Nilai Terbaik</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="calc-step">
-                        <div class="calc-step-label">
-                            <span class="calc-step-num">3</span> Peralatan Tambahan (Pilihan)
-                        </div>
-                        <div class="calc-opts" id="optAddon">
-                            <div class="calc-opt" data-price="30" data-name="Sistem PA & Mic">
-                                <div class="calc-opt-n">PA System</div>
-                                <div class="calc-opt-c">+ RM30</div>
-                            </div>
-                            <div class="calc-opt" data-price="50" data-name="Projektor HD">
-                                <div class="calc-opt-n">Projector HD</div>
-                                <div class="calc-opt-c">+ RM50</div>
-                            </div>
-                            <div class="calc-opt" data-price="20" data-name="Set Kopi & Teh Komuniti">
-                                <div class="calc-opt-n">Free-flow Coffee</div>
-                                <div class="calc-opt-c">+ RM20</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="calc-right">
-                    <h3>Sebut Harga Sewaan</h3>
-                    <p class="calc-right-sub">Kiraan adalah anggaran kasar tertakluk kepada kekosongan jadual.</p>
-                    
-                    <div class="calc-summary">
-                        <div class="calc-line">
-                            <span class="calc-line-l">Kategori Ruang:</span>
-                            <span class="calc-line-r" id="lblRuang">-</span>
-                        </div>
-                        <div class="calc-line">
-                            <span class="calc-line-l">Sewa Asas:</span>
-                            <span class="calc-line-r" id="lblHargaAsas">RM 0.00</span>
-                        </div>
-                        <div class="calc-line">
-                            <span class="calc-line-l">Tempoh Sewaan:</span>
-                            <span class="calc-line-r" id="lblTempoh">-</span>
-                        </div>
-                        <div class="calc-line">
-                            <span class="calc-line-l">Peralatan Tambahan:</span>
-                            <span class="calc-line-r" id="lblAddon">-</span>
-                        </div>
-                        
-                        <div class="calc-total">
-                            <span class="calc-total-l">Jumlah Kos</span>
-                            <span class="calc-total-r" id="lblTotal">RM 0.00</span>
-                        </div>
-                        <p class="calc-deposit">*Deposit sekuriti 50% diperlukan semasa pengesahan slot tempahan.</p>
-                        <a href="#" class="calc-btn" id="btnWhatsappSewa" target="_blank">📲 Tempah via WhatsApp</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- FACILITY CALCULATOR -->
+<section class="calc-sec" id="calculator">
+  <div class="calc-wrap rv">
+    <div style="text-align:center;margin-bottom:34px;">
+      <div class="seceye">Smart Calculator</div>
+      <h2 class="sectitle" style="margin:0 auto;">Kira Sewa Fasiliti Anda</h2>
+      <div class="rbar" style="margin:14px auto;"></div>
+      <p style="font-size:14px;color:var(--muted);max-width:560px;margin:0 auto;">Pilih fasiliti, tempoh dan kategori — kami auto-kira harga dan deposit. Click WhatsApp untuk tempah terus dengan info pre-filled.</p>
     </div>
+
+    <div class="calc-box">
+      <div class="calc-left">
+        <div class="calc-title">Kalkulator Tempahan</div>
+        <div class="calc-sub">3 langkah ringkas untuk dapat anggaran harga.</div>
+
+        <div class="calc-step">
+          <div class="calc-step-label"><span class="calc-step-num">1</span> Pilih Fasiliti</div>
+          <div class="calc-opts" id="opt-fac">
+            <div class="calc-opt" data-fac="dewan" onclick="pickCalc(this,'fac','dewan')"><div class="calc-opt-n">Dewan</div><div class="calc-opt-c">100 pax</div></div>
+            <div class="calc-opt" data-fac="bilik" onclick="pickCalc(this,'fac','bilik')"><div class="calc-opt-n">Bilik Mesyuarat</div><div class="calc-opt-c">20 pax</div></div>
+            <div class="calc-opt" data-fac="studio" onclick="pickCalc(this,'fac','studio')"><div class="calc-opt-n">Studio</div><div class="calc-opt-c">Content</div></div>
+          </div>
+        </div>
+
+        <div class="calc-step">
+          <div class="calc-step-label"><span class="calc-step-num">2</span> Tempoh Penggunaan</div>
+          <div class="calc-opts" id="opt-dur">
+            <div class="calc-opt" data-dur="jam" onclick="pickCalc(this,'dur','jam')"><div class="calc-opt-n">Per Jam</div></div>
+            <div class="calc-opt" data-dur="half" onclick="pickCalc(this,'dur','half')"><div class="calc-opt-n">½ Hari</div><div class="calc-opt-c">2-4 jam</div></div>
+            <div class="calc-opt" data-dur="full" onclick="pickCalc(this,'dur','full')"><div class="calc-opt-n">Sehari Penuh</div></div>
+          </div>
+        </div>
+
+        <div class="calc-step">
+          <div class="calc-step-label"><span class="calc-step-num">3</span> Kategori Pengguna</div>
+          <div class="calc-opts" id="opt-cat">
+            <div class="calc-opt" data-cat="komuniti" onclick="pickCalc(this,'cat','komuniti')"><div class="calc-opt-n">Komuniti</div><div class="calc-opt-c">NGO, belia, persatuan</div></div>
+            <div class="calc-opt" data-cat="korporat" onclick="pickCalc(this,'cat','korporat')"><div class="calc-opt-n">Korporat</div><div class="calc-opt-c">Bisnes, training</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-right">
+        <h3>Ringkasan Tempahan</h3>
+        <div class="calc-right-sub">Auto-update bila kau pilih</div>
+        <div id="calc-output" class="calc-summary">
+          <div class="calc-empty">Pilih fasiliti, tempoh dan kategori untuk lihat harga.</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="quiz" class="quiz-sec">
-    <div class="quiz-wrap">
-        <div class="quiz-box">
-            <div class="quiz-header">
-                <span class="quiz-eye">Penilai Keperluan Digital</span>
-                <h2 class="quiz-title">Bantuan Yang Mana Paling Sesuai Untuk Anda?</h2>
-            </div>
-            <div class="quiz-progress-bar">
-                <div class="quiz-progress-fill" id="quizProgress"></div>
-            </div>
-            <div class="quiz-body" id="quizBody">
-                </div>
-        </div>
+<!-- QUIZ -->
+<section class="quiz-sec" id="quiz">
+  <div class="quiz-wrap rv">
+    <div style="text-align:center;margin-bottom:30px;">
+      <div class="seceye">Quiz Interaktif</div>
+      <h2 class="sectitle">Geran Mana Sesuai Untuk Anda?</h2>
+      <div class="rbar" style="margin:14px auto;"></div>
+      <p style="font-size:14px;color:var(--muted);max-width:520px;margin:0 auto;">Jawab 5 soalan ringkas. Kami suggest geran dan program terbaik yang sesuai dengan situasi anda.</p>
     </div>
+
+    <div class="quiz-box">
+      <div class="quiz-header">
+        <div class="quiz-eye">Quiz Geran SSK</div>
+        <div class="quiz-title">Cari peluang yang betul-betul match dengan kau</div>
+      </div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgress"></div></div>
+      <div class="quiz-body" id="quizBody">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="resources" class="res-sec">
-    <div class="secin">
-        <span class="seceye">Direktori Pemerkasaan</span>
-        <h2 class="sectitle">Geran, Pembiayaan & Kelas Latihan</h2>
-        <p class="secdesc">Cari bantuan kewangan mikro atau kelas digital terkini yang ditawarkan khas untuk komuniti usahawan Sabah.</p>
+<!-- RESOURCES -->
+<section class="res-sec" id="resources">
+  <div class="secin rv">
+    <div class="seceye">Peluang Usahawan 2026</div>
+    <h2 class="sectitle">Kursus, Geran &amp; Pembiayaan</h2>
+    <div class="rbar"></div>
+    <p class="secdesc">Disenaraikan khas untuk usahawan di Kota Belud. Search atau filter ikut kategori.</p>
 
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Cari program, geran, atau bengkel..." onkeyup="filterResources()">
-        </div>
-        <div>
-            <span class="search-count" id="searchCount">Menampilkan 5 program</span>
-        </div>
+    <div class="search-bar"><input type="text" id="searchInput" placeholder="Cari... contoh: 'belia', 'pertanian', 'digital'"></div>
+    <span class="search-count" id="searchCount" style="display:none;">0 hasil dijumpai</span>
 
-        <div class="tabs">
-            <button class="tab on" onclick="switchTab('semua')">Semua Sumber</button>
-            <button class="tab" onclick="switchTab('dana')">Dana & Geran</button>
-            <button class="tab" onclick="switchTab('program')">Program & Bengkel</button>
-        </div>
-
-        <div class="chips" id="chipsContainer">
-            <button class="chip on" onclick="filterChip('semua')">Semua Kategori</button>
-            <button class="chip" onclick="filterChip('pemula')">Pemula (Idea Stage)</button>
-            <button class="chip" onclick="filterChip('digital')">Peralatan Digital</button>
-            <button class="chip" onclick="filterChip('keusahawanan')">Bimbingan & Bisnes</button>
-        </div>
-
-        <div class="cgrid" id="resourcesGrid">
-            </div>
+    <div class="tabs">
+      <button class="tab on" id="tbtn-kursus" onclick="switchTab('kursus')">Kursus &amp; Latihan</button>
+      <button class="tab" id="tbtn-geran" onclick="switchTab('geran')">Geran</button>
+      <button class="tab" id="tbtn-pembiayaan" onclick="switchTab('pembiayaan')">Pembiayaan</button>
     </div>
+
+    <div class="pane on" id="pane-kursus">
+      <div class="chips">
+        <button class="chip on" onclick="fc(this,'all')">Semua</button>
+        <button class="chip" onclick="fc(this,'percuma')">Percuma / Subsidi</button>
+        <button class="chip" onclick="fc(this,'digital')">Digital &amp; AI</button>
+        <button class="chip" onclick="fc(this,'usahawan')">Keusahawanan</button>
+        <button class="chip" onclick="fc(this,'fasilitator')">Fasilitator</button>
+      </div>
+      <div class="cgrid">
+        <div class="ccard b" data-t="usahawan percuma"><span class="ctag tb">INSKEN</span><div class="ctitle">Kursus Asas Keusahawanan (KAK)</div><div class="cdesc">Program 2 hari untuk usahawan baru dan refresher. Pemasaran, kewangan, operasi, pengurusan bisnes. Termasuk penginapan.</div><div class="cmeta"><span class="cm">Yuran <b>RM50</b></span><span class="cm">Lokasi <b>KK</b></span></div><a class="clink" href="https://insken.gov.my/pendaftaran" target="_blank">Daftar →</a></div>
+        <div class="ccard b" data-t="usahawan"><span class="ctag tb">INSKEN Masterclass</span><div class="ctitle">Storytelling Ecotourism</div><div class="cdesc">Kursus pemasaran berasaskan naratif untuk usahawan pelancongan, homestay dan komuniti. Jual identiti, bukan fasiliti.</div><div class="cmeta"><span class="cm">Lokasi <b>KK</b></span><span class="cm">2026</span></div><a class="clink" href="https://insken.gov.my/pendaftaran" target="_blank">Lihat jadual →</a></div>
+        <div class="ccard s" data-t="digital"><span class="ctag ts">INSKEN Masterclass</span><div class="ctitle">Strategi AI &amp; Industri Kreatif</div><div class="cdesc">Membangun content iklan dan model perniagaan guna AI. Sesuai untuk content creator dan F&amp;B. Hands-on.</div><div class="cmeta"><span class="cm">Lokasi <b>KK</b></span><span class="cm">Fokus <b>AI</b></span></div><a class="clink" href="https://insken.gov.my" target="_blank">Info →</a></div>
+        <div class="ccard b" data-t="usahawan digital"><span class="ctag tb">INSKEN Masterclass</span><div class="ctitle">Kawal Kos F&amp;B</div><div class="cdesc">Kewangan khas untuk F&amp;B. Tetapkan harga betul, kawal kos bahan dan operasi, pastikan margin kekal sihat.</div><div class="cmeta"><span class="cm">Sektor <b>F&amp;B</b></span></div><a class="clink" href="https://insken.gov.my" target="_blank">Info →</a></div>
+        <div class="ccard b" data-t="fasilitator"><span class="ctag tb">INSKEN</span><div class="ctitle">Kursus Fasilitator (KFK)</div><div class="cdesc">3 hari intensif untuk pegawai pembangunan usahawan. Teknik fasilitasi, AI, coaching dan mentoring.</div><div class="cmeta"><span class="cm">Yuran <b>RM850</b></span><span class="cm">Lokasi <b>KK</b></span></div><a class="clink" href="https://insken.gov.my" target="_blank">Info →</a></div>
+        <div class="ccard" data-t="usahawan percuma"><span class="ctag tn">MARA</span><div class="ctitle">Latihan Keusahawanan MARA 2026</div><div class="cdesc">Pengurusan perniagaan, kewangan, operasi, pemasaran dan ICT. Difasilitasi pakar industri.</div><div class="cmeta"><span class="cm">Yuran <b>Disubsidi</b></span></div><a class="clink" href="https://myusahawan.mara.gov.my" target="_blank">Portal MARA →</a></div>
+        <div class="ccard" data-t="usahawan percuma"><span class="ctag tn">HRD Corp</span><div class="ctitle">Kursus Bersubsidi HRD Corp</div><div class="cdesc">Menaja kursus untuk pekerja dan pemilik PKS. Kemahiran digital, pengurusan, pemasaran, pembangunan produk.</div><div class="cmeta"><span class="cm">Yuran <b>Ditanggung</b></span></div><a class="clink" href="https://hrdcorp.gov.my" target="_blank">Portal →</a></div>
+        <div class="ccard r" data-t="digital usahawan percuma"><span class="ctag tr">Yayasan Peneraju</span><div class="ctitle">Level Up Academy &mdash; AI Marketing</div><div class="cdesc">Program bertajaan untuk pemasaran digital dan AI. SSK Centre dalam perbincangan sebagai venue rasmi.</div><div class="cmeta"><span class="cm">Yuran <b>Bertajaan</b></span></div><a class="clink" onclick="goTo('contact')">Hubungi SSK →</a></div>
+        <div class="ccard s" data-t="usahawan percuma"><span class="ctag ts">PROTEGE</span><div class="ctitle">Program PROTEGE</div><div class="cdesc">Pembangunan graduan dalam keusahawanan. Penempatan dan bimbingan industri.</div><div class="cmeta"><span class="cm">Sasaran <b>Graduan</b></span></div><a class="clink" href="https://protege.com.my" target="_blank">Portal →</a></div>
+      </div>
+    </div>
+
+    <div class="pane" id="pane-geran">
+      <div class="chips">
+        <button class="chip on" onclick="fc(this,'all')">Semua</button>
+        <button class="chip" onclick="fc(this,'belia')">Belia</button>
+        <button class="chip" onclick="fc(this,'pertanian')">Pertanian</button>
+        <button class="chip" onclick="fc(this,'mikro')">Usahawan Mikro</button>
+        <button class="chip" onclick="fc(this,'luar-bandar')">Luar Bandar</button>
+        <button class="chip" onclick="fc(this,'digital')">Digital</button>
+      </div>
+      <div class="cgrid">
+        <div class="ccard r" data-t="mikro belia"><span class="ctag tr">BSN — Bajet 2026</span><div class="ctitle">Geran Usahawan Mikro BSN</div><div class="cdesc">Geran untuk pembelian peralatan perniagaan. 1,000 slot sahaja seluruh Malaysia. Mohon awal.</div><span class="camount">Sehingga RM10,000</span><div class="cmeta"><span class="cm">Agensi <b>BSN</b></span></div><a class="clink" href="https://www.bsn.com.my" target="_blank">Portal BSN →</a></div>
+        <div class="ccard b" data-t="pertanian belia"><span class="ctag tb">KPKM</span><div class="ctitle">GAM Start-Up</div><div class="cdesc">Untuk usahawan muda dalam tanaman, ternakan, perikanan. Diberi dalam bentuk peralatan. Pendapatan bersih bawah RM5,000.</div><span class="camount">Sehingga RM30,000</span><div class="cmeta"><span class="cm">Umur <b>18–43</b></span></div><a class="clink" href="https://egam.kpkm.gov.my" target="_blank">Mohon →</a></div>
+        <div class="ccard b" data-t="pertanian"><span class="ctag tb">KPKM</span><div class="ctitle">GAM Scale-Up</div><div class="cdesc">Untuk penerima GAM yang ingin kembangkan projek. Pendapatan bersih melebihi RM5,000.</div><span class="camount">Scale-up</span><div class="cmeta"><span class="cm">Umur <b>21–45</b></span></div><a class="clink" href="https://egam.kpkm.gov.my" target="_blank">Info →</a></div>
+        <div class="ccard" data-t="luar-bandar mikro"><span class="ctag tn">KMDW — SPKLB</span><div class="ctitle">Re-Start Usahawan Luar Bandar</div><div class="cdesc">Geran penuh untuk usahawan luar bandar yang dah operasi setahun. Berdaftar SSM atau OPS.</div><span class="camount">RM3,000 – RM5,000</span><div class="cmeta"><span class="cm">Sabah</span></div><a class="clink" href="https://www.rurallink.gov.my" target="_blank">Info →</a></div>
+        <div class="ccard s" data-t="belia mikro"><span class="ctag ts">SME Corp</span><div class="ctitle">TUBE — Tunas Usahawan Belia</div><div class="cdesc">Geran permulaan melalui 3 fasa latihan dan bimbingan. Komit 1 tahun. Sabah ranking tinggi!</div><span class="camount">RM15,000</span><div class="cmeta"><span class="cm">Belia Bumiputera</span></div><a class="clink" href="https://tube.smecorp.gov.my" target="_blank">Portal TUBE →</a></div>
+        <div class="ccard r" data-t="mikro luar-bandar"><span class="ctag tr">Bajet 2026 — Sabah</span><div class="ctitle">Dana Tamu Desa Sabah</div><div class="cdesc">RM20 juta khusus untuk peniaga kecil Tamu Desa di Sabah. Sangat relevan untuk Kota Belud.</div><span class="camount">Bahagian RM20 juta</span><div class="cmeta"><span class="cm">Khusus Sabah</span></div><a class="clink" onclick="goTo('contact')">Hubungi SSK →</a></div>
+        <div class="ccard b" data-t="digital mikro"><span class="ctag tb">MDEC</span><div class="ctitle">Geran Pecutan Digital</div><div class="cdesc">RM53 juta untuk pecutan AI, blockchain. Sesuai bisnes yang nak upgrade sistem digital.</div><span class="camount">Bahagian RM53 juta</span><div class="cmeta"><span class="cm">AI &amp; Blockchain</span></div><a class="clink" href="https://mdec.my" target="_blank">Portal MDEC →</a></div>
+        <div class="ccard" data-t="mikro"><span class="ctag tn">MATRADE</span><div class="ctitle">Geran Pembangunan Pasaran</div><div class="cdesc">RM60 juta untuk PKS tembus pasaran antarabangsa termasuk Afrika, Amerika Latin, Asia Tengah.</div><span class="camount">Bahagian RM60 juta</span><div class="cmeta"><span class="cm">Eksport</span></div><a class="clink" href="https://www.matrade.gov.my" target="_blank">Portal →</a></div>
+        <div class="ccard s" data-t="pertanian mikro"><span class="ctag ts">Agro Bank</span><div class="ctitle">Agropreneur NextGen</div><div class="cdesc">Geran permulaan dan pengembangan. Disokong RM1.1 bilion Agro Bank. Pengecualian cukai 100%.</div><div class="cmeta"><span class="cm">Pertanian</span></div><a class="clink" href="https://www.agrobank.com.my" target="_blank">Portal →</a></div>
+      </div>
+    </div>
+
+    <div class="pane" id="pane-pembiayaan">
+      <div class="cgrid">
+        <div class="ccard r"><span class="ctag tr">TERAJU</span><div class="ctitle">Dana BSSF Sabah &amp; Sarawak</div><div class="cdesc">Pembiayaan fleksibel khas untuk Bumiputera Sabah. Disokong jaminan institusi kewangan. 100+ syarikat pemula disasarkan.</div><div class="cmeta"><span class="cm">Sabah &amp; Sarawak</span></div><a class="clink" href="https://www.teraju.gov.my" target="_blank">Portal →</a></div>
+        <div class="ccard"><span class="ctag tn">TEKUN</span><div class="ctitle">Pembiayaan Mikro TEKUN</div><div class="cdesc">Tiada cagaran. Kadar pentadbiran 4%. Tempoh 1–7 tahun. Sesuai usahawan baru tanpa rekod kredit.</div><div class="cmeta"><span class="cm">Cagaran <b>Tiada</b></span><span class="cm">Kadar <b>4%</b></span></div><a class="clink" href="https://www.tekun.gov.my" target="_blank">Portal →</a></div>
+        <div class="ccard b"><span class="ctag tb">BSN</span><div class="ctitle">Pembiayaan Usahawan Muda</div><div class="cdesc">Khas bawah 30 tahun. Daripada RM150 juta Bajet 2026. Kadar faedah rendah, terma mesra belia.</div><div class="cmeta"><span class="cm">Bawah 30</span></div><a class="clink" href="https://www.bsn.com.my" target="_blank">Portal →</a></div>
+        <div class="ccard b"><span class="ctag tb">MARA</span><div class="ctitle">Pembiayaan Perniagaan MARA</div><div class="cdesc">Modal tetap, modal pusingan, naik taraf premis, peralatan. 40% geran jika rekod bayaran balik baik.</div><div class="cmeta"><span class="cm">Bumiputera</span></div><a class="clink" href="https://www.mara.gov.my" target="_blank">Portal →</a></div>
+        <div class="ccard"><span class="ctag tn">AIM</span><div class="ctitle">Amanah Ikhtiar Malaysia</div><div class="cdesc">Tanpa cagaran untuk asnaf dan B40. Fleksibel berbanding bank. Kelulusan 1-2 minggu.</div><div class="cmeta"><span class="cm">B40 &amp; Asnaf</span></div><a class="clink" href="https://www.aim.gov.my" target="_blank">Portal →</a></div>
+        <div class="ccard b"><span class="ctag tb">Agro Bank</span><div class="ctitle">Pembiayaan Pertanian</div><div class="cdesc">RM1.1 bilion untuk usahawan pertanian. Termasuk NextGen. Pengecualian cukai 100% projek baharu.</div><div class="cmeta"><span class="cm">Pertanian</span></div><a class="clink" href="https://www.agrobank.com.my" target="_blank">Portal →</a></div>
+        <div class="ccard s"><span class="ctag ts">SME Bank</span><div class="ctitle">Pembiayaan SME Bank</div><div class="cdesc">Pusat sehenti kewangan untuk PKS. Proses dipercepat. Khidmat nasihat perniagaan disertakan.</div><div class="cmeta"><span class="cm">PKS</span></div><a class="clink" href="https://www.smebank.com.my" target="_blank">Portal →</a></div>
+        <div class="ccard"><span class="ctag tn">PUNB</span><div class="ctitle">Pembiayaan PUNB</div><div class="cdesc">Untuk Bumiputera dalam francais, runcit moden, perkhidmatan. Bimbingan perniagaan holistik.</div><div class="cmeta"><span class="cm">Bumiputera</span></div><a class="clink" href="https://www.punb.com.my" target="_blank">Portal →</a></div>
+      </div>
+    </div>
+    <div class="no-results" id="noResults" style="display:none;">Tiada hasil dijumpai. Try keyword lain atau reset filter.</div>
+  </div>
 </section>
 
-<section id="membership" class="mem-sec">
-    <div class="secin">
-        <span class="seceye">Rangkaian Komuniti</span>
-        <h2 class="sectitle">Sertai Pelan Keahlian SSK</h2>
-        <p class="secdesc">Dapatkan akses penuh ke dalam ekosistem inovasi digital kami bermula dari kadar serendah RM30 sebulan.</p>
-        
-        <div class="memgrid">
-            <div class="memcard">
-                <span class="memtier">Pelajar / Komuniti</span>
-                <h3 class="memname">Pelan Digital Lite</h3>
-                <div class="memprice-wrap">
-                    <div class="mem-price">RM 30 <span>/ sebulan</span></div>
-                </div>
-                <ul class="membens">
-                    <li>Akses Co-working space 5 hari sebulan</li>
-                    <li>Internet Jalur Lebar Berkelajuan Tinggi</li>
-                    <li>Akses jemputan ke program & webinar asas</li>
-                </ul>
-                <a href="https://wa.me/601151322894?text=Saya%20berminat%20dengan%20Pelan%20Digital%20Lite" target="_blank" class="membtn">Sertai Pelan</a>
-            </div>
-
-            <div class="memcard pop">
-                <span class="mempoptag">Paling Popular</span>
-                <span class="memtier">Usahawan Tempatan</span>
-                <h3 class="memname">Pelan Professional</h3>
-                <div class="memprice-wrap">
-                    <div class="mem-price">RM 80 <span>/ sebulan</span></div>
-                </div>
-                <ul class="membens">
-                    <li>Akses Co-working space Tanpa Had</li>
-                    <li>Penggunaan Bilik Mesyuarat (3 jam/bulan)</li>
-                    <li>Diskaun 20% bagi sewaan studio & dewan</li>
-                    <li>Keutamaan permohonan Geran Mikro Tempatan</li>
-                </ul>
-                <a href="https://wa.me/601151322894?text=Saya%20berminat%20dengan%20Pelan%20Professional" target="_blank" class="membtn">Sertai Pelan</a>
-            </div>
-
-            <div class="memcard corp">
-                <span class="memtier">Syarikat & PKS</span>
-                <h3 class="memname">Pelan Enterprise</h3>
-                <div class="memprice-wrap">
-                    <div class="mem-price">RM 250 <span>/ sebulan</span></div>
-                </div>
-                <ul class="membens">
-                    <li>Akses tanpa had untuk 3 orang kakitangan</li>
-                    <li>Alamat perniagaan rasmi & pengurusan mel</li>
-                    <li>Penggunaan Bilik Mesyuarat (10 jam/bulan)</li>
-                    <li>Slot iklan eksklusif dalam direktori vendor SSK</li>
-                </ul>
-                <a href="https://wa.me/601151322894?text=Saya%20berminat%20dengan%20Pelan%20Enterprise" target="_blank" class="membtn">Hubungi Kami</a>
-            </div>
-        </div>
+<!-- MEMBERSHIP -->
+<section class="mem-sec" id="membership">
+  <div class="secin rv">
+    <div class="seceye">Program Keahlian</div>
+    <h2 class="sectitle">Jadi Ahli SSK Centre</h2>
+    <div class="rbar"></div>
+    <p class="secdesc">Akses keutamaan, diskaun sewaan dan manfaat eksklusif. Pilih pelan yang sesuai dengan keperluan kau.</p>
+    <div class="memgrid">
+      <div class="memcard">
+        <div class="memtier">Pelan Asas</div>
+        <div class="memname">Ahli Komuniti</div>
+        <div class="mem-price">RM60<span> / bulan</span></div>
+        <ul class="membens">
+          <li>Diskaun 20% sewaan semua fasiliti</li>
+          <li>Keutamaan tempahan</li>
+          <li>Sesuai NGO, persatuan belia, usahawan kecil</li>
+          <li>Sah 1 bulan dari tarikh bayaran</li>
+        </ul>
+        <a class="membtn" href="https://wa.me/601121406450?text=Salam%2C+saya+berminat+untuk+mendaftar+sebagai+Komuniti+Member+SSK+Centre." target="_blank">Daftar Sekarang</a>
+      </div>
+      <div class="memcard pop">
+        <div class="mempoptag">Popular</div>
+        <div class="memtier">Pelan Perniagaan</div>
+        <div class="memname">Business Member</div>
+        <div class="mem-price">RM200<span> / bulan</span></div>
+        <ul class="membens">
+          <li>Diskaun 30% semua fasiliti</li>
+          <li>2 jam Bilik Mesyuarat percuma/bulan</li>
+          <li>Sesuai SME yang kerap guna fasiliti</li>
+          <li>Sah 1 bulan dari tarikh bayaran</li>
+        </ul>
+        <a class="membtn" href="https://wa.me/601121406450?text=Salam%2C+saya+berminat+untuk+mendaftar+sebagai+Business+Member+SSK+Centre." target="_blank">Daftar Sekarang</a>
+      </div>
+      <div class="memcard corp">
+        <div class="memtier">Pelan Korporat</div>
+        <div class="memname">Corporate Partner</div>
+        <div class="mem-price">RM800<span> / bulan</span></div>
+        <ul class="membens">
+          <li>Diskaun 40% — tertinggi</li>
+          <li>Slot premium termasuk hujung minggu</li>
+          <li>Peluang penjenamaan dalam premis</li>
+          <li>Sesuai organisasi korporat</li>
+        </ul>
+        <a class="membtn" href="https://wa.me/601121406450?text=Salam%2C+saya+berminat+untuk+mendaftar+sebagai+Corporate+Partner+SSK+Centre." target="_blank">Hubungi Kami</a>
+      </div>
     </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:20px;text-align:center;">Semua diskaun terpakai semasa tempoh keahlian aktif. Hubungi admin untuk kadar terkini.</p>
+  </div>
 </section>
 
-<section id="vendors" class="vend-sec">
-    <div class="secin">
-        <span class="seceye">Direktori Rakan Niaga</span>
-        <h2 class="sectitle">Rakan Niaga & Usahawan Bersekutu</h2>
-        <p class="secdesc">Kenali rakan kolaborasi utama yang bersama-sama menyokong ekosistem pembangunan digital di Kota Belud.</p>
-        <div class="vgrid">
-            <div class="vcard">
-                <div class="vicon">KB</div>
-                <div class="vname">KB Creative Studio</div>
-                <div class="vtype">Produksi Media & Video</div>
-                <span class="vbadge">Rakan Hub</span>
-            </div>
-            <div class="vcard">
-                <div class="vicon">SD</div>
-                <div class="vname">Sabah Digital Corp</div>
-                <div class="vtype">Agensi Pembolehdaya ICT</div>
-                <span class="vbadge">Agensi Rakan</span>
-            </div>
-            <div class="vcard">
-                <div class="vicon">TM</div>
-                <div class="vname">Tamu Tech</div>
-                <div class="vtype">Pembangun E-Commerce</div>
-                <span class="vbadge">Ahli Kanan</span>
-            </div>
-            <div class="vcard">
-                <div class="vicon">BA</div>
-                <div class="vname">Borneo AgroTech</div>
-                <div class="vtype">Teknologi Pertanian</div>
-                <span class="vbadge">Inovator</span>
-            </div>
-        </div>
+<!-- VENDORS -->
+<section class="vend-sec" id="vendors">
+  <div class="secin rv">
+    <div class="seceye">Direktori Usahawan</div>
+    <h2 class="sectitle">Usahawan &amp; Vendor SSK Centre</h2>
+    <div class="rbar"></div>
+    <p class="secdesc" style="margin-bottom:34px;">Kenali usahawan yang aktif di SSK Centre. Ingin tersenarai? Hubungi kami.</p>
+    <div class="vgrid">
+      <div class="vcard"><div class="vicon">AJ</div><div class="vname">Kiosk Abang J</div><div class="vtype">Chicken Karaage &amp; Popcorn</div><div class="vbadge">Vendor SSK</div></div>
+      <div class="vcard"><div class="vicon">SK</div><div class="vname">Sri Kenanga Studio</div><div class="vtype">Fotografi Produk &amp; Event</div><div class="vbadge">Rakan SSK</div></div>
+      <div class="vcard" style="border-top-color:var(--red)"><div class="vicon" style="background:var(--red)">+</div><div class="vname">Daftar Bisnes Anda</div><div class="vtype">Tersenarai dalam direktori</div><div class="vbadge" style="background:rgba(192,57,43,0.09);color:var(--red)">Hubungi</div></div>
     </div>
+  </div>
 </section>
 
-<section id="news" class="news-sec">
-    <div class="secin">
-        <span class="seceye">Buletin & Berita Hub</span>
-        <h2 class="sectitle">Sorotan Aktiviti Komuniti Terkini</h2>
-        <p class="secdesc">Ikuti kisah kejayaan usahawan tempatan dan pelajari trend ekonomi digital semasa.</p>
-        
-        <div class="ngrid">
-            <div class="ncard feat">
-                <div class="nthumb" style="background:#1a2a6c;">
-                    <div class="nthumbtxt">Laporan Impak Digital Kota Belud 2026</div>
-                </div>
-                <div class="nbody">
-                    <div class="ncat">Laporan & Artikel</div>
-                    <div class="ndate">1 Mei 2026</div>
-                    <h3 class="ntitle">Pencapaian Ekonomi Digital: 45 Usahawan Mikro Kota Belud Berjaya Menembusi Pasaran Global Melalui E-Dagang.</h3>
-                </div>
-            </div>
-            <div class="ncard">
-                <div class="nthumb" style="background:#c0392b;">
-                    <div class="nthumbtxt">Bengkel TikTok Shop SSK</div>
-                </div>
-                <div class="nbody">
-                    <div class="ncat">Acara Komuniti</div>
-                    <div class="ndate">28 April 2026</div>
-                    <h3 class="ntitle">Sesi Padat: Bengkel TikTok Shop Live Sedia Latih 30 Usahawan Tempatan Jual Hasil Produk Kraf Kota Belud secara langsung.</h3>
-                </div>
-            </div>
-            <div class="ncard">
-                <div class="nthumb" style="background:#1e6fbf;">
-                    <div class="nthumbtxt">Kerjasama Strategik Universiti</div>
-                </div>
-                <div class="nbody">
-                    <div class="ncat">Kolaborasi</div>
-                    <div class="ndate">15 April 2026</div>
-                    <h3 class="ntitle">SSK Centre Tandatangani MoU Bersama Universiti Malaysia Sabah Bagi Pembangunan Aplikasi Pintar Usahawan Tani.</h3>
-                </div>
-            </div>
-        </div>
+<!-- NEWS -->
+<section class="news-sec" id="berita">
+  <div class="secin rv">
+    <div class="seceye">Berita &amp; Event</div>
+    <h2 class="sectitle">Terkini dari SSK Centre</h2>
+    <div class="rbar"></div>
+    <p class="secdesc" style="margin-bottom:30px;">Program, event dan peluang terbaru untuk komuniti Kota Belud.</p>
+    <div class="ngrid">
+      <div class="ncard feat"><div class="nthumb" style="background:var(--red)"><div class="nthumbtxt">Free Market 21 Mei</div></div><div class="nbody"><div class="ncat">Event Bulan Ini</div><div class="ndate">21 Mei 2026</div><div class="ntitle">Free Market SSK Centre — Sumbangan Pakaian + Food Vendors</div></div></div>
+      <div class="ncard"><div class="nthumb" style="background:var(--navy)"><div class="nthumbtxt">Kaamatan Kreatif</div></div><div class="nbody"><div class="ncat">Program Kraf</div><div class="ndate">25 Mei 2026</div><div class="ntitle">Kaamatan Kreatif untuk Kanak-Kanak — RM10/peserta</div></div></div>
+      <div class="ncard"><div class="nthumb" style="background:var(--blue)"><div class="nthumbtxt">Pasar Malam SSK</div></div><div class="nbody"><div class="ncat">Vendor Update</div><div class="ndate">April 2026</div><div class="ntitle">Pasar Malam SSK — Sistem Deposit &amp; Kategori Eksklusif</div></div></div>
     </div>
+  </div>
 </section>
 
-<section id="faq" class="faq-sec">
-    <div class="secin">
-        <span class="seceye">Mempunyai Persoalan?</span>
-        <h2 class="sectitle" style="text-align: center; margin-bottom: 40px;">Soalan Lazim (FAQ)</h2>
-        <div class="faq-list">
-            <div class="faq-item">
-                <div class="faq-q">
-                    <span class="faq-q-text">Siapakah yang layak menggunakan fasiliti di SSK Centre?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-a">
-                    <p>Semua penduduk tempatan, usahawan mikro, pekerja bebas (freelancer), pelajar, dan komuniti umum di Kota Belud dan kawasan sekitar Sabah dialu-alukan untuk menyewa atau mendaftar keahlian.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q">
-                    <span class="faq-q-text">Adakah internet di SSK Centre adalah percuma?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-a">
-                    <p>Ya! Sambungan internet berkelajuan tinggi disediakan secara <strong>percuma</strong> kepada semua ahli aktif yang berdaftar di bawah mana-mana pelan keahlian serta pengguna harian berbayar.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q">
-                    <span class="faq-q-text">Bagaimana cara memohon Geran Mikro Komuniti?</span>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-a">
-                    <p>Anda boleh memohon melalui borang dalam talian di seksyen <strong>Geran & Kursus</strong> atau mengunjungi kaunter SSK Centre untuk dibimbing secara peribadi oleh panel penyelaras komuniti kami.</p>
-                </div>
-            </div>
-        </div>
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+  <div class="secin">
+    <div style="text-align:center;margin-bottom:34px;">
+      <div class="seceye">Soalan Lazim</div>
+      <h2 class="sectitle">FAQ — Jawapan Cepat</h2>
+      <div class="rbar" style="margin:14px auto;"></div>
     </div>
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="faq-q-text">Macam mana nak tempah fasiliti di SSK Centre?</div><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Tiga cara: (1) Guna <strong>Kalkulator</strong> di atas untuk kira harga dulu, terus WhatsApp dengan info pre-filled. (2) Click button <strong>Tempah</strong> mana-mana fasiliti — pilih ruang, terus WhatsApp admin. (3) Isi <strong>borang rasmi</strong> melalui link yang akan diberi admin. Pengesahan dalam 24 jam waktu bekerja.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="faq-q-text">Apa beza kadar Komuniti vs Korporat?</div><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Kadar <strong>Komuniti</strong> untuk NGO, persatuan belia, individu dan usahawan kecil. Kadar <strong>Korporat</strong> untuk syarikat, training program, atau event komersial. Selisih harga 40-60% — semakin korporat, semakin tinggi. Guna kalkulator untuk lihat tepat.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="faq-q-text">Berapa deposit untuk sewa fasiliti?</div><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Dewan: <strong>RM100 (Komuniti) / RM300 (Korporat)</strong>. Bilik Mesyuarat: RM50 / RM150. Studio: RM100 / RM200. Deposit dikembalikan selepas event tamat dan tiada kerosakan. Bayaran melalui transfer bank.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="faq-q-text">Saya nak mohon geran tapi tak tahu yang mana sesuai. Macam mana?</div><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Cuba <strong>Quiz Geran</strong> kami di atas — 5 soalan, recommend geran terbaik untuk situasi kau. Kalau still confused, terus WhatsApp admin SSK. Kami bantu link dengan agensi yang betul.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="faq-q-text">Kalau saya bukan ahli, boleh sewa fasiliti?</div><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Boleh. Kadar standard dikenakan tanpa diskaun. Tapi kalau kau plan guna lebih dari sekali sebulan, jadi ahli lagi jimat — diskaun 20-40% bergantung tier. Bandingkan: standard vs ahli, payback dalam 2-3 booking.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="faq-q-text">Boleh ke saya jadi vendor di SSK Centre?</div><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Boleh. Untuk vendor tetap (kiosk dalam premis) — sangat selektif. Untuk Pasar Malam SSK — sistem kategori eksklusif dengan deposit upfront. WhatsApp admin dengan info bisnes kau (apa jual, dah berapa lama operate, ada SSM/Lesen PBT?). Kami review case by case.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><div class="faq-q-text">Waktu operasi SSK Centre?</div><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p>Isnin – Jumaat: <strong>8:30 pagi – 5:00 petang</strong>. Untuk event di luar waktu (malam atau hujung minggu), boleh diatur dengan tempahan awal. Kadar tambahan mungkin dikenakan untuk staf overtime.</p></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="contact" class="con-sec">
-    <div class="secin con-grid">
-        <div>
-            <span class="coneye">Sertai Ekosistem Kami</span>
-            <h2 class="contitle">Mari Bina <span>Masa Depan</span> Bersama</h2>
-            
-            <div class="cinfolist">
-                <div class="cinforow">
-                    <div class="cinfodot">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    </div>
-                    <div class="cinfotxt">
-                        <strong>Lokasi Fizikal</strong>
-                        SSK Centre, Lot 12, Tingkat Bawah, Blok B, Pekan Baru Kota Belud, 89150 Kota Belud, Sabah.
-                    </div>
-                </div>
-                <div class="cinforow">
-                    <div class="cinfodot">
-                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    </div>
-                    <div class="cinfotxt">
-                        <strong>E-mel Pertanyaan</strong>
-                        <a href="mailto:hello@sskcentre.my">hello@sskcentre.my</a>
-                    </div>
-                </div>
-                <div class="cinforow">
-                    <div class="cinfodot">
-                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                    </div>
-                    <div class="cinfotxt">
-                        <strong>WhatsApp Rasmi</strong>
-                        <a href="https://wa.me/601151322894" target="_blank">+60 11-5132 2894</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="socrow">
-                <a href="#" class="socbtn">
-                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    Facebook
-                </a>
-                <a href="#" class="socbtn">
-                    <svg viewBox="0 0 24 24"><path d="M12.315 2c2.43 0 2.784.01 3.71.054 1.14.05 1.762.24 2.173.4.55.213.94.466 1.35.877.41.41.663.8.877 1.35.16.41.35 1.03.4 2.17.045.92.054 1.28.054 3.71s-.01 2.784-.054 3.71c-.05 1.14-.24 1.762-.4 2.173-.213.55-.466.94-.877 1.35-.41.41-.8.663-1.35.877-.41.16-1.03.35-2.17.4-.92.045-1.28.054-3.71.054s-2.784-.01-3.71-.054c-1.14-.05-1.762-.24-2.173-.4-.55-.213-.94-.466-1.35-.877-.41-.41-.663-.8-.877-1.35-.16-.41-.35-1.03-.4-2.17C2.01 14.857 2 14.497 2 12.07c0-2.43.01-2.784.054-3.71.05-1.14.24-1.762.4-2.173.213-.55.466-.94.877-1.35.41-.41.8-.663 1.35-.877.41-.16 1.03-.35 2.17-.4.92-.045 1.28-.054 3.71-.054zM12 7.23a4.77 4.77 0 1 0 0 9.54 4.77 4.77 0 0 0 0-9.54zm0 1.41a3.35 3.35 0 1 1 0 6.7 3.35 3.35 0 0 1 0-6.7zm4.96-.83a1.14 1.14 0 1 0 0 2.28 1.14 1.14 0 0 0 0-2.28z"/></svg>
-                    Instagram
-                </a>
-            </div>
-        </div>
-
-        <form class="cform" id="contactForm" onsubmit="submitForm(event)">
-            <div class="crow2">
-                <input type="text" class="cinput" id="cName" placeholder="Nama Penuh" required>
-                <input type="email" class="cinput" id="cEmail" placeholder="E-mel Anda" required>
-            </div>
-            <input type="text" class="cinput" id="cSubject" placeholder="Subjek / Tujuan Hubungi" required>
-            <textarea class="cinput" id="cMessage" placeholder="Tulis mesej anda di sini secara ringkas..." required></textarea>
-            <button type="submit" class="csend">Hantar Mesej</button>
-        </form>
+<!-- CONTACT -->
+<section class="con-sec" id="contact">
+  <div class="secin con-grid">
+    <div>
+      <div class="coneye">Hubungi Kami</div>
+      <h2 class="contitle">Bincang dengan<br><span>Pasukan SSK Centre</span></h2>
+      <div class="cinfolist">
+        <div class="cinforow"><div class="cinfodot"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><div class="cinfotxt"><strong>Alamat</strong>SSK Centre, Kota Belud, Sabah, Malaysia</div></div>
+        <div class="cinforow"><div class="cinfodot"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div><div class="cinfotxt"><strong>WhatsApp Admin</strong><a href="https://wa.me/601121406450" target="_blank">011-2140 6450</a></div></div>
+        <div class="cinforow"><div class="cinfodot"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div><div class="cinfotxt"><strong>Waktu Operasi</strong>Isnin &ndash; Jumaat: 8:30 pagi &ndash; 5:00 petang</div></div>
+        <div class="cinforow"><div class="cinfodot"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><div class="cinfotxt"><strong>Pertanyaan</strong>Tempahan fasiliti, program komuniti, pendaftaran vendor, info geran &amp; kursus</div></div>
+      </div>
+      <div class="socrow">
+        <a class="socbtn" href="https://www.facebook.com/sskcentrekb" target="_blank"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a>
+        <a class="socbtn" href="https://www.tiktok.com/@sskcentrekb" target="_blank"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>TikTok</a>
+      </div>
     </div>
+    <div class="cform">
+      <div class="crow2"><input class="cinput" type="text" placeholder="Nama Penuh"><input class="cinput" type="text" placeholder="No. Telefon / WhatsApp"></div>
+      <input class="cinput" type="text" placeholder="Subjek: Fasiliti / Geran / Kursus / Vendor">
+      <textarea class="cinput" placeholder="Mesej anda..."></textarea>
+      <button class="csend" onclick="submitContact()">Hantar Pertanyaan</button>
+    </div>
+  </div>
 </section>
 
 <footer>
-    <div class="fbrand">
-        &copy; 2026 SSK Centre Kota Belud. Hak Cipta Terpelihara.
-    </div>
-    <div class="flinks">
-        <a onclick="scrollToSection('hero')">Utama</a>
-        <a onclick="scrollToSection('about')">Hub Kami</a>
-        <a onclick="scrollToSection('faq')">Bantuan</a>
-    </div>
+  <div class="fbrand">SSK Centre &mdash; Pusat Sehenti Sokongan Komuniti, Kota Belud &copy;2026</div>
+  <div class="flinks"><a onclick="goTo('home')">Utama</a><a onclick="goTo('calculator')">Kalkulator</a><a onclick="goTo('quiz')">Quiz</a><a onclick="goTo('resources')">Peluang</a><a onclick="goTo('faq')">FAQ</a><a onclick="goTo('contact')">Hubungi</a></div>
+  <div class="fsoc"><a href="https://www.facebook.com/sskcentrekb" target="_blank">Facebook</a><a href="https://www.tiktok.com/@sskcentrekb" target="_blank">TikTok</a></div>
 </footer>
 
+<!-- CHATBOT -->
 <button class="chatbot-toggle" id="chatToggle" onclick="toggleChat()">
-    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-    <div class="chatbot-badge" id="chatBadge">1</div>
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+  <span class="chatbot-badge">!</span>
 </button>
-
 <div class="chatbot-panel" id="chatPanel">
-    <div class="chat-header">
-        <div class="chat-avatar">SSK</div>
-        <div class="chat-h-info">
-            <div class="chat-h-name">Tanya SSK (Pembantu Maya)</div>
-            <div class="chat-h-status">Sedia Membantu</div>
-        </div>
+  <div class="chat-header">
+    <div class="chat-avatar">SSK</div>
+    <div class="chat-h-info">
+      <div class="chat-h-name">Bot SSK</div>
+      <div class="chat-h-status">Online sekarang</div>
     </div>
-    <div class="chat-body" id="chatBody">
-        <div class="chat-msg bot">
-            Halo! Selamat datang ke <strong>SSK Centre Kota Belud</strong>. Saya pembantu maya anda. Ada perkara yang boleh saya bantu?
-        </div>
-        <div class="chat-options">
-            <button class="chat-opt" onclick="botQuery('sewa')">🏢 Bagaimana cara sewa ruang?</button>
-            <button class="chat-opt" onclick="botQuery('dana')">💰 Ada tawaran geran/dana?</button>
-            <button class="chat-opt" onclick="botQuery('keahlian')">👑 Berapakah yuran ahli?</button>
-            <button class="chat-opt" onclick="botQuery('lokasi')">📍 Lokasi hub di mana?</button>
-        </div>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-footer">
+    <input class="chat-input" id="chatInput" placeholder="Taip soalan kau...">
+    <button class="chat-send" onclick="userType()">→</button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modalbg" id="modalBg" onclick="bgClick(event)">
+  <div class="modal">
+    <button class="modalx" onclick="closeModal()">&times;</button>
+    <div class="modaltitle">Buat Tempahan Fasiliti</div>
+    <div class="modalsub">Pilih fasiliti, kemudian isi borang rasmi atau hubungi admin melalui WhatsApp.</div>
+    <div class="modalopts">
+      <div class="mopt" onclick="pickFac(this,'Dewan Serbaguna')"><div class="moptn">Dewan Serbaguna</div><div class="moptc">100 orang</div></div>
+      <div class="mopt" onclick="pickFac(this,'Bilik Mesyuarat')"><div class="moptn">Bilik Mesyuarat</div><div class="moptc">Meeting</div></div>
+      <div class="mopt" onclick="pickFac(this,'Studio Content')"><div class="moptn">Studio</div><div class="moptc">Foto &amp; Video</div></div>
+      <div class="mopt" onclick="pickFac(this,'Ruang Fleksibel')"><div class="moptn">Ruang Fleksibel</div><div class="moptc">Workshop</div></div>
     </div>
-    <div class="chat-footer">
-        <input type="text" class="chat-input" id="chatInput" placeholder="Tulis soalan anda di sini..." onkeypress="handleChatEnter(event)">
-        <button class="chat-send-btn" onclick="sendUserMessage()">Kirim</button>
-    </div>
+    <hr class="modaldiv">
+    <a id="mbtn-form" class="mbtnform" href="https://forms.gle/1cN61QBAXEB3iX6s9" target="_blank">Borang Tempahan Rasmi</a>
+    <a id="mbtn-wa" class="mbtnwa" href="https://wa.me/601121406450?text=Salam%2C+saya+ingin+membuat+tempahan+di+SSK+Centre." target="_blank">WhatsApp Admin</a>
+    <div class="modalnote">Pengesahan dalam 24 jam waktu bekerja • 011-2140 6450</div>
+  </div>
 </div>
 
 <script>
-/* DUA PEMBANTU INTERAKTIF & SISTEM DATA */
+/* ============ NAVIGATION ============ */
+function goTo(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
 
-// 1. DATA PROGRAM & SUMBER (GERAN/KURSUS)
-const resourcesData = [
-    {id: 1, type: 'dana', category: 'pemula', amount: 'RM 5,000', label: 'Geran Mikro Belia Sabah', desc: 'Bantuan pembiayaan permulaan usahawan muda dalam bidang digital dan perniagaan kreatif.', link: 'https://wa.me/601151322894?text=Mohon%20Geran%20Mikro%20Belia'},
-    {id: 2, type: 'program', category: 'digital', amount: 'Subsidi Penuh', label: 'Bengkel Pemasaran AI TikTok', desc: 'Latihan praktikal menggunakan kuasa AI untuk penghasilan video jualan produk tempatan.', link: 'https://wa.me/601151322894?text=Daftar%20Bengkel%20AI%20TikTok'},
-    {id: 3, type: 'dana', category: 'digital', amount: 'RM 10,000', label: 'Inisiatif Peralatan Pintar', desc: 'Geran pemadanan komputer dan peranti teknologi bagi mendigitalkan inventori fizikal kedai runcit.', link: 'https://wa.me/601151322894?text=Mohon%20Geran%20Alatan%20Pintar'},
-    {id: 4, type: 'program', category: 'keusahawanan', amount: 'RM 50 (Ahli Percuma)', label: 'Masterclass E-Niaga Luar Rural', desc: 'Program bimbingan intensif 3 minggu merangkumi pendaftaran akaun, penghantaran logistik, dan gerbang pembayaran.', link: 'https://wa.me/601151322894?text=Daftar%20Masterclass%20E-Niaga'},
-    {id: 5, type: 'program', category: 'digital', amount: 'Subsidi Penuh', label: 'Kursus Fotografi & Studio Media', desc: 'Ketahui seni pencahayaan produk kraf menggunakan kemudahan studio canggih di SSK.', link: 'https://wa.me/601151322894?text=Daftar%20Kursus%20Fotografi'}
-];
+/* ============ NOTIFICATION ============ */
+function closeNotif(){document.getElementById('notifBar').classList.add('hide');}
 
-// 2. DATA KUIZ REKOMENDASI PINTAR
-const quizQuestions = [
-    {
-        q: "Apakah fokus utama matlamat perniagaan atau projek anda sekarang?",
-        answers: [
-            {text: "Mendapatkan modal permulaan (Perniagaan Baru)", score: "dana"},
-            {text: "Belajar cara pemasaran digital & promosi", score: "bengkel"},
-            {text: "Mencari ruang fizikal untuk bekerja dengan internet laju", score: "fasiliti"},
-            {text: "Menyertai komuniti & jaringan rakan niaga", score: "ahli"}
-        ]
-    },
-    {
-        q: "Apakah tahap celik teknologi/digital semasa anda?",
-        answers: [
-            {text: "Sangat baharu (Ingin belajar asas e-dagang/komputer)", score: "bengkel"},
-            {text: "Sederhana (Mempunyai akaun media sosial, sedia kembangkan jualan)", score: "bengkel"},
-            {text: "Tinggi (Memerlukan peralatan canggih seperti studio/ruang runding cara)", score: "fasiliti"},
-            {text: "Sudah bersedia untuk bantuan pembiayaan sahaja", score: "dana"}
-        ]
-    }
-];
-
-let currentQuizIdx = 0;
-let quizScores = { dana: 0, bengkel: 0, fasiliti: 0, ahli: 0 };
-
-// INTI UTAMA APABILA LAMAN DIATUR
-document.addEventListener("DOMContentLoaded", () => {
-    initCountdown();
-    initCalculator();
-    initQuiz();
-    renderResources('semua', 'semua');
-    initFAQ();
-    initScrollTracker();
+/* ============ SCROLL PROGRESS ============ */
+window.addEventListener('scroll',function(){
+  var h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  var p=(window.scrollY/h)*100;
+  document.getElementById('scrollBar').style.width=p+'%';
 });
 
-// SCROLL TRACKER
-function initScrollTracker() {
-    window.onscroll = function() {
-        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        let scrolled = (winScroll / height) * 100;
-        document.getElementById("scrollProgress").style.width = scrolled + "%";
-    };
+/* ============ COUNTING ANIMATION FOR STATS ============ */
+function animateCount(el){
+  var target=parseInt(el.dataset.target);
+  var suffix=el.dataset.suffix||'';
+  var current=0;
+  var step=target/40;
+  var timer=setInterval(function(){
+    current+=step;
+    if(current>=target){current=target;clearInterval(timer);}
+    el.textContent=Math.floor(current)+suffix;
+  },25);
 }
 
-function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+/* ============ COUNTDOWN TIMERS ============ */
+function updateCountdown(targetDate,elId){
+  var now=new Date().getTime();
+  var dist=targetDate-now;
+  var el=document.getElementById(elId);
+  if(!el)return;
+  if(dist<0){el.innerHTML='<div class="cd-unit" style="background:var(--red);"><div class="cd-val" style="color:white;font-size:11px;">EVENT BERLALU</div></div>';return;}
+  var d=Math.floor(dist/(1000*60*60*24));
+  var h=Math.floor((dist%(1000*60*60*24))/(1000*60*60));
+  var m=Math.floor((dist%(1000*60*60))/(1000*60));
+  el.innerHTML='<div class="cd-unit"><div class="cd-val">'+d+'</div><div class="cd-u">HARI</div></div><div class="cd-unit"><div class="cd-val">'+h+'</div><div class="cd-u">JAM</div></div><div class="cd-unit"><div class="cd-val">'+m+'</div><div class="cd-u">MIN</div></div>';
+}
+function runCountdowns(){
+  updateCountdown(new Date('2026-05-21T08:00:00').getTime(),'cd1');
+  updateCountdown(new Date('2026-05-25T08:00:00').getTime(),'cd2');
+}
+runCountdowns();
+setInterval(runCountdowns,60000);
+
+/* ============ TABS & FILTERS ============ */
+function switchTab(n){document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('on');});document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('on');});document.getElementById('tbtn-'+n).classList.add('on');document.getElementById('pane-'+n).classList.add('on');var p=document.getElementById('pane-'+n);var c=p.querySelectorAll('.chip');c.forEach(function(x){x.classList.remove('on');});if(c[0])c[0].classList.add('on');p.querySelectorAll('.ccard').forEach(function(x){x.style.display='';});document.getElementById('searchInput').value='';document.getElementById('searchCount').style.display='none';document.getElementById('noResults').style.display='none';}
+function openTab(n){goTo('resources');setTimeout(function(){switchTab(n);},500);}
+function fc(btn,tag){var p=btn.closest('.pane');p.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on');});btn.classList.add('on');p.querySelectorAll('.ccard').forEach(function(c){if(tag==='all'){c.style.display='';return;}c.style.display=(c.dataset.t||'').indexOf(tag)!==-1?'':'none';});}
+
+/* ============ SEARCH ============ */
+document.getElementById('searchInput').addEventListener('input',function(e){
+  var q=e.target.value.toLowerCase().trim();
+  var activePane=document.querySelector('.pane.on');
+  var cards=activePane.querySelectorAll('.ccard');
+  var matches=0;
+  cards.forEach(function(c){
+    var text=c.textContent.toLowerCase();
+    if(q===''||text.indexOf(q)!==-1){c.style.display='';matches++;}
+    else{c.style.display='none';}
+  });
+  var countEl=document.getElementById('searchCount');
+  var noRes=document.getElementById('noResults');
+  if(q===''){countEl.style.display='none';noRes.style.display='none';}
+  else{countEl.style.display='inline-block';countEl.textContent=matches+' hasil dijumpai';noRes.style.display=matches===0?'block':'none';}
+});
+
+/* ============ CALCULATOR ============ */
+var calcData={fac:null,dur:null,cat:null};
+var pricing={
+  dewan:{komuniti:{jam:70,half:250,full:450,dep:100},korporat:{jam:120,half:400,full:700,dep:300},name:'Dewan Serbaguna'},
+  bilik:{komuniti:{jam:40,half:100,full:180,dep:50},korporat:{jam:70,half:180,full:300,dep:150},name:'Bilik Mesyuarat'},
+  studio:{komuniti:{jam:60,half:120,full:200,dep:100},korporat:{jam:110,half:220,full:380,dep:200},name:'Studio Content'}
+};
+var durLabel={jam:'Per Jam',half:'½ Hari (2-4 jam)',full:'Sehari Penuh'};
+
+function pickCalc(el,type,val){
+  var parent=el.parentElement;
+  parent.querySelectorAll('.calc-opt').forEach(function(o){o.classList.remove('on');});
+  el.classList.add('on');
+  calcData[type]=val;
+  renderCalc();
 }
 
-function closeNotif() {
-    document.getElementById("notifBar").classList.add("hide");
+function renderCalc(){
+  var out=document.getElementById('calc-output');
+  if(!calcData.fac||!calcData.dur||!calcData.cat){
+    out.innerHTML='<div class="calc-empty">Pilih fasiliti, tempoh dan kategori untuk lihat harga.</div>';
+    return;
+  }
+  var fac=pricing[calcData.fac];
+  var price=fac[calcData.cat][calcData.dur];
+  var dep=fac[calcData.cat].dep;
+  var total=price+dep;
+  var catLabel=calcData.cat==='komuniti'?'Komuniti':'Korporat';
+
+  var msg=encodeURIComponent('Salam admin SSK Centre, saya nak tempah:\n\n📍 Fasiliti: '+fac.name+'\n⏱ Tempoh: '+durLabel[calcData.dur]+'\n👥 Kategori: '+catLabel+'\n💰 Sewa: RM'+price+'\n🔒 Deposit: RM'+dep+'\n━━━━━━━━━━\n💵 TOTAL: RM'+total+'\n\nBoleh saya dapat info lanjut?');
+
+  out.innerHTML=
+    '<div class="calc-line"><span class="calc-line-l">Fasiliti</span><span class="calc-line-r">'+fac.name+'</span></div>'+
+    '<div class="calc-line"><span class="calc-line-l">Tempoh</span><span class="calc-line-r">'+durLabel[calcData.dur]+'</span></div>'+
+    '<div class="calc-line"><span class="calc-line-l">Kategori</span><span class="calc-line-r">'+catLabel+'</span></div>'+
+    '<div class="calc-line"><span class="calc-line-l">Sewa</span><span class="calc-line-r">RM'+price+'</span></div>'+
+    '<div class="calc-line"><span class="calc-line-l">Deposit</span><span class="calc-line-r">RM'+dep+'</span></div>'+
+    '<div class="calc-total"><span class="calc-total-l">Total Bayar</span><span class="calc-total-r">RM'+total+'</span></div>'+
+    '<div class="calc-deposit">Termasuk deposit RM'+dep+' (boleh refund)</div>'+
+    '<a class="calc-btn" href="https://wa.me/601121406450?text='+msg+'" target="_blank">📱 WhatsApp Admin Sekarang</a>';
 }
 
-function toggleLang() {
-    alert("Language selection: English localization is coming soon!");
+/* ============ QUIZ ============ */
+var quizQuestions=[
+  {q:'Berapa umur kau sekarang?',a:[
+    {t:'18 – 30 tahun',tag:'belia'},
+    {t:'31 – 45 tahun',tag:'dewasa'},
+    {t:'46 tahun ke atas',tag:'matang'}
+  ]},
+  {q:'Apa sektor utama bisnes kau?',a:[
+    {t:'Pertanian / Ternakan',tag:'pertanian'},
+    {t:'F&B / Makanan',tag:'fnb'},
+    {t:'Digital / IT / Kreatif',tag:'digital'},
+    {t:'Runcit / Servis / Lain-lain',tag:'umum'}
+  ]},
+  {q:'Status bisnes kau sekarang?',a:[
+    {t:'Belum ada bisnes, baru nak start',tag:'startup'},
+    {t:'Bisnes baru (bawah 1 tahun)',tag:'mikro'},
+    {t:'Sudah operate 1+ tahun',tag:'established'}
+  ]},
+  {q:'Kau dari kawasan mana?',a:[
+    {t:'Kota Belud / Luar Bandar Sabah',tag:'luar'},
+    {t:'Bandar utama Sabah',tag:'bandar'}
+  ]},
+  {q:'Apa yang paling kau perlukan sekarang?',a:[
+    {t:'Modal / Wang tunai',tag:'modal'},
+    {t:'Peralatan / Mesin',tag:'peralatan'},
+    {t:'Latihan / Skill upgrade',tag:'training'},
+    {t:'Networking / Mentor',tag:'network'}
+  ]}
+];
+
+var quizGrants={
+  belia_modal:[{n:'TUBE — Tunas Usahawan Belia',d:'RM15,000 + latihan 3 fasa intensif. Sabah ranking tinggi dalam pemohon.',l:'https://tube.smecorp.gov.my'},{n:'BSN Usahawan Muda',d:'Pembiayaan bawah 30 tahun. Daripada RM150 juta Bajet 2026.',l:'https://www.bsn.com.my'}],
+  belia_peralatan:[{n:'BSN Geran Usahawan Mikro',d:'Sehingga RM10,000 untuk peralatan. 1000 slot Malaysia.',l:'https://www.bsn.com.my'},{n:'GAM Start-Up (kalau pertanian)',d:'Sehingga RM30,000 dalam bentuk peralatan.',l:'https://egam.kpkm.gov.my'}],
+  pertanian:[{n:'GAM Start-Up / Scale-Up',d:'Geran khas pertanian, ternakan, perikanan. Sehingga RM30,000.',l:'https://egam.kpkm.gov.my'},{n:'Agropreneur NextGen',d:'Geran + pembiayaan Agro Bank RM1.1 bilion. Pengecualian cukai 100%.',l:'https://www.agrobank.com.my'}],
+  digital:[{n:'Geran Pecutan Digital MDEC',d:'Bahagian RM53 juta untuk AI, blockchain, sistem digital.',l:'https://mdec.my'},{n:'INSKEN AI Masterclass',d:'Kursus AI untuk industri kreatif dan F&B. Hands-on.',l:'https://insken.gov.my'}],
+  luar:[{n:'Re-Start Usahawan Luar Bandar',d:'RM3,000-RM5,000 geran penuh. Khas luar bandar Sabah.',l:'https://www.rurallink.gov.my'},{n:'Dana Tamu Desa Sabah',d:'RM20 juta Bajet 2026 khusus peniaga Tamu Desa Sabah.',l:'#contact'}],
+  bumiputera:[{n:'TERAJU BSSF',d:'Dana pemerkasaan Bumiputera Sabah/Sarawak. Terma fleksibel.',l:'https://www.teraju.gov.my'},{n:'MARA Pembiayaan',d:'Modal tetap, modal pusingan. 40% geran jika rekod baik.',l:'https://www.mara.gov.my'}],
+  startup:[{n:'TEKUN Mikro',d:'Tiada cagaran. Kadar 4%. Sesuai tanpa rekod kredit.',l:'https://www.tekun.gov.my'},{n:'AIM',d:'Tanpa cagaran untuk B40. Kelulusan 1-2 minggu.',l:'https://www.aim.gov.my'}],
+  training:[{n:'INSKEN KAK',d:'Kursus Asas Keusahawanan. RM50, 2 hari, semua termasuk.',l:'https://insken.gov.my/pendaftaran'},{n:'HRD Corp Subsidi',d:'Kursus ditanggung untuk PKS. Pelbagai pilihan.',l:'https://hrdcorp.gov.my'}],
+  network:[{n:'Jadi Ahli SSK Centre',d:'Akses event, kolaborasi vendor, networking dengan usahawan Kota Belud.',l:'#membership'},{n:'PULSE Komuniti',d:'Persatuan usahawan muda Sabah — hubungi SSK untuk introduction.',l:'#contact'}]
+};
+
+var quizState={step:0,answers:[]};
+
+function renderQuiz(){
+  var body=document.getElementById('quizBody');
+  var prog=document.getElementById('quizProgress');
+  if(quizState.step>=quizQuestions.length){renderQuizResult();return;}
+  var q=quizQuestions[quizState.step];
+  prog.style.width=((quizState.step/quizQuestions.length)*100)+'%';
+  var html='<div class="quiz-q-count">SOALAN '+(quizState.step+1)+' / '+quizQuestions.length+'</div>';
+  html+='<div class="quiz-q">'+q.q+'</div><div class="quiz-answers">';
+  q.a.forEach(function(ans,i){
+    html+='<button class="quiz-ans" onclick="answerQuiz(\''+ans.tag+'\')">'+ans.t+'</button>';
+  });
+  html+='</div>';
+  body.innerHTML=html;
 }
 
-// COUNTDOWN TIMER LOGIC
-function initCountdown() {
-    function startTimer(targetDateStr, elements) {
-        let target = new Date(targetDateStr).getTime();
-        setInterval(() => {
-            let now = new Date().getTime();
-            let diff = target - now;
-            if (diff < 0) return;
-            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            
-            document.getElementById(elements.days).innerText = days < 10 ? '0' + days : days;
-            document.getElementById(elements.hours).innerText = hours < 10 ? '0' + hours : hours;
-            document.getElementById(elements.mins).innerText = mins < 10 ? '0' + mins : mins;
-        }, 1000);
+function answerQuiz(tag){
+  quizState.answers.push(tag);
+  quizState.step++;
+  renderQuiz();
+}
+
+function renderQuizResult(){
+  document.getElementById('quizProgress').style.width='100%';
+  var tags=quizState.answers;
+  var recs=[];
+  var seen={};
+
+  function addRec(key){
+    if(quizGrants[key]){
+      quizGrants[key].forEach(function(r){
+        if(!seen[r.n]){seen[r.n]=true;recs.push(r);}
+      });
     }
-    startTimer("June 15, 2026 23:59:59", {days: 'g-hari', hours: 'g-jam', mins: 'g-min'});
-    startTimer("May 22, 2026 09:00:00", {days: 'b-hari', hours: 'b-jam', mins: 'b-min'});
+  }
+
+  // Match logic
+  if(tags.indexOf('belia')>-1 && tags.indexOf('modal')>-1) addRec('belia_modal');
+  if(tags.indexOf('belia')>-1 && tags.indexOf('peralatan')>-1) addRec('belia_peralatan');
+  if(tags.indexOf('pertanian')>-1) addRec('pertanian');
+  if(tags.indexOf('digital')>-1) addRec('digital');
+  if(tags.indexOf('luar')>-1) addRec('luar');
+  if(tags.indexOf('startup')>-1) addRec('startup');
+  if(tags.indexOf('training')>-1) addRec('training');
+  if(tags.indexOf('network')>-1) addRec('network');
+  if(recs.length<2) addRec('bumiputera'); // fallback
+
+  var html='<div class="quiz-result show"><div class="quiz-result-eye">✓ HASIL ANALISA</div>';
+  html+='<div class="quiz-result-title">Ini geran &amp; program paling sesuai untuk kau:</div>';
+  html+='<div class="quiz-recs">';
+  recs.slice(0,4).forEach(function(r){
+    html+='<div class="quiz-rec"><div class="quiz-rec-name">'+r.n+'</div><div class="quiz-rec-desc">'+r.d+'</div></div>';
+  });
+  html+='</div>';
+  html+='<div class="quiz-actions">';
+  html+='<button class="quiz-restart" onclick="restartQuiz()">↻ Mula Semula</button>';
+  html+='<a class="quiz-cta" href="https://wa.me/601121406450?text='+encodeURIComponent('Salam, saya baru complete Quiz Geran di website SSK Centre. Boleh admin bantu saya tentang permohonan geran yang sesuai?')+'" target="_blank">💬 Bincang dengan Admin</a>';
+  html+='</div></div>';
+  document.getElementById('quizBody').innerHTML=html;
 }
 
-// CALC-RENTAL LOGIC
-function initCalculator() {
-    const rGroup = document.querySelectorAll("#optRuang .calc-opt");
-    const tGroup = document.querySelectorAll("#optTempoh .calc-opt");
-    const aGroup = document.querySelectorAll("#optAddon .calc-opt");
+function restartQuiz(){quizState={step:0,answers:[]};renderQuiz();}
+renderQuiz();
 
-    rGroup.forEach(o => o.addEventListener("click", () => {
-        rGroup.forEach(x => x.classList.remove("on"));
-        o.classList.add("on");
-        runCalculation();
-    }));
-
-    tGroup.forEach(o => o.addEventListener("click", () => {
-        tGroup.forEach(x => x.classList.remove("on"));
-        o.classList.add("on");
-        runCalculation();
-    }));
-
-    aGroup.forEach(o => o.addEventListener("click", () => {
-        o.classList.toggle("on");
-        runCalculation();
-    }));
-
-    runCalculation();
+/* ============ FAQ ============ */
+function toggleFaq(el){
+  var wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(f){f.classList.remove('open');});
+  if(!wasOpen) el.classList.add('open');
 }
 
-function runCalculation() {
-    const activeRuang = document.querySelector("#optRuang .calc-opt.on");
-    const activeTempoh = document.querySelector("#optTempoh .calc-opt.on");
-    const activeAddons = document.querySelectorAll("#optAddon .calc-opt.on");
+/* ============ MODAL ============ */
+function openModal(){document.getElementById('modalBg').classList.add('on');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('modalBg').classList.remove('on');document.body.style.overflow='';}
+function bgClick(e){if(e.target===document.getElementById('modalBg'))closeModal();}
+function pickFac(el,name){document.querySelectorAll('.mopt').forEach(function(o){o.classList.remove('on');});el.classList.add('on');var msg=encodeURIComponent('Salam, saya ingin membuat tempahan '+name+' di SSK Centre. Boleh saya dapatkan maklumat lanjut?');document.getElementById('mbtn-wa').href='https://wa.me/601121406450?text='+msg;}
 
-    let priceBase = parseFloat(activeRuang.getAttribute("data-price"));
-    let factor = parseFloat(activeTempoh.getAttribute("data-factor"));
-    let nameRuang = activeRuang.getAttribute("data-name");
-    let nameTempoh = activeTempoh.getAttribute("data-name");
+/* ============ CONTACT FORM ============ */
+function submitContact(){alert('Terima kasih! Pasukan SSK Centre akan menghubungi anda dalam 1-2 hari bekerja.\n\nUntuk respons lebih cepat, WhatsApp admin di 011-2140 6450.');}
 
-    let addonTotal = 0;
-    let addonNames = [];
-    activeAddons.forEach(a => {
-        addonTotal += parseFloat(a.getAttribute("data-price"));
-        addonNames.push(a.getAttribute("data-name"));
-    });
+/* ============ LANGUAGE ============ */
+var lang='bm';
+var T={bm:{hl:'Kota Belud, Sabah — Hub Komuniti & Usahawan',hh:'RUANG UNTUK<br><span class="csky">BISNES,</span><br>KOMUNITI &amp;<br><span class="cred">PELUANG</span>',hd:'SSK Centre menyediakan fasiliti bertaraf, program pembangunan usahawan, serta direktori kursus, geran dan pembiayaan terkini untuk komuniti Kota Belud.',hb1:'Kira Harga Sewa',hb2:'Cari Geran Sesuai'},en:{hl:'Kota Belud, Sabah — Community & Entrepreneur Hub',hh:'SPACE FOR<br><span class="csky">BUSINESS,</span><br>COMMUNITY &amp;<br><span class="cred">OPPORTUNITY</span>',hd:'SSK Centre provides quality facilities, entrepreneur development programs, and a curated directory of courses, grants and financing for the Kota Belud community.',hb1:'Calculate Rental',hb2:'Find My Grant'}};
+function toggleLang(){lang=lang==='bm'?'en':'bm';document.getElementById('langbtn').textContent=lang==='bm'?'EN':'BM';var t=T[lang];for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id];}}
 
-    let total = (priceBase * factor) + addonTotal;
+/* ============ CHATBOT ============ */
+var chatTree={
+  root:{
+    msg:'Hi! Saya Bot SSK 👋 Apa yang kau cari hari ni?',
+    opts:[
+      {t:'💰 Harga sewa fasiliti',next:'price'},
+      {t:'🎯 Cari geran/kursus',next:'grant'},
+      {t:'📋 Cara tempah fasiliti',next:'book'},
+      {t:'⭐ Info keahlian',next:'member'},
+      {t:'📅 Event terkini',next:'event'},
+      {t:'📞 Hubungi admin',next:'contact'}
+    ]
+  },
+  price:{
+    msg:'Bestnya! Aku ada <strong>kalkulator auto</strong> yang boleh kira harga tepat untuk kau. Cuba pilih:',
+    opts:[
+      {t:'Bukak Kalkulator',action:'goto-calculator'},
+      {t:'Bagi tau aku ja kadar standard',next:'priceList'},
+      {t:'← Balik menu',next:'root'}
+    ]
+  },
+  priceList:{
+    msg:'Okay ni kadar ringkas (RM):<br><br><strong>Dewan (100 pax):</strong><br>• Komuniti: 70/jam, 250/half, 450/full<br>• Korporat: 120/jam, 400/half, 700/full<br><br><strong>Bilik Mesyuarat (20 pax):</strong><br>• Komuniti: 40/jam, 100/half, 180/full<br>• Korporat: 70/jam, 180/half, 300/full<br><br><strong>Studio:</strong><br>• Komuniti: 60/jam, 120/half, 200/full<br>• Korporat: 110/jam, 220/half, 380/full<br><br>+ Deposit ikut fasiliti.',
+    opts:[
+      {t:'Bukak Kalkulator',action:'goto-calculator'},
+      {t:'Cara tempah?',next:'book'},
+      {t:'← Balik menu',next:'root'}
+    ]
+  },
+  grant:{
+    msg:'Best! Kau ada 2 cara:',
+    opts:[
+      {t:'Cuba Quiz Geran (5 soalan)',action:'goto-quiz'},
+      {t:'Browse senarai geran terus',action:'goto-resources'},
+      {t:'Apa beza geran vs pembiayaan?',next:'grantDiff'},
+      {t:'← Balik menu',next:'root'}
+    ]
+  },
+  grantDiff:{
+    msg:'<strong>Geran</strong> = duit/peralatan PERCUMA, tak perlu bayar balik (asalkan ikut syarat).<br><br><strong>Pembiayaan</strong> = pinjaman, kena bayar balik dengan kadar faedah rendah.<br><br>Geran biasanya lebih kompetitif sebab limited slots. Pembiayaan lagi senang dapat tapi ada komitmen bulanan.',
+    opts:[
+      {t:'Cuba Quiz Geran',action:'goto-quiz'},
+      {t:'← Balik menu',next:'root'}
+    ]
+  },
+  book:{
+    msg:'Untuk tempah fasiliti, ikut 3 langkah:<br><br>1. Pakai <strong>Kalkulator</strong> kira harga<br>2. Click WhatsApp button — message auto-fill<br>3. Admin confirm dalam 24 jam<br><br>Pengesahan rasmi guna borang Google Form yang admin akan bagi.',
+    opts:[
+      {t:'Bukak Kalkulator',action:'goto-calculator'},
+      {t:'WhatsApp admin terus',action:'wa-direct'},
+      {t:'← Balik menu',next:'root'}
+    ]
+  },
+  member:{
+    msg:'Ada 3 tier keahlian:<br><br>⚪ <strong>Komuniti</strong> RM60/bulan — diskaun 20%<br>🔴 <strong>Business</strong> RM200/bulan — diskaun 30% + 2j bilik mesyuarat free<br>🔵 <strong>Corporate</strong> RM800/bulan — diskaun 40% + branding<br><br>Kalau kau guna fasiliti 2+ kali sebulan, jadi ahli lagi worth it.',
+    opts:[
+      {t:'Lihat detail penuh',action:'goto-membership'},
+      {t:'WhatsApp untuk daftar',action:'wa-member'},
+      {t:'← Balik menu',next:'root'}
+    ]
+  },
+  event:{
+    msg:'Event bulan Mei 2026:<br><br>🎪 <strong>Free Market</strong> — 21 Mei<br>Sumbangan pakaian + food vendors<br><br>🎨 <strong>Kaamatan Kreatif</strong> — 25 Mei<br>Program kraf kanak-kanak (RM10/peserta)<br>Target 30-50 peserta',
+    opts:[
+      {t:'Lihat detail event',action:'goto-berita'},
+      {t:'Daftar sebagai vendor',action:'wa-vendor'},
+      {t:'← Balik menu',next:'root'}
+    ]
+  },
+  contact:{
+    msg:'Cara contact admin:<br><br>📱 WhatsApp: <strong>011-2140 6450</strong><br>⏰ Isnin–Jumaat: 8:30 pagi – 5:00 petang<br>📘 Facebook: @sskcentrekb<br>🎵 TikTok: @sskcentrekb',
+    opts:[
+      {t:'WhatsApp admin sekarang',action:'wa-direct'},
+      {t:'← Balik menu',next:'root'}
+    ]
+  }
+};
 
-    if (factor === 3) {
-        total = (priceBase * factor * 0.95) + addonTotal;
-    } else if (factor === 5) {
-        total = (priceBase * factor * 0.90) + addonTotal;
+function addChatMsg(text,sender){
+  var body=document.getElementById('chatBody');
+  var div=document.createElement('div');
+  div.className='chat-msg '+sender;
+  div.innerHTML=text;
+  body.appendChild(div);
+  body.scrollTop=body.scrollHeight;
+}
+
+function showTyping(){
+  var body=document.getElementById('chatBody');
+  var div=document.createElement('div');
+  div.className='chat-typing';
+  div.id='chatTyping';
+  div.innerHTML='<span></span><span></span><span></span>';
+  body.appendChild(div);
+  body.scrollTop=body.scrollHeight;
+}
+function hideTyping(){var t=document.getElementById('chatTyping');if(t)t.remove();}
+
+function renderChatNode(key){
+  var node=chatTree[key];
+  if(!node)return;
+  showTyping();
+  setTimeout(function(){
+    hideTyping();
+    addChatMsg(node.msg,'bot');
+    if(node.opts){
+      var body=document.getElementById('chatBody');
+      var div=document.createElement('div');
+      div.className='chat-options';
+      node.opts.forEach(function(o){
+        var b=document.createElement('button');
+        b.className='chat-opt';
+        b.textContent=o.t;
+        b.onclick=function(){
+          addChatMsg(o.t,'user');
+          div.remove();
+          if(o.action){handleChatAction(o.action);}
+          else if(o.next){setTimeout(function(){renderChatNode(o.next);},300);}
+        };
+        div.appendChild(b);
+      });
+      body.appendChild(div);
+      body.scrollTop=body.scrollHeight;
     }
-
-    document.getElementById("lblRuang").innerText = nameRuang;
-    document.getElementById("lblHargaAsas").innerText = "RM " + priceBase.toFixed(2);
-    document.getElementById("lblTempoh").innerText = nameTempoh;
-    document.getElementById("lblAddon").innerText = addonNames.length > 0 ? addonNames.join(", ") : "Tiada";
-    document.getElementById("lblTotal").innerText = "RM " + total.toFixed(0);
-
-    let textWA = `Halo SSK Centre, saya ingin tempah slot sewaan:\n\n- Ruang: ${nameRuang}\n- Tempoh: ${nameTempoh}\n- Tambahan: ${addonNames.length > 0 ? addonNames.join(", ") : "Tiada"}\n\nAnggaran Kiraan: RM ${total.toFixed(0)}`;
-    document.getElementById("btnWhatsappSewa").setAttribute("href", `https://wa.me/601151322894?text=${encodeURIComponent(textWA)}`);
+  },600);
 }
 
-// QUIZ SYSTEM LOGIC
-function initQuiz() {
-    currentQuizIdx = 0;
-    quizScores = { dana: 0, bengkel: 0, fasiliti: 0, ahli: 0 };
-    document.getElementById("quizProgress").style.width = "0%";
-    showQuestion();
+function handleChatAction(act){
+  var actions={
+    'goto-calculator':function(){toggleChat();setTimeout(function(){goTo('calculator');},300);},
+    'goto-quiz':function(){toggleChat();setTimeout(function(){goTo('quiz');},300);},
+    'goto-resources':function(){toggleChat();setTimeout(function(){goTo('resources');},300);},
+    'goto-membership':function(){toggleChat();setTimeout(function(){goTo('membership');},300);},
+    'goto-berita':function(){toggleChat();setTimeout(function(){goTo('berita');},300);},
+    'wa-direct':function(){window.open('https://wa.me/601121406450?text='+encodeURIComponent('Salam admin SSK Centre, saya ingin bertanya.'),'_blank');},
+    'wa-member':function(){window.open('https://wa.me/601121406450?text='+encodeURIComponent('Salam, saya berminat daftar keahlian SSK Centre. Boleh admin terangkan?'),'_blank');},
+    'wa-vendor':function(){window.open('https://wa.me/601121406450?text='+encodeURIComponent('Salam, saya berminat jadi vendor di event SSK Centre. Boleh admin bagi info?'),'_blank');}
+  };
+  if(actions[act])actions[act]();
+  setTimeout(function(){renderChatNode('root');},800);
 }
 
-function showQuestion() {
-    const qBox = document.getElementById("quizBody");
-    if (currentQuizIdx < quizQuestions.length) {
-        let progress = ((currentQuizIdx) / quizQuestions.length) * 100;
-        document.getElementById("quizProgress").style.width = progress + "%";
-        
-        let curQ = quizQuestions[currentQuizIdx];
-        let html = `
-            <div class="quiz-q-count">Soalan ${currentQuizIdx + 1} daripada ${quizQuestions.length}</div>
-            <div class="quiz-q">${curQ.q}</div>
-            <div class="quiz-answers">
-        `;
-        curQ.answers.forEach((ans, idx) => {
-            html += `<button class="quiz-ans" onclick="selectAnswer('${ans.score}')">${ans.text}</button>`;
-        });
-        html += `</div>`;
-        qBox.innerHTML = html;
-    } else {
-        showQuizResult();
+function userType(){
+  var input=document.getElementById('chatInput');
+  var v=input.value.trim();
+  if(!v)return;
+  addChatMsg(v,'user');
+  input.value='';
+  // smart keyword matching
+  var lower=v.toLowerCase();
+  setTimeout(function(){
+    showTyping();
+    setTimeout(function(){
+      hideTyping();
+      if(lower.match(/harga|sewa|kos|bayar|fee|kadar/)){renderChatNode('price');}
+      else if(lower.match(/geran|grant|tube|bsn|mara|teraju/)){renderChatNode('grant');}
+      else if(lower.match(/tempah|book|reservation/)){renderChatNode('book');}
+      else if(lower.match(/ahli|member|keahlian|membership/)){renderChatNode('member');}
+      else if(lower.match(/event|program|pasar|kaamatan|free market/)){renderChatNode('event');}
+      else if(lower.match(/contact|hubungi|admin|whatsapp|wa/)){renderChatNode('contact');}
+      else{
+        addChatMsg('Hmm, aku belum faham sangat. Cuba pilih dari menu ni:','bot');
+        renderChatNode('root');
+      }
+    },700);
+  },300);
+}
+
+document.getElementById('chatInput').addEventListener('keypress',function(e){if(e.key==='Enter')userType();});
+
+function toggleChat(){
+  var panel=document.getElementById('chatPanel');
+  var toggle=document.getElementById('chatToggle');
+  panel.classList.toggle('open');
+  toggle.classList.toggle('open');
+  if(panel.classList.contains('open')){
+    var badge=toggle.querySelector('.chatbot-badge');
+    if(badge)badge.remove();
+    if(document.getElementById('chatBody').children.length===0){
+      renderChatNode('root');
     }
+  }
 }
 
-function selectAnswer(scoreAttr) {
-    quizScores[scoreAttr]++;
-    currentQuizIdx++;
-    showQuestion();
-}
-
-function showQuizResult() {
-    document.getElementById("quizProgress").style.width = "100%";
-    let highestScore = 'bengkel';
-    let max = 0;
-    for (let key in quizScores) {
-        if (quizScores[key] > max) {
-            max = quizScores[key];
-            highestScore = key;
-        }
+/* ============ REVEAL ON SCROLL ============ */
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+      // Trigger stats counter when hero visible
+      var stats=e.target.querySelectorAll('.hsnum[data-target]');
+      stats.forEach(animateCount);
     }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
 
-    const qBox = document.getElementById("quizBody");
-    let resultTitle = "";
-    let recsHtml = "";
-
-    if (highestScore === 'dana') {
-        resultTitle = "Syor Kami: Program Pembiayaan & Geran Usahawan";
-        recsHtml = `
-            <div class="quiz-rec">
-                <div class="quiz-rec-name">Geran Mikro Belia Sabah</div>
-                <div class="quiz-rec-desc">Inisiatif geran permulaan perniagaan inovatif bagi belia sehingga RM5,000.</div>
-            </div>
-            <div class="quiz-rec">
-                <div class="quiz-rec-name">Padanan Geran Digital Usahawan</div>
-                <div class="quiz-rec-desc">Penajaan sebahagian alat digital untuk perniagaan mikro luar bandar.</div>
-            </div>
-        `;
-    } else if (highestScore === 'fasiliti') {
-        resultTitle = "Syor Kami: Akses Sewaan Fasiliti Professional";
-        recsHtml = `
-            <div class="quiz-rec">
-                <div class="quiz-rec-name">Zon Co-Working & Bilik Mesyuarat</div>
-                <div class="quiz-rec-desc">Gunakan akses hub harian serendah RM15 untuk khidmat internet ultra pantas.</div>
-            </div>
-        `;
-    } else if (highestScore === 'ahli') {
-        resultTitle = "Syor Kami: Pelan Keahlian Bulanan Professional";
-        recsHtml = `
-            <div class="quiz-rec">
-                <div class="quiz-rec-name">Pelan Professional (RM80/bulan)</div>
-                <div class="quiz-rec-desc">Akses hub tanpa had berserta keutamaan tawaran padanan program pembiayaan.</div>
-            </div>
-        `;
-    } else {
-        resultTitle = "Syor Kami: Bengkel & Program Peningkatan Digital";
-        recsHtml = `
-            <div class="quiz-rec">
-                <div class="quiz-rec-name">Bengkel Pemasaran AI TikTok</div>
-                <div class="quiz-rec-desc">Latihan memacu jualan automatik menggunakan perisian pembantu AI pintar.</div>
-            </div>
-        `;
-    }
-
-    qBox.innerHTML = `
-        <div class="quiz-result show">
-            <div class="quiz-result-eye">Hasil Analisis Keperluan</div>
-            <div class="quiz-result-title">${resultTitle}</div>
-            <div class="quiz-recs">${recsHtml}</div>
-            <div class="quiz-actions">
-                <button class="quiz-restart" onclick="initQuiz()">Ambil Semula</button>
-                <a class="quiz-cta" onclick="scrollToSection('resources')">Lihat Semua Program</a>
-            </div>
-        </div>
-    `;
-}
-
-// DIRECTORY RESOURCES & FILTER LOGIC
-let activeTab = 'semua';
-let activeChip = 'semua';
-
-function renderResources(tab, chip) {
-    const grid = document.getElementById("resourcesGrid");
-    const searchVal = document.getElementById("searchInput").value.toLowerCase();
-    grid.innerHTML = "";
-
-    let filtered = resourcesData.filter(res => {
-        let matchTab = (tab === 'semua') || (res.type === tab);
-        let matchChip = (chip === 'semua') || (res.category === chip);
-        let matchSearch = res.label.toLowerCase().includes(searchVal) || res.desc.toLowerCase().includes(searchVal);
-        return matchTab && matchChip && matchSearch;
-    });
-
-    if (filtered.length === 0) {
-        grid.innerHTML = `<div class="no-results" style="grid-column: 1/-1;">Tiada program atau geran ditemui padan dengan carian anda.</div>`;
-    } else {
-        filtered.forEach(res => {
-            let bClass = res.type === 'dana' ? 'r' : 'b';
-            let tagClass = res.type === 'dana' ? 'tr' : 'tb';
-            let tagLabel = res.type === 'dana' ? 'Dana' : 'Program';
-            
-            grid.innerHTML += `
-                <div class="ccard ${bClass}">
-                    <span class="ctag ${tagClass}">${tagLabel}</span>
-                    <h3 class="ctitle">${res.label}</h3>
-                    <p class="cdesc">${res.desc}</p>
-                    <div class="cmeta">
-                        <div class="cm">Nilai/Yuran: <b>${res.amount}</b></div>
-                    </div>
-                    <a href="${res.link}" class="clink" target="_blank">Daftar / Mohon Sekarang</a>
-                </div>
-            `;
-        });
-    }
-
-    document.getElementById("searchCount").innerText = `Menampilkan ${filtered.length} program`;
-}
-
-function switchTab(tabName) {
-    activeTab = tabName;
-    const tabs = document.querySelectorAll(".tabs .tab");
-    tabs.forEach(t => t.classList.remove("on"));
-    event.currentTarget.classList.add("on");
-    renderResources(activeTab, activeChip);
-}
-
-function filterChip(chipName) {
-    activeChip = chipName;
-    const chips = document.querySelectorAll("#chipsContainer .chip");
-    chips.forEach(c => c.classList.remove("on"));
-    event.currentTarget.classList.add("on");
-    renderResources(activeTab, activeChip);
-}
-
-function filterResources() {
-    renderResources(activeTab, activeChip);
-}
-
-// FAQ TOGGLE LOGIC
-function initFAQ() {
-    const fItems = document.querySelectorAll(".faq-item");
-    fItems.forEach(item => {
-        const q = item.querySelector(".faq-q");
-        q.addEventListener("click", () => {
-            let isOpen = item.classList.contains("open");
-            fItems.forEach(i => i.classList.remove("open"));
-            if (!isOpen) {
-                item.classList.add("open");
-            }
-        });
-    });
-}
-
-// FORM SUBMISSION GIMMICK
-function submitForm(e) {
-    e.preventDefault();
-    let name = document.getElementById("cName").value;
-    alert(`Terima kasih ${name}! Mesej anda berjaya dihantar ke sistem kami. Kami akan menghubungi anda semula dalam tempoh 24 jam.`);
-    document.getElementById("contactForm").reset();
-}
-
-// CHATBOT DIALOGUE ENGINE
-function toggleChat() {
-    const panel = document.getElementById("chatPanel");
-    panel.classList.toggle("open");
-    document.getElementById("chatBadge").style.display = "none";
-}
-
-function handleChatEnter(e) {
-    if (e.key === 'Enter') sendUserMessage();
-}
-
-function sendUserMessage() {
-    const input = document.getElementById("chatInput");
-    let txt = input.value.trim();
-    if (!txt) return;
-
-    appendChatMsg(txt, 'user');
-    input.value = "";
-
-    setTimeout(() => {
-        let response = queryBotKnowledge(txt.toLowerCase());
-        appendChatMsg(response, 'bot');
-    }, 600);
-}
-
-function appendChatMsg(text, sender) {
-    const body = document.getElementById("chatBody");
-    const m = document.createElement("div");
-    m.className = `chat-msg ${sender}`;
-    m.innerHTML = text;
-    body.appendChild(m);
-    body.scrollTop = body.scrollHeight;
-}
-
-function botQuery(topic) {
-    let resp = "";
-    if (topic === 'sewa') {
-        resp = "Untuk sewaan, anda boleh klik tab <strong>'Kemudahan'</strong> untuk menggunakan <strong>Kalkulator Sewaan Pintar</strong> kami. Harga bermula RM15/hari bagi Meja Kerja Harian.";
-    } else if (topic === 'dana') {
-        resp = "Ya, kami mempunyai skim <strong>Geran Mikro Belia Sabah</strong> dan tajaan subsidi program latihan. Sila skrol ke bahagian <strong>'Dana & Program'</strong> untuk melihat senarai penuh bantuan semasa.";
-    } else if (topic === 'keahlian') {
-        resp = "Keahlian bermula serendah <strong>RM30/bulan</strong> untuk komuniti asas dan <strong>RM80/bulan</strong> untuk Professional (akses fasiliti 24/7 dan keutamaan latihan).";
-    } else if (topic === 'lokasi') {
-        resp = "Kami bertempat di <strong>Pekan Baru Kota Belud</strong> (Lot 12, Tingkat Bawah, Blok B). Datanglah melawat hub kami sekarang!";
-    }
-    appendChatMsg(resp, 'bot');
-}
-
-function queryBotKnowledge(q) {
-    if (q.includes("sewa") || q.includes("harga") || q.includes("fasiliti")) {
-        return "Sewa ruang di SSK Centre bermula dari <strong>RM15/hari</strong> (Co-Working Desk) hingga <strong>RM400/hari</strong> (Dewan Seminar). Anda boleh membuat anggaran kos sedia ada di bahagian kalkulator harga di atas!";
-    } else if (q.includes("geran") || q.includes("bantuan") || q.includes("dana")) {
-        return "Kami menawarkan bantuan <strong>Geran Mikro Komuniti sehingga RM5,000</strong> dan geran tajaan alatan digital. Anda boleh menapis kelayakan melalui senarai di seksyen Dana dan Program.";
-    } else if (q.includes("siapa") || q.includes("tentang") || q.includes("sejarah")) {
-        return "SSK Centre adalah pusat digital komuniti di Pekan Baru Kota Belud yang dibina khusus untuk menaik taraf kemahiran usahawan desa menerusi infrastruktur moden.";
-    } else {
-        return "Terima kasih atas soalan anda. Kami mengesyorkan anda untuk menghubungi penyelaras kami secara langsung di talian WhatsApp rasmi: <a href='https://wa.me/601151322894' target='_blank'>+60 11-5132 2894</a>.";
-    }
-}
+// Trigger hero stats count
+setTimeout(function(){
+  document.querySelectorAll('.hsnum[data-target]').forEach(animateCount);
+},800);
 </script>
+
 </body>
 </html>
