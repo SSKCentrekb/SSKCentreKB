@@ -1,0 +1,125 @@
+/* =========================================================
+   Profile block (home page main screen), activity cards,
+   activities page and photo viewer. Loaded after sections.css.
+   ========================================================= */
+body.in-profile .rail{opacity:0;pointer-events:none}
+
+/* ---------- hero ---------- */
+.pf-hero{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center;padding:clamp(6.5rem,12vh,9rem) var(--gutter) clamp(3rem,7vh,5rem);max-width:90rem;margin:0 auto}
+.pf-title{font-family:var(--font-display);font-weight:400;font-size:clamp(4rem,10vw,10.5rem);line-height:.98;letter-spacing:-.015em;margin-bottom:26px;padding-top:.04em}
+.pf-title em{font-style:normal;color:var(--_navy)}
+.pf-lead{font-size:clamp(1.05rem,1.4vw,1.25rem);line-height:1.6;color:var(--ink-2);max-width:34rem;margin-bottom:32px}
+.pf-stats{display:flex;gap:clamp(1.4rem,4vw,3rem);margin-top:44px;padding-top:24px;border-top:1px solid var(--_line);flex-wrap:wrap}
+.pf-stats dt{font-family:var(--font-display);font-size:2.6rem;line-height:1;color:var(--_night)}
+.pf-stats dd{font-size:.8rem;color:var(--ink-2);margin-top:6px;max-width:9rem}
+
+.pf-mosaic{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:min(72vh,640px)}
+.pf-mosaic img{width:100%;height:100%;object-fit:cover;border-radius:4px;display:block;background:#e6e1d6}
+.pf-mosaic .m1{grid-row:1 / 3}
+.pf-mosaic .m3{object-position:50% 60%}
+
+/* ---------- background ---------- */
+.pf-facts{display:grid;gap:0;margin-top:10px;border-top:1px solid var(--_line)}
+.pf-facts div{display:flex;justify-content:space-between;gap:1.5rem;padding:14px 0;border-bottom:1px solid var(--_line);font-size:.92rem}
+.pf-facts dt{color:var(--ink-2)}
+.pf-facts dd{text-align:right;font-weight:500}
+.pf-prose p{font-size:1.04rem;line-height:1.75;color:var(--ink-2);margin-bottom:1.1em;max-width:40rem}
+.pf-prose p:first-child{font-size:1.2rem;color:var(--ink)}
+.pf-areas{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:26px}
+.pf-areas li{padding:18px 14px;border:1px solid var(--_line);border-radius:4px;font-family:var(--font-display);font-size:1.35rem;text-align:center;background:var(--_paper)}
+
+/* ---------- vision & mission ---------- */
+.pf-visi{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,4.2vw,3.8rem);line-height:1.12;letter-spacing:-.005em;max-width:62rem;margin-bottom:clamp(2.5rem,6vw,4.5rem)}
+.pf-misi{list-style:none;counter-reset:m;display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:rgba(244,241,234,.16);border:1px solid rgba(244,241,234,.16)}
+.pf-misi li{counter-increment:m;background:var(--_night);padding:26px 22px 28px;font-size:.98rem;line-height:1.6;color:rgba(244,241,234,.82)}
+.pf-misi li::before{content:'0' counter(m);display:block;font-family:var(--font-display);font-size:2rem;color:var(--_sky);margin-bottom:14px;line-height:1}
+
+/* ---------- target groups & objectives ---------- */
+.pf-chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.pf-chips li{padding:9px 16px;border:1px solid var(--_line);border-radius:99px;font-size:.88rem;background:var(--_paper)}
+.pf-obj{list-style:none;counter-reset:o;border-top:1px solid var(--_line)}
+.pf-obj li{counter-increment:o;display:grid;grid-template-columns:2.6rem 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--_line);font-size:1rem;line-height:1.55}
+.pf-obj li::before{content:counter(o);font-family:var(--font-display);font-size:1.5rem;line-height:1.1;color:var(--_red)}
+
+/* ---------- chairman ---------- */
+.pf-speech{display:grid;grid-template-columns:minmax(0,22rem) minmax(0,1fr);gap:clamp(2rem,6vw,5rem);align-items:center}
+.pf-speech img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;display:block;background:#ddd}
+.pf-speech blockquote p{font-family:var(--font-display);font-size:clamp(1.35rem,2.1vw,1.85rem);line-height:1.35;margin-bottom:.8em;max-width:46rem}
+.pf-speech blockquote p+p{font-family:var(--font-body);font-size:1.02rem;line-height:1.7;color:var(--ink-2)}
+.pf-sign{margin-top:24px;display:flex;flex-direction:column;gap:2px}
+.pf-sign b{font-weight:600;font-size:1.02rem}
+.pf-sign span{font-size:.84rem;color:var(--ink-2)}
+
+/* ---------- organisation chart ---------- */
+.pf-org{display:flex;flex-direction:column;align-items:center;gap:28px;margin-top:10px;position:relative}
+.org-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;width:100%;position:relative}
+.org-row+.org-row::before{content:'';position:absolute;top:-28px;left:50%;width:1px;height:28px;background:var(--_line)}
+.org-card{flex:0 1 17rem;padding:20px 22px;border:1px solid var(--_line);border-radius:4px;background:var(--_paper);text-align:center}
+.org-card span{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-bottom:8px}
+.org-card b{font-family:var(--font-display);font-weight:400;font-size:1.35rem;line-height:1.2}
+.org-card.lead{background:var(--_night);border-color:var(--_night);color:var(--_cream);flex-basis:22rem}
+.org-card.lead span{color:var(--_sky)}
+
+/* ---------- activity cards (home preview + activities page) ---------- */
+.akt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:clamp(14px,2vw,24px)}
+.akt-card{display:flex;flex-direction:column;gap:8px;color:inherit;text-align:left;width:100%}
+.akt-img{display:block;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:#e6e1d6;margin-bottom:6px}
+.akt-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease)}
+.akt-card:hover .akt-img img{transform:scale(1.04)}
+.akt-meta{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--_red)}
+.akt-card b{font-family:var(--font-display);font-weight:400;font-size:1.5rem;line-height:1.15}
+.akt-n{font-size:.8rem;color:var(--ink-2)}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .pf-hero{grid-template-columns:minmax(0,1fr);min-height:0;padding-top:6.5rem}
+  .pf-mosaic{height:auto;grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .pf-mosaic .m1{grid-row:auto;grid-column:1 / 3;aspect-ratio:16/10}
+  .pf-mosaic .m2,.pf-mosaic .m3{aspect-ratio:1}
+  .pf-areas{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pf-speech{grid-template-columns:minmax(0,1fr)}
+  .pf-speech img{max-width:16rem}
+  .org-card,.org-card.lead{flex-basis:100%}
+}
+#aktPreview{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){#aktPreview{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- activities page ---------- */
+.page-akt{background:var(--_cream)}
+.akt-page{min-height:100vh}
+.akt-hero{padding:clamp(8rem,16vh,11rem) var(--gutter) clamp(2rem,4vw,3rem);max-width:90rem;margin:0 auto}
+.akt-title{font-size:clamp(3rem,7.5vw,7.5rem)}
+.akt-filter{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.akt-filter button{padding:9px 18px;border:1px solid var(--_line);border-radius:99px;font-size:.86rem;color:var(--ink-2);transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.akt-filter button:hover{border-color:var(--ink)}
+.akt-filter button[aria-pressed="true"]{background:var(--_night);border-color:var(--_night);color:var(--_cream)}
+.akt-list{max-width:90rem;margin:0 auto;padding:0 var(--gutter) clamp(4rem,8vw,7rem)}
+.akt-year{padding-top:clamp(2.5rem,5vw,4rem)}
+.akt-y{font-family:var(--font-display);font-weight:400;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1;padding-bottom:18px;margin-bottom:26px;border-bottom:1px solid var(--_line)}
+.akt-list .akt-card{cursor:pointer;font:inherit;color:inherit;background:none;border:0;padding:0}
+.akt-list .akt-card:focus-visible{outline:2px solid var(--_sky);outline-offset:6px;border-radius:4px}
+.akt-img{position:relative}
+.akt-badge{position:absolute;right:10px;bottom:10px;font-style:normal;font-size:.72rem;padding:5px 10px;border-radius:99px;background:rgba(13,20,51,.78);color:#fff}
+.akt-desc{font-size:.92rem;line-height:1.6;color:var(--ink-2)}
+.akt-cta .btns{margin-top:8px}
+.akt-foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:28px var(--gutter);font-size:.8rem;color:var(--ink-2);border-top:1px solid var(--_line);position:static}
+
+/* ---------- photo viewer ---------- */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(8,12,32,.94);display:flex;align-items:center;justify-content:center;padding:56px 72px}
+.lb[hidden]{display:none}
+.lb figure{max-width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center;gap:14px}
+.lb img{max-width:min(1100px,100%);max-height:calc(100vh - 150px);object-fit:contain;border-radius:3px;display:block}
+.lb figcaption{color:#f4f1ea;text-align:center;display:flex;flex-direction:column;gap:4px}
+.lb figcaption b{font-family:var(--font-display);font-weight:400;font-size:1.4rem}
+.lb figcaption span{font-size:.8rem;color:rgba(244,241,234,.65)}
+.lb-x,.lb-nav{position:absolute;color:#f4f1ea;width:48px;height:48px;border-radius:50%;border:1px solid rgba(244,241,234,.3);font-size:1.1rem;display:grid;place-items:center;transition:background .3s var(--ease)}
+.lb-x:hover,.lb-nav:hover{background:rgba(244,241,234,.12)}
+.lb-x{top:16px;right:16px}
+.lb-prev{left:16px;top:50%;transform:translateY(-50%)}
+.lb-next{right:16px;top:50%;transform:translateY(-50%)}
+.lb.single .lb-nav{display:none}
+@media (max-width:700px){
+  .lb{padding:64px 12px 84px}
+  .lb-prev,.lb-next{top:auto;bottom:18px;transform:none}
+  .lb-prev{left:calc(50% - 60px)}.lb-next{right:calc(50% - 60px)}
+}

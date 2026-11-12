@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Hanken+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/profil.css">
 </head>
 <body>
 
@@ -20,11 +21,11 @@
     <span class="brand-sub">Kota Belud</span>
   </a>
   <nav class="nav-links" id="navLinks" aria-label="Utama">
+    <a href="#profil" data-i18n="n0">Profil</a>
+    <a href="#ruang" data-i18n="n6">Ruang 3D</a>
     <a href="#kadar" data-i18n="n1">Kadar sewa</a>
     <a href="#geran" data-i18n="n2">Geran</a>
-    <a href="#peluang" data-i18n="n3">Kursus &amp; pembiayaan</a>
-    <a href="#keahlian" data-i18n="n4">Keahlian</a>
-    <a href="#faq">FAQ</a>
+    <a href="aktiviti.html" data-i18n="n7">Aktiviti</a>
     <a href="#hubungi" data-i18n="n5">Hubungi</a>
   </nav>
   <div class="nav-r">
@@ -56,13 +57,145 @@
 </ol>
 
 <main id="top">
-  <!-- 0 · INTRO -->
-  <section class="ch intro" data-ch="intro">
+  <!-- PROFIL (main screen): opaque block above the 3D tour -->
+  <div class="content profil" id="profil">
+    <section class="pf-hero" aria-labelledby="pf-title">
+      <div class="pf-hero-txt">
+        <p class="eyebrow" data-i18n="prEye">Pusat Pembangunan Belia &amp; Komuniti · Kota Belud, Sabah</p>
+        <h1 class="pf-title" id="pf-title">SSK <em>Centre</em></h1>
+        <p class="pf-lead" data-i18n="prLead">Ruang pintar untuk belia, usahawan, NGO dan keluarga Kota Belud: tempat kita berkumpul, berkarya dan membina masa depan bersama.</p>
+        <div class="btns">
+          <a class="btn btn-red" href="aktiviti.html"><span data-i18n="prCta1">Lihat aktiviti kami</span> <span class="arr">→</span></a>
+          <a class="btn btn-line" href="#ruang"><span data-i18n="prCta2">Jelajah ruang 3D</span> <span class="arr">↓</span></a>
+        </div>
+        <dl class="pf-stats">
+          <div><dt>100</dt><dd data-i18n="prS1">kapasiti dewan serbaguna</dd></div>
+          <div><dt>20</dt><dd data-i18n="prS2">kapasiti bilik mesyuarat</dd></div>
+          <div><dt>10</dt><dd data-i18n="prS3">kumpulan sasaran</dd></div>
+        </dl>
+      </div>
+      <div class="pf-mosaic" aria-hidden="true">
+        <img class="m1" src="assets/aktiviti/1suria-1.jpg" alt="">
+        <img class="m2" src="assets/aktiviti/dron-1.jpg" alt="">
+        <img class="m3" src="assets/aktiviti/taklimat-2.jpg" alt="">
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="h-latar">
+      <div class="sec-in split">
+        <div>
+          <p class="eyebrow" data-i18n="prBgEye">Latar belakang</p>
+          <h2 class="h2" id="h-latar" data-i18n-html="prBgH">Pusat untuk<br><em>seluruh komuniti.</em></h2>
+          <dl class="pf-facts">
+            <div><dt data-i18n="prK">Kategori</dt><dd data-i18n="prKv">Pusat Pembangunan Belia &amp; Komuniti</dd></div>
+            <div><dt data-i18n="prL">Lokasi</dt><dd>Kota Belud, Sabah</dd></div>
+            <div><dt data-i18n="prU">Pengurusan</dt><dd>SmartBah Technology Sdn Bhd</dd></div>
+          </dl>
+        </div>
+        <div class="pf-prose">
+          <p data-i18n="prBg1">SSK Centre merupakan pusat pembangunan belia dan komuniti yang ditubuhkan bagi menyediakan platform pembangunan modal insan, pendidikan, kemahiran, keusahawanan, sukan serta aktiviti kemasyarakatan untuk masyarakat setempat.</p>
+          <p data-i18n="prBg2">Berlokasi di Kota Belud, Sabah, SSK Centre menjadi wadah yang menghimpunkan pelbagai program berimpak tinggi melibatkan belia, pelajar, usahawan, NGO, institusi pendidikan, agensi kerajaan serta masyarakat umum.</p>
+          <p data-i18n="prBg3">Ruang di SSK Centre boleh disewa untuk program berskala kecil mahupun besar: seminar, kursus, taklimat, pelancaran produk, bengkel dan latihan, serta majlis peribadi seperti perkahwinan, pertunangan dan sambutan hari jadi.</p>
+          <ul class="pf-areas" aria-label="Bidang utama">
+            <li data-i18n="prA1">Pendidikan</li><li data-i18n="prA2">Latihan</li><li data-i18n="prA3">Keusahawanan</li><li data-i18n="prA4">Sukan</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec-navy" aria-labelledby="h-visi">
+      <div class="sec-in">
+        <p class="eyebrow" data-i18n="prVEye">Visi &amp; misi</p>
+        <h2 class="pf-visi" id="h-visi" data-i18n="prV">Menjadi pusat pembangunan belia dan komuniti yang unggul, progresif dan berimpak tinggi di Kota Belud mahupun Sabah.</h2>
+        <ol class="pf-misi">
+          <li data-i18n="prM1">Memperkasa belia melalui pendidikan, latihan dan pembangunan kepimpinan.</li>
+          <li data-i18n="prM2">Menggalakkan pembangunan komuniti yang inklusif dan mampan.</li>
+          <li data-i18n="prM3">Meningkatkan kemahiran dan kebolehpasaran masyarakat melalui pelbagai program pembangunan modal insan.</li>
+          <li data-i18n="prM4">Memupuk budaya keusahawanan, inovasi dan kreativiti dalam kalangan masyarakat.</li>
+          <li data-i18n="prM5">Mewujudkan jaringan kerjasama strategik yang menyumbang kepada pembangunan sosial dan ekonomi komuniti.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="h-sasaran">
+      <div class="sec-in split">
+        <div>
+          <p class="eyebrow" data-i18n="prTEye">Kumpulan sasaran</p>
+          <h2 class="h2" id="h-sasaran" data-i18n-html="prTH">Untuk siapa<br><em>SSK Centre?</em></h2>
+          <ul class="pf-chips">
+            <li data-i18n="prT1">Belia</li><li data-i18n="prT2">Pelajar</li><li data-i18n="prT3">Pertubuhan belia</li><li data-i18n="prT4">Komuniti setempat</li><li data-i18n="prT5">Usahawan</li>
+            <li data-i18n="prT6">Golongan B40</li><li data-i18n="prT7">Wanita</li><li>NGO</li><li data-i18n="prT9">Institusi pendidikan</li><li data-i18n="prT10">Agensi kerajaan &amp; swasta</li>
+          </ul>
+        </div>
+        <div>
+          <p class="eyebrow" data-i18n="prOEye">Objektif</p>
+          <ol class="pf-obj">
+            <li data-i18n="prO1">Menyediakan platform pembangunan diri dan peningkatan kemahiran kepada masyarakat.</li>
+            <li data-i18n="prO2">Menggalakkan penyertaan aktif belia dalam aktiviti pembangunan komuniti.</li>
+            <li data-i18n="prO3">Melahirkan individu yang berkemahiran, berpengetahuan dan berdaya saing.</li>
+            <li data-i18n="prO4">Menyokong pembangunan ekonomi komuniti melalui program keusahawanan.</li>
+            <li data-i18n="prO5">Mengukuhkan perpaduan dan semangat kesukarelawanan dalam kalangan masyarakat.</li>
+            <li data-i18n="prO6">Menjadi pusat rujukan bagi pelaksanaan program pembangunan komuniti di Kota Belud.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec-soft" aria-labelledby="h-ucapan">
+      <div class="sec-in pf-speech">
+        <img src="assets/profil/pengerusi.jpg" alt="Nizam Salleh Keruak, Pengerusi SSK Centre" loading="lazy">
+        <div>
+          <p class="eyebrow" id="h-ucapan" data-i18n="prSpEye">Ucapan pengerusi</p>
+          <blockquote>
+            <p data-i18n="prSp1">Sebagai sebahagian daripada pasukan yang membantu mengurus SSK Centre, saya amat berbesar hati melihat bagaimana inisiatif yang diasaskan oleh YB Datuk Seri Panglima Salleh Said Keruak ini terus menjadi ruang inspirasi untuk masyarakat Kota Belud.</p>
+            <p data-i18n="prSp2">SSK Centre diwujudkan sebagai ruang pintar untuk belia, usahawan, NGO dan keluarga: tempat kita berkumpul, berkarya dan membina masa depan bersama. Kini, melalui pengurusan oleh SmartBah Technology Sdn Bhd, kami berusaha menjadikan SSKC lebih aktif, lestari dan berimpak kepada komuniti tempatan.</p>
+          </blockquote>
+          <p class="pf-sign"><b>Nizam Salleh Keruak</b><span data-i18n="prSpRole">Pengerusi, SSK Centre</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="h-org">
+      <div class="sec-in">
+        <p class="eyebrow" data-i18n="prOrgEye">Carta organisasi</p>
+        <h2 class="h2" id="h-org" data-i18n-html="prOrgH">Pasukan di sebalik<br><em>SSK Centre.</em></h2>
+        <div class="pf-org">
+          <div class="org-row"><div class="org-card lead"><span data-i18n="prR1">Penasihat</span><b>Datuk Seri Panglima Salleh Said Keruak</b></div></div>
+          <div class="org-row"><div class="org-card lead"><span data-i18n="prR2">Pengerusi</span><b>Nizam Salleh Keruak</b></div></div>
+          <div class="org-row">
+            <div class="org-card"><span data-i18n="prR3">Pegawai Media &amp; Komunikasi</span><b>Muhammad Zultarmidzi Zulkanain</b></div>
+            <div class="org-card"><span data-i18n="prR4">Pegawai Pembangunan &amp; Kerjasama</span><b>Sehnnico Elf Evahnd Aldrin</b></div>
+            <div class="org-card"><span data-i18n="prR5">Pegawai Operasi Pusat</span><b>Norfatira binti Kamsar</b></div>
+          </div>
+          <div class="org-row">
+            <div class="org-card"><span data-i18n="prR6">Pembantu Sokongan Operasi</span><b>Asyiratul Fariena binti Madin</b></div>
+            <div class="org-card"><span data-i18n="prR6">Pembantu Sokongan Operasi</span><b>Nurshahkira</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec-soft" aria-labelledby="h-akt">
+      <div class="sec-in">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow" data-i18n="prAkEye">Aktiviti terkini</p>
+            <h2 class="h2" id="h-akt" data-i18n-html="prAkH">Apa yang telah<br><em>berlaku di SSKC.</em></h2>
+          </div>
+          <a class="btn btn-line" href="aktiviti.html"><span data-i18n="prAkAll">Lihat semua aktiviti</span> <span class="arr">→</span></a>
+        </div>
+        <div class="akt-grid" id="aktPreview"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 0 · INTRO (3D tour starts here) -->
+  <section class="ch intro" data-ch="intro" id="ruang">
     <div class="pin">
-      <h1 class="mega" aria-label="SSK Centre">
-        <span class="w"><span>SSK</span></span>
-        <span class="w"><span><em>Centre</em></span></span>
-      </h1>
+      <h2 class="mega">
+        <span class="w"><span data-i18n="megaA">Jelajah</span></span>
+        <span class="w"><span><em data-i18n="megaB">ruang kami</em></span></span>
+      </h2>
       <div class="intro-row">
         <p data-i18n="intro">Satu ruang untuk seluruh komuniti Kota Belud: dewan, bilik mesyuarat, CentreKafe, dan panduan geran untuk usahawan.</p>
         <div class="cue"><i></i><span data-i18n="cue">Skrol untuk masuk</span></div>
@@ -349,6 +482,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/aktiviti-data.js"></script>
+<script src="js/profil.js"></script>
 <script src="js/content.js"></script>
 </body>
 </html>

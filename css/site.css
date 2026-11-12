@@ -68,7 +68,7 @@ main{position:relative;z-index:10}
 /* intro */
 .intro{height:170vh}
 .intro .pin{display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--gutter) 7vh}
-.mega{font-family:var(--font-display);font-weight:400;line-height:1;letter-spacing:-.015em;font-size:clamp(4.2rem,15.5vw,17rem);white-space:nowrap}
+.mega{font-family:var(--font-display);font-weight:400;line-height:1;letter-spacing:-.015em;font-size:clamp(3rem,9vw,9.5rem);white-space:nowrap}
 .mega .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.06em .04em .1em;margin:-.06em -.04em -.1em}
 .mega .w span{display:inline-block;transform:translateY(105%);transition:transform 1.4s var(--ease)}
 .loaded .mega .w span{transform:none}

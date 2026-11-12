@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aktiviti | SSK Centre Kota Belud</title>
+<meta name="description" content="Program dan aktiviti yang telah diadakan di SSK Centre, Kota Belud: bengkel, kursus, program komuniti, pendidikan dan budaya.">
+<link rel="icon" href="assets/logo-ssk-centre.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Hanken+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/profil.css">
+</head>
+<body class="page-akt">
+
+<header class="nav solid">
+  <a class="brand" href="index.html" aria-label="SSK Centre, Kota Belud">
+    <span class="logo-crop logo-ssk"><img src="assets/logo-ssk-centre.png" alt="SSK Centre"></span>
+    <span class="brand-sub">Kota Belud</span>
+  </a>
+  <nav class="nav-links" id="navLinks" aria-label="Utama">
+    <a href="index.html#profil" data-i18n="n0">Profil</a>
+    <a href="index.html#ruang" data-i18n="n6">Ruang 3D</a>
+    <a href="index.html#kadar" data-i18n="n1">Kadar sewa</a>
+    <a href="index.html#geran" data-i18n="n2">Geran</a>
+    <a href="aktiviti.html" aria-current="page" data-i18n="n7">Aktiviti</a>
+    <a href="index.html#hubungi" data-i18n="n5">Hubungi</a>
+  </nav>
+  <div class="nav-r">
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><i></i><i></i></button>
+    <a class="nav-cta" href="https://wa.me/601121406450" target="_blank" rel="noopener" data-i18n="navcta">WhatsApp admin</a>
+    <div class="lang" role="group" aria-label="Bahasa / Language">
+      <button data-lang="ms" aria-pressed="true">BM</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main class="content akt-page">
+  <section class="akt-hero">
+    <p class="eyebrow" data-i18n="aEye">Arkib program &amp; aktiviti</p>
+    <h1 class="pf-title akt-title" data-i18n-html="aH">Aktiviti di <em>SSK Centre</em></h1>
+    <p class="pf-lead" data-i18n="aLead">Program, bengkel dan acara komuniti yang telah diadakan di SSK Centre, Kota Belud. Klik mana-mana aktiviti untuk melihat semua gambar.</p>
+    <div class="akt-filter" role="group" aria-label="Kategori" id="aktFilter"></div>
+  </section>
+  <div class="akt-list" id="aktList"></div>
+  <section class="sec sec-navy akt-cta">
+    <div class="sec-in">
+      <h2 class="h2" data-i18n-html="aCtaH">Mahu anjurkan program<br><em>di SSK Centre?</em></h2>
+      <div class="btns">
+        <a class="btn btn-red" href="index.html#kadar"><span data-i18n="aCta1">Semak kadar &amp; tarikh</span> <span class="arr">→</span></a>
+        <a class="btn btn-line" href="https://wa.me/601121406450" target="_blank" rel="noopener"><span data-i18n="navcta">WhatsApp admin</span> <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+  <footer class="foot akt-foot">
+    <span>© 2026 SSK Centre Kota Belud</span>
+    <span data-i18n="footBy">Diuruskan oleh SmartBah Technology Sdn Bhd</span>
+  </footer>
+</main>
+
+<!-- photo viewer -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Gambar aktiviti" hidden>
+  <button class="lb-x" id="lbX" aria-label="Tutup">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Gambar sebelum">←</button>
+  <figure>
+    <img id="lbImg" alt="">
+    <figcaption><b id="lbTitle"></b><span id="lbCount"></span></figcaption>
+  </figure>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Gambar seterusnya">→</button>
+</div>
+
+<script src="js/aktiviti-data.js"></script>
+<script src="js/aktiviti.js"></script>
+</body>
+</html>

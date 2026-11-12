@@ -169,13 +169,16 @@ const chapters=[...document.querySelectorAll('.ch')];
 // chapter geometry is cached here (reading offsetTop every frame forces a layout → jank on phones)
 const geo=new Map();
 // the opaque .content block hides the 3D completely while it fills the screen → no need to draw then
-const contentEl=document.querySelector('.content');let coverRange=[Infinity,-Infinity];
+// opaque blocks (the profile at the top, the content sections further down) hide the 3D completely
+const coverEls=[...document.querySelectorAll('.content')];let coverRanges=[],introTop=0;
+function coveredAt(y){return coverRanges.some(r=>y>=r[0]&&y+innerHeight<=r[1])}
 function buildStops(){
   stops=[];const vh=innerHeight;
+  coverRanges=coverEls.map(e=>[e.offsetTop,e.offsetTop+e.offsetHeight]);
   chapters.forEach(sec=>{
     const top=sec.offsetTop,h=sec.offsetHeight-vh,ch=sec.dataset.ch;
     geo.set(sec,{top,h});
-    if(contentEl)coverRange=[contentEl.offsetTop,contentEl.offsetTop+contentEl.offsetHeight];
+    if(ch==='intro')introTop=top;
     if(EXPLORE){
       // desktop: 3 short screens — intro → explorer (camera follows the selected room) → night
       if(ch==='intro')stops.push({s:0,v:'intro'});
@@ -339,7 +342,9 @@ function frame(){
     moreLis.forEach(li=>li.classList.toggle('on',li.dataset.room===moreKey));
   }
   // intro type + ribbons drift away as you scroll in
-  const introP=Math.min(1,y/(innerHeight*.9));
+  const introP=Math.min(1,Math.max(0,(y-introTop)/(innerHeight*.9)));
+  // the room rail belongs to the 3D tour, not to the profile above it
+  document.body.classList.toggle('in-profile',y<introTop-innerHeight*.5);
   setVar(ribbons,'opacity',(1-introP).toFixed(3));
   setVar(ribbons,'transform',`translateY(-50%) translateX(${(-introP*18).toFixed(2)}vw)`);
   setVar(introPin,'opacity',(1-Math.max(0,introP-.35)/.5).toFixed(3));
@@ -348,7 +353,7 @@ function frame(){
   if((free||inEx)&&hoverKey){const g=rooms[hoverKey];g.getWorldPosition(v);v.y+=g.userData.h+.6;v.project(cam);tip.style.left=((v.x+1)/2*innerWidth)+'px';tip.style.top=((1-v.y)/2*innerHeight)+'px';tip.textContent=NAMES[hoverKey][LANG==='ms'?0:1];tip.classList.add('on');}
   else tip.classList.remove('on');
 
-  const covered=y>=coverRange[0]&&y+innerHeight<=coverRange[1];
+  const covered=coveredAt(y);
   if(!covered)renderer.render(scene,cam);
 }
 const introPin=document.querySelector('.intro .pin');
@@ -358,14 +363,14 @@ addEventListener('pointermove',e=>{
   mouse.set((e.clientX/innerWidth)*2-1,-(e.clientY/innerHeight)*2+1);
   ray.setFromCamera(mouse,cam);
   const hit=ray.intersectObjects(pickables,false)[0];
-  hoverKey=hit?hit.object.userData.room:null;
+  hoverKey=hit&&!coveredAt(scrollY_())&&!e.target.closest('.content')?hit.object.userData.room:null;
 },{passive:true});
 /* desktop: clicking a room on the building selects it */
 addEventListener('click',e=>{
   if(!EXPLORE||!hoverKey||e.target.closest('a,button,.ex-ui,.nav,.cal'))return;
   if(inExplorer()){select(hoverKey);return;}
   // from the intro: clicking a room jumps into the explorer on that room
-  if(scrollY_()<innerHeight*.5){select(hoverKey);lenis?lenis.scrollTo(exSec.offsetTop):scrollTo({top:exSec.offsetTop,behavior:'smooth'});}
+  if(Math.abs(scrollY_()-introTop)<innerHeight*.5){select(hoverKey);lenis?lenis.scrollTo(exSec.offsetTop):scrollTo({top:exSec.offsetTop,behavior:'smooth'});}
 });
 /* ================= availability calendar ================= */
 (function(){
