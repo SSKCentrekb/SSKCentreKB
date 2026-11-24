@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/profil.css">
+<link rel="stylesheet" href="css/components.css">
 </head>
 <body>
 
@@ -22,15 +23,19 @@
   </a>
   <nav class="nav-links" id="navLinks" aria-label="Utama">
     <a href="#profil" data-i18n="n0">Profil</a>
-    <a href="#ruang" data-i18n="n6">Ruang 3D</a>
+    <a href="#perkhidmatan" data-i18n="n8">Perkhidmatan</a>
     <a href="#kadar" data-i18n="n1">Kadar sewa</a>
-    <a href="#geran" data-i18n="n2">Geran</a>
+    <a href="#selangkah" data-i18n="n2">Geran</a>
     <a href="aktiviti.html" data-i18n="n7">Aktiviti</a>
     <a href="#hubungi" data-i18n="n5">Hubungi</a>
+    <div class="lang lang-m" role="group" aria-label="Bahasa / Language">
+      <button data-lang="ms" aria-pressed="true">BM</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+    </div>
   </nav>
   <div class="nav-r">
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><i></i><i></i></button>
-    <a class="nav-cta" href="https://wa.me/601121406450" target="_blank" rel="noopener" data-i18n="navcta">WhatsApp admin</a>
+    <a class="nav-cta" href="#kadar" data-cal="dewan" data-i18n="navBook">Tempah</a>
     <div class="lang" role="group" aria-label="Bahasa / Language">
       <button data-lang="ms" aria-pressed="true">BM</button>
       <button data-lang="en" aria-pressed="false">EN</button>
@@ -72,6 +77,7 @@
           <div><dt>100</dt><dd data-i18n="prS1">kapasiti dewan serbaguna</dd></div>
           <div><dt>20</dt><dd data-i18n="prS2">kapasiti bilik mesyuarat</dd></div>
           <div><dt>10</dt><dd data-i18n="prS3">kumpulan sasaran</dd></div>
+          <div><dt>10+</dt><dd data-i18n="prS4">program telah diadakan</dd></div>
         </dl>
       </div>
       <div class="pf-mosaic" aria-hidden="true">
@@ -100,6 +106,47 @@
             <li data-i18n="prA1">Pendidikan</li><li data-i18n="prA2">Latihan</li><li data-i18n="prA3">Keusahawanan</li><li data-i18n="prA4">Sukan</li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <section class="sec sec-soft" id="perkhidmatan" aria-labelledby="h-svc">
+      <div class="sec-in">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow" data-i18n="svEye">Ruang &amp; perkhidmatan</p>
+            <h2 class="h2" id="h-svc" data-i18n-html="svH">Ruang untuk setiap<br><em>jenis program.</em></h2>
+          </div>
+          <a class="btn btn-line" href="#ruang"><span data-i18n="svTour">Jelajah dalam 3D</span> <span class="arr">↓</span></a>
+        </div>
+        <div class="svc-grid">
+          <article class="svc">
+            <div class="svc-img"><img src="assets/profil/dewan.jpg" alt="" loading="lazy"><span class="svc-badge" data-i18n="svB1">Paling popular</span></div>
+            <div class="svc-body">
+              <h3 data-i18n="svT1">Dewan Serbaguna</h3>
+              <p data-i18n="sv1">Seminar, kursus, majlis rasmi dan acara komuniti. Pentas, skrin dan susun atur kerusi boleh diatur.</p>
+              <ul class="svc-facts"><li><b>100</b><span data-i18n="svPax">orang</span></li><li><b>RM50</b><span data-i18n="svHour">/ jam</span></li><li><b>RM450</b><span data-i18n="svDay">/ hari</span></li></ul>
+              <button class="btn btn-red" data-cal="dewan"><span data-i18n="checkDates">Semak tarikh &amp; tempah</span><span class="arr">→</span></button>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img"><img src="assets/profil/mesyuarat.jpg" alt="" loading="lazy"></div>
+            <div class="svc-body">
+              <h3 data-i18n="svT2">Bilik Mesyuarat</h3>
+              <p data-i18n="sv2">Mesyuarat, temuduga, taklimat dan sesi latihan berkumpulan kecil, lengkap dengan skrin.</p>
+              <ul class="svc-facts"><li><b>20</b><span data-i18n="svPax">orang</span></li><li><b>RM40</b><span data-i18n="svHour">/ jam</span></li><li><b>RM180</b><span data-i18n="svDay">/ hari</span></li></ul>
+              <button class="btn btn-red" data-cal="mesyuarat"><span data-i18n="checkDates">Semak tarikh &amp; tempah</span><span class="arr">→</span></button>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-img"><img src="assets/aktiviti/malam-1.jpg" alt="" loading="lazy"></div>
+            <div class="svc-body">
+              <h3>CentreKafe</h3>
+              <p data-i18n="sv3">Kafe komuniti untuk makan, minum dan berbincang, serta ruang luar untuk acara santai dan jamuan.</p>
+              <a class="btn btn-line" href="#ruang"><span data-i18n="svSee">Lihat dalam 3D</span><span class="arr">↓</span></a>
+            </div>
+          </article>
+        </div>
+        <p class="fine" data-i18n="svFine">Kadar komuniti ditunjukkan. Kadar korporat dan persendirian ada dalam jadual kadar sewa.</p>
       </div>
     </section>
 
@@ -155,27 +202,7 @@
       </div>
     </section>
 
-    <section class="sec" aria-labelledby="h-org">
-      <div class="sec-in">
-        <p class="eyebrow" data-i18n="prOrgEye">Carta organisasi</p>
-        <h2 class="h2" id="h-org" data-i18n-html="prOrgH">Pasukan di sebalik<br><em>SSK Centre.</em></h2>
-        <div class="pf-org">
-          <div class="org-row"><div class="org-card lead"><span data-i18n="prR1">Penasihat</span><b>Datuk Seri Panglima Salleh Said Keruak</b></div></div>
-          <div class="org-row"><div class="org-card lead"><span data-i18n="prR2">Pengerusi</span><b>Nizam Salleh Keruak</b></div></div>
-          <div class="org-row">
-            <div class="org-card"><span data-i18n="prR3">Pegawai Media &amp; Komunikasi</span><b>Muhammad Zultarmidzi Zulkanain</b></div>
-            <div class="org-card"><span data-i18n="prR4">Pegawai Pembangunan &amp; Kerjasama</span><b>Sehnnico Elf Evahnd Aldrin</b></div>
-            <div class="org-card"><span data-i18n="prR5">Pegawai Operasi Pusat</span><b>Norfatira binti Kamsar</b></div>
-          </div>
-          <div class="org-row">
-            <div class="org-card"><span data-i18n="prR6">Pembantu Sokongan Operasi</span><b>Asyiratul Fariena binti Madin</b></div>
-            <div class="org-card"><span data-i18n="prR6">Pembantu Sokongan Operasi</span><b>Nurshahkira</b></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec sec-soft" aria-labelledby="h-akt">
+    <section class="sec" aria-labelledby="h-akt">
       <div class="sec-in">
         <div class="sec-head">
           <div>
@@ -311,6 +338,46 @@
       </div>
     </section>
 
+    <!-- BORANG TEMPAHAN: answers go straight to the Google Form "BORANG TEMPAHAN FASILITI" (js/tempah.js) -->
+    <section class="sec sec-soft" id="tempah" aria-labelledby="h-tempah">
+      <div class="sec-in bk-wrap">
+        <div class="bk-side">
+          <div class="eyebrow" data-i18n="bkEye">Borang tempahan</div>
+          <h2 class="h2" id="h-tempah" data-i18n-html="bkH">Tempah terus<br><em>di sini.</em></h2>
+          <p class="lead" data-i18n="bkP">Isi borang ini untuk menempah fasiliti. Admin akan menyemak dan menghubungi anda dengan sebut harga dalam 1–2 hari bekerja.</p>
+          <p class="bk-how-t" data-i18n="bkHowT">Cara tempahan</p>
+          <ol class="bk-how">
+            <li><span data-i18n="bkHow1">Pilih tarikh &amp; slot kosong dalam kalendar</span></li>
+            <li><span data-i18n="bkHow2">Isi borang 5 langkah ini</span></li>
+            <li><span data-i18n="bkHow3">Admin semak &amp; hantar sebut harga dalam 1–2 hari bekerja</span></li>
+            <li><span data-i18n="bkHow4">Sahkan tempahan &amp; bayar deposit</span></li>
+          </ol>
+          <button class="btn btn-red" type="button" data-cal="dewan"><span data-i18n="bkCal">Semak tarikh kosong dulu</span><span class="arr">→</span></button>
+          <ul class="bk-trust">
+            <li data-i18n="bkTr1">Percuma untuk menghantar permohonan</li>
+            <li data-i18n="bkTr2">Maklumat terus ke borang rasmi SSK Centre</li>
+            <li><a href="https://wa.me/60182438180" target="_blank" rel="noopener" data-i18n="bkTr3">Perlu bantuan? WhatsApp 018-243 8180</a></li>
+          </ul>
+        </div>
+        <div class="bk-card" id="bookForm" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- SELANGKAH KE PELUANG: programmes open right now (cards hide after their closing date) -->
+    <section class="sec sec-soft" id="selangkah" aria-labelledby="h-sel">
+      <div class="sec-in">
+        <div class="sec-head">
+          <div>
+            <div class="eyebrow" data-i18n="selEye">Selangkah ke Peluang · dibuka sekarang</div>
+            <h2 class="h2" id="h-sel" data-i18n-html="selH">Peluang terkini<br><em>untuk anda.</em></h2>
+          </div>
+          <p class="lead" data-i18n="selP">Program yang sedang dibuka, diterangkan dalam video ringkas oleh SSK Centre. Perlukan bantuan memohon? Datang ke SSK Centre atau WhatsApp kami.</p>
+        </div>
+        <div class="sel-grid" id="selGrid"></div>
+        <p class="fine" data-i18n="selFine">Tarikh dan syarat ikut pengumuman rasmi agensi. Sila semak portal rasmi sebelum memohon.</p>
+      </div>
+    </section>
+
     <!-- QUIZ GERAN -->
     <section class="sec sec-navy" id="geran" aria-labelledby="h-geran">
       <div class="sec-in split">
@@ -331,7 +398,7 @@
             <div class="eyebrow" data-i18n="pEye">Peluang usahawan 2026</div>
             <h2 class="h2" id="h-peluang" data-i18n-html="pH">Kursus, geran<br><em>&amp; pembiayaan.</em></h2>
           </div>
-          <label class="search"><span class="sr" data-i18n="pSearchL">Cari</span><input id="oppSearch" type="search" autocomplete="off"></label>
+          <label class="search"><span class="sr" data-i18n="pSearchL">Cari</span><input id="oppSearch" type="search" autocomplete="off" maxlength="60"></label>
         </div>
         <div class="tabs" id="oppTabs" role="tablist"></div>
         <div class="chips" id="oppChips"></div>
@@ -341,15 +408,41 @@
       </div>
     </section>
 
-    <!-- KEAHLIAN -->
+    <!-- KEAHLIAN: community club first, business/corporate plans after -->
     <section class="sec sec-soft" id="keahlian" aria-labelledby="h-keahlian">
       <div class="sec-in">
-        <div class="sec-head">
+        <div class="split club-wrap">
+          <div>
+            <div class="eyebrow" data-i18n="clEye">Keahlian kelab komuniti</div>
+            <h2 class="h2" id="h-keahlian" data-i18n-html="clH">Jadi ahli<br><em>kelab komuniti.</em></h2>
+            <p class="lead" data-i18n="clP">Sertai Kelab Persatuan Hab Sehenti Sokongan Masyarakat Kota Belud dan nikmati harga istimewa setiap kali anda menggunakan fasiliti SSK Centre.</p>
+          </div>
+          <article class="club">
+            <div class="club-tag" data-i18n="clTag">Kelab Persatuan</div>
+            <h3 data-i18n="clName">Hab Sehenti Sokongan Masyarakat Kota Belud</h3>
+            <div class="club-price">RM10<small data-i18n="clFee">yuran pendaftaran</small></div>
+            <ul class="club-perks">
+              <li><b>10%</b><span data-i18n="clPerk">diskaun untuk semua fasiliti SSK Centre</span></li>
+            </ul>
+            <form class="form club-form" id="clubForm" method="post" novalidate>
+              <div class="row2">
+                <label><span data-i18n="fName">Nama penuh</span><input name="name" required autocomplete="name" maxlength="80"></label>
+                <label><span data-i18n="fPhone">No. telefon</span><input name="phone" type="tel" required inputmode="tel" autocomplete="tel" maxlength="20" pattern="[0-9+\(\) \-]{7,20}"></label>
+              </div>
+              <label><span data-i18n="clArea">Kampung / kawasan (pilihan)</span><input name="area" autocomplete="address-level3" maxlength="60"></label>
+              <p class="form-err" id="clubErr" hidden data-i18n="clErr">Sila isi nama dan nombor telefon yang sah.</p>
+              <button class="btn btn-red" type="submit"><span data-i18n="clSend">Daftar melalui WhatsApp</span><span class="arr">→</span></button>
+              <p class="fine" data-i18n="clNote">Butiran anda dibuka dalam WhatsApp untuk dihantar terus kepada admin. Admin akan sahkan pendaftaran dan cara bayaran yuran.</p>
+            </form>
+          </article>
+        </div>
+
+        <div class="sec-head biz-head">
           <div>
             <div class="eyebrow" data-i18n="mEye">Keahlian bulanan</div>
-            <h2 class="h2" id="h-keahlian" data-i18n-html="mH">Guna kerap?<br><em>Jadi ahli.</em></h2>
+            <h3 class="h3" data-i18n-html="mH">Keahlian perniagaan<br><em>&amp; korporat.</em></h3>
           </div>
-          <p class="lead" data-i18n="mP">Diskaun sewaan, keutamaan tempahan dan manfaat lain sepanjang keahlian aktif.</p>
+          <p class="lead" data-i18n="mP">Untuk organisasi yang kerap menggunakan fasiliti: diskaun lebih tinggi, keutamaan tempahan dan manfaat lain sepanjang keahlian aktif.</p>
         </div>
         <div class="tiers" id="tiers"></div>
       </div>
@@ -357,15 +450,11 @@
 
     <!-- EVENT + VENDOR -->
     <section class="sec" id="event" aria-labelledby="h-event">
-      <div class="sec-in split">
+      <div class="sec-in">
         <div>
           <div class="eyebrow" data-i18n="eEye">Event &amp; komuniti</div>
           <h2 class="h2" id="h-event" data-i18n-html="eH">Apa yang<br><em>berlaku di SSK.</em></h2>
           <div id="events"></div>
-        </div>
-        <div>
-          <div class="eyebrow" data-i18n="vEye">Direktori usahawan</div>
-          <ul class="vendors" id="vendors"></ul>
         </div>
       </div>
     </section>
@@ -389,15 +478,15 @@
           <h2 class="h2" id="h-hub" data-i18n-html="cH">Bincang dengan<br><em>pasukan SSK.</em></h2>
           <dl class="info">
             <div><dt data-i18n="cAddr">Alamat</dt><dd>SSK Centre, Kota Belud, Sabah</dd></div>
-            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/601121406450" target="_blank" rel="noopener">011-2140 6450</a></dd></div>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/60182438180" target="_blank" rel="noopener">018-243 8180</a></dd></div>
             <div><dt data-i18n="cHours">Waktu operasi</dt><dd data-i18n="cHoursV">Isnin – Jumaat, 8:30 pagi – 5:00 petang</dd></div>
             <div><dt data-i18n="cSocial">Media sosial</dt><dd><a href="https://www.facebook.com/sskcentrekb" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.tiktok.com/@sskcentrekb" target="_blank" rel="noopener">TikTok</a></dd></div>
           </dl>
         </div>
-        <form class="form" id="contactForm" novalidate>
+        <form class="form" id="contactForm" method="post" novalidate>
           <div class="row2">
-            <label><span data-i18n="fName">Nama penuh</span><input name="name" required autocomplete="name"></label>
-            <label><span data-i18n="fPhone">No. telefon</span><input name="phone" required inputmode="tel" autocomplete="tel"></label>
+            <label><span data-i18n="fName">Nama penuh</span><input name="name" required autocomplete="name" maxlength="80"></label>
+            <label><span data-i18n="fPhone">No. telefon</span><input name="phone" type="tel" required inputmode="tel" autocomplete="tel" maxlength="20" pattern="[0-9+\(\) \-]{7,20}"></label>
           </div>
           <label><span data-i18n="fTopic">Perkara</span>
             <select name="topic">
@@ -408,7 +497,7 @@
               <option value="lain" data-i18n="t5">Lain-lain</option>
             </select>
           </label>
-          <label><span data-i18n="fMsg">Mesej</span><textarea name="msg" rows="5" required></textarea></label>
+          <label><span data-i18n="fMsg">Mesej</span><textarea name="msg" rows="5" required maxlength="1000"></textarea></label>
           <p class="form-err" id="formErr" hidden data-i18n="fErr">Sila isi nama, nombor telefon dan mesej.</p>
           <button class="btn btn-red" type="submit"><span data-i18n="fSend">Hantar melalui WhatsApp</span><span class="arr">→</span></button>
           <p class="fine" data-i18n="fNote">Mesej anda dibuka dalam WhatsApp untuk dihantar terus kepada admin. Respons dalam 1–2 hari bekerja.</p>
@@ -424,21 +513,57 @@
         <h2 id="h-final" data-i18n-html="finalH">Pintu kami<br><em>terbuka.</em></h2>
         <div class="meta">
           <div><b data-i18n="days">Isnin – Jumaat</b>8:30 – 17:00</div>
-          <div><b>011-2140 6450</b>WhatsApp</div>
+          <div><b>018-243 8180</b>WhatsApp</div>
           <div><b>Kota Belud</b>Sabah</div>
         </div>
         <div class="btns">
-          <a class="btn btn-red" target="_blank" rel="noopener" href="https://wa.me/601121406450?text=Salam%20admin%20SSK%20Centre%2C%20saya%20ingin%20bertanya."><span data-i18n="wa">WhatsApp admin</span><span class="arr">→</span></a>
+          <a class="btn btn-red" target="_blank" rel="noopener" href="https://wa.me/60182438180?text=Salam%20admin%20SSK%20Centre%2C%20saya%20ingin%20bertanya."><span data-i18n="wa">WhatsApp admin</span><span class="arr">→</span></a>
           <a class="btn btn-line" href="#geran" data-i18n="grant">Cari geran yang sesuai</a>
         </div>
       </div>
-      <footer class="foot">
-        <span>© 2026 SSK Centre · <span data-i18n="footBy">Diuruskan oleh SmartBah Technology Sdn Bhd</span></span>
-        <span><a href="https://www.facebook.com/sskcentrekb" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.tiktok.com/@sskcentrekb" target="_blank" rel="noopener">TikTok</a></span>
-      </footer>
     </div>
   </section>
+
+  <footer class="content site-foot" aria-label="Footer">
+    <div class="sf-in">
+      <div class="sf-brand">
+        <span class="logo-crop logo-ssk"><img src="assets/logo-ssk-centre.png" alt="SSK Centre"></span>
+        <p data-i18n="sfAbout">Pusat pembangunan belia dan komuniti di Kota Belud, Sabah. Ruang untuk belajar, berkarya dan berniaga.</p>
+        <a class="btn btn-red" href="#kadar" data-cal="dewan"><span data-i18n="sfBook">Tempah ruang</span><span class="arr">→</span></a>
+      </div>
+      <nav class="sf-col" aria-label="Pautan pantas">
+        <h3 data-i18n="sfLinks">Pautan pantas</h3>
+        <a href="#profil" data-i18n="n0">Profil</a>
+        <a href="#perkhidmatan" data-i18n="n8">Perkhidmatan</a>
+        <a href="#kadar" data-i18n="n1">Kadar sewa</a>
+        <a href="aktiviti.html" data-i18n="n7">Aktiviti</a>
+        <a href="#selangkah" data-i18n="n2">Geran</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="sf-col">
+        <h3 data-i18n="sfContact">Hubungi</h3>
+        <p>SSK Centre, Kota Belud, Sabah</p>
+        <a href="https://wa.me/60182438180" target="_blank" rel="noopener">WhatsApp 018-243 8180</a>
+        <p data-i18n="cHoursV">Isnin – Jumaat, 8:30 pagi – 5:00 petang</p>
+      </div>
+      <div class="sf-col">
+        <h3 data-i18n="sfFollow">Ikuti kami</h3>
+        <a href="https://www.facebook.com/sskcentrekb" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.tiktok.com/@sskcentrekb" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.instagram.com/sskcentrekb" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="sf-bar">
+      <span>© 2026 SSK Centre Kota Belud</span>
+      <span data-i18n="footBy">Diuruskan oleh SmartBah Technology Sdn Bhd</span>
+    </div>
+  </footer>
 </main>
+
+<div class="vid" id="vid" role="dialog" aria-modal="true" aria-label="Video" hidden>
+  <button class="lb-x" id="vidX" aria-label="Tutup">✕</button>
+  <video id="vidEl" controls playsinline preload="none"></video>
+</div>
 
 <!-- AVAILABILITY CALENDAR (replaces the old price calculator) -->
 <div class="cal" id="cal" role="dialog" aria-modal="true" aria-labelledby="calTitle">
@@ -463,8 +588,8 @@
     </div>
     <div class="slots" id="slots"><p class="slots-hint" data-i18n="pickDay">Pilih tarikh untuk lihat slot.</p></div>
     <div class="cal-cta">
-      <a class="btn btn-red" id="calBook" target="_blank" rel="noopener" aria-disabled="true" href="#"><span data-i18n="sendReq">Hantar permintaan tempahan</span><span class="arr">→</span></a>
-      <a class="btn btn-line" href="https://forms.gle/1cN61QBAXEB3iX6s9" target="_blank" rel="noopener" data-i18n="formLink">Borang tempahan rasmi</a>
+      <button class="btn btn-red" id="calBook" type="button" aria-disabled="true"><span data-i18n="calFill">Isi borang tempahan</span><span class="arr">→</span></button>
+      <a class="btn btn-line" id="calWa" target="_blank" rel="noopener" aria-disabled="true" href="#"><span data-i18n="calWa">Tanya melalui WhatsApp</span></a>
       <p class="cal-note" data-i18n="calNote">Permintaan dihantar ke WhatsApp admin. Tempahan disahkan dalam 24 jam waktu bekerja. Masa di luar slot boleh diatur dengan admin.</p>
     </div>
   </div>
@@ -479,11 +604,15 @@
   <div class="chat-body" id="chatBody" aria-live="polite"></div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<!-- integrity = the exact file we tested; the browser refuses it if the CDN copy is ever changed -->
+<script src="js/core.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/main.js"></script>
 <script src="js/aktiviti-data.js"></script>
 <script src="js/profil.js"></script>
 <script src="js/content.js"></script>
+<script src="js/peluang.js"></script>
+<script src="js/tempah.js"></script>
 </body>
 </html>

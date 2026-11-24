@@ -1,0 +1,22 @@
+# Netlify security headers for the SSK Centre site (applied to every page).
+# Content-Security-Policy lists the only places the site may load from:
+#   scripts  - this site, cdnjs (three.js), jsDelivr (Lenis), plus the one inline script of the
+#              badge Netlify injects on free-tier sites (allowed by its exact hash; if Netlify
+#              changes that script the badge just stops showing, the site keeps working)
+#   styles   - this site, Google Fonts CSS ('unsafe-inline' is needed for style attributes set by the page)
+#   fonts    - Google Fonts files
+#   images   - this site and inline data: images (the paper texture)
+#   connect  - this site and Google Sheets (the public availability calendar)
+# If a new external service is added later, add its address here or the browser will block it.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'sha256-BkKP2XO6WOEc3kXOiLr2ZoY83hamalKjPY9xBcbXVuw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin
+
+# the admin guide is for the team, not for search engines
+/README.md
+  X-Robots-Tag: noindex
