@@ -14,7 +14,7 @@ css/motion.css    hero intro, hero parallax, scroll reveals (home page)
 js/core.js        loaded first: settings and the BM/EN language engine
 js/nav.js         header: glass on scroll, dropdowns, phone menu (menu items are in the HTML of both pages)
 js/motion.js      adds the motion classes; off when the visitor asks for reduced motion
-js/main.js        3D building, scroll tour (phone) / explorer (PC), availability calendar
+js/main.js        3D building in a pop-up (links to #ruang open it), availability calendar
 js/content.js     rates, grant quiz, opportunities, membership, events, FAQ, contact, chatbot
 assets/           logos
 ```
@@ -48,3 +48,6 @@ The website stores nothing. Answers appear in Google Forms → Responses (and th
   - new or moved **sections**: update `pageHistory()` (it lists the section numbers a visitor passes through).
 - The form collects email (Settings → Responses → Collect email addresses), so the website asks for it too.
 - After any change, make one test booking on the website and check it arrives, then delete the test response.
+
+## Google reviews (`#ulasan` in `index.html`)
+The rating (4.8, 74 reviews) and the three review excerpts are copied from the SSK Centre listing on Google Maps. Update the numbers in `index.html` and `rvCount` in `js/profil.js` now and then. Only use real reviews, short excerpts, first name + initial.

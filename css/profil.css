@@ -143,7 +143,6 @@ body.in-profile .rail {
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.55);
   color: var(--_night);
-  animation: pf-float 7s ease-in-out infinite;
 }
 .pf-card-book {
   bottom: clamp(1.5rem, 4vw, 3.5rem);
@@ -158,7 +157,6 @@ body.in-profile .rail {
   padding: 10px 16px 10px 10px;
   font-size: 0.85rem;
   text-decoration: none;
-  animation-delay: -3.5s;
 }
 .pf-card-proof b {
   font-family: var(--font-display);
@@ -235,15 +233,6 @@ body.in-profile .rail {
 }
 .pf-card-go:hover {
   background: var(--_night);
-}
-@keyframes pf-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
 }
 
 /* caption and progress of the current photo */

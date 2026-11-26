@@ -450,131 +450,33 @@ if (LITE) {
   });
 }
 
-/* ================= scroll keyframes ================= */
+/* ================= 3D tour pop-up =================
+   The building is shown only inside the #tour pop-up (opened by any link to #ruang). Nothing is
+   drawn while it is closed. Tabs, arrows, the room list or a click/tap on the building choose a
+   room; the camera flies to it and its roof lifts. */
 const VIEWS = {
-  intro: { room: null, zoom: 0.82, rot: 0.42, side: -0.35, lift: 2.4 },
-  dewan: { room: 'dewan', zoom: 1.75, rot: 0.18, side: -1 },
-  mesyuarat: { room: 'mesyuarat', zoom: 2.4, rot: 0.62, side: -1 },
-  kafe: { room: 'kafe', zoom: 1.85, rot: 0.05, side: -1 },
-  surau: { room: 'surau', zoom: 2.3, rot: 0.75, side: -1 },
-  kaunter: { room: 'kaunter', zoom: 2.3, rot: 0.6, side: -1 },
-  pejabat: { room: 'pejabat', zoom: 2.3, rot: 0.85, side: -1 },
-  tandas: { room: 'tandas', zoom: 2.2, rot: 0.7, side: -1 },
-  dapur: { room: 'dapur', zoom: 2.0, rot: 0.3, side: -1 },
-  final: { room: null, zoom: 1.05, rot: -0.25, side: 0.55, night: 1 },
+  overview: { room: null, zoom: 0.95, rot: 0.42 },
+  dewan: { room: 'dewan', zoom: 1.75, rot: 0.18 },
+  mesyuarat: { room: 'mesyuarat', zoom: 2.4, rot: 0.62 },
+  kafe: { room: 'kafe', zoom: 1.85, rot: 0.05 },
+  surau: { room: 'surau', zoom: 2.3, rot: 0.75 },
+  kaunter: { room: 'kaunter', zoom: 2.3, rot: 0.6 },
+  pejabat: { room: 'pejabat', zoom: 2.3, rot: 0.85 },
+  tandas: { room: 'tandas', zoom: 2.2, rot: 0.7 },
+  dapur: { room: 'dapur', zoom: 2.0, rot: 0.3 },
 };
-/* desktop/laptop (mouse + wide screen): one-screen explorer; phones/tablets: scroll tour */
-const EXPLORE = matchMedia('(min-width: 900px) and (pointer: fine)').matches;
-document.body.classList.toggle('explore', EXPLORE);
-matchMedia('(min-width: 900px) and (pointer: fine)').addEventListener('change', () => location.reload());
-let stops = [];
-const chapters = [...document.querySelectorAll('.ch')];
-// chapter geometry is cached here (reading offsetTop every frame forces a layout → jank on phones)
-const geo = new Map();
-// the opaque .content block hides the 3D completely while it fills the screen → no need to draw then
-// opaque blocks (the profile at the top, the content sections further down) hide the 3D completely
-const coverEls = [...document.querySelectorAll('.content')];
-let coverRanges = [],
-  introTop = 0;
-function coveredAt(y) {
-  return coverRanges.some(r => y >= r[0] && y + innerHeight <= r[1]);
-}
-function buildStops() {
-  stops = [];
-  const vh = innerHeight;
-  coverRanges = coverEls.map(e => [e.offsetTop, e.offsetTop + e.offsetHeight]);
-  chapters.forEach(sec => {
-    const top = sec.offsetTop,
-      h = sec.offsetHeight - vh,
-      ch = sec.dataset.ch;
-    geo.set(sec, { top, h });
-    if (ch === 'intro') introTop = top;
-    if (EXPLORE) {
-      // desktop: 3 short screens — intro → explorer (camera follows the selected room) → night
-      if (ch === 'intro') stops.push({ s: 0, v: 'intro' });
-      else if (ch === 'explorer') {
-        stops.push({ s: top, v: 'SEL' });
-        stops.push({ s: top + vh * 0.3, v: 'SEL' });
-      } else if (ch === 'final') {
-        stops.push({ s: top - vh * 0.8, v: 'SEL' });
-        stops.push({ s: top, v: 'final' });
-        stops.push({ s: top + vh, v: 'final' });
-      }
-      return;
-    }
-    if (ch === 'explorer') return;
-    if (ch === 'intro') {
-      stops.push({ s: 0, v: 'intro' });
-      stops.push({ s: top + h * 0.25, v: 'intro' });
-    } else if (ch === 'more') {
-      ['surau', 'kaunter', 'pejabat', 'dapur', 'tandas'].forEach((k, i) => {
-        const a = top + h * (0.05 + i * 0.19);
-        stops.push({ s: a, v: k });
-        stops.push({ s: a + h * 0.1, v: k });
-      });
-    } else if (ch === 'final') {
-      stops.push({ s: top - vh * 0.8, v: stops[stops.length - 1].v });
-      stops.push({ s: top + h * 0.45, v: 'final' });
-      stops.push({ s: top + h + vh, v: 'final' });
-    } else {
-      stops.push({ s: top + h * 0.22, v: ch });
-      stops.push({ s: top + h * 0.78, v: ch });
-    }
-  });
-}
-const ease = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-function sample(y) {
-  if (y <= stops[0].s) return { a: stops[0].v, b: stops[0].v, t: 0 };
-  for (let i = 0; i < stops.length - 1; i++) {
-    const A = stops[i],
-      B = stops[i + 1];
-    if (y >= A.s && y <= B.s) return { a: A.v, b: B.v, t: B.s === A.s ? 0 : ease((y - A.s) / (B.s - A.s)) };
-  }
-  const L = stops[stops.length - 1];
-  return { a: L.v, b: L.v, t: 0 };
-}
-
-/* per-chapter progress -> CSS var --in (text panels) */
-function sectionIn(sec, y) {
-  const g = geo.get(sec) || { top: 0, h: 1 },
-    top = g.top,
-    h = g.h;
-  const p = (y - top) / Math.max(h, 1);
-  const inn = Math.min(1, Math.max(0, (p - 0.08) / 0.14)),
-    out = Math.min(1, Math.max(0, (p - 0.8) / 0.12));
-  return Math.max(0, inn - out);
-}
-const rail = [...document.querySelectorAll('#rail li')],
-  moreLis = [...document.querySelectorAll('#moreList li')],
-  ribbons = document.getElementById('ribbons');
-
-/* ================= desktop explorer ================= */
 const ORDER = ['dewan', 'mesyuarat', 'kafe', 'surau', 'kaunter', 'pejabat', 'dapur', 'tandas'];
-let selected = 'dewan';
-const exSec = document.getElementById('explore'),
+const tourEl = document.getElementById('tour'),
+  stageEl = document.getElementById('stage'),
   exPanels = document.getElementById('exPanels'),
+  tabs = [...document.querySelectorAll('.ex-tabs button')],
+  moreLis = [...document.querySelectorAll('#moreList li')],
   panelFor = {};
-const tabs = [...document.querySelectorAll('.ex-tabs button')];
-if (EXPLORE) {
-  ['dewan', 'mesyuarat', 'kafe', 'more'].forEach(ch => {
-    const p = document.querySelector(`[data-ch="${ch}"] .panel`);
-    exPanels.appendChild(p);
-    panelFor[ch] = p;
-  });
-  tabs.forEach(b =>
-    b.addEventListener('click', () => select(b.dataset.sel === 'more' ? 'surau' : b.dataset.sel))
-  );
-  moreLis.forEach(li => li.addEventListener('click', () => select(li.dataset.room)));
-  const step = d => select(ORDER[(ORDER.indexOf(selected) + d + ORDER.length) % ORDER.length]);
-  document.getElementById('exPrev').addEventListener('click', () => step(-1));
-  document.getElementById('exNext').addEventListener('click', () => step(1));
-  addEventListener('keydown', e => {
-    if (!inExplorer() || document.getElementById('cal').classList.contains('open')) return;
-    if (e.key === 'ArrowRight') step(1);
-    if (e.key === 'ArrowLeft') step(-1);
-  });
-  select('dewan');
-}
+['dewan', 'mesyuarat', 'kafe', 'more'].forEach((g, i) => (panelFor[g] = exPanels.children[i]));
+let selected = 'dewan',
+  tourOpen = false,
+  lastFocus = null;
+
 function select(k) {
   selected = k;
   const grp = ['dewan', 'mesyuarat', 'kafe'].includes(k) ? k : 'more';
@@ -587,46 +489,85 @@ function select(k) {
   moreLis.forEach(li => li.classList.toggle('on', li.dataset.room === k));
   document.getElementById('exCount').textContent =
     String(ORDER.indexOf(k) + 1).padStart(2, '0') + ' / ' + String(ORDER.length).padStart(2, '0');
+  dirty = true;
 }
-function scrollY_() {
-  return lenis ? lenis.scroll : scrollY;
+tabs.forEach(b =>
+  b.addEventListener('click', () => select(b.dataset.sel === 'more' ? 'surau' : b.dataset.sel))
+);
+moreLis.forEach(li => li.addEventListener('click', () => select(li.dataset.room)));
+const step = d => select(ORDER[(ORDER.indexOf(selected) + d + ORDER.length) % ORDER.length]);
+document.getElementById('exPrev').addEventListener('click', () => step(-1));
+document.getElementById('exNext').addEventListener('click', () => step(1));
+
+function openTour(room) {
+  if (tourOpen) return;
+  tourOpen = true;
+  lastFocus = document.activeElement;
+  tourEl.hidden = false;
+  document.documentElement.style.overflow = 'hidden';
+  if (lenis) lenis.stop();
+  select(room && VIEWS[room] ? room : 'dewan');
+  // start from the overview so the camera visibly flies to the room
+  Object.assign(cur, viewTarget('overview'));
+  resize();
+  requestAnimationFrame(() => tourEl.classList.add('on'));
+  document.getElementById('tourX').focus();
 }
-function inExplorer() {
-  const g = geo.get(exSec);
-  return EXPLORE && !!g && Math.abs(scrollY_() - g.top) < innerHeight * 0.35;
+function closeTour() {
+  if (!tourOpen) return;
+  tourOpen = false;
+  tourEl.classList.remove('on');
+  tourEl.hidden = true;
+  tip.classList.remove('on');
+  document.documentElement.style.overflow = '';
+  if (lenis) lenis.start();
+  if (lastFocus) lastFocus.focus();
 }
-/* only touch the DOM when a value actually changes */
-const _last = new WeakMap();
-function setVar(el, name, val) {
-  let m = _last.get(el);
-  if (!m) {
-    m = {};
-    _last.set(el, m);
-  }
-  if (m[name] !== val) {
-    m[name] = val;
-    el.style.setProperty(name, val);
-  }
-}
+document.getElementById('tourX').addEventListener('click', closeTour);
+addEventListener('keydown', e => {
+  if (!tourOpen) return;
+  if (e.key === 'Escape') closeTour();
+  if (e.key === 'ArrowRight') step(1);
+  if (e.key === 'ArrowLeft') step(-1);
+});
+// every "explore in 3D" link on the page points at #ruang; capture runs before the in-page scroller
+document.addEventListener(
+  'click',
+  e => {
+    const a = e.target.closest('a[href$="#ruang"]');
+    if (!a) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if (document.body.classList.contains('menu-open')) document.getElementById('menuBtn').click();
+    openTour(a.dataset.room);
+  },
+  true
+);
+// the calendar opens above the pop-up: close the tour first so the page underneath is usable
+document.addEventListener(
+  'click',
+  e => {
+    if (tourOpen && e.target.closest('#tour [data-cal]')) closeTour();
+  },
+  true
+);
+if (location.hash === '#ruang') addEventListener('load', () => openTour());
 
 /* ================= state + loop ================= */
-const cur = { zoom: 0.82, rot: 0.42, tx: 0, tz: 0, side: -0.35, night: 0, lift: 2.4 };
+const cur = { zoom: 0.95, rot: 0.42, tx: 0, tz: 0 };
 const tgt = Object.assign({}, cur);
 const open = {};
 Object.keys(rooms).forEach(k => (open[k] = 0));
-let hoverKey = null,
-  activeTip = null;
-const v = new THREE.Vector3(),
-  right = new THREE.Vector3(1, 0, -1).normalize();
+let hoverKey = null;
+const v = new THREE.Vector3();
 
-// The stage is sized to the *large* viewport (100lvh), so the phone's address bar showing/hiding
-// does not reallocate the WebGL buffers mid-scroll; only real width changes do.
-const stageEl = document.getElementById('stage');
 let lastW = 0,
-  lastH = 0;
+  lastH = 0,
+  dirty = true;
 function resize() {
-  const w = stageEl.clientWidth || innerWidth,
-    h = stageEl.clientHeight || innerHeight;
+  const w = stageEl.clientWidth,
+    h = stageEl.clientHeight;
+  if (!w || !h) return;
   if (w !== lastW || h !== lastH) {
     lastW = w;
     lastH = h;
@@ -639,39 +580,15 @@ function resize() {
     cam.bottom = -s;
     cam.updateProjectionMatrix();
   }
-  buildStops();
   dirty = true;
 }
-let dirty = true;
-addEventListener('resize', resize);
-resize();
-addEventListener('load', () => {
-  buildStops();
-  dirty = true;
-});
-if (window.ResizeObserver)
-  new ResizeObserver(() => {
-    buildStops();
-    dirty = true;
-  }).observe(document.body);
+addEventListener('resize', () => tourOpen && resize());
 
 function viewTarget(name) {
-  const sel = name === 'SEL';
-  if (sel) name = selected;
-  const V = VIEWS[name] || VIEWS.intro;
-  const o = {
-    zoom: sel ? Math.max(1.1, V.zoom * 0.66) : V.zoom,
-    rot: V.rot,
-    side: V.side || 0,
-    night: V.night || 0,
-    lift: V.lift || 0,
-    tx: 0,
-    tz: 0,
-    room: V.room,
-  };
+  const V = VIEWS[name] || VIEWS.overview;
+  const o = { zoom: V.room ? Math.max(1.1, V.zoom * 0.66) : V.zoom, rot: V.rot, tx: 0, tz: 0, room: V.room };
   if (V.room) {
-    const g = rooms[V.room];
-    const p = g.position.clone();
+    const p = rooms[V.room].position.clone();
     p.applyAxisAngle(new THREE.Vector3(0, 1, 0), V.rot);
     o.tx = p.x;
     o.tz = p.z;
@@ -682,33 +599,19 @@ function lerp(a, b, t) {
   return a + (b - a) * t;
 }
 
-let t0 = 0,
-  px = 0,
-  py = 0;
-addEventListener(
-  'pointermove',
-  e => {
-    px = e.clientX / innerWidth - 0.5;
-    py = e.clientY / innerHeight - 0.5;
-  },
-  { passive: true }
-);
-
-let roomMoving = 1,
-  lastY = -1,
+let px = 0,
+  roomMoving = 1,
   lastPx = 0,
   lastHover = null,
   lastSel = null,
   lastLang = null;
+// on phones the room panel sits under the building, so the building is pushed up a little
+const phone = () => innerWidth < 900;
 function frame() {
   requestAnimationFrame(frame);
-  t0 += 1 / 60;
-  const y = lenis ? lenis.scroll : scrollY;
-  const s = sample(y),
-    A = viewTarget(s.a),
-    B = viewTarget(s.b),
-    k = s.t;
-  ['zoom', 'rot', 'side', 'night', 'lift', 'tx', 'tz'].forEach(p => (tgt[p] = lerp(A[p], B[p], k)));
+  if (!tourOpen) return;
+  const T = viewTarget(selected);
+  ['zoom', 'rot', 'tx', 'tz'].forEach(p => (tgt[p] = T[p]));
   const sm = reduced ? 1 : 0.085;
   let moving = 0;
   for (const p in tgt) {
@@ -717,10 +620,8 @@ function frame() {
     moving = Math.max(moving, Math.abs(d));
   }
   moving = Math.max(moving, roomMoving);
-  // idle: nothing scrolled, hovered or animating → skip DOM work and the WebGL draw (saves battery, frees the GPU)
   const idle =
     !dirty &&
-    y === lastY &&
     px === lastPx &&
     hoverKey === lastHover &&
     selected === lastSel &&
@@ -728,23 +629,15 @@ function frame() {
     moving < 0.0004;
   if (idle) return;
   dirty = false;
-  lastY = y;
   lastPx = px;
   lastHover = hoverKey;
   lastSel = selected;
   lastLang = LANG;
 
-  // which rooms are open from scroll (weighted by proximity), plus hover in free views
-  const scrollOpen = {};
-  if (A.room) scrollOpen[A.room] = (scrollOpen[A.room] || 0) + (1 - k);
-  if (B.room) scrollOpen[B.room] = (scrollOpen[B.room] || 0) + k;
-  const free = !A.room && !B.room,
-    inEx = inExplorer();
-  document.body.classList.toggle('pointing', !!hoverKey && (free || inEx));
+  document.body.classList.toggle('pointing', !!hoverKey);
   roomMoving = 0;
   Object.keys(rooms).forEach(key => {
-    let target = scrollOpen[key] || 0;
-    if ((free || inEx) && hoverKey === key) target = 1;
+    const target = key === selected || key === hoverKey ? 1 : 0;
     roomMoving = Math.max(roomMoving, Math.abs(target - open[key]));
     open[key] += (target - open[key]) * (reduced ? 1 : 0.1);
     const u = rooms[key].userData,
@@ -767,108 +660,58 @@ function frame() {
     u.fm.color.setHex(o > 0.5 ? 0xdcecf3 : C.floor);
   });
 
-  // camera
+  // camera: the room sits left of centre on wide screens (the panel is on the right)
   root.rotation.y = cur.rot + (reduced ? 0 : px * 0.08);
-  root.position.y = cur.lift;
   const vw = (cam.right - cam.left) / cur.zoom;
-  const sideShift = innerWidth < 900 ? 0 : cur.side * vw * 0.25;
-  const focus = new THREE.Vector3(cur.tx, 0, cur.tz).addScaledVector(right, -sideShift);
-  // on mobile push the building up so panels sit underneath
-  if (innerWidth < 900) {
-    focus.y -= ((cam.top - cam.bottom) / cur.zoom) * 0.2;
-  }
+  const right = new THREE.Vector3(1, 0, -1).normalize();
+  const focus = new THREE.Vector3(cur.tx, 0, cur.tz).addScaledVector(right, phone() ? 0 : vw * 0.14);
+  if (phone()) focus.y -= ((cam.top - cam.bottom) / cur.zoom) * 0.18;
   cam.zoom = cur.zoom;
   cam.position.copy(focus).add(OFF);
   cam.lookAt(focus);
   cam.updateProjectionMatrix();
 
-  // night
-  const n = cur.night;
-  hemi.intensity = lerp(0.8, 0.22, n);
-  sun.intensity = lerp(0.85, 0.05, n);
-  hemi.color.setHex(n > 0.5 ? 0x9fb0e6 : 0xffffff);
-  glowMats.forEach(m => (m.emissiveIntensity = n * (m.transparent ? 0.95 : 0.8)));
-  document.body.classList.toggle('night', n > 0.5);
-  const bg = `rgb(${Math.round(lerp(244, 13, n))},${Math.round(lerp(241, 20, n))},${Math.round(lerp(234, 51, n))})`;
-  setVar(document.documentElement, '--bg', bg);
-
-  // text panels + rail
-  let activeCh = 'intro';
-  if (EXPLORE) {
-    const vh = innerHeight,
-      cl = x => Math.min(1, Math.max(0, x));
-    chapters.forEach(sec => {
-      const top = (geo.get(sec) || { top: 0 }).top;
-      let i = 1;
-      if (sec.dataset.ch === 'explorer') i = cl(1 - Math.abs(y - top) / (vh * 0.45));
-      else if (sec.dataset.ch === 'final') i = cl((y - (top - vh * 0.45)) / (vh * 0.4));
-      setVar(sec, '--in', i.toFixed(3));
-    });
-  } else {
-    chapters.forEach(sec => {
-      const i = sectionIn(sec, y);
-      setVar(sec, '--in', sec.dataset.ch === 'intro' ? '1' : i.toFixed(3));
-      if (i > 0.5) activeCh = sec.dataset.ch;
-    });
-    rail.forEach(li => li.classList.toggle('on', li.dataset.r === activeCh));
-    const moreKey = ['surau', 'kaunter', 'pejabat', 'dapur', 'tandas'].includes(s.a)
-      ? k < 0.5
-        ? s.a
-        : s.b
-      : null;
-    moreLis.forEach(li => li.classList.toggle('on', li.dataset.room === moreKey));
-  }
-  // intro type + ribbons drift away as you scroll in
-  const introP = Math.min(1, Math.max(0, (y - introTop) / (innerHeight * 0.9)));
-  // the room rail belongs to the 3D tour, not to the profile above it
-  document.body.classList.toggle('in-profile', y < introTop - innerHeight * 0.5);
-  setVar(ribbons, 'opacity', (1 - introP).toFixed(3));
-  setVar(ribbons, 'transform', `translateY(-50%) translateX(${(-introP * 18).toFixed(2)}vw)`);
-  setVar(introPin, 'opacity', (1 - Math.max(0, introP - 0.35) / 0.5).toFixed(3));
-
-  // hover tooltip (free views only)
-  if ((free || inEx) && hoverKey) {
+  // hover tooltip
+  if (hoverKey) {
     const g = rooms[hoverKey];
     g.getWorldPosition(v);
     v.y += g.userData.h + 0.6;
     v.project(cam);
-    tip.style.left = ((v.x + 1) / 2) * innerWidth + 'px';
-    tip.style.top = ((1 - v.y) / 2) * innerHeight + 'px';
+    const r = stageEl.getBoundingClientRect();
+    tip.style.left = r.left + ((v.x + 1) / 2) * r.width + 'px';
+    tip.style.top = r.top + ((1 - v.y) / 2) * r.height + 'px';
     tip.textContent = NAMES[hoverKey][LANG === 'ms' ? 0 : 1];
     tip.classList.add('on');
   } else tip.classList.remove('on');
 
-  const covered = coveredAt(y);
-  if (!covered) renderer.render(scene, cam);
+  renderer.render(scene, cam);
 }
-const introPin = document.querySelector('.intro .pin');
-/* hover picking on the fixed canvas (only matters when the view is not in a room chapter) */
+
+/* picking: hover shows the room name, click or tap selects it */
 const ray = new THREE.Raycaster(),
   mouse = new THREE.Vector2();
-addEventListener(
+function pick(e) {
+  const r = stageEl.getBoundingClientRect();
+  mouse.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  ray.setFromCamera(mouse, cam);
+  const hit = ray.intersectObjects(pickables, false)[0];
+  return hit ? hit.object.userData.room : null;
+}
+stageEl.addEventListener(
   'pointermove',
   e => {
-    mouse.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
-    ray.setFromCamera(mouse, cam);
-    const hit = ray.intersectObjects(pickables, false)[0];
-    hoverKey =
-      hit && !coveredAt(scrollY_()) && !e.target.closest('.content') ? hit.object.userData.room : null;
+    px = e.clientX / innerWidth - 0.5;
+    hoverKey = e.pointerType === 'mouse' ? pick(e) : null;
   },
   { passive: true }
 );
-/* desktop: clicking a room on the building selects it */
-addEventListener('click', e => {
-  if (!EXPLORE || !hoverKey || e.target.closest('a,button,.ex-ui,.nav,.cal')) return;
-  if (inExplorer()) {
-    select(hoverKey);
-    return;
-  }
-  // from the intro: clicking a room jumps into the explorer on that room
-  if (Math.abs(scrollY_() - introTop) < innerHeight * 0.5) {
-    select(hoverKey);
-    lenis ? lenis.scrollTo(exSec.offsetTop) : scrollTo({ top: exSec.offsetTop, behavior: 'smooth' });
-  }
+stageEl.addEventListener('pointerleave', () => (hoverKey = null));
+stageEl.addEventListener('click', e => {
+  const k = pick(e);
+  if (k) select(k);
 });
+select('dewan');
+
 /* ================= availability calendar ================= */
 (function () {
   const WA = SSK.WA;
@@ -1239,5 +1082,4 @@ addEventListener('click', e => {
     })
   );
 })();
-addEventListener('load', buildStops);
 frame();

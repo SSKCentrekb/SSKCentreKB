@@ -77,23 +77,8 @@
   </div>
 </header>
 
-<svg class="ribbons" id="ribbons" viewBox="0 0 1600 600" preserveAspectRatio="none" aria-hidden="true">
-  <path d="M-100 170 H620 C700 170 720 110 800 110 H1700" stroke="#1e7fc4"/>
-  <path d="M-100 300 H560 C640 300 660 240 740 240 H1700" stroke="#e2382e"/>
-  <path d="M-100 430 H500 C580 430 600 370 680 370 H1700" stroke="#7ec8e3"/>
-</svg>
 
-<div id="stage" aria-hidden="true"><canvas id="scene"></canvas></div>
-<div class="tip" id="tip"></div>
 
-<ol class="rail" id="rail" aria-hidden="true">
-  <li data-r="intro">SSK Centre</li>
-  <li data-r="dewan" data-i18n="rail1">Dewan</li>
-  <li data-r="mesyuarat" data-i18n="rail2">Mesyuarat</li>
-  <li data-r="kafe">CentreKafe</li>
-  <li data-r="more" data-i18n="rail4">Lain-lain</li>
-  <li data-r="final" data-i18n="rail5">Datang</li>
-</ol>
 
 <main id="top">
   <!-- PROFIL (main screen): opaque block above the 3D tour -->
@@ -283,109 +268,40 @@
         <div class="akt-grid" id="aktPreview"></div>
       </div>
     </section>
+
+    <!-- ULASAN: real 5-star Google reviews (short excerpts, first name + initial); rating from the Google listing -->
+    <section class="sec sec-soft" id="ulasan" aria-labelledby="h-ulasan">
+      <div class="sec-in">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow" data-i18n="rvEye">Ulasan Google</p>
+            <h2 class="h2" id="h-ulasan" data-i18n-html="rvH">Kata mereka yang<br><em>pernah datang.</em></h2>
+          </div>
+          <a class="gr-score" href="https://maps.google.com/?cid=6492113666855247565" target="_blank" rel="noopener">
+            <b>4.8</b><span class="gr-stars" aria-hidden="true">★★★★★</span><span data-i18n="rvCount">74 ulasan di Google</span>
+          </a>
+        </div>
+        <div class="gr-grid">
+          <figure class="gr-card">
+            <figcaption><span class="gr-av" aria-hidden="true">S</span><span><b>Suzianna Z.</b><span class="gr-stars" role="img" aria-label="5 bintang">★★★★★</span></span></figcaption>
+            <blockquote lang="en">“The place was beautiful, clean, spacious, and well-maintained, making it perfect for our special occasion.”</blockquote>
+            <p class="gr-for" data-i18n="rvFor1"></p>
+          </figure>
+          <figure class="gr-card">
+            <figcaption><span class="gr-av" aria-hidden="true">B</span><span><b>Bea R.</b><span class="gr-stars" role="img" aria-label="5 bintang">★★★★★</span></span></figcaption>
+            <blockquote lang="en">“The place is good and suitable for any program or events. The manager is so friendly and helps us a lot.”</blockquote>
+            
+          </figure>
+          <figure class="gr-card">
+            <figcaption><span class="gr-av" aria-hidden="true">A</span><span><b>Adlina L.</b><span class="gr-stars" role="img" aria-label="5 bintang">★★★★★</span></span></figcaption>
+            <blockquote lang="en">“Best place to do programme or activity. The place is very comfortable, and provide air-conditioning.”</blockquote>
+            
+          </figure>
+        </div>
+        <a class="btn btn-line gr-all" href="https://maps.google.com/?cid=6492113666855247565" target="_blank" rel="noopener"><span data-i18n="rvAll">Baca semua ulasan di Google</span> <span class="arr">→</span></a>
+      </div>
+    </section>
   </div>
-
-  <!-- 0 · INTRO (3D tour starts here) -->
-  <section class="ch intro" data-ch="intro" id="ruang">
-    <div class="pin">
-      <h2 class="mega">
-        <span class="w"><span data-i18n="megaA">Jelajah</span></span>
-        <span class="w"><span><em data-i18n="megaB">ruang kami</em></span></span>
-      </h2>
-      <div class="intro-row">
-        <p data-i18n="intro">Satu ruang untuk seluruh komuniti Kota Belud: dewan, bilik mesyuarat, CentreKafe, dan panduan geran untuk usahawan.</p>
-        <div class="cue"><i></i><span data-i18n="cue">Skrol untuk masuk</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DESKTOP EXPLORER: one screen, click rooms or tabs -->
-  <section class="ch explorer" data-ch="explorer" id="explore" aria-label="Ruang di SSK Centre">
-    <div class="ex-ui">
-      <div class="ex-tabs" role="tablist">
-        <button data-sel="dewan" role="tab" data-i18n="tab1">Dewan</button>
-        <button data-sel="mesyuarat" role="tab" data-i18n="tab2">Bilik Mesyuarat</button>
-        <button data-sel="kafe" role="tab">CentreKafe</button>
-        <button data-sel="more" role="tab" data-i18n="tab4">Lain-lain</button>
-      </div>
-      <div class="ex-panels" id="exPanels"></div>
-      <div class="ex-nav">
-        <button id="exPrev" aria-label="Ruang sebelum">←</button>
-        <button id="exNext" aria-label="Ruang seterusnya">→</button>
-        <span id="exCount">01 / 08</span>
-        <span class="ex-hint" data-i18n="exHint">Klik bilik pada bangunan</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 1 · DEWAN -->
-  <section class="ch room" data-ch="dewan" aria-labelledby="h-dewan">
-    <div class="pin">
-      <div class="ghost">01</div>
-      <div class="panel">
-        <div class="idx"><b>01</b><span data-i18n="rent">Boleh disewa</span></div>
-        <h2 id="h-dewan" data-i18n-html="dewanH">Dewan<br><em>Serbaguna</em></h2>
-        <div class="facts">
-          <div><b>100</b><span data-i18n="ppl">orang</span></div>
-          <div><b>RM50</b><span data-i18n="perhr">sejam · komuniti</span></div>
-          <div><b>RM450</b><span data-i18n="perday">sehari · komuniti</span></div>
-        </div>
-        <p data-i18n="dewanP">Seminar, majlis dan acara komuniti. Kadar korporat dan deposit dikira dalam kalkulator.</p>
-        <div class="btns">
-          <button class="btn btn-red" data-cal="dewan"><span data-i18n="checkDates">Semak tarikh &amp; tempah</span><span class="arr">→</span></button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2 · BILIK MESYUARAT -->
-  <section class="ch room" data-ch="mesyuarat" aria-labelledby="h-mes">
-    <div class="pin">
-      <div class="ghost">02</div>
-      <div class="panel">
-        <div class="idx"><b>02</b><span data-i18n="rent">Boleh disewa</span></div>
-        <h2 id="h-mes" data-i18n-html="mesH">Bilik<br><em>Mesyuarat</em></h2>
-        <div class="facts">
-          <div><b>20</b><span data-i18n="ppl">orang</span></div>
-          <div><b>RM40</b><span data-i18n="perhr">sejam · komuniti</span></div>
-          <div><b>RM180</b><span data-i18n="perday">sehari · komuniti</span></div>
-        </div>
-        <p data-i18n="mesP">Mesyuarat, latihan dan sesi perbincangan. Ahli Business dapat 2 jam percuma setiap bulan.</p>
-        <div class="btns">
-          <button class="btn btn-red" data-cal="mesyuarat"><span data-i18n="checkDates">Semak tarikh &amp; tempah</span><span class="arr">→</span></button>
-          <a class="btn btn-line" href="#keahlian" data-i18n="member">Lihat keahlian</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3 · CENTREKAFE -->
-  <section class="ch room" data-ch="kafe" aria-labelledby="h-kafe">
-    <div class="pin">
-      <div class="ghost">03</div>
-      <div class="panel">
-        <div class="idx"><b>03</b><span data-i18n="public">Terbuka untuk umum</span></div>
-        <h2 id="h-kafe"><span class="logo-crop logo-kafe"><img src="assets/logo-centrekafe.png" alt="CentreKafe"></span></h2>
-        <p data-i18n="kafeP">Kafe di dalam SSK Centre. Singgah sebelum atau selepas program, atau sambung berbincang selepas mesyuarat.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 · DAN JUGA -->
-  <section class="ch more" data-ch="more" aria-labelledby="h-more">
-    <div class="pin">
-      <div class="panel">
-        <div class="idx"><b>04</b><span data-i18n="also">Dan juga</span></div>
-        <ul id="moreList">
-          <li data-room="surau"><em data-i18n="m1">Surau</em><span data-i18n="m1s">Kemudahan</span></li>
-          <li data-room="kaunter"><em data-i18n="m2">Kaunter Reception</em><span data-i18n="m2s">Pertanyaan</span></li>
-          <li data-room="pejabat"><em data-i18n="m3">Pejabat SSK</em><span data-i18n="m3s">Kakitangan</span></li>
-          <li data-room="dapur"><em data-i18n="m5">Dapur &amp; Stor</em><span data-i18n="m5s">Kakitangan</span></li>
-          <li data-room="tandas"><em data-i18n="m4">Tandas &amp; Stor</em><span data-i18n="m4s">Kemudahan</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
 
   <!-- ================= CONTENT (opaque, scrolls over the fixed 3D scene) ================= -->
   <div class="content">
@@ -573,11 +489,9 @@
         </form>
       </div>
     </section>
-  </div>
-
-  <!-- 5 · FINAL (night): location, with a pin that drops onto the 3D building (js/main.js) -->
-  <section class="ch final" id="lokasi" data-ch="final" aria-labelledby="h-final">
-    <div class="pin">
+    <!-- LOKASI: illustrated map traced from Google Maps; the route, pin and photo animate in (js/motion.js) -->
+    <section class="sec sec-navy loc-sec" id="lokasi" aria-labelledby="h-final">
+      <div class="sec-in">
       <div class="wrap loc">
         <div class="loc-txt">
           <p class="final-eye" data-i18n="finEye">Lokasi</p>
@@ -620,8 +534,9 @@
           <span class="loc-chip"><span data-i18n="finMap">Buka di Google Maps</span> ↗</span>
         </a>
       </div>
-    </div>
-  </section>
+      </div>
+    </section>
+  </div>
 
   <footer class="content site-foot" aria-label="Footer">
     <div class="sf-in">
@@ -662,6 +577,71 @@
 <div class="vid" id="vid" role="dialog" aria-modal="true" aria-label="Video" hidden>
   <button class="lb-x" id="vidX" aria-label="Tutup">✕</button>
   <video id="vidEl" controls playsinline preload="none"></video>
+</div>
+
+<!-- 3D TOUR: opens from any link to #ruang (js/main.js); nothing is drawn while it is closed -->
+<div class="tour" id="tour" role="dialog" aria-modal="true" aria-label="Jelajah 3D SSK Centre" hidden>
+  <div id="stage"><canvas id="scene"></canvas></div>
+  <div class="tip" id="tip"></div>
+  <button class="tour-x" id="tourX" type="button" aria-label="Tutup">✕</button>
+  <div class="ex-ui">
+      <div class="ex-tabs" role="tablist">
+        <button data-sel="dewan" role="tab" data-i18n="tab1">Dewan</button>
+        <button data-sel="mesyuarat" role="tab" data-i18n="tab2">Bilik Mesyuarat</button>
+        <button data-sel="kafe" role="tab">CentreKafe</button>
+        <button data-sel="more" role="tab" data-i18n="tab4">Lain-lain</button>
+      </div>
+      <div class="ex-panels" id="exPanels">
+<div class="panel">
+        <div class="idx"><b>01</b><span data-i18n="rent">Boleh disewa</span></div>
+        <h2 id="h-dewan" data-i18n-html="dewanH">Dewan<br><em>Serbaguna</em></h2>
+        <div class="facts">
+          <div><b>100</b><span data-i18n="ppl">orang</span></div>
+          <div><b>RM50</b><span data-i18n="perhr">sejam · komuniti</span></div>
+          <div><b>RM450</b><span data-i18n="perday">sehari · komuniti</span></div>
+        </div>
+        <p data-i18n="dewanP">Seminar, majlis dan acara komuniti. Kadar korporat dan deposit dikira dalam kalkulator.</p>
+        <div class="btns">
+          <button class="btn btn-red" data-cal="dewan"><span data-i18n="checkDates">Semak tarikh &amp; tempah</span><span class="arr">→</span></button>
+        </div>
+      </div>
+<div class="panel">
+        <div class="idx"><b>02</b><span data-i18n="rent">Boleh disewa</span></div>
+        <h2 id="h-mes" data-i18n-html="mesH">Bilik<br><em>Mesyuarat</em></h2>
+        <div class="facts">
+          <div><b>20</b><span data-i18n="ppl">orang</span></div>
+          <div><b>RM40</b><span data-i18n="perhr">sejam · komuniti</span></div>
+          <div><b>RM180</b><span data-i18n="perday">sehari · komuniti</span></div>
+        </div>
+        <p data-i18n="mesP">Mesyuarat, latihan dan sesi perbincangan. Ahli Business dapat 2 jam percuma setiap bulan.</p>
+        <div class="btns">
+          <button class="btn btn-red" data-cal="mesyuarat"><span data-i18n="checkDates">Semak tarikh &amp; tempah</span><span class="arr">→</span></button>
+          <a class="btn btn-line" href="#keahlian" data-i18n="member">Lihat keahlian</a>
+        </div>
+      </div>
+<div class="panel">
+        <div class="idx"><b>03</b><span data-i18n="public">Terbuka untuk umum</span></div>
+        <h2 id="h-kafe"><span class="logo-crop logo-kafe"><img src="assets/logo-centrekafe.png" alt="CentreKafe"></span></h2>
+        <p data-i18n="kafeP">Kafe di dalam SSK Centre. Singgah sebelum atau selepas program, atau sambung berbincang selepas mesyuarat.</p>
+      </div>
+<div class="panel">
+        <div class="idx"><b>04</b><span data-i18n="also">Dan juga</span></div>
+        <ul id="moreList">
+          <li data-room="surau"><em data-i18n="m1">Surau</em><span data-i18n="m1s">Kemudahan</span></li>
+          <li data-room="kaunter"><em data-i18n="m2">Kaunter Reception</em><span data-i18n="m2s">Pertanyaan</span></li>
+          <li data-room="pejabat"><em data-i18n="m3">Pejabat SSK</em><span data-i18n="m3s">Kakitangan</span></li>
+          <li data-room="dapur"><em data-i18n="m5">Dapur &amp; Stor</em><span data-i18n="m5s">Kakitangan</span></li>
+          <li data-room="tandas"><em data-i18n="m4">Tandas &amp; Stor</em><span data-i18n="m4s">Kemudahan</span></li>
+        </ul>
+      </div>
+      </div>
+      <div class="ex-nav">
+        <button id="exPrev" aria-label="Ruang sebelum">←</button>
+        <button id="exNext" aria-label="Ruang seterusnya">→</button>
+        <span id="exCount">01 / 08</span>
+        <span class="ex-hint" data-i18n="exHint">Klik bilik pada bangunan</span>
+      </div>
+    </div>
 </div>
 
 <!-- AVAILABILITY CALENDAR (replaces the old price calculator) -->

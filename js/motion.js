@@ -12,7 +12,7 @@
   /* ---------- headings: wrap every word in a mask ---------- */
   // Headings come from the language engine (data-i18n-html), which rewrites them on every language
   // change, so they are wrapped again after each change.
-  const HEADS = '.pf-title, .content .h2';
+  const HEADS = '.pf-title';
   function wrapWords(el) {
     if (el.querySelector('.mw')) return;
     let i = 0;
@@ -79,12 +79,12 @@
   /* ---------- scroll reveals ---------- */
   const tag = (sel, cls) => document.querySelectorAll(sel).forEach(el => el.classList.add(cls));
   tag(
-    '.content .sec .eyebrow, .content .sec .lead, .content .sec .fine, .pf-prose p:not([data-words]), .sec-head > .btn, .pf-facts, .pf-visi, .pf-speech blockquote, .pf-sign, .pf-proof',
+    '.content .sec .eyebrow, .content .sec .h2, .content .sec .lead, .content .sec .fine, .pf-prose p:not([data-words]), .sec-head > .btn, .pf-facts, .pf-visi, .pf-speech blockquote, .pf-sign, .pf-proof',
     'rv'
   );
   tag('.svc-img, .pf-speech > img', 'rv-img');
   tag(
-    '.svc-grid, .pf-stats, .pf-misi, .pf-obj, .pf-chips, .pf-areas, #aktPreview, .tiers, .sel-grid',
+    '.svc-grid, .pf-stats, .pf-misi, .pf-obj, .pf-chips, .pf-areas, #aktPreview, .tiers, .sel-grid, .gr-grid',
     'rv-grid'
   );
 
@@ -118,7 +118,7 @@
       }),
     { rootMargin: '0px 0px -4% 0px', threshold: 0.05 }
   );
-  document.querySelectorAll('.rv, .rv-grid, .content .h2').forEach(el => io.observe(el));
+  document.querySelectorAll('.rv, .rv-grid').forEach(el => io.observe(el));
   document.querySelectorAll('.rv-img').forEach(el => {
     el.parentElement.classList.add('rv-img-watch');
     io.observe(el.parentElement);
