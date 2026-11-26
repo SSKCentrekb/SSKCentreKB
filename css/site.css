@@ -31,16 +31,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(26, 42, 108, 0.38) transparent;
 }
 html {
   background: var(--bg);
 }
 /* Thin scrollbars in the brand colours instead of the grey system bar with arrow buttons.
    scrollbar-color/width cover Chrome, Edge and Firefox; the ::-webkit rules cover Safari. */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(26, 42, 108, 0.38) transparent;
-}
 html:has(body.night) {
   scrollbar-color: rgba(244, 241, 234, 0.42) transparent;
 }
@@ -114,29 +112,6 @@ body::after {
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-
-/* ---------- NAV ---------- */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px var(--gutter);
-  transition:
-    background 0.4s var(--ease),
-    border-color 0.4s var(--ease),
-    padding 0.4s var(--ease);
-  border-bottom: 1px solid transparent;
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
 .logo-crop {
   display: inline-block;
   overflow: hidden;
@@ -169,53 +144,6 @@ body::after {
 body.night .logo-ssk img {
   mix-blend-mode: normal;
   filter: brightness(0) invert(1);
-}
-.brand-sub {
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-}
-.nav-r {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
-.lang {
-  display: flex;
-  border: 1px solid var(--_line);
-  border-radius: 99px;
-  padding: 3px;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-}
-.lang button {
-  padding: 5px 11px;
-  border-radius: 99px;
-  color: var(--ink-2);
-  transition: all 0.3s var(--ease);
-}
-.lang button[aria-pressed='true'] {
-  background: var(--ink);
-  color: var(--bg);
-}
-.nav-cta {
-  font-size: 0.8rem;
-  padding: 10px 20px;
-  border: 1px solid var(--ink);
-  border-radius: var(--r-s);
-  transition:
-    background 0.3s var(--ease),
-    color 0.3s var(--ease);
-  background: var(--_red);
-  border-color: var(--_red);
-  color: #fff;
-  font-weight: 500;
-}
-.nav-cta:hover {
-  background: var(--_night);
-  color: #fff;
-  border-color: var(--_night);
 }
 
 /* ---------- FIXED STAGE ---------- */
@@ -1089,8 +1017,7 @@ body.pointing {
 
 /* ---------- MOBILE ---------- */
 @media (max-width: 900px) {
-  .rail,
-  .nav-cta {
+  .rail {
     display: none;
   }
   .room .pin::before,

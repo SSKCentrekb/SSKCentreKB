@@ -13,19 +13,39 @@
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/profil.css">
 <link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/nav.css">
 </head>
 <body class="page-akt">
 
-<header class="nav solid">
+<header class="nav">
   <a class="brand" href="index.html" aria-label="SSK Centre, Kota Belud">
     <span class="logo-crop logo-ssk"><img src="assets/logo-ssk-centre.png" alt="SSK Centre"></span>
     <span class="brand-sub">Kota Belud</span>
   </a>
   <nav class="nav-links" id="navLinks" aria-label="Utama">
     <a href="index.html#profil" data-i18n="n0">Profil</a>
-    <a href="index.html#perkhidmatan" data-i18n="n8">Perkhidmatan</a>
-    <a href="index.html#kadar" data-i18n="n1">Kadar sewa</a>
-    <a href="index.html#selangkah" data-i18n="n2">Geran</a>
+    <div class="nav-dd">
+      <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="ddSvc"><span data-i18n="n8">Perkhidmatan</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="nav-dd-menu" id="ddSvc">
+        <div>
+            <a href="index.html#perkhidmatan"><b data-i18n="dd1">Ruang &amp; perkhidmatan</b><span data-i18n="dd1s">Dewan, bilik mesyuarat, CentreKafe</span></a>
+            <a href="index.html#kadar"><b data-i18n="dd2">Kadar sewa</b><span data-i18n="dd2s">Komuniti, korporat, persendirian</span></a>
+            <a href="index.html#tempah"><b data-i18n="dd3">Borang tempahan</b><span data-i18n="dd3s">Tempah terus dalam 5 langkah</span></a>
+            <a href="index.html#ruang"><b data-i18n="dd4">Jelajah 3D</b><span data-i18n="dd4s">Lihat setiap ruang dalam bangunan</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-dd">
+      <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="ddOpp"><span data-i18n="n9">Peluang</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="nav-dd-menu" id="ddOpp">
+        <div>
+            <a href="index.html#selangkah"><b data-i18n="dd5">Selangkah ke Peluang</b><span data-i18n="dd5s">Program yang sedang dibuka</span></a>
+            <a href="index.html#geran"><b data-i18n="dd6">Quiz geran</b><span data-i18n="dd6s">Cari geran yang sesuai dalam 5 soalan</span></a>
+            <a href="index.html#peluang"><b data-i18n="dd7">Kursus &amp; pembiayaan</b><span data-i18n="dd7s">Senarai penuh peluang usahawan</span></a>
+            <a href="index.html#keahlian"><b data-i18n="dd8">Keahlian kelab</b><span data-i18n="dd8s">RM10, diskaun 10% semua fasiliti</span></a>
+        </div>
+      </div>
+    </div>
     <a href="aktiviti.html" aria-current="page" data-i18n="n7">Aktiviti</a>
     <a href="index.html#hubungi" data-i18n="n5">Hubungi</a>
     <div class="lang lang-m" role="group" aria-label="Bahasa / Language">
@@ -34,12 +54,12 @@
     </div>
   </nav>
   <div class="nav-r">
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><i></i><i></i></button>
     <a class="nav-cta" href="index.html#kadar" data-i18n="navBook">Tempah</a>
     <div class="lang" role="group" aria-label="Bahasa / Language">
       <button data-lang="ms" aria-pressed="true">BM</button>
       <button data-lang="en" aria-pressed="false">EN</button>
     </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><i></i><i></i></button>
   </div>
 </header>
 
@@ -109,6 +129,7 @@
 </div>
 
 <script src="js/core.js"></script>
+<script src="js/nav.js"></script>
 <script src="js/aktiviti-data.js"></script>
 <script src="js/aktiviti.js"></script>
 </body>

@@ -9,7 +9,11 @@ css/site.css      tokens, base styles, 3D tour, calendar
 css/sections.css  content sections, chatbot
 css/profil.css    profile and activities
 css/components.css shared cards, services, Selangkah, club, booking form, footer
+css/nav.css       floating header, dropdown menus, phone menu
+css/motion.css    hero intro, hero parallax, scroll reveals (home page)
 js/core.js        loaded first: settings and the BM/EN language engine
+js/nav.js         header: glass on scroll, dropdowns, phone menu (menu items are in the HTML of both pages)
+js/motion.js      adds the motion classes; off when the visitor asks for reduced motion
 js/main.js        3D building, scroll tour (phone) / explorer (PC), availability calendar
 js/content.js     rates, grant quiz, opportunities, membership, events, FAQ, contact, chatbot
 assets/           logos

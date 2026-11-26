@@ -205,16 +205,6 @@
     sx = null;
   });
 
-  /* ---------- mobile menu ---------- */
-  const menuBtn = document.getElementById('menuBtn');
-  menuBtn.addEventListener('click', () => {
-    const o = document.body.classList.toggle('menu-open');
-    menuBtn.setAttribute('aria-expanded', o);
-  });
-  document.getElementById('navLinks').addEventListener('click', e => {
-    if (e.target.closest('a')) document.body.classList.remove('menu-open');
-  });
-
   // deep link from the home page (aktiviti.html#id): the cards must exist first, so render now
   render();
   if (location.hash) {

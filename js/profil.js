@@ -34,9 +34,24 @@
       sfLinks: 'Pautan pantas',
       sfContact: 'Hubungi',
       sfFollow: 'Ikuti kami',
-      prEye: 'Pusat Pembangunan Belia & Komuniti · Kota Belud, Sabah',
+      prEye: 'SSK Centre · Pusat Belia & Komuniti Kota Belud',
+      prH: 'Satu tempat untuk belajar, berkarya <em>dan berniaga.</em>',
       prLead:
-        'Ruang pintar untuk belia, usahawan, NGO dan keluarga Kota Belud: tempat kita berkumpul, berkarya dan membina masa depan bersama.',
+        'Sewa dewan serbaguna (100 orang) atau bilik mesyuarat (20 orang), sertai program komuniti dan cari geran usahawan. Semuanya di satu pusat di Kota Belud.',
+      prCta0: 'Semak tarikh & tempah',
+      prAs1: 'Disahkan dalam 24 jam',
+      prAs2: 'Ahli kelab diskaun 10%',
+      prProof: 'Pernah bekerjasama dengan',
+      prSl1: 'Malam Komuniti di SSK Centre',
+      prSl2: 'Kaamatan Kreatif 2026',
+      prSl3: 'Sesi taklimat komuniti',
+      prCardK: 'Tempah ruang',
+      prCardT: 'Dewan Serbaguna',
+      prCardS: 'Sehingga 100 orang · 3 slot sehari',
+      prSlotA: 'Pagi',
+      prSlotB: 'Petang',
+      prSlotC: 'Malam',
+      prCardGo: 'Lihat tarikh kosong',
       prCta1: 'Lihat aktiviti kami',
       prCta2: 'Jelajah ruang 3D',
       prS1: 'kapasiti dewan serbaguna',
@@ -123,9 +138,24 @@
       sfLinks: 'Quick links',
       sfContact: 'Contact',
       sfFollow: 'Follow us',
-      prEye: 'Youth & Community Development Centre · Kota Belud, Sabah',
+      prEye: 'SSK Centre · Youth & Community Centre, Kota Belud',
+      prH: 'One place to learn, create <em>and do business.</em>',
       prLead:
-        'A smart space for the youth, entrepreneurs, NGOs and families of Kota Belud: a place to gather, create and grow together.',
+        'Rent the multipurpose hall (100 people) or the meeting room (20 people), join community programmes and find business grants. All in one centre in Kota Belud.',
+      prCta0: 'Check dates & book',
+      prAs1: 'Confirmed within 24 hours',
+      prAs2: 'Club members get 10% off',
+      prProof: 'We have worked with',
+      prSl1: 'Community night at SSK Centre',
+      prSl2: 'Kaamatan Kreatif 2026',
+      prSl3: 'Community briefing session',
+      prCardK: 'Book a space',
+      prCardT: 'Multipurpose Hall',
+      prCardS: 'Up to 100 people · 3 slots a day',
+      prSlotA: 'Morning',
+      prSlotB: 'Afternoon',
+      prSlotC: 'Evening',
+      prCardGo: 'See free dates',
       prCta1: 'See our activities',
       prCta2: 'Explore the 3D space',
       prS1: 'multipurpose hall capacity',
@@ -216,4 +246,71 @@
       .join('');
   }
   SSK.onLang(renderPreview);
+
+  /* ---------- hero: slow photo crossfade with a caption ---------- */
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const slides = [...document.querySelectorAll('.pf-slides img')];
+  const cap = document.querySelector('.pf-cap-t');
+  const dots = [...document.querySelectorAll('.pf-dots i')];
+  let cur = 0;
+  function show(i) {
+    slides[cur].classList.remove('on');
+    dots[cur] && dots[cur].classList.remove('on');
+    cur = i;
+    slides[cur].classList.add('on');
+    dots[cur] && dots[cur].classList.add('on');
+    if (cap) {
+      cap.dataset.i18n = slides[cur].dataset.cap;
+      cap.textContent = SSK.strings[SSK.lang][cap.dataset.i18n] || '';
+    }
+  }
+  if (slides.length > 1 && !reduced) {
+    setInterval(() => {
+      // pause while the tab is hidden or the hero is scrolled away
+      if (document.hidden || scrollY > innerHeight) return;
+      show((cur + 1) % slides.length);
+    }, 6000);
+  }
+
+  /* ---------- paragraphs that fill in word by word as they scroll past ---------- */
+  const wordEls = [...document.querySelectorAll('[data-words]')];
+  function split() {
+    wordEls.forEach(el => {
+      const words = el.textContent.trim().split(/\s+/);
+      el.textContent = '';
+      words.forEach((w, i) => {
+        const span = document.createElement('span');
+        span.className = 'w';
+        span.textContent = w;
+        el.append(span, i < words.length - 1 ? ' ' : '');
+      });
+      el.classList.add('words-on');
+    });
+    paint();
+  }
+  function paint() {
+    wordEls.forEach(el => {
+      const r = el.getBoundingClientRect();
+      // 0 when the paragraph's top reaches 85% of the screen, 1 when its bottom passes 45%
+      const p = Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.4)));
+      const n = Math.round(p * el.children.length);
+      [...el.children].forEach((w, i) => w.classList.toggle('lit', i < n));
+    });
+  }
+  if (wordEls.length && !reduced) {
+    SSK.onLang(split); // the language engine rewrites the text, so split again after it
+    let tick = false;
+    addEventListener(
+      'scroll',
+      () => {
+        if (tick) return;
+        tick = true;
+        requestAnimationFrame(() => {
+          tick = false;
+          paint();
+        });
+      },
+      { passive: true }
+    );
+  }
 })();

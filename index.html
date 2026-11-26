@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/profil.css">
 <link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/motion.css">
 </head>
 <body>
 
@@ -23,9 +25,28 @@
   </a>
   <nav class="nav-links" id="navLinks" aria-label="Utama">
     <a href="#profil" data-i18n="n0">Profil</a>
-    <a href="#perkhidmatan" data-i18n="n8">Perkhidmatan</a>
-    <a href="#kadar" data-i18n="n1">Kadar sewa</a>
-    <a href="#selangkah" data-i18n="n2">Geran</a>
+    <div class="nav-dd">
+      <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="ddSvc"><span data-i18n="n8">Perkhidmatan</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="nav-dd-menu" id="ddSvc">
+        <div>
+            <a href="#perkhidmatan"><b data-i18n="dd1">Ruang &amp; perkhidmatan</b><span data-i18n="dd1s">Dewan, bilik mesyuarat, CentreKafe</span></a>
+            <a href="#kadar"><b data-i18n="dd2">Kadar sewa</b><span data-i18n="dd2s">Komuniti, korporat, persendirian</span></a>
+            <a href="#tempah"><b data-i18n="dd3">Borang tempahan</b><span data-i18n="dd3s">Tempah terus dalam 5 langkah</span></a>
+            <a href="#ruang"><b data-i18n="dd4">Jelajah 3D</b><span data-i18n="dd4s">Lihat setiap ruang dalam bangunan</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-dd">
+      <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="ddOpp"><span data-i18n="n9">Peluang</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="nav-dd-menu" id="ddOpp">
+        <div>
+            <a href="#selangkah"><b data-i18n="dd5">Selangkah ke Peluang</b><span data-i18n="dd5s">Program yang sedang dibuka</span></a>
+            <a href="#geran"><b data-i18n="dd6">Quiz geran</b><span data-i18n="dd6s">Cari geran yang sesuai dalam 5 soalan</span></a>
+            <a href="#peluang"><b data-i18n="dd7">Kursus &amp; pembiayaan</b><span data-i18n="dd7s">Senarai penuh peluang usahawan</span></a>
+            <a href="#keahlian"><b data-i18n="dd8">Keahlian kelab</b><span data-i18n="dd8s">RM10, diskaun 10% semua fasiliti</span></a>
+        </div>
+      </div>
+    </div>
     <a href="aktiviti.html" data-i18n="n7">Aktiviti</a>
     <a href="#hubungi" data-i18n="n5">Hubungi</a>
     <div class="lang lang-m" role="group" aria-label="Bahasa / Language">
@@ -34,12 +55,12 @@
     </div>
   </nav>
   <div class="nav-r">
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><i></i><i></i></button>
     <a class="nav-cta" href="#kadar" data-cal="dewan" data-i18n="navBook">Tempah</a>
     <div class="lang" role="group" aria-label="Bahasa / Language">
       <button data-lang="ms" aria-pressed="true">BM</button>
       <button data-lang="en" aria-pressed="false">EN</button>
     </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menu"><i></i><i></i></button>
   </div>
 </header>
 
@@ -65,26 +86,62 @@
   <!-- PROFIL (main screen): opaque block above the 3D tour -->
   <div class="content profil" id="profil">
     <section class="pf-hero" aria-labelledby="pf-title">
-      <div class="pf-hero-txt">
-        <p class="eyebrow" data-i18n="prEye">Pusat Pembangunan Belia &amp; Komuniti · Kota Belud, Sabah</p>
-        <h1 class="pf-title" id="pf-title">SSK <em>Centre</em></h1>
-        <p class="pf-lead" data-i18n="prLead">Ruang pintar untuk belia, usahawan, NGO dan keluarga Kota Belud: tempat kita berkumpul, berkarya dan membina masa depan bersama.</p>
-        <div class="btns">
-          <a class="btn btn-red" href="aktiviti.html"><span data-i18n="prCta1">Lihat aktiviti kami</span> <span class="arr">→</span></a>
-          <a class="btn btn-line" href="#ruang"><span data-i18n="prCta2">Jelajah ruang 3D</span> <span class="arr">↓</span></a>
+      <div class="pf-stage">
+        <div class="pf-slides" aria-hidden="true">
+          <img class="on" src="assets/aktiviti/malam-1.jpg" alt="" fetchpriority="high" data-cap="prSl1">
+          <img src="assets/aktiviti/kaamatan-1.jpg" alt="" loading="lazy" data-cap="prSl2">
+          <img src="assets/aktiviti/taklimat-1.jpg" alt="" loading="lazy" data-cap="prSl3">
         </div>
-        <dl class="pf-stats">
-          <div><dt>100</dt><dd data-i18n="prS1">kapasiti dewan serbaguna</dd></div>
-          <div><dt>20</dt><dd data-i18n="prS2">kapasiti bilik mesyuarat</dd></div>
-          <div><dt>10</dt><dd data-i18n="prS3">kumpulan sasaran</dd></div>
-          <div><dt>10+</dt><dd data-i18n="prS4">program telah diadakan</dd></div>
-        </dl>
+        <div class="pf-hero-txt">
+          <p class="pf-eye" data-i18n="prEye">SSK Centre · Pusat Belia &amp; Komuniti Kota Belud</p>
+          <h1 class="pf-title" id="pf-title" data-i18n-html="prH">Satu tempat untuk belajar, berkarya <em>dan berniaga.</em></h1>
+          <p class="pf-lead" data-i18n="prLead">Sewa dewan serbaguna (100 orang) atau bilik mesyuarat (20 orang), sertai program komuniti dan cari geran usahawan. Semuanya di satu pusat di Kota Belud.</p>
+          <div class="btns">
+            <button class="btn btn-red" type="button" data-cal="dewan"><span data-i18n="prCta0">Semak tarikh &amp; tempah</span> <span class="arr">→</span></button>
+            <a class="btn pf-btn-glass" href="aktiviti.html"><span data-i18n="prCta1">Lihat aktiviti kami</span> <span class="arr">→</span></a>
+          </div>
+          <ul class="pf-assure">
+            <li data-i18n="prAs1">Disahkan dalam 24 jam</li>
+            <li data-i18n="prAs2">Ahli kelab diskaun 10%</li>
+            <li><a href="#ruang" data-i18n="prCta2">Jelajah ruang 3D</a></li>
+          </ul>
+        </div>
+        <a class="pf-card pf-card-proof" href="aktiviti.html">
+          <span class="pf-faces" aria-hidden="true"><img src="assets/aktiviti/kaamatan-2.jpg" alt=""><img src="assets/aktiviti/cityu-1.jpg" alt=""><img src="assets/aktiviti/1suria-1.jpg" alt=""></span>
+          <span><b>10+</b> <span data-i18n="prS4">program telah diadakan</span></span>
+        </a>
+        <div class="pf-card pf-card-book">
+          <p class="pf-card-k" data-i18n="prCardK">Tempah ruang</p>
+          <p class="pf-card-t" data-i18n="prCardT">Dewan Serbaguna</p>
+          <p class="pf-card-s" data-i18n="prCardS">Sehingga 100 orang · 3 slot sehari</p>
+          <ul class="pf-slots" aria-label="Slot">
+            <li><b data-i18n="prSlotA">Pagi</b>8:30–12:30</li>
+            <li><b data-i18n="prSlotB">Petang</b>13:30–17:00</li>
+            <li><b data-i18n="prSlotC">Malam</b>18:00–23:00</li>
+          </ul>
+          <button class="pf-card-go" type="button" data-cal="dewan"><span data-i18n="prCardGo">Lihat tarikh kosong</span> <span class="arr">→</span></button>
+        </div>
+        <p class="pf-cap" aria-hidden="true"><span class="pf-cap-t" data-i18n="prSl1">Malam Komuniti di SSK Centre</span><span class="pf-dots"><i class="on"></i><i></i><i></i></span></p>
       </div>
-      <div class="pf-mosaic" aria-hidden="true">
-        <img class="m1" src="assets/aktiviti/1suria-1.jpg" alt="">
-        <img class="m2" src="assets/aktiviti/dron-1.jpg" alt="">
-        <img class="m3" src="assets/aktiviti/taklimat-2.jpg" alt="">
+
+      <div class="pf-proof">
+        <p data-i18n="prProof">Pernah bekerjasama dengan</p>
+        <div class="pf-marquee">
+          <ul>
+            <li>Yayasan 1Suria</li><li>University College Sabah Foundation</li><li>Institut Kraf Negara</li><li>City University Malaysia</li><li>Aerial Tech</li>
+          </ul>
+          <ul aria-hidden="true">
+            <li>Yayasan 1Suria</li><li>University College Sabah Foundation</li><li>Institut Kraf Negara</li><li>City University Malaysia</li><li>Aerial Tech</li>
+          </ul>
+        </div>
       </div>
+
+      <dl class="pf-stats">
+        <div><dt>100</dt><dd data-i18n="prS1">kapasiti dewan serbaguna</dd></div>
+        <div><dt>20</dt><dd data-i18n="prS2">kapasiti bilik mesyuarat</dd></div>
+        <div><dt>10</dt><dd data-i18n="prS3">kumpulan sasaran</dd></div>
+        <div><dt>10+</dt><dd data-i18n="prS4">program telah diadakan</dd></div>
+      </dl>
     </section>
 
     <section class="sec" aria-labelledby="h-latar">
@@ -99,7 +156,7 @@
           </dl>
         </div>
         <div class="pf-prose">
-          <p data-i18n="prBg1">SSK Centre merupakan pusat pembangunan belia dan komuniti yang ditubuhkan bagi menyediakan platform pembangunan modal insan, pendidikan, kemahiran, keusahawanan, sukan serta aktiviti kemasyarakatan untuk masyarakat setempat.</p>
+          <p data-i18n="prBg1" data-words>SSK Centre merupakan pusat pembangunan belia dan komuniti yang ditubuhkan bagi menyediakan platform pembangunan modal insan, pendidikan, kemahiran, keusahawanan, sukan serta aktiviti kemasyarakatan untuk masyarakat setempat.</p>
           <p data-i18n="prBg2">Berlokasi di Kota Belud, Sabah, SSK Centre menjadi wadah yang menghimpunkan pelbagai program berimpak tinggi melibatkan belia, pelajar, usahawan, NGO, institusi pendidikan, agensi kerajaan serta masyarakat umum.</p>
           <p data-i18n="prBg3">Ruang di SSK Centre boleh disewa untuk program berskala kecil mahupun besar: seminar, kursus, taklimat, pelancaran produk, bengkel dan latihan, serta majlis peribadi seperti perkahwinan, pertunangan dan sambutan hari jadi.</p>
           <ul class="pf-areas" aria-label="Bidang utama">
@@ -606,6 +663,7 @@
 
 <!-- integrity = the exact file we tested; the browser refuses it if the CDN copy is ever changed -->
 <script src="js/core.js"></script>
+<script src="js/nav.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/main.js"></script>
@@ -614,5 +672,6 @@
 <script src="js/content.js"></script>
 <script src="js/peluang.js"></script>
 <script src="js/tempah.js"></script>
+<script src="js/motion.js"></script>
 </body>
 </html>

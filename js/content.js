@@ -1154,33 +1154,19 @@
   }
   chatBtn.addEventListener('click', () => toggleChat());
 
-  /* ---------------- NAV: links, mobile menu, solid bar ---------------- */
+  /* ---------------- in-page links: smooth scroll (the header itself is js/nav.js) ---------------- */
   function goTo(hash) {
     const el = document.querySelector(hash);
     if (!el) return;
-    if (lenis) lenis.scrollTo(el, { offset: -70 });
+    if (lenis) lenis.scrollTo(el, { offset: -90 });
     else el.scrollIntoView({ behavior: 'smooth' });
   }
   document.addEventListener('click', e => {
     const a = e.target.closest('a[href^="#"]');
     if (!a || a.getAttribute('href').length < 2) return;
     e.preventDefault();
-    document.body.classList.remove('menu-open');
-    $('#menuBtn').setAttribute('aria-expanded', false);
     goTo(a.getAttribute('href'));
   });
-  $('#menuBtn').addEventListener('click', () => {
-    const o = document.body.classList.toggle('menu-open');
-    $('#menuBtn').setAttribute('aria-expanded', o);
-  });
-  const navEl = document.querySelector('.nav');
-  function onScroll() {
-    const y = lenis ? lenis.scroll : scrollY;
-    navEl.classList.toggle('solid', y > innerHeight * 0.6);
-  }
-  if (lenis) lenis.on('scroll', onScroll);
-  addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
 
   /* ---------------- render + language ---------------- */
   function renderAll() {
