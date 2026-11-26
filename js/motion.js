@@ -123,4 +123,18 @@
     el.parentElement.classList.add('rv-img-watch');
     io.observe(el.parentElement);
   });
+
+  /* ---------- location map: route, pin and photo play once the map is well in view ---------- */
+  const map = document.querySelector('.loc-map');
+  if (map) {
+    const mio = new IntersectionObserver(
+      es => {
+        if (es[0].intersectionRatio < 0.6) return;
+        map.classList.add('go');
+        mio.disconnect();
+      },
+      { threshold: [0, 0.6, 1] }
+    );
+    mio.observe(map);
+  }
 })();

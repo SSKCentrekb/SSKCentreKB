@@ -61,6 +61,10 @@ body.in-profile .rail {
   max-width: 44rem;
 }
 .pf-eye {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.5;
   font-size: 0.74rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -818,4 +822,13 @@ body.in-profile .rail {
   .lb-next {
     right: calc(50% - 60px);
   }
+}
+
+/* ---------- 404 page ---------- */
+.nf {
+  min-height: 70vh;
+  padding-top: 140px;
+}
+.nf .lead {
+  margin: 16px 0 28px;
 }

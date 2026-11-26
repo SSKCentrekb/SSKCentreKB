@@ -238,7 +238,7 @@
     box.innerHTML = list
       .map(
         a => `<a class="akt-card" href="aktiviti.html#${a.id}">
-    <span class="akt-img"><img src="assets/aktiviti/${a.photos[0]}.jpg" alt="" loading="lazy"></span>
+    <span class="akt-img"><img src="assets/aktiviti/${a.photos[0]}.jpg" alt="${esc(a.title[l])}" loading="lazy"></span>
     <span class="akt-meta">${esc(fmtDate(a.date, l))} · ${esc(SSK_AKTIVITI_CAT[a.cat][l])}</span>
     <b>${esc(a.title[l])}</b>
     <span class="akt-n">${a.photos.length} ${T[l].photos}</span></a>`
@@ -253,7 +253,16 @@
   const cap = document.querySelector('.pf-cap-t');
   const dots = [...document.querySelectorAll('.pf-dots i')];
   let cur = 0;
+  // photos 2 and 3 load only after the page has loaded, so the first photo appears sooner
+  const load = img => {
+    if (img.dataset.src) {
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+    }
+  };
+  addEventListener('load', () => setTimeout(() => slides.forEach(load), 800), { once: true });
   function show(i) {
+    load(slides[i]);
     slides[cur].classList.remove('on');
     dots[cur] && dots[cur].classList.remove('on');
     cur = i;

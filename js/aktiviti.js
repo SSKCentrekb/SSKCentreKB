@@ -115,7 +115,7 @@
     <div class="akt-grid">${g.items
       .map(
         a => `<button class="akt-card" id="${a.id}" data-id="${a.id}" aria-label="${esc(t.view)}: ${esc(a.title[l])}">
-      <span class="akt-img"><img src="assets/aktiviti/${a.photos[0]}.jpg" alt="" loading="lazy"><i class="akt-badge">${a.photos.length} ${t.photos}</i></span>
+      <span class="akt-img"><img src="assets/aktiviti/${a.photos[0]}.jpg" alt="${esc(a.title[l])}" loading="lazy"><i class="akt-badge">${a.photos.length} ${t.photos}</i></span>
       <span class="akt-meta">${a.date ? esc(fmt(a.date, l)) + ' · ' : ''}${esc(CAT[a.cat] ? CAT[a.cat][l] : '')}</span>
       <b>${esc(a.title[l])}</b>
       <span class="akt-desc">${esc(a.desc[l])}</span>
